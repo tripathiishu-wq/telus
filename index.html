@@ -1,642 +1,292 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TELUS — CEO Command Center</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#0a0d0f;--panel:#11161a;--panel-2:#161d22;--line:#1f2a30;
-    --ink:#e8f0f2;--mute:#7d8f96;--dim:#54646b;
-    --telus:#4b286d;--telus-2:#7a4fa0;--acid:#2ec4b6;--amber:#ffb703;--red:#ff5964;--blue:#3a86ff;--grid:#141b1f;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;
-    background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:44px 44px;}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
-  .mono{font-family:'IBM Plex Mono',monospace}
-
-  /* ===== TOP APP BAR ===== */
-  header{border-bottom:1px solid var(--line);background:rgba(10,13,15,.9);backdrop-filter:blur(10px);position:sticky;top:0;z-index:40}
-  .bar{display:flex;align-items:center;gap:20px;height:60px}
-  .brand{display:flex;align-items:center;gap:11px;font-family:'Space Grotesk';font-weight:700;letter-spacing:.02em;font-size:15px;flex-shrink:0}
-  .dot{width:9px;height:9px;border-radius:50%;background:var(--acid);box-shadow:0 0 12px var(--acid);animation:pulse 2.4s infinite}
-  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-  .brand small{color:var(--dim);font-weight:400}
-
-  /* primary tabs */
-  .tabs{display:flex;gap:4px;margin-left:auto}
-  .tab{font-family:'IBM Plex Mono';font-size:12.5px;font-weight:500;color:var(--mute);background:none;border:1px solid transparent;padding:8px 15px;cursor:pointer;letter-spacing:.02em;transition:.15s;border-radius:2px;white-space:nowrap}
-  .tab:hover{color:var(--ink);background:var(--panel)}
-  .tab.on{color:var(--acid);border-color:var(--line);background:var(--panel)}
-  .tab .no{color:var(--dim);margin-right:7px}
-  .tab.on .no{color:var(--telus-2)}
-
-  /* mobile menu */
-  .menubtn{display:none;margin-left:auto;background:var(--panel);border:1px solid var(--line);color:var(--ink);padding:8px 12px;font-family:'IBM Plex Mono';font-size:12px;cursor:pointer;border-radius:2px}
-  @media(max-width:840px){
-    .tabs{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 24px 14px;margin:0;gap:2px}
-    .tabs.open{display:flex}
-    .tab{text-align:left;padding:11px 12px;font-size:14px}
-    .menubtn{display:block}
-  }
-
-  /* subnav (within-view anchors) */
-  .subnav{border-bottom:1px solid var(--line);background:rgba(10,13,15,.72);backdrop-filter:blur(6px);position:sticky;top:60px;z-index:30;overflow-x:auto}
-  .subnav .inner{display:flex;gap:20px;height:44px;align-items:center}
-  .subnav a{color:var(--dim);text-decoration:none;font-size:12px;font-family:'IBM Plex Mono';white-space:nowrap;transition:.15s}
-  .subnav a:hover{color:var(--acid)}
-  .subnav .lbl{color:var(--telus-2);font-size:11px;letter-spacing:.14em;text-transform:uppercase;flex-shrink:0;padding-right:4px}
-
-  /* view switching */
-  .view{display:none}
-  .view.on{display:block;animation:fade .35s ease}
-  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-
-  /* ===== shared section styling ===== */
-  .hero{padding:56px 0 38px;border-bottom:1px solid var(--line)}
-  .eyebrow{font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.24em;text-transform:uppercase;margin-bottom:18px}
-  h1{font-family:'Space Grotesk';font-weight:700;font-size:clamp(34px,6vw,62px);line-height:1.03;letter-spacing:-.02em}
-  h1 .fade{color:var(--dim)}
-  .lede{color:var(--mute);font-size:17px;max-width:660px;margin-top:20px}
-  .flag{display:inline-flex;gap:8px;align-items:center;margin-top:24px;font-family:'IBM Plex Mono';font-size:12px;color:var(--dim)}
-
-  section{padding:52px 0;border-bottom:1px solid var(--line)}
-  .shead{display:flex;align-items:baseline;gap:16px;margin-bottom:14px;flex-wrap:wrap}
-  .sno{font-family:'IBM Plex Mono';font-size:13px;font-weight:600}
-  h2{font-family:'Space Grotesk';font-weight:600;font-size:26px;letter-spacing:-.01em}
-  .sub{color:var(--dim);font-size:12px;margin-left:auto;font-family:'IBM Plex Mono'}
-  .intro{color:var(--mute);font-size:15px;max-width:720px;margin:12px 0 26px}
-
-  .note{background:var(--panel-2);border:1px solid var(--line);border-left:2px solid var(--amber);padding:16px 18px;font-size:13px;color:var(--mute);margin-top:22px}
-  .note b{color:var(--ink)}
-
-  /* stat strip */
-  .strip{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:44px 0}
-  .stat{background:var(--panel);padding:22px 20px}
-  .stat .n{font-family:'Space Grotesk';font-weight:700;font-size:30px;letter-spacing:-.01em}
-  .stat .l{font-family:'IBM Plex Mono';font-size:11px;color:var(--mute);margin-top:6px;text-transform:uppercase;letter-spacing:.08em}
-  .stat .d{font-size:12px;color:var(--dim);margin-top:8px}
-  .up{color:var(--acid)} .down{color:var(--red)}
-  @media(max-width:900px){.strip{grid-template-columns:repeat(2,1fr)}}
-
-  /* share bars */
-  .share{display:flex;flex-direction:column;gap:18px}
-  .srow{display:grid;grid-template-columns:150px 1fr 56px;align-items:center;gap:16px}
-  .srow .co{font-family:'Space Grotesk';font-weight:600;font-size:15px}
-  .track{height:30px;background:var(--panel-2);border:1px solid var(--line);position:relative;overflow:hidden}
-  .fill{height:100%;display:flex;align-items:center;padding-left:12px;font-family:'IBM Plex Mono';font-size:12px;color:#0a0d0f;font-weight:600;width:0;transition:width 1.1s cubic-bezier(.2,.7,.2,1)}
-  .srow .pct{text-align:right;font-family:'IBM Plex Mono';font-weight:600;font-size:15px}
-
-  /* cards */
-  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  @media(max-width:820px){.grid3{grid-template-columns:1fr}}
-  .card{background:var(--panel);border:1px solid var(--line);padding:22px;position:relative}
-  .card h3{font-family:'Space Grotesk';font-weight:600;font-size:16px;margin-bottom:10px}
-  .card p{color:var(--mute);font-size:14px}
-  .tag{position:absolute;top:16px;right:16px;font-family:'IBM Plex Mono';font-size:10px;padding:3px 8px;border:1px solid var(--line);color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
-  .tag.win{color:var(--acid);border-color:rgba(46,196,182,.4)}
-  .tag.risk{color:var(--amber);border-color:rgba(255,183,3,.4)}
-
-  /* vs table */
-  .vs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
-  .vs .h{background:var(--panel-2);padding:16px 18px;font-family:'Space Grotesk';font-weight:600}
-  .vs .c{background:var(--panel);padding:14px 18px;font-size:14px}
-  .vs .lab{color:var(--dim);font-family:'IBM Plex Mono';font-size:11px;text-transform:uppercase;letter-spacing:.06em}
-  .vs .telcell{border-left:2px solid var(--telus-2)}
-  @media(max-width:720px){.vs{grid-template-columns:1fr}}
-
-  /* timeline */
-  .tl{position:relative;padding-left:28px}
-  .tl::before{content:'';position:absolute;left:6px;top:4px;bottom:4px;width:2px;background:var(--line)}
-  .ev{position:relative;padding:0 0 26px}
-  .ev::before{content:'';position:absolute;left:-27px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--telus-2);box-shadow:0 0 0 4px var(--bg)}
-  .ev .yr{font-family:'IBM Plex Mono';color:var(--acid);font-size:13px;font-weight:600}
-  .ev .t{font-family:'Space Grotesk';font-weight:600;margin-top:2px}
-  .ev p{color:var(--mute);font-size:14px;margin-top:4px}
-
-  /* demographics */
-  .demo{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-  @media(max-width:820px){.demo{grid-template-columns:repeat(2,1fr)}}
-  .dbox{background:var(--panel);border:1px solid var(--line);padding:20px}
-  .dbox .big{font-family:'Space Grotesk';font-weight:700;font-size:26px;color:var(--acid)}
-  .dbox .cap{font-size:13px;color:var(--mute);margin-top:6px}
-
-  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  @media(max-width:820px){.two{grid-template-columns:1fr}}
-  ul.clean{list-style:none;display:flex;flex-direction:column;gap:12px}
-  ul.clean li{display:flex;gap:12px;font-size:14px;color:var(--mute)}
-  ul.clean li b{color:var(--ink);font-weight:600}
-  .mk{color:var(--telus-2);font-family:'IBM Plex Mono';font-size:13px;flex-shrink:0}
-
-  /* scorecard */
-  .board{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
-  .board div{background:var(--panel);padding:14px 16px;font-size:14px}
-  .board .hd{background:var(--panel-2);font-family:'Space Grotesk';font-weight:600;font-size:13px}
-  .board .metric{font-family:'IBM Plex Mono';font-size:12px;color:var(--mute)}
-  .lead{color:var(--acid);font-weight:600}.lag{color:var(--red);font-weight:600}.mid{color:var(--amber);font-weight:600}
-  .tcol{border-left:2px solid var(--telus-2)}
-  @media(max-width:820px){.board{grid-template-columns:1fr 1fr;font-size:12px}}
-
-  /* deals */
-  .acq{display:flex;flex-direction:column;gap:16px}
-  .deal{background:var(--panel);border:1px solid var(--line);overflow:hidden}
-  .deal .top{display:flex;align-items:center;gap:14px;padding:18px 22px;border-bottom:1px solid var(--line);background:var(--panel-2)}
-  .deal .rank{font-family:'IBM Plex Mono';font-weight:600;color:var(--telus-2);font-size:15px;flex-shrink:0}
-  .deal .nm{font-family:'Space Grotesk';font-weight:600;font-size:16px}
-  .deal .badge{margin-left:auto;font-family:'IBM Plex Mono';font-size:10px;padding:4px 10px;border:1px solid var(--line);text-transform:uppercase;letter-spacing:.08em;color:var(--dim);white-space:nowrap}
-  .badge.neutral{color:var(--acid);border-color:rgba(46,196,182,.4)}
-  .badge.tuck{color:var(--blue);border-color:rgba(58,134,255,.4)}
-  .badge.build{color:var(--amber);border-color:rgba(255,183,3,.4)}
-  .deal .body{padding:18px 22px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
-  @media(max-width:720px){.deal .body{grid-template-columns:1fr}}
-  .deal .thesis{font-size:14px;color:var(--mute)}
-  .deal .kv{display:flex;justify-content:space-between;font-size:13px;border-bottom:1px dashed var(--line);padding-bottom:6px;margin-bottom:8px;gap:10px}
-  .deal .kv span:first-child{color:var(--dim);font-family:'IBM Plex Mono';font-size:11px;text-transform:uppercase;letter-spacing:.06em;flex-shrink:0}
-  .deal .kv span:last-child{color:var(--ink);font-weight:500;text-align:right}
-
-  /* CAC calc */
-  .calc{background:var(--panel);border:1px solid var(--line);padding:26px}
-  .calc h3{font-family:'Space Grotesk';font-weight:600;margin-bottom:6px}
-  .calc .row{display:grid;grid-template-columns:1fr 90px;align-items:center;gap:14px;padding:12px 0 4px}
-  .calc label{font-size:14px;color:var(--mute)}
-  .calc input[type=range]{width:100%;accent-color:var(--telus-2);margin-bottom:8px}
-  .calc .val{font-family:'IBM Plex Mono';font-weight:600;text-align:right;color:var(--acid)}
-  .calc .out{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:22px}
-  .calc .out div{background:var(--panel-2);padding:16px}
-  .calc .out .big{font-family:'Space Grotesk';font-weight:700;font-size:26px}
-  .calc .out .lab{font-family:'IBM Plex Mono';font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
-
-  /* tiles */
-  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  @media(max-width:820px){.tiles{grid-template-columns:1fr}}
-  .tile{background:var(--panel);border:1px solid var(--line);padding:20px}
-  .tile .cur{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim)}
-  .tile .goal{font-family:'Space Grotesk';font-weight:700;font-size:24px;color:var(--acid);margin-top:8px}
-  .tile h4{font-family:'Space Grotesk';font-weight:600;font-size:15px;margin-bottom:8px}
-  .tile p{font-size:13px;color:var(--mute);margin-top:8px}
-  .arrow{color:var(--dim);font-family:'IBM Plex Mono';font-size:12px}
-
-  /* leverage bars */
-  .lev{display:flex;flex-direction:column;gap:26px;margin:10px 0 8px}
-  .lrow{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center}
-  .lrow .co{font-family:'Space Grotesk';font-weight:600;font-size:16px}
-  .lrow .co small{display:block;font-family:'IBM Plex Mono';font-weight:400;font-size:11px;color:var(--dim);margin-top:2px}
-  .ltrack{position:relative;height:44px;background:var(--panel-2);border:1px solid var(--line)}
-  .lfill{height:100%;display:flex;align-items:center;justify-content:flex-end;padding-right:14px;font-family:'Space Grotesk';font-weight:700;font-size:18px;color:#0a0d0f;width:0;transition:width 1.2s cubic-bezier(.2,.7,.2,1)}
-  .tgt{position:absolute;top:-7px;bottom:-7px;width:2px;background:var(--acid);z-index:3}
-  .tgt span{position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-family:'IBM Plex Mono';font-size:10px;color:var(--acid);white-space:nowrap}
-  .scale{display:grid;grid-template-columns:120px 1fr;gap:18px;margin-top:6px}
-  .ticks{display:flex;justify-content:space-between;font-family:'IBM Plex Mono';font-size:10px;color:var(--dim)}
-
-  .dcard{background:var(--panel);border:1px solid var(--line);padding:22px;border-top:3px solid var(--line)}
-  .dcard.t{border-top-color:var(--telus-2)}.dcard.r{border-top-color:var(--red)}.dcard.b{border-top-color:var(--blue)}
-  .dcard .co{font-family:'Space Grotesk';font-weight:700;font-size:18px;margin-bottom:2px}
-  .dcard .tk{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);margin-bottom:16px}
-  .dcard .big{font-family:'Space Grotesk';font-weight:700;font-size:34px;letter-spacing:-.01em}
-  .dcard .biglab{font-family:'IBM Plex Mono';font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
-  .dcard .kv{display:flex;justify-content:space-between;font-size:13px;padding:9px 0;border-bottom:1px dashed var(--line);gap:10px}
-  .dcard .kv:last-child{border-bottom:0}
-  .dcard .kv span:first-child{color:var(--dim);font-family:'IBM Plex Mono';font-size:11px;text-transform:uppercase;letter-spacing:.05em;flex-shrink:0}
-  .dcard .kv span:last-child{font-weight:500;text-align:right}
-  .best{color:var(--acid)}.worst{color:var(--red)}
-
-  .glide{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  @media(max-width:820px){.glide{grid-template-columns:1fr}}
-  .path{background:var(--panel);border:1px solid var(--line);padding:20px}
-  .path h4{font-family:'Space Grotesk';font-weight:600;font-size:15px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
-  .swatch{width:10px;height:10px;border-radius:2px;flex-shrink:0}
-  .step{display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono';font-size:12px;padding:7px 0;color:var(--mute)}
-  .step .yr{color:var(--dim);width:44px;flex-shrink:0}
-  .step .bx{font-weight:600;color:var(--ink)}
-  .step.done .bx{color:var(--acid)}
-
-  footer{padding:40px 0 60px}
-  .src{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);line-height:1.9}
-  .src a{color:var(--mute)}
-</style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2757.5">
+  <style type="text/css">
+    body {background-color: #0a0c0d}
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: justify; font: 15.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef; background-color: #2bbaa7; min-height: 18.0px}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 15.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.5px 'Helvetica Neue'; color: #435158; -webkit-text-stroke: #435158}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 12.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef; background-color: #0e1114}
+    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef; background-color: #0a0c0d; background-color: rgba(10, 12, 13, 0.72); min-height: 15.0px}
+    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #2bbaa7; -webkit-text-stroke: #2bbaa7}
+    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 17.0px 'Helvetica Neue'; color: #6a7c84; -webkit-text-stroke: #6a7c84}
+    p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #435158; -webkit-text-stroke: #435158}
+    p.p10 {margin: 0.0px 0.0px 0.0px 0.0px; font: 30.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef}
+    p.p11 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #6a7c84; -webkit-text-stroke: #6a7c84}
+    p.p12 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; color: #66398f; -webkit-text-stroke: #66398f}
+    p.p14 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #0a0c0d; -webkit-text-stroke: #0a0c0d; background-color: #12161a}
+    p.p15 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: right; font: 15.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef}
+    p.p16 {margin: 0.0px 0.0px 0.0px 0.0px; font: 15.0px 'Helvetica Neue'; color: #66398f; -webkit-text-stroke: #66398f}
+    p.p17 {margin: 0.0px 0.0px 0.0px 0.0px; font: 15.0px 'Helvetica Neue'; color: #6a7c84; -webkit-text-stroke: #6a7c84}
+    p.p18 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; color: #6a7c84; -webkit-text-stroke: #6a7c84; background-color: #12161a}
+    p.p19 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef; background-color: #12161a}
+    p.p20 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #435158; -webkit-text-stroke: #435158}
+    p.p21 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef; background-color: #0e1114}
+    p.p22 {margin: 0.0px 0.0px 0.0px 0.0px; font: 26.0px 'Helvetica Neue'; color: #2bbaa7; -webkit-text-stroke: #2bbaa7}
+    p.p23 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; color: #6a7c84; -webkit-text-stroke: #6a7c84}
+    p.p25 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px 'Helvetica Neue'; color: #6a7c84; -webkit-text-stroke: #6a7c84}
+    p.p26 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; color: #2bbaa7; -webkit-text-stroke: #2bbaa7}
+    p.p27 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef}
+    p.p28 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px 'Helvetica Neue'; color: #2bbaa7; -webkit-text-stroke: #2bbaa7}
+    p.p29 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px 'Helvetica Neue'; color: #fda90b; -webkit-text-stroke: #fda90b}
+    p.p30 {margin: 0.0px 0.0px 26.0px 0.0px; font: 15.0px 'Helvetica Neue'; color: #6a7c84; -webkit-text-stroke: #6a7c84}
+    p.p31 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #435158; -webkit-text-stroke: #435158; min-height: 13.0px}
+    li.li25 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px 'Helvetica Neue'; color: #6a7c84; -webkit-text-stroke: #6a7c84}
+    span.s1 {font-kerning: none}
+    span.s2 {font-kerning: none; background-color: rgba(10, 12, 13, 0.9)}
+    span.s3 {font: 12.0px 'Apple Symbols'; font-kerning: none}
+    span.s4 {font-kerning: none; color: #435158; -webkit-text-stroke: 0px #435158}
+    span.s5 {font: 12.0px 'Apple SD Gothic Neo'; font-kerning: none}
+    span.s6 {font-kerning: none; background-color: #0e1114}
+    span.s7 {font-kerning: none; color: #435158; background-color: #0e1114; -webkit-text-stroke: 0px #435158}
+    span.s8 {font: 13.0px 'Apple SD Gothic Neo'; font-kerning: none}
+    span.s9 {font: 13.0px 'Helvetica Neue'; color: #66398f; background-color: #0e1114; -webkit-text-stroke: 0px #000000}
+    span.s10 {font: 13.0px 'Helvetica Neue'; font-kerning: none; color: #66398f; background-color: #0e1114; -webkit-text-stroke: 0px #66398f}
+    span.s11 {font: 13.0px 'Helvetica Neue'; font-kerning: none; color: #66398f; -webkit-text-stroke: 0px #66398f}
+    span.s12 {font-kerning: none; color: #e3ecef; background-color: #0e1114; -webkit-text-stroke: 0px #e3ecef}
+    span.s13 {font: 13.0px 'Apple SD Gothic Neo'; font-kerning: none; color: #66398f; background-color: #0e1114; -webkit-text-stroke: 0px #66398f}
+    span.s14 {font-kerning: none; color: #e3ecef; -webkit-text-stroke: 0px #e3ecef}
+    ul.ul1 {list-style-type: disc}
+  </style>
 </head>
 <body>
-
-<!-- ===================== APP BAR ===================== -->
-<header>
-  <div class="wrap bar">
-    <div class="brand"><span class="dot"></span>TELUS&nbsp;<small>/ CEO COMMAND CENTER</small></div>
-    <button class="menubtn" id="menubtn">☰ Menu</button>
-    <div class="tabs" id="tabs">
-      <button class="tab on" data-view="brief"><span class="no">01</span>Company Brief</button>
-      <button class="tab" data-view="debt"><span class="no">02</span>Debt vs Rivals</button>
-      <button class="tab" data-view="play"><span class="no">03</span>Growth & M&A</button>
-    </div>
-  </div>
-</header>
-
-<!-- subnav changes per view -->
-<div class="subnav">
-  <div class="wrap inner" id="subnav"></div>
-</div>
-
-<!-- ===================== VIEW 1: BRIEF ===================== -->
-<div class="view on" id="v-brief">
-  <div class="wrap">
-    <div class="hero">
-      <div class="eyebrow" style="color:var(--acid)">Confidential · Board Prep · FY2025 Close</div>
-      <h1>You'd be running<br>a <span class="fade">$20.5B</span> machine<br>with <span class="fade">21M</span> connections.</h1>
-      <p class="lede">Everything a candidate for the CEO chair at TELUS Communications should have memorised — the numbers, the battlefield, the moats, and where the floor is soft.</p>
-      <div class="flag">◈ TSX: T · NYSE: TU · HQ Vancouver, BC · ~48,000 team members</div>
-    </div>
-    <div class="strip" id="stats">
-      <div class="stat"><div class="n">$20.5B</div><div class="l">Operating revenue</div><div class="d">FY2025 · <span class="up">growth y/y</span></div></div>
-      <div class="stat"><div class="n">21.2M</div><div class="l">Total connections</div><div class="d">~1.0M net adds 2025</div></div>
-      <div class="stat"><div class="n">0.91%</div><div class="l">Postpaid churn</div><div class="d"><span class="up">Industry-best</span></div></div>
-      <div class="stat"><div class="n">$2.2B</div><div class="l">Free cash flow</div><div class="d">$4.9B operating cash</div></div>
-      <div class="stat"><div class="n">~27%</div><div class="l">Wireless share</div><div class="d">10.1M+ mobile subs</div></div>
-    </div>
-  </div>
-
-  <section id="b-share">
-    <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--telus-2)">01</span><h2>The wireless battlefield</h2><span class="sub">approx. share · Big Three ~87%</span></div>
-      <div class="share">
-        <div class="srow"><span class="co">Rogers</span><div class="track"><div class="fill" data-w="86" data-c="#ff5964">34%</div></div><span class="pct">34%</span></div>
-        <div class="srow"><span class="co">Bell (BCE)</span><div class="track"><div class="fill" data-w="72" data-c="#3a86ff">28%</div></div><span class="pct">28%</span></div>
-        <div class="srow"><span class="co" style="color:var(--telus-2)">TELUS</span><div class="track"><div class="fill" data-w="70" data-c="#7a4fa0">27%</div></div><span class="pct">27%</span></div>
-        <div class="srow"><span class="co" style="color:var(--mute)">Freedom / Videotron</span><div class="track"><div class="fill" data-w="24" data-c="#54646b">~9%</div></div><span class="pct">~9%</span></div>
-      </div>
-      <div class="note">◈ The Big Three plus Quebecor hold ~85.6% of telecom service revenue; combined subscriber share edged up to ~86.9% in 2023. Consolidation, not fragmentation. Freedom (Quebecor/Videotron) is the mandated fourth force — aggressive on 3800 MHz 5G+ but regional.</div>
-    </div>
-  </section>
-
-  <section id="b-rivals">
-    <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--telus-2)">02</span><h2>Know your two rivals cold</h2><span class="sub">head-to-head</span></div>
-      <div class="vs">
-        <div class="h">TELUS</div><div class="h">Rogers</div><div class="h">Bell (BCE)</div>
-        <div class="c telcell"><span class="lab">Wireless share</span><br>~27% · strongest in BC & Alberta, growing in Territories</div>
-        <div class="c"><span class="lab">Wireless share</span><br>~34% · #1, deep in ON/QC/BC, owns Shaw Mobile</div>
-        <div class="c"><span class="lab">Wireless share</span><br>~28% · national, buying Ziply Fiber (~$5B)</div>
-        <div class="c telcell"><span class="lab">Diversification</span><br>Health + Agriculture + Digital — widest non-telecom spread</div>
-        <div class="c"><span class="lab">Diversification</span><br>Media & sports heavy (Sportsnet, Blue Jays, MLSE)</div>
-        <div class="c"><span class="lab">Diversification</span><br>Bell Media (CTV) — reviewing non-core assets</div>
-        <div class="c telcell"><span class="lab">Recent move</span><br>Willing to sell minority stake in wireless towers (Mar 2025)</div>
-        <div class="c"><span class="lab">Recent move</span><br>Blackstone bought 49.9% of wireless infra (~$7B); satellite texting</div>
-        <div class="c"><span class="lab">Recent move</span><br>Ziply Fiber deal; FiberCo with PSP</div>
-        <div class="c telcell"><span class="lab">Signature edge</span><br>Best churn (0.91%), fibre footprint, health/digital moats</div>
-        <div class="c"><span class="lab">Signature edge</span><br>Scale, spectrum, sports/content bundling</div>
-        <div class="c"><span class="lab">Signature edge</span><br>Fibre leadership, media reach, enterprise depth</div>
-      </div>
-    </div>
-  </section>
-
-  <section id="b-demo">
-    <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--telus-2)">03</span><h2>The market you'd serve</h2><span class="sub">Canada · 2025</span></div>
-      <div class="demo">
-        <div class="dbox"><div class="big">~33M</div><div class="cap">Smartphone users — ~88% penetration</div></div>
-        <div class="dbox"><div class="big">~92%</div><div class="cap">Consumer high-speed internet penetration</div></div>
-        <div class="dbox"><div class="big">$52B+</div><div class="cap">Canadian MNO market (2026), ~4.6% CAGR</div></div>
-        <div class="dbox"><div class="big">45+</div><div class="cap">Countries TELUS operates in (Digital & Health)</div></div>
-      </div>
-      <div class="two" style="margin-top:24px">
-        <div class="card"><h3>Where growth actually comes from</h3>
-          <ul class="clean" style="margin-top:8px">
-            <li><span class="mk">↗</span><span><b>Internet ARPU +6%</b> — higher speed tiers as traffic hits records</span></li>
-            <li><span class="mk">↗</span><span><b>Connected devices & IoT</b> — 169K device adds vs 82K phone adds in a quarter</span></li>
-            <li><span class="mk">↗</span><span><b>Health & Digital</b> — margin expansion offsetting mobile softness</span></li>
-            <li><span class="mk">↘</span><span><b>Mobile phone ARPU declining</b> (decelerating) — the core pressure</span></li>
-          </ul>
-        </div>
-        <div class="card"><h3>Structural demand drivers</h3>
-          <ul class="clean" style="margin-top:8px">
-            <li><span class="mk">◈</span><span>Immigration-led population growth = new-connection tailwind</span></li>
-            <li><span class="mk">◈</span><span>Cord-cutting erodes legacy TV revenue</span></li>
-            <li><span class="mk">◈</span><span>Legacy voice in structural decline</span></li>
-            <li><span class="mk">◈</span><span>5G Standalone (2023) unlocks IoT, private networks, smart-city B2B</span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="b-history">
-    <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--telus-2)">04</span><h2>How TELUS got here</h2><span class="sub">the arc you'd inherit</span></div>
-      <div class="tl">
-        <div class="ev"><div class="yr">1990</div><div class="t">Alberta Government Telephones privatised</div><p>Roots as a provincial Crown telco — origin of the TELUS name and Western Canada stronghold.</p></div>
-        <div class="ev"><div class="yr">1999</div><div class="t">BC TELECOM merger</div><p>Merges with BC Tel, cementing dominance across BC and Alberta — base of today's fibre footprint.</p></div>
-        <div class="ev"><div class="yr">2000s</div><div class="t">National wireless expansion</div><p>Builds coast-to-coast mobile, joins the entrenched "Big Three."</p></div>
-        <div class="ev"><div class="yr">2013</div><div class="t">Verizon threat evaporates</div><p>Verizon rules out entering Canada — no serious foreign competitor has arrived since.</p></div>
-        <div class="ev"><div class="yr">2020</div><div class="t">TELUS International (Digital) IPO</div><p>The BPO/AI-services arm goes public — diversification beyond connectivity begins in earnest.</p></div>
-        <div class="ev"><div class="yr">2023</div><div class="t">5G Standalone network live</div><p>Lower latency, network slicing, IoT readiness — the platform for the next B2B revenue layer.</p></div>
-        <div class="ev"><div class="yr">2025</div><div class="t">Infra-monetisation & Digital taken private</div><p>Sells stakes to deleverage; buys back 100% of TELUS Digital (~US$539M) to own the AI/SaaS engine.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="b-edge">
-    <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--telus-2)">05</span><h2>Your advantages & your soft floor</h2><span class="sub">the CEO thesis</span></div>
-      <div class="grid3">
-        <div class="card"><span class="tag win">Moat</span><h3>Best-in-class churn</h3><p>0.91% postpaid churn — lowest of the Big Three. Loyalty and bundling discipline you protect at all costs.</p></div>
-        <div class="card"><span class="tag win">Moat</span><h3>Diversification beyond pipes</h3><p>Health, Agriculture, Digital give revenue lines rivals can't copy — margin when telecom is flat.</p></div>
-        <div class="card"><span class="tag win">Moat</span><h3>Fibre + 5G SA footprint</h3><p>Deep FTTH in the West plus a live 5G Standalone core = premium internet ARPU and B2B/IoT optionality.</p></div>
-        <div class="card"><span class="tag risk">Risk</span><h3>Mobile ARPU erosion</h3><p>Competitive pricing drags phone ARPU. Decelerating — but the number the Street watches.</p></div>
-        <div class="card"><span class="tag risk">Risk</span><h3>Saturation ceiling</h3><p>92% internet, ~88% smartphone. Growth must come from ARPU, adjacencies and share-steal.</p></div>
-        <div class="card"><span class="tag risk">Risk</span><h3>Capital intensity & debt</h3><p>Spectrum and fibre pushed sector leverage above norms — hence infra stake sales.</p></div>
-      </div>
-      <div class="note" style="border-left-color:var(--acid)">◈ <b>The 90-second board pitch:</b> "TELUS wins by being the loyalty leader in a saturated market — I defend the 0.91% churn, accelerate the health/digital/IoT flywheel to escape the ARPU trap, and monetise passive infrastructure to fund the fibre endgame without diluting shareholders. We don't out-scale Rogers; we out-retain and out-diversify them."</div>
-    </div>
-  </section>
-</div>
-
-<!-- ===================== VIEW 2: DEBT ===================== -->
-<div class="view" id="v-debt">
-  <div class="wrap">
-    <div class="hero">
-      <div class="eyebrow" style="color:var(--telus-2)">Confidential · Balance-Sheet Comparison · YE2025</div>
-      <h1>TELUS carries the<br><span class="fade">lightest</span> balance sheet<br>of the Big Three.</h1>
-      <p class="lede">Net debt to EBITDA is the number rating agencies and the board watch. On leverage, on absolute debt, and on speed of deleveraging, TELUS sits ahead of both rivals — an advantage you can weaponise.</p>
-    </div>
-  </div>
-
-  <section id="d-lev">
-    <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--telus-2)">01</span><h2>Net debt ÷ EBITDA — who's most leveraged</h2><span class="sub">lower is safer · YE2025</span></div>
-      <p class="intro">The core solvency metric. The teal marker on each bar is that company's stated deleveraging target.</p>
-      <div class="lev">
-        <div class="lrow"><div class="co">TELUS<small>TSX: T</small></div><div class="ltrack"><div class="lfill" data-lev="3.4" style="background:var(--telus-2)">3.4×</div><div class="tgt" style="left:60%"><span>target 3.0×</span></div></div></div>
-        <div class="lrow"><div class="co">Bell / BCE<small>TSX: BCE</small></div><div class="ltrack"><div class="lfill" data-lev="3.5" style="background:var(--blue)">~3.5×</div><div class="tgt" style="left:70%"><span>target 3.5× ('27)</span></div></div></div>
-        <div class="lrow"><div class="co">Rogers<small>TSX: RCI.B</small></div><div class="ltrack"><div class="lfill" data-lev="3.9" style="background:var(--red)">3.9×</div><div class="tgt" style="left:65%"><span>target 3.25×</span></div></div></div>
-      </div>
-      <div class="scale"><div></div><div class="ticks"><span>0×</span><span>1×</span><span>2×</span><span>3×</span><span>4×</span><span>5×</span></div></div>
-      <div class="note">◈ Bars scaled to a 5.0× ceiling. TELUS at 3.4× is least levered — already <em>below</em> where Bell aims to be in 2027. Rogers at 3.9× (4.0× as-reported) is still working down from 5.2× right after Shaw closed.</div>
-    </div>
-  </section>
-
-  <section id="d-card">
-    <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--telus-2)">02</span><h2>The full balance-sheet card</h2><span class="sub">latest reported</span></div>
-      <div class="grid3">
-        <div class="dcard t"><div class="co">TELUS</div><div class="tk">TSX: T · NYSE: TU</div><div class="big best">3.4×</div><div class="biglab">Net debt / EBITDA</div>
-          <div style="margin-top:16px">
-            <div class="kv"><span>Leverage rank</span><span class="best">#1 lowest</span></div>
-            <div class="kv"><span>YE2027 target</span><span>3.0× or lower</span></div>
-            <div class="kv"><span>Free cash flow</span><span>$2.2B (record)</span></div>
-            <div class="kv"><span>Funded by</span><span>Health/tower/copper</span></div>
-            <div class="kv"><span>Dividend</span><span>Held (not cut)</span></div>
-          </div>
-        </div>
-        <div class="dcard b"><div class="co">Bell / BCE</div><div class="tk">TSX: BCE · NYSE: BCE</div><div class="big">~3.5×</div><div class="biglab">Net debt / EBITDA (target)</div>
-          <div style="margin-top:16px">
-            <div class="kv"><span>Leverage rank</span><span class="mid">#2</span></div>
-            <div class="kv"><span>Net debt</span><span class="worst">~$40B (largest)</span></div>
-            <div class="kv"><span>3.0× target</span><span>Not until ~2030</span></div>
-            <div class="kv"><span>Funded by</span><span>Div cut, FiberCo/PSP</span></div>
-            <div class="kv"><span>Dividend</span><span class="worst">Cut to $1.75</span></div>
-          </div>
-        </div>
-        <div class="dcard r"><div class="co">Rogers</div><div class="tk">TSX: RCI.B · NYSE: RCI</div><div class="big worst">3.9×</div><div class="biglab">Net debt / EBITDA (pro-forma)</div>
-          <div style="margin-top:16px">
-            <div class="kv"><span>Leverage rank</span><span class="worst">#3 highest</span></div>
-            <div class="kv"><span>As-reported</span><span>4.0× (from 4.5×)</span></div>
-            <div class="kv"><span>Post-Shaw peak</span><span class="worst">5.2× (24mo ago)</span></div>
-            <div class="kv"><span>Funded by</span><span>Blackstone $7B sale</span></div>
-            <div class="kv"><span>Dividend</span><span>Held ($0.50/qtr)</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="note">◈ Absolute net debt: <b>Bell carries the heaviest load (~$40B)</b> from fibre capex plus Ziply. Rogers is heaviest on <em>ratio</em> because Shaw stretched the sheet. TELUS wins on both ratio and trajectory — the only one that hasn't cut its dividend to get there.</div>
-    </div>
-  </section>
-
-  <section id="d-glide">
-    <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--telus-2)">03</span><h2>Who deleverages fastest</h2><span class="sub">stated glide paths</span></div>
-      <p class="intro">Same destination (~3.0×), very different arrival times. TELUS gets there years ahead of Bell.</p>
-      <div class="glide">
-        <div class="path"><h4><span class="swatch" style="background:var(--telus-2)"></span>TELUS</h4>
-          <div class="step done"><span class="yr">2025</span><span>→ <span class="bx">3.4×</span> (ahead of plan)</span></div>
-          <div class="step"><span class="yr">2026</span><span>→ <span class="bx">3.3× or lower</span></span></div>
-          <div class="step"><span class="yr">2027</span><span>→ <span class="bx">3.0×</span> ✓ target</span></div>
-        </div>
-        <div class="path"><h4><span class="swatch" style="background:var(--red)"></span>Rogers</h4>
-          <div class="step done"><span class="yr">2024</span><span>→ <span class="bx">4.5×</span></span></div>
-          <div class="step done"><span class="yr">2025</span><span>→ <span class="bx">3.9×</span> (pro-forma)</span></div>
-          <div class="step"><span class="yr">Later</span><span>→ <span class="bx">3.25×</span> Blackstone gate</span></div>
-        </div>
-        <div class="path"><h4><span class="swatch" style="background:var(--blue)"></span>Bell / BCE</h4>
-          <div class="step done"><span class="yr">2025</span><span>→ dividend cut to fund it</span></div>
-          <div class="step"><span class="yr">2027</span><span>→ <span class="bx">~3.5×</span> target</span></div>
-          <div class="step"><span class="yr">2030</span><span>→ <span class="bx">~3.0×</span> (slowest)</span></div>
-        </div>
-      </div>
-      <div class="note">◈ <b>TELUS hits 3.0× by 2027; Bell not until ~2030.</b> Three extra years of balance-sheet flexibility = three extra years of buybacks, tuck-in M&A, or price defense without breaking covenants.</div>
-    </div>
-  </section>
-
-  <section id="d-take">
-    <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--telus-2)">04</span><h2>What this means for the chair</h2><span class="sub">the interview line</span></div>
-      <div class="note" style="border-left-color:var(--acid)">◈ <b>Say this:</b> "On the balance sheet, TELUS already leads the Big Three — 3.4× versus Rogers at 3.9× and Bell carrying $40 billion in net debt. We're the only one that didn't cut the dividend to deleverage, and we reach 3.0× three years before Bell does. My job is to protect that lead: fund every growth move from divestiture proceeds and free cash flow, never new leverage."</div>
-      <div class="note">◈ <b>The one caveat to acknowledge:</b> ratios aren't perfectly comparable — each defines "net debt" and "adjusted EBITDA" differently (Rogers adjusts 50% of subordinated notes; MLSE/Shaw distort trailing EBITDA). Quote the direction and ranking with confidence; footnote the exact decimals.</div>
-    </div>
-  </section>
-</div>
-
-<!-- ===================== VIEW 3: GROWTH & M&A ===================== -->
-<div class="view" id="v-play">
-  <div class="wrap">
-    <div class="hero">
-      <div class="eyebrow" style="color:var(--amber)">Confidential · CEO Thesis · The 100-Day Plan</div>
-      <h1>Don't out-spend them.<br><span class="fade">Out-retain,</span> out-bundle,<br>out-diversify them.</h1>
-      <p class="lede">TELUS is deleveraging — 3.4× net debt/EBITDA today, targeting 3.0× by 2027. The winning M&A move isn't a spree. It's balance-sheet-neutral tuck-ins funded by divestitures already in motion, aimed at the metrics where Rogers and Bell are soft.</p>
-    </div>
-  </div>
-
-  <section id="p-reality">
-    <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--amber)">01</span><h2>The constraint you inherit</h2><span class="sub">read before pitching any deal</span></div>
-      <p class="intro">A candidate who walks in with a billion-dollar shopping list fails the room. The board's priority is deleveraging. Credibility comes from acquiring <em>surgically</em>, funded by the monetisation levers already public.</p>
-      <div class="tiles">
-        <div class="tile"><div class="cur">NET DEBT / EBITDA</div><div class="goal">3.4× → 3.0×</div><p>The whole strategy. Any deal must be leverage-neutral or self-funding.</p></div>
-        <div class="tile"><div class="cur">FUNDING SOURCE</div><div class="goal">Divestitures</div><p>Health stake, tower/infra, real estate & copper, La Caisse "Terrion" (-$1.26B debt).</p></div>
-        <div class="tile"><div class="cur">ALREADY BOUGHT</div><div class="goal">TELUS Digital</div><p>Taken 100% private Oct 2025 (~US$539M). AI/SaaS engine now in-house — the platform, not a target.</p></div>
-      </div>
-      <div class="note">◈ <b>The frame that wins:</b> "I'm not asking the board to lever up. Every acquisition is either tuck-in scale (sub-$500M, self-funding within 24 months) or a capability-buy funded directly by the Health/infra monetisation we're already executing. We buy retention and margin, not vanity revenue."</div>
-    </div>
-  </section>
-
-  <section id="p-score">
-    <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--amber)">02</span><h2>Where you already win — and where you don't</h2><span class="sub">latest reported</span></div>
-      <div class="board">
-        <div class="hd">Metric</div><div class="hd tcol">TELUS</div><div class="hd">Rogers</div><div class="hd">Bell</div>
-        <div class="metric">Postpaid churn</div><div class="tcol lead">0.91% ✓</div><div class="mid">~1.5%</div><div class="mid">~1.02%</div>
-        <div class="metric">Mobile ARPU</div><div class="tcol mid">$57.01</div><div class="lead">~$56.9 stable</div><div class="lag">~$56.30</div>
-        <div class="metric">5G reach</div><div class="tcol lead">32.9M · 89%+</div><div class="mid">national</div><div class="mid">national</div>
-        <div class="metric">Diversification</div><div class="tcol lead">Health+Ag+Digital ✓</div><div class="lag">Media/sports</div><div class="lag">Media/broadcast</div>
-        <div class="metric">Device adds '25</div><div class="tcol lead">716K ✓</div><div class="mid">—</div><div class="mid">—</div>
-        <div class="metric">Capital intensity</div><div class="tcol lead">12% → ~10%</div><div class="mid">moderating</div><div class="lag">Ziply build ↑</div>
-      </div>
-      <div class="note">◈ <b>Your one soft metric:</b> mobile phone <b>net adds fell to 207K in 2025</b> (down 139K) and churn ticked to ~1.11% in Q3 as promo pricing intensified. That's what Rogers and Bell will attack — defend it without torching ARPU.</div>
-    </div>
-  </section>
-
-  <section id="p-acq">
-    <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--amber)">03</span><h2>The acquisition list</h2><span class="sub">fit × balance-sheet safety</span></div>
-      <p class="intro">Each strengthens a metric where you beat — or need to beat — the rivals. Sized to stay leverage-neutral.</p>
-      <div class="acq">
-        <div class="deal"><div class="top"><span class="rank">01</span><span class="nm">Regional fibre ISPs (Western tuck-ins)</span><span class="badge tuck">Tuck-in</span></div>
-          <div class="body"><div class="thesis">Bolt small FTTH/regional operators onto PureFibre where TELUS dominates. Internet ARPU is <b>growing +6%</b> while mobile is flat — buy where the ARPU trend is your friend. Densifies the moat Bell chases with Ziply.</div>
-            <div><div class="kv"><span>Target metric</span><span>Internet ARPU + adds</span></div><div class="kv"><span>Ticket</span><span>$50–300M each</span></div><div class="kv"><span>Funding</span><span>FCF / real-estate</span></div><div class="kv"><span>Beats</span><span>Bell's fibre push</span></div></div>
-          </div>
-        </div>
-        <div class="deal"><div class="top"><span class="rank">02</span><span class="nm">MVNO / niche wireless brands</span><span class="badge tuck">Tuck-in</span></div>
-          <div class="body"><div class="thesis">Acquire/launch a fighter-brand MVNO to absorb price-shoppers <em>without</em> dragging premium ARPU down — Rogers' Fido/Chatr playbook vs Quebecor's $34 plans. Segments the base so promo warfare hits a flanker, not the flagship.</div>
-            <div><div class="kv"><span>Target metric</span><span>Gross adds / churn</span></div><div class="kv"><span>Ticket</span><span>$100–400M</span></div><div class="kv"><span>Funding</span><span>Leverage-neutral</span></div><div class="kv"><span>Beats</span><span>Quebecor price attack</span></div></div>
-          </div>
-        </div>
-        <div class="deal"><div class="top"><span class="rank">03</span><span class="nm">TELUS Health bolt-ons (AI / EMR / benefits)</span><span class="badge build">Capability</span></div>
-          <div class="body"><div class="thesis">Fund via the <b>Health monetisation</b> partner: reinvest proceeds into AI-clinical and payor/provider SaaS. Health is the engine rivals can't copy (~$2B revenue target by 2028). Self-funding — the partner brings capital.</div>
-            <div><div class="kv"><span>Target metric</span><span>Non-telecom EBITDA</span></div><div class="kv"><span>Ticket</span><span>Partner-funded</span></div><div class="kv"><span>Funding</span><span>Health stake sale</span></div><div class="kv"><span>Beats</span><span>Both — unmatched</span></div></div>
-          </div>
-        </div>
-        <div class="deal"><div class="top"><span class="rank">04</span><span class="nm">IoT / connected-transport platforms</span><span class="badge neutral">Neutral</span></div>
-          <div class="body"><div class="thesis">You added <b>716K connected devices</b> in 2025 — lead the category. Acquire fleet-telematics / asset-tracking to turn low-ARPU SIMs into higher-margin SaaS+connectivity on the 5G SA core. B2B revenue rivals under-index on.</div>
-            <div><div class="kv"><span>Target metric</span><span>Device ARPU</span></div><div class="kv"><span>Ticket</span><span>$50–250M</span></div><div class="kv"><span>Funding</span><span>TTech FCF</span></div><div class="kv"><span>Beats</span><span>Both on B2B/IoT</span></div></div>
-          </div>
-        </div>
-        <div class="deal"><div class="top"><span class="rank">05</span><span class="nm">Security & automation / smart-home</span><span class="badge neutral">Neutral</span></div>
-          <div class="body"><div class="thesis">Security & automation is a rising bundle anchor that <b>lowers churn</b> — sticky, contract-based, defends your 0.91%. Tuck in a monitoring/smart-home player to deepen the home bundle Rogers attacks with Ignite/X1.</div>
-            <div><div class="kv"><span>Target metric</span><span>Household churn</span></div><div class="kv"><span>Ticket</span><span>$100–500M</span></div><div class="kv"><span>Funding</span><span>FCF</span></div><div class="kv"><span>Beats</span><span>Rogers Ignite bundle</span></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="note">◈ Ticket sizes are illustrative planning bands, not disclosed valuations. The discipline is the point: nothing forces a leverage breach, and each maps to a scoreboard metric.</div>
-    </div>
-  </section>
-
-  <section id="p-cac">
-    <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--amber)">04</span><h2>The CAC → LTV model</h2><span class="sub">drag the sliders</span></div>
-      <p class="intro">Carriers don't publish a clean CAC line, so we model it from the drivers you <em>do</em> control. This is the math you'd defend in the boardroom — and why low churn beats cheap adds.</p>
-      <div class="calc">
-        <h3>Unit economics simulator</h3>
-        <div class="row"><label>Acquisition cost per gross add (subsidy + commission + marketing)</label><span class="val" id="v_cac">$450</span></div>
-        <input type="range" id="cac" min="200" max="900" value="450" step="10">
-        <div class="row"><label>Mobile phone ARPU ($/mo)</label><span class="val" id="v_arpu">$57</span></div>
-        <input type="range" id="arpu" min="40" max="75" value="57" step="1">
-        <div class="row"><label>Monthly churn (%)</label><span class="val" id="v_churn">0.91%</span></div>
-        <input type="range" id="churn" min="0.7" max="2.0" value="0.91" step="0.01">
-        <div class="row"><label>Service gross margin (%)</label><span class="val" id="v_gm">55%</span></div>
-        <input type="range" id="gm" min="35" max="70" value="55" step="1">
-        <div class="out">
-          <div><div class="big" id="o_life">—</div><div class="lab">Avg customer life (months)</div></div>
-          <div><div class="big" id="o_ltv">—</div><div class="lab">Gross-margin LTV</div></div>
-          <div><div class="big" id="o_ratio">—</div><div class="lab">LTV : CAC ratio</div></div>
-        </div>
-        <div class="note" style="margin-top:16px">◈ <b>Why churn is the whole game:</b> customer life = 1 ÷ monthly churn. At TELUS's <b>0.91%</b> a customer lasts ~110 months; at Rogers-like <b>1.5%</b>, only ~67. Same ARPU, same CAC — TELUS extracts <b>~64% more lifetime value per subscriber.</b> Buy things that lower churn, not things that inflate gross adds.</div>
-      </div>
-    </div>
-  </section>
-
-  <section id="p-beat">
-    <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--amber)">05</span><h2>The metrics to beat them on</h2><span class="sub">your 2026–28 targets</span></div>
-      <div class="tiles">
-        <div class="tile"><h4>Hold churn under 1.0%</h4><div class="cur">Now ~0.91–1.11% <span class="arrow">→</span></div><div class="goal">&lt; 1.0% locked</div><p>Bundle depth (security, health, fibre) is the retention flywheel. Every 10bps = years of LTV.</p></div>
-        <div class="tile"><h4>Arrest ARPU decline</h4><div class="cur">$57.01, -2.8% <span class="arrow">→</span></div><div class="goal">Flat, then +</div><p>Push unlimited + Canada-US-Mexico plans. Fighter-brand absorbs discounters.</p></div>
-        <div class="tile"><h4>Grow non-telecom EBITDA</h4><div class="cur">Health ~$800M rev <span class="arrow">→</span></div><div class="goal">~$2B by 2028</div><p>The moat neither rival has. Where you win the multiple, not just subs.</p></div>
-        <div class="tile"><h4>Lead connected devices</h4><div class="cur">716K adds 2025 <span class="arrow">→</span></div><div class="goal">Category #1</div><p>Turn IoT SIMs into SaaS-attached B2B revenue on 5G SA.</p></div>
-        <div class="tile"><h4>FCF compounding</h4><div class="cur">$2.2B record <span class="arrow">→</span></div><div class="goal">10%+ CAGR to '28</div><p>Capital intensity 12%→10% funds tuck-ins without new leverage.</p></div>
-        <div class="tile"><h4>Deleverage on schedule</h4><div class="cur">3.4× today <span class="arrow">→</span></div><div class="goal">3.0× by 2027</div><p>The board's #1 KPI. Hit it and you earn the right to get acquisitive in '28.</p></div>
-      </div>
-      <div class="note" style="border-left-color:var(--acid)">◈ <b>Closing line:</b> "Rogers wins on scale, Bell wins on fibre reach. I don't fight them there. I compound the two assets they can't buy back — the lowest churn in Canada and a health/digital vertical throwing off SaaS margins — while I deleverage on schedule. By 2028 TELUS isn't the biggest carrier. It's the one the market pays the highest multiple for."</div>
-    </div>
-  </section>
-</div>
-
-<footer>
-  <div class="wrap">
-    <div class="src">
-      SOURCES · TELUS FY2025 MD&A / 40-F / 6-K (SEC) · TELUS Q3'25 & Q1–Q2'26 results (PRNewswire) · Rogers Q1/Q3/Q4 2025 (SEC, about.rogers.com, GlobeNewswire) · BCE Q1'25 & Investor Day 2025 (Newswire, bce.ca) · CRTC Communications Market Report 2025 · Mordor Intelligence · iQmetrix Tier-1 Carrier Report · Globe & Mail · MatrixBCG.<br><br>
-      Leverage ratios are each company's own capital-management measure and are NOT on an identical basis (Rogers pro-forma incl. MLSE; BCE ~3.5× is a 2027 target; Bell ~$40B is 2024 reported). CAC/LTV is a transparent model from public ARPU/churn/margin — carriers don't disclose CAC. Ticket bands illustrative. Treat rankings as robust, exact decimals as approximate, and verify against the latest quarter before board use.
-    </div>
-  </div>
-</footer>
-
-<script>
-  const $=id=>document.getElementById(id);
-
-  // ---- subnav definitions per view ----
-  const SUB={
-    brief:[['b-share','Market'],['b-rivals','Rivals'],['b-demo','Demographics'],['b-history','History'],['b-edge','Edge & Risk']],
-    debt:[['d-lev','Leverage'],['d-card','Balance Sheet'],['d-glide','Glide Path'],['d-take','The Take']],
-    play:[['p-reality','Reality'],['p-score','Scorecard'],['p-acq','Acquire'],['p-cac','CAC Model'],['p-beat','Beat Them']]
-  };
-  const LBL={brief:'Company Brief',debt:'Debt vs Rivals',play:'Growth & M&A'};
-
-  function buildSub(view){
-    const n=$('subnav'); n.innerHTML='';
-    const lbl=document.createElement('span'); lbl.className='lbl'; lbl.textContent=LBL[view]; n.appendChild(lbl);
-    SUB[view].forEach(([id,txt])=>{
-      const a=document.createElement('a'); a.href='#'+id; a.textContent=txt;
-      a.onclick=e=>{e.preventDefault();document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});};
-      n.appendChild(a);
-    });
-  }
-
-  // ---- animate bars in a view ----
-  function animateBars(root){
-    root.querySelectorAll('.fill').forEach(f=>{ f.style.background=f.dataset.c; f.style.width=f.dataset.w+'%'; });
-    root.querySelectorAll('.lfill').forEach(f=>{ if(f.dataset.lev) f.style.width=(parseFloat(f.dataset.lev)/5*100)+'%'; });
-  }
-
-  // ---- tab switching ----
-  const tabs=document.querySelectorAll('.tab');
-  function show(view){
-    document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
-    const el=$('v-'+view); el.classList.add('on');
-    tabs.forEach(t=>t.classList.toggle('on',t.dataset.view===view));
-    buildSub(view);
-    window.scrollTo({top:0});
-    // reset + re-animate bars
-    el.querySelectorAll('.fill,.lfill').forEach(f=>f.style.width='0');
-    setTimeout(()=>animateBars(el),80);
-    $('tabs').classList.remove('open');
-  }
-  tabs.forEach(t=>t.addEventListener('click',()=>show(t.dataset.view)));
-
-  // ---- mobile menu ----
-  $('menubtn').addEventListener('click',()=>$('tabs').classList.toggle('open'));
-
-  // ---- CAC calculator ----
-  const cac=$('cac'),arpu=$('arpu'),churn=$('churn'),gm=$('gm');
-  const fmt=n=>n.toLocaleString('en-CA',{maximumFractionDigits:0});
-  function calc(){
-    $('v_cac').textContent='$'+cac.value;
-    $('v_arpu').textContent='$'+arpu.value;
-    $('v_churn').textContent=parseFloat(churn.value).toFixed(2)+'%';
-    $('v_gm').textContent=gm.value+'%';
-    const life=1/(churn.value/100);
-    const ltv=arpu.value*(gm.value/100)*life;
-    const ratio=ltv/cac.value;
-    $('o_life').textContent=fmt(life);
-    $('o_ltv').textContent='$'+fmt(ltv);
-    const r=$('o_ratio'); r.textContent=ratio.toFixed(1)+'×';
-    r.style.color=ratio>=4?'var(--acid)':ratio>=2.5?'var(--amber)':'var(--red)';
-  }
-  [cac,arpu,churn,gm].forEach(el=>el.addEventListener('input',calc));
-
-  // ---- init ----
-  buildSub('brief');
-  calc();
-  setTimeout(()=>animateBars($('v-brief')),200);
-</script>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s2">TELCOS </span></p>
+<p class="p3"><span class="s2">/ CEO COMMAND CENTER</span></p>
+<p class="p4"><span class="s3">☰</span><span class="s1"> Menu</span></p>
+<p class="p5"><span class="s1"></span><br></p>
+<p class="p6"><span class="s1">CONFIDENTIAL · BOARD PREP · FY2025 CLOSE</span></p>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; font: 48.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef"><span class="s1">You'd be running<br>
+a </span><span class="s4">$20.5B</span><span class="s1"> machine<br>
+with </span><span class="s4">21M</span><span class="s1"> connections.</span></h1>
+<p class="p8"><span class="s1">Everything a candidate for the CEO chair at TELUS Communications should have memorised — the numbers, the battlefield, the moats, and where the floor is soft.</span></p>
+<p class="p9"><span class="s5">◈</span><span class="s1"> TSX: T · NYSE: TU · HQ Vancouver, BC · ~48,000 team members</span></p>
+<p class="p10"><span class="s6">$20.5B</span></p>
+<p class="p11"><span class="s6">OPERATING REVENUE</span></p>
+<p class="p6"><span class="s7">FY2025 · </span><span class="s6">growth y/y</span></p>
+<p class="p10"><span class="s6">21.2M</span></p>
+<p class="p11"><span class="s6">TOTAL CONNECTIONS</span></p>
+<p class="p9"><span class="s6">~1.0M net adds 2025</span></p>
+<p class="p10"><span class="s6">0.91%</span></p>
+<p class="p11"><span class="s6">POSTPAID CHURN</span></p>
+<p class="p6"><span class="s6">Industry-best</span></p>
+<p class="p10"><span class="s6">$2.2B</span></p>
+<p class="p11"><span class="s6">FREE CASH FLOW</span></p>
+<p class="p9"><span class="s6">$4.9B operating cash</span></p>
+<p class="p10"><span class="s6">~27%</span></p>
+<p class="p11"><span class="s6">WIRELESS SHARE</span></p>
+<p class="p9"><span class="s6">10.1M+ mobile subs</span></p>
+<p class="p12"><span class="s1">01</span></p>
+<h2 style="margin: 0.0px 0.0px 0.0px 0.0px; font: 26.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef"><span class="s1">The wireless battlefield</span></h2>
+<p class="p9"><span class="s1">approx. share · Big Three ~87%</span></p>
+<p class="p2"><span class="s1">Rogers</span></p>
+<p class="p14"><span class="s1">34%</span></p>
+<p class="p15"><span class="s1">34%</span></p>
+<p class="p2"><span class="s1">Bell (BCE)</span></p>
+<p class="p14"><span class="s1">28%</span></p>
+<p class="p15"><span class="s1">28%</span></p>
+<p class="p16"><span class="s1">TELUS</span></p>
+<p class="p14"><span class="s1">27%</span></p>
+<p class="p15"><span class="s1">27%</span></p>
+<p class="p17"><span class="s1">Freedom / Videotron</span></p>
+<p class="p14"><span class="s1">~9%</span></p>
+<p class="p15"><span class="s1">~9%</span></p>
+<p class="p18"><span class="s8">◈</span><span class="s1"> The Big Three plus Quebecor hold ~85.6% of telecom service revenue; combined subscriber share edged up to ~86.9% in 2023. Consolidation, not fragmentation. Freedom (Quebecor/Videotron) is the mandated fourth force — aggressive on 3800 MHz 5G+ but regional.</span></p>
+<p class="p12"><span class="s1">02</span></p>
+<h2 style="margin: 0.0px 0.0px 0.0px 0.0px; font: 26.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef"><span class="s1">Know your two rivals cold</span></h2>
+<p class="p9"><span class="s1">head-to-head</span></p>
+<p class="p19"><span class="s1">TELUS</span></p>
+<p class="p19"><span class="s1">Rogers</span></p>
+<p class="p19"><span class="s1">Bell (BCE)</span></p>
+<p class="p20"><span class="s6">WIRELESS SHARE</span></p>
+<p class="p21"><span class="s1">~27% · strongest in BC &amp; Alberta, growing in Territories</span></p>
+<p class="p20"><span class="s6">WIRELESS SHARE</span></p>
+<p class="p21"><span class="s1">~34% · #1, deep in ON/QC/BC, owns Shaw Mobile</span></p>
+<p class="p20"><span class="s6">WIRELESS SHARE</span></p>
+<p class="p21"><span class="s1">~28% · national, buying Ziply Fiber (~$5B)</span></p>
+<p class="p20"><span class="s6">DIVERSIFICATION</span></p>
+<p class="p21"><span class="s1">Health + Agriculture + Digital — widest non-telecom spread</span></p>
+<p class="p20"><span class="s6">DIVERSIFICATION</span></p>
+<p class="p21"><span class="s1">Media &amp; sports heavy (Sportsnet, Blue Jays, MLSE)</span></p>
+<p class="p20"><span class="s6">DIVERSIFICATION</span></p>
+<p class="p21"><span class="s1">Bell Media (CTV) — reviewing non-core assets</span></p>
+<p class="p20"><span class="s6">RECENT MOVE</span></p>
+<p class="p21"><span class="s1">Willing to sell minority stake in wireless towers (Mar 2025)</span></p>
+<p class="p20"><span class="s6">RECENT MOVE</span></p>
+<p class="p21"><span class="s1">Blackstone bought 49.9% of wireless infra (~$7B); satellite texting</span></p>
+<p class="p20"><span class="s6">RECENT MOVE</span></p>
+<p class="p21"><span class="s1">Ziply Fiber deal; FiberCo with PSP</span></p>
+<p class="p20"><span class="s6">SIGNATURE EDGE</span></p>
+<p class="p21"><span class="s1">Best churn (0.91%), fibre footprint, health/digital moats</span></p>
+<p class="p20"><span class="s6">SIGNATURE EDGE</span></p>
+<p class="p21"><span class="s1">Scale, spectrum, sports/content bundling</span></p>
+<p class="p20"><span class="s6">SIGNATURE EDGE</span></p>
+<p class="p21"><span class="s1">Fibre leadership, media reach, enterprise depth</span></p>
+<p class="p20"><span class="s6">FLANKER BRAND</span></p>
+<p class="p21"><span class="s1">Koodo + Public Mobile — the only flankers with 5G access; "Pick Your Perks" value play</span></p>
+<p class="p20"><span class="s6">FLANKER BRAND</span></p>
+<p class="p21"><span class="s1">Fido (mid-tier) + Chatr (prepaid) — target Gen Z, students, newcomers vs Freedom</span></p>
+<p class="p20"><span class="s6">FLANKER BRAND</span></p>
+<p class="p21"><span class="s1">Virgin Plus (ex-Virgin Mobile) + Lucky Mobile (prepaid)</span></p>
+<p class="p12"><span class="s1">03</span></p>
+<h2 style="margin: 0.0px 0.0px 0.0px 0.0px; font: 26.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef"><span class="s1">The market you'd serve</span></h2>
+<p class="p9"><span class="s1">Canada · 2025</span></p>
+<p class="p22"><span class="s6">~33M</span></p>
+<p class="p23"><span class="s6">Smartphone users — ~88% penetration</span></p>
+<p class="p22"><span class="s6">~92%</span></p>
+<p class="p23"><span class="s6">Consumer high-speed internet penetration</span></p>
+<p class="p22"><span class="s6">$52B+</span></p>
+<p class="p23"><span class="s6">Canadian MNO market (2026), ~4.6% CAGR</span></p>
+<p class="p22"><span class="s6">45+</span></p>
+<p class="p23"><span class="s6">Countries TELUS operates in (Digital &amp; Health)</span></p>
+<h3 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef"><span class="s6">Where growth actually comes from</span></h3>
+<ul class="ul1">
+  <li class="li25"><span class="s9"></span><span class="s10">↗</span><span class="s11"><br>
+</span><span class="s12">Internet ARPU +6%</span><span class="s6"> — higher speed tiers as traffic hits records</span><span class="s1"><br>
+</span><span class="s10">↗</span><span class="s11"><br>
+</span><span class="s12">Connected devices &amp; IoT</span><span class="s6"> — 169K device adds vs 82K phone adds in a quarter</span><span class="s1"><br>
+</span><span class="s10">↗</span><span class="s11"><br>
+</span><span class="s12">Health &amp; Digital</span><span class="s6"> — margin expansion offsetting mobile softness</span><span class="s1"><br>
+</span><span class="s10">↘</span><span class="s11"><br>
+</span><span class="s12">Mobile phone ARPU declining</span><span class="s6"> (decelerating) — the core pressure</span></li>
+</ul>
+<h3 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef"><span class="s6">Structural demand drivers</span></h3>
+<ul class="ul1">
+  <li class="li25"><span class="s9"></span><span class="s13">◈</span><span class="s11"><br>
+</span><span class="s6">Immigration-led population growth = new-connection tailwind</span><span class="s1"><br>
+</span><span class="s13">◈</span><span class="s11"><br>
+</span><span class="s6">Cord-cutting erodes legacy TV revenue</span><span class="s1"><br>
+</span><span class="s13">◈</span><span class="s11"><br>
+</span><span class="s6">Legacy voice in structural decline</span><span class="s1"><br>
+</span><span class="s13">◈</span><span class="s11"><br>
+</span><span class="s6">5G Standalone (2023) unlocks IoT, private networks, smart-city B2B</span></li>
+</ul>
+<p class="p12"><span class="s1">04</span></p>
+<h2 style="margin: 0.0px 0.0px 0.0px 0.0px; font: 26.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef"><span class="s1">How TELUS got here</span></h2>
+<p class="p9"><span class="s1">the arc you'd inherit</span></p>
+<p class="p26"><span class="s1">1990</span></p>
+<p class="p27"><span class="s1">Alberta Government Telephones privatised</span></p>
+<p class="p25"><span class="s1">Roots as a provincial Crown telco — origin of the TELUS name and Western Canada stronghold.</span></p>
+<p class="p26"><span class="s1">1999</span></p>
+<p class="p27"><span class="s1">BC TELECOM merger</span></p>
+<p class="p25"><span class="s1">Merges with BC Tel, cementing dominance across BC and Alberta — base of today's fibre footprint.</span></p>
+<p class="p26"><span class="s1">2000s</span></p>
+<p class="p27"><span class="s1">National wireless expansion</span></p>
+<p class="p25"><span class="s1">Builds coast-to-coast mobile, joins the entrenched "Big Three."</span></p>
+<p class="p26"><span class="s1">2013</span></p>
+<p class="p27"><span class="s1">Verizon threat evaporates</span></p>
+<p class="p25"><span class="s1">Verizon rules out entering Canada — no serious foreign competitor has arrived since.</span></p>
+<p class="p26"><span class="s1">2020</span></p>
+<p class="p27"><span class="s1">TELUS International (Digital) IPO</span></p>
+<p class="p25"><span class="s1">The BPO/AI-services arm goes public — diversification beyond connectivity begins in earnest.</span></p>
+<p class="p26"><span class="s1">2023</span></p>
+<p class="p27"><span class="s1">5G Standalone network live</span></p>
+<p class="p25"><span class="s1">Lower latency, network slicing, IoT readiness — the platform for the next B2B revenue layer.</span></p>
+<p class="p26"><span class="s1">2025</span></p>
+<p class="p27"><span class="s1">Infra-monetisation &amp; Digital taken private</span></p>
+<p class="p25"><span class="s1">Sells stakes to deleverage; buys back 100% of TELUS Digital (~US$539M) to own the AI/SaaS engine.</span></p>
+<p class="p12"><span class="s1">05</span></p>
+<h2 style="margin: 0.0px 0.0px 0.0px 0.0px; font: 26.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef"><span class="s1">Your advantages &amp; your soft floor</span></h2>
+<p class="p9"><span class="s1">the CEO thesis</span></p>
+<p class="p28"><span class="s6">MOAT</span></p>
+<h3 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef"><span class="s6">Best-in-class churn</span></h3>
+<p class="p25"><span class="s6">0.91% postpaid churn — lowest of the Big Three. Loyalty and bundling discipline you protect at all costs.</span></p>
+<p class="p28"><span class="s6">MOAT</span></p>
+<h3 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef"><span class="s6">Diversification beyond pipes</span></h3>
+<p class="p25"><span class="s6">Health, Agriculture, Digital give revenue lines rivals can't copy — margin when telecom is flat.</span></p>
+<p class="p28"><span class="s6">MOAT</span></p>
+<h3 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef"><span class="s6">Fibre + 5G SA footprint</span></h3>
+<p class="p25"><span class="s6">Deep FTTH in the West plus a live 5G Standalone core = premium internet ARPU and B2B/IoT optionality.</span></p>
+<p class="p29"><span class="s6">RISK</span></p>
+<h3 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef"><span class="s6">Mobile ARPU erosion</span></h3>
+<p class="p25"><span class="s6">Competitive pricing drags phone ARPU. Decelerating — but the number the Street watches.</span></p>
+<p class="p29"><span class="s6">RISK</span></p>
+<h3 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef"><span class="s6">Saturation ceiling</span></h3>
+<p class="p25"><span class="s6">92% internet, ~88% smartphone. Growth must come from ARPU, adjacencies and share-steal.</span></p>
+<p class="p29"><span class="s6">RISK</span></p>
+<h3 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef"><span class="s6">Capital intensity &amp; debt</span></h3>
+<p class="p25"><span class="s6">Spectrum and fibre pushed sector leverage above norms — hence infra stake sales.</span></p>
+<p class="p18"><span class="s8">◈</span><span class="s1"> </span><span class="s14">The 90-second board pitch:</span><span class="s1"> "TELUS wins by being the loyalty leader in a saturated market — I defend the 0.91% churn, accelerate the health/digital/IoT flywheel to escape the ARPU trap, and monetise passive infrastructure to fund the fibre endgame without diluting shareholders. We don't out-scale Rogers; we out-retain and out-diversify them."</span></p>
+<p class="p12"><span class="s1">06</span></p>
+<h2 style="margin: 0.0px 0.0px 0.0px 0.0px; font: 26.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef"><span class="s1">The flanker-brand war</span></h2>
+<p class="p9"><span class="s1">each Big Three carrier runs a fighter brand</span></p>
+<p class="p30"><span class="s1">Below the flagship, each incumbent runs mid-tier and prepaid brands on the same towers — identical coverage, separate service — to absorb price-shoppers without dragging premium ARPU down. This is where Freedom's low-cost 5G is attacked. Fido is Rogers' flanker; Koodo is yours.</span></p>
+<p class="p19"><span class="s1">TELUS → Koodo</span></p>
+<p class="p19"><span class="s1">Rogers → Fido</span></p>
+<p class="p19"><span class="s1">Bell → Virgin Plus</span></p>
+<p class="p20"><span class="s6">MID-TIER BRAND</span></p>
+<p class="p21"><span class="s1">Koodo — the only flanker offering 5G access; "Pick Your Perks" customisation</span></p>
+<p class="p20"><span class="s6">MID-TIER BRAND</span></p>
+<p class="p21"><span class="s1">Fido — "At Your Side"; ~3 decades old; Fido XTRA weekly rewards</span></p>
+<p class="p20"><span class="s6">MID-TIER BRAND</span></p>
+<p class="p21"><span class="s1">Virgin Plus — rebranded from Virgin Mobile in 2021</span></p>
+<p class="p20"><span class="s6">PREPAID / BUDGET</span></p>
+<p class="p21"><span class="s1">Public Mobile — digital-only, community-driven, true budget</span></p>
+<p class="p20"><span class="s6">PREPAID / BUDGET</span></p>
+<p class="p21"><span class="s1">Chatr — Fido dropped prepaid in early 2025, funnelled to Chatr</span></p>
+<p class="p20"><span class="s6">PREPAID / BUDGET</span></p>
+<p class="p21"><span class="s1">Lucky Mobile — Bell's budget prepaid</span></p>
+<p class="p20"><span class="s6">TARGET SEGMENT</span></p>
+<p class="p21"><span class="s1">Value-conscious, BYOD, younger customers — 5G access is the differentiator</span></p>
+<p class="p20"><span class="s6">TARGET SEGMENT</span></p>
+<p class="p21"><span class="s1">Gen Z, students, newcomers — fastest-growing prepaid cohort (via Chatr)</span></p>
+<p class="p20"><span class="s6">TARGET SEGMENT</span></p>
+<p class="p21"><span class="s1">Younger customers, bundle-with-Bell households</span></p>
+<p class="p20"><span class="s6">YOUR EDGE</span></p>
+<p class="p21"><span class="s1">Koodo is the only flanker with 5G — a genuine feature lead over Fido &amp; Virgin</span></p>
+<p class="p20"><span class="s6">FIDO'S PITCH</span></p>
+<p class="p21"><span class="s1">Physical stores + Rogers network, but "stuck in the middle" vs true-budget Fizz/Public</span></p>
+<p class="p20"><span class="s6">BELL'S PITCH</span></p>
+<p class="p21"><span class="s1">Virgin perks + Bell bundle pull-through</span></p>
+<p class="p18"><span class="s8">◈</span><span class="s1"> </span><span class="s14">The strategic read:</span><span class="s1"> flanker brands run on identical towers to the parent — coverage is the same, only service and price differ. Koodo's 5G access is a real advantage over Fido. This is also why the M&amp;A playbook flags a fighter-brand MVNO play: it's the proven mechanism to fight Quebecor's 20%-cheaper plans without cutting flagship TELUS pricing.</span></p>
+<p class="p12"><span class="s1">07</span></p>
+<h2 style="margin: 0.0px 0.0px 0.0px 0.0px; font: 26.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef"><span class="s1">Provincial dominance &amp; retail footprint</span></h2>
+<p class="p9"><span class="s1">where TELUS is strongest</span></p>
+<p class="p30"><span class="s1">TELUS's home turf is the West — the AGT (Alberta) + BC Tel (British Columbia) heritage still defines its stronghold. Retail reach spans corporate TELUS stores, Koodo locations, and third-party dealer networks.</span></p>
+<p class="p22"><span class="s6">~280–320</span></p>
+<p class="p23"><span class="s6">Corporate TELUS-branded store locations (est.)</span></p>
+<p class="p22"><span class="s6">9+</span></p>
+<p class="p23"><span class="s6">Provinces &amp; territories with retail presence</span></p>
+<p class="p22"><span class="s6">~59</span></p>
+<p class="p23"><span class="s6">Store locations in British Columbia (stronghold)</span></p>
+<p class="p22"><span class="s6">~46</span></p>
+<p class="p23"><span class="s6">Store locations in Alberta (stronghold)</span></p>
+<h3 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef"><span class="s6">Provincial strength map</span></h3>
+<ul class="ul1">
+  <li class="li25"><span class="s9"></span><span class="s10">★</span><span class="s11"><br>
+</span><span class="s12">British Columbia</span><span class="s6"> — home HQ (Vancouver). Deepest fibre + wireless share; the crown jewel</span><span class="s1"><br>
+</span><span class="s10">★</span><span class="s11"><br>
+</span><span class="s12">Alberta</span><span class="s6"> — AGT birthplace (Edmonton 1990). Co-stronghold with BC</span><span class="s1"><br>
+</span><span class="s10">↗</span><span class="s11"><br>
+</span><span class="s12">Quebec</span><span class="s6"> — growing wireline/fibre presence, competitive vs Videotron</span><span class="s1"><br>
+</span><span class="s10">↗</span><span class="s11"><br>
+</span><span class="s12">Ontario</span><span class="s6"> — national wireless, less dense retail than West</span><span class="s1"><br>
+</span><span class="s13">◈</span><span class="s11"><br>
+</span><span class="s12">Territories (Yukon, NWT)</span><span class="s6"> — growing footprint, low competition</span><span class="s1"><br>
+</span><span class="s13">◈</span><span class="s11"><br>
+</span><span class="s12">Atlantic + Prairies</span><span class="s6"> — retail via dealer partners (GPS Technologies et al.)</span></li>
+</ul>
+<h3 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #e3ecef; -webkit-text-stroke: #e3ecef"><span class="s6">Retail distribution channels</span></h3>
+<ul class="ul1">
+  <li class="li25"><span class="s9"></span><span class="s10">1</span><span class="s11"><br>
+</span><span class="s12">Corporate TELUS stores</span><span class="s6"> — ~280–320 locations, flagship experience</span><span class="s1"><br>
+</span><span class="s10">2</span><span class="s11"><br>
+</span><span class="s12">Koodo stores &amp; kiosks</span><span class="s6"> — flanker-brand retail, often mall-based</span><span class="s1"><br>
+</span><span class="s10">3</span><span class="s11"><br>
+</span><span class="s12">Authorized dealers</span><span class="s6"> — third-party (e.g. GPS Technologies, Custom Cellular) extend rural reach</span><span class="s1"><br>
+</span><span class="s10">4</span><span class="s11"><br>
+</span><span class="s12">Mall kiosks</span><span class="s6"> — ~45 shopping-mall locations nationally</span><span class="s1"><br>
+</span><span class="s10">5</span><span class="s11"><br>
+</span><span class="s12">Online + retail partners</span><span class="s6"> — Best Buy, Costco (vs Rogers/Bell's Glentel 350+ WirelessWave/Tbooth network)</span></li>
+</ul>
+<p class="p18"><span class="s8">◈</span><span class="s1"> </span><span class="s14">Store counts vary by source and change constantly</span><span class="s1"> — third-party aggregators list TELUS Mobility at ~281–319 corporate locations, plus separate Koodo and dealer footprints, so treat these as planning estimates, not audited figures. TELUS does not publish a single official store count. Verify against TELUS's own store locator before quoting a precise number. </span><span class="s14">Rogers + Bell jointly own Glentel</span><span class="s1"> (350+ WirelessWave/Tbooth outlets) — a retail-distribution advantage worth noting in any competitive discussion.</span></p>
+<p class="p20"><span class="s1">SOURCES · TELUS FY2025 MD&amp;A / 40-F / 6-K (SEC) · TELUS Q3'25 &amp; Q1–Q2'26 results (PRNewswire) · Rogers Q1/Q3/Q4 2025 (SEC, about.rogers.com, GlobeNewswire) · BCE Q1'25 &amp; Investor Day 2025 (Newswire, bce.ca) · CRTC Communications Market Report 2025 · Mordor Intelligence · iQmetrix Tier-1 Carrier Report · Globe &amp; Mail · MatrixBCG.</span></p>
+<p class="p31"><span class="s1"></span><br></p>
+<p class="p20"><span class="s1">Leverage ratios are each company's own capital-management measure and are NOT on an identical basis (Rogers pro-forma incl. MLSE; BCE ~3.5× is a 2027 target; Bell ~$40B is 2024 reported). CAC/LTV is a transparent model from public ARPU/churn/margin — carriers don't disclose CAC. Ticket bands illustrative. Treat rankings as robust, exact decimals as approximate, and verify against the latest quarter before board use.</span></p>
 </body>
 </html>
