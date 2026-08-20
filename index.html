@@ -250,6 +250,16 @@
   .spdfill{height:100%;width:0;transition:width 1.2s cubic-bezier(.2,.7,.2,1)}
   .spdval{font-family:'IBM Plex Mono';font-size:13px;font-weight:600;text-align:right}
 
+  /* services stickiness stack */
+  .stack{display:flex;flex-direction:column;gap:10px}
+  .stackrow{display:grid;grid-template-columns:200px 1fr;align-items:center;gap:16px}
+  @media(max-width:640px){.stackrow{grid-template-columns:120px 1fr}}
+  .stackrow .lbl{font-size:13px}
+  .stackrow .lbl b{font-family:'Space Grotesk';font-weight:600;display:block;font-size:14px}
+  .stackrow .lbl small{color:var(--dim);font-family:'IBM Plex Mono';font-size:10px}
+  .stackbar{height:38px;background:var(--panel-2);border:1px solid var(--line);border-radius:2px;position:relative;overflow:hidden}
+  .stackfill{height:100%;width:0;transition:width 1.3s cubic-bezier(.2,.7,.2,1);display:flex;align-items:center;padding-left:12px;font-family:'IBM Plex Mono';font-size:11px;color:#0a0d0f;font-weight:600}
+
   footer{padding:40px 0 60px}
   .src{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);line-height:1.9}
   .src a{color:var(--mute)}
@@ -423,40 +433,210 @@
 
   <section id="b-regions">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--telus-2)">07</span><h2>Provincial dominance & retail footprint</h2><span class="sub">where TELUS is strongest</span></div>
-      <p class="intro">TELUS's home turf is the West — the AGT (Alberta) + BC Tel (British Columbia) heritage still defines its stronghold. Retail reach spans corporate TELUS stores, Koodo locations, and third-party dealer networks.</p>
+      <div class="shead"><span class="sno" style="color:var(--telus-2)">07</span><h2>Provincial dominance — the three-way map</h2><span class="sub">each carrier owns a region</span></div>
+      <p class="intro">Canada's telecom map is carved into incumbent territories by history. Each of the Big Three is the entrenched wireline incumbent somewhere — the battle is over the overlaps and the wholesale-access expansion. This is the neutral view: who actually dominates where.</p>
 
-      <div class="demo" style="margin-bottom:24px">
-        <div class="dbox"><div class="big">~280–320</div><div class="cap">Corporate TELUS-branded store locations (est.)</div></div>
-        <div class="dbox"><div class="big">9+</div><div class="cap">Provinces & territories with retail presence</div></div>
-        <div class="dbox"><div class="big">~59</div><div class="cap">Store locations in British Columbia (stronghold)</div></div>
-        <div class="dbox"><div class="big">~46</div><div class="cap">Store locations in Alberta (stronghold)</div></div>
+      <div class="grid3">
+        <div class="dcard t"><div class="co">TELUS territory</div><div class="tk">Western incumbent (ILEC)</div>
+          <div style="margin-top:6px">
+            <div class="kv"><span>Owns the West</span><span class="best">BC · Alberta</span></div>
+            <div class="kv"><span>Fibre lead</span><span>PureFibre FTTH</span></div>
+            <div class="kv"><span>Expanding into</span><span>ON · QC (wholesale)</span></div>
+            <div class="kv"><span>Territories</span><span>Yukon, NWT growing</span></div>
+            <div class="kv"><span>Heritage</span><span>AGT + BC Tel</span></div>
+          </div>
+        </div>
+        <div class="dcard b"><div class="co">Bell territory</div><div class="tk">Eastern incumbent (ILEC)</div>
+          <div style="margin-top:6px">
+            <div class="kv"><span>Owns the East</span><span class="best">ON · QC · Atlantic</span></div>
+            <div class="kv"><span>Fibre lead</span><span>Fibe FTTH (largest)</span></div>
+            <div class="kv"><span>Also</span><span>Manitoba (Bell MTS)</span></div>
+            <div class="kv"><span>Strength</span><span>Ottawa, Montreal, GTA</span></div>
+            <div class="kv"><span>Heritage</span><span>Bell Canada 1880</span></div>
+          </div>
+        </div>
+        <div class="dcard r"><div class="co">Rogers territory</div><div class="tk">National cable (post-Shaw)</div>
+          <div style="margin-top:6px">
+            <div class="kv"><span>Cable in</span><span class="best">All 10 provinces</span></div>
+            <div class="kv"><span>Legacy base</span><span>Ontario + Atlantic</span></div>
+            <div class="kv"><span>Shaw gave it</span><span>BC · AB · SK · MB</span></div>
+            <div class="kv"><span>Strength</span><span>Widest reach + sports</span></div>
+            <div class="kv"><span>Heritage</span><span>Rogers + Shaw (2023)</span></div>
+          </div>
+        </div>
       </div>
 
-      <div class="two">
+      <div class="two" style="margin-top:16px">
         <div class="card">
-          <h3>Provincial strength map</h3>
+          <h3>Who wins each region</h3>
           <ul class="clean" style="margin-top:8px">
-            <li><span class="mk">★</span><span><b>British Columbia</b> — home HQ (Vancouver). Deepest fibre + wireless share; the crown jewel</span></li>
-            <li><span class="mk">★</span><span><b>Alberta</b> — AGT birthplace (Edmonton 1990). Co-stronghold with BC</span></li>
-            <li><span class="mk">↗</span><span><b>Quebec</b> — growing wireline/fibre presence, competitive vs Videotron</span></li>
-            <li><span class="mk">↗</span><span><b>Ontario</b> — national wireless, less dense retail than West</span></li>
-            <li><span class="mk">◈</span><span><b>Territories (Yukon, NWT)</b> — growing footprint, low competition</span></li>
-            <li><span class="mk">◈</span><span><b>Atlantic + Prairies</b> — retail via dealer partners (GPS Technologies et al.)</span></li>
+            <li><span class="mk">BC</span><span><b>TELUS</b> incumbent · Rogers (ex-Shaw cable) challenges</span></li>
+            <li><span class="mk">AB</span><span><b>TELUS</b> incumbent · Rogers (ex-Shaw cable) challenges</span></li>
+            <li><span class="mk">SK</span><span><b>SaskTel</b> (Crown) leads · Rogers cable · TELUS wireless</span></li>
+            <li><span class="mk">MB</span><span><b>Bell MTS</b> + Rogers cable compete</span></li>
+            <li><span class="mk">ON</span><span><b>Bell</b> fibre vs <b>Rogers</b> cable — the main battleground</span></li>
+            <li><span class="mk">QC</span><span><b>Videotron</b> (Quebecor) + <b>Bell</b> · TELUS expanding</span></li>
+            <li><span class="mk">ATL</span><span><b>Bell</b> + <b>Eastlink</b> · Rogers cable</span></li>
           </ul>
         </div>
         <div class="card">
-          <h3>Retail distribution channels</h3>
+          <h3>Retail footprint — all three</h3>
           <ul class="clean" style="margin-top:8px">
-            <li><span class="mk">1</span><span><b>Corporate TELUS stores</b> — ~280–320 locations, flagship experience</span></li>
-            <li><span class="mk">2</span><span><b>Koodo stores & kiosks</b> — flanker-brand retail, often mall-based</span></li>
-            <li><span class="mk">3</span><span><b>Authorized dealers</b> — third-party (e.g. GPS Technologies, Custom Cellular) extend rural reach</span></li>
-            <li><span class="mk">4</span><span><b>Mall kiosks</b> — ~45 shopping-mall locations nationally</span></li>
-            <li><span class="mk">5</span><span><b>Online + retail partners</b> — Best Buy, Costco (vs Rogers/Bell's Glentel 350+ WirelessWave/Tbooth network)</span></li>
+            <li><span class="mk">◈</span><span><b>TELUS</b> — ~280–320 corporate stores + Koodo + dealers, densest in West</span></li>
+            <li><span class="mk">◈</span><span><b>Rogers + Bell</b> — jointly own <b>Glentel</b> (350+ WirelessWave/Tbooth), a shared multi-carrier retail engine</span></li>
+            <li><span class="mk">◈</span><span><b>Bell</b> — own-brand stores concentrated in ON/QC, The Source conversion to Best Buy Express</span></li>
+            <li><span class="mk">◈</span><span><b>Rogers</b> — national store base + Fido/Chatr retail</span></li>
+            <li><span class="mk">◈</span><span>All three also sell via Best Buy, Costco, and online</span></li>
           </ul>
         </div>
       </div>
-      <div class="note">◈ <b>Store counts vary by source and change constantly</b> — third-party aggregators list TELUS Mobility at ~281–319 corporate locations, plus separate Koodo and dealer footprints, so treat these as planning estimates, not audited figures. TELUS does not publish a single official store count. Verify against TELUS's own store locator before quoting a precise number. <b>Rogers + Bell jointly own Glentel</b> (350+ WirelessWave/Tbooth outlets) — a retail-distribution advantage worth noting in any competitive discussion.</div>
+      <div class="note">◈ <b>Neutral read:</b> no carrier dominates nationally on wireline — each is regionally entrenched. TELUS owns the West, Bell owns the East, Rogers has the widest <em>cable</em> reach post-Shaw but isn't the wireline incumbent everywhere. Crown/regional players (SaskTel, Videotron, Eastlink) still win their home provinces. Store counts vary by source and aren't officially published; treat as estimates.</div>
+    </div>
+  </section>
+
+  <section id="b-fibre">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--telus-2)">08</span><h2>The PureFibre landscape</h2><span class="sub">homes passed · FTTH vs cable</span></div>
+      <p class="intro">Fibre is the wireline endgame. TELUS runs <em>100% fibre-to-the-home</em> (PureFibre) with symmetrical speeds; Rogers is mostly hybrid fibre-coaxial cable (faster download, slower upload); Bell has the largest true-FTTH footprint. Geography usually decides the winner — the three barely overlap.</p>
+
+      <div class="grid3">
+        <div class="dcard b"><div class="co">Bell — Fibe</div><div class="tk">FTTH · ON / QC / Atlantic</div><div class="big">~7.3M</div><div class="biglab">premises passed (largest FTTH)</div>
+          <div style="margin-top:16px">
+            <div class="kv"><span>Technology</span><span>True FTTH + FTTN</span></div>
+            <div class="kv"><span>Top speed</span><span class="best">8 Gbps (fastest)</span></div>
+            <div class="kv"><span>Stronghold</span><span>Ontario, Quebec, Atlantic</span></div>
+            <div class="kv"><span>Accolade</span><span>Ookla "Fastest" 6× running</span></div>
+          </div>
+        </div>
+        <div class="dcard r"><div class="co">Rogers — Xfinity/Ignite</div><div class="tk">HFC cable + FTTH · all 10 provinces</div><div class="big">~5M+</div><div class="biglab">homes (cable) + FTTH expanding</div>
+          <div style="margin-top:16px">
+            <div class="kv"><span>Technology</span><span>Mostly HFC cable</span></div>
+            <div class="kv"><span>Top speed</span><span>3 Gbps</span></div>
+            <div class="kv"><span>Stronghold</span><span class="best">Widest — all 10 provinces</span></div>
+            <div class="kv"><span>Edge</span><span>Shaw footprint + 5G Home</span></div>
+          </div>
+        </div>
+        <div class="dcard t"><div class="co">TELUS — PureFibre</div><div class="tk">100% FTTH · BC / AB + select ON/QC</div><div class="big">~3.7M</div><div class="biglab">homes passed · $45B+ committed</div>
+          <div style="margin-top:16px">
+            <div class="kv"><span>Technology</span><span class="best">100% true FTTH</span></div>
+            <div class="kv"><span>Top speed</span><span>5 Gbps (symmetrical)</span></div>
+            <div class="kv"><span>Stronghold</span><span>BC + Alberta (owns last-mile)</span></div>
+            <div class="kv"><span>Edge</span><span class="best">Upload parity + 5yr lock</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="note">◈ <b>The strategic read:</b> TELUS's fibre footprint is smaller than Bell's but <em>higher quality per home</em> — every PureFibre connection is true FTTH with symmetrical gigabit upload (~90 Mbps national upload avg vs Rogers ~59 in BC). The Eastern expansion into Ontario/Quebec leans partly on CRTC wholesale access, not owned last-mile — a margin question worth flagging. TELUS has committed <b>$45B+</b> to the PureFibre build, the fastest-expanding fibre network in Canada.</div>
+    </div>
+  </section>
+
+  <section id="b-pricelock">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--telus-2)">09</span><h2>The 5-year price lock — TELUS's exclusive weapon</h2><span class="sub">$Bell · $Rogers · $TELUS</span></div>
+      <p class="intro">This is a genuine, ownable differentiator: <b>only TELUS locks the price for a full 5 years.</b> Bell guarantees just 2 years; Rogers reverts to a higher regular rate after the 24-month promo. In an era of customer fatigue over price hikes, this is a churn-defense and acquisition weapon rolled into one.</p>
+
+      <div class="vs" style="grid-template-columns:1fr 1fr 1fr">
+        <div class="h" style="border-left:2px solid var(--telus-2)">TELUS PureFibre</div>
+        <div class="h">Bell Fibe</div>
+        <div class="h">Rogers Xfinity</div>
+
+        <div class="c telcell"><span class="lab">Price guarantee</span><br><b style="color:var(--acid)">5-YEAR Plan Price Lock</b> — the promo rate holds for a full 5 years</div>
+        <div class="c"><span class="lab">Price guarantee</span><br><b>2-year</b> price guarantee (ON) — matches contract term only</div>
+        <div class="c"><span class="lab">Price guarantee</span><br><b>None equivalent</b> — 24-mo promo reverts to higher regular price</div>
+
+        <div class="c telcell"><span class="lab">Example (1.5 Gig, ON)</span><br><b>$80/mo locked 5 yrs</b> — vs reverting to $130 without the lock. ~<b>$3,000 saved</b> over the term.</div>
+        <div class="c"><span class="lab">Example (Fibe 150, ON)</span><br>$75/mo (was $90), guaranteed 2 yrs, then repriced</div>
+        <div class="c"><span class="lab">Example (after promo)</span><br>Promo rate then jumps; $5–$10 autopay credit + one-time bill credit soften it</div>
+
+        <div class="c telcell"><span class="lab">Also on wireless</span><br><b>5-Year Rate Plan Price Lock</b> on select Mobility + "Complete" bundle plans</div>
+        <div class="c"><span class="lab">Also on wireless</span><br>Standard promo windows; no 5-yr equivalent</div>
+        <div class="c"><span class="lab">Also on wireless</span><br>Perks-led (free Citytv+ 3 mo); no 5-yr lock</div>
+
+        <div class="c telcell"><span class="lab">Why it wins</span><br>Long-term certainty = <b>lower churn</b>. Fatigued switchers value predictability over a one-time credit.</div>
+        <div class="c"><span class="lab">Their counter</span><br>Wi-Fi 7 router free, 25K Aeroplan pts, fastest raw speed (8 Gbps)</div>
+        <div class="c"><span class="lab">Their counter</span><br>Lowest entry price, all-10-province reach, 5G Home Internet from $35</div>
+      </div>
+      <div class="note" style="border-left-color:var(--acid)">◈ <b>The CEO angle:</b> "Rogers and Bell compete on one-time bill credits and bonus points — sugar highs that expire. Our 5-year price lock is structural: it directly attacks the #1 consumer grievance in telecom, price-hike fatigue, and it compounds into the lowest churn in Canada. It's the clearest example of how we out-<em>retain</em> rather than out-spend. I'd extend the lock architecture across every product line — internet, mobility, security — as the unifying TELUS promise: <em>the price you sign is the price you keep.</em>"</div>
+      <div class="note">◈ Pricing and lock terms are as of mid-2026 and vary by province, tier and promo cycle. The 1.5 Gig figure is 1500/1000 Mbps (not fully symmetrical). Verify exact current offers on each carrier's site before quoting — telecom pricing shifts monthly, especially around Black Friday and the January promo window.</div>
+    </div>
+  </section>
+
+  <section id="b-services">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--telus-2)">10</span><h2>The full services battlefield</h2><span class="sub">every line · who leads · how subs interchange</span></div>
+      <p class="intro">The real war isn't wireless alone — it's the whole household. Each carrier tries to stack wireless + internet + TV + security + smart home + health onto one bill, because every added service <em>cuts churn</em>. Here's the complete service map and who leads each line.</p>
+
+      <div class="board" style="grid-template-columns:1.3fr 1fr 1fr 1fr">
+        <div class="hd">Service line</div><div class="hd tcol">TELUS</div><div class="hd">Rogers</div><div class="hd">Bell</div>
+
+        <div class="metric">Wireless</div>
+        <div class="tcol mid">~27% · best churn</div>
+        <div class="lead">~34% · #1 scale</div>
+        <div class="mid">~28%</div>
+
+        <div class="metric">Internet (fibre/cable)</div>
+        <div class="tcol lead">PureFibre FTTH, West</div>
+        <div class="mid">Cable, all 10 prov</div>
+        <div class="lead">Fibe FTTH, East (largest)</div>
+
+        <div class="metric">TV / streaming</div>
+        <div class="tcol mid">Optik TV + Pik</div>
+        <div class="lead">Ignite TV + sports</div>
+        <div class="lead">Fibe TV + CraveTV</div>
+
+        <div class="metric">Home security</div>
+        <div class="tcol lead">#1 — ADT Canada base</div>
+        <div class="lag">Exited consumer</div>
+        <div class="mid">Bell Smart Home (cheaper)</div>
+
+        <div class="metric">Smart home / automation</div>
+        <div class="tcol lead">SmartHome (Alexa/Siri)</div>
+        <div class="lag">Minimal</div>
+        <div class="mid">Smart Home hub</div>
+
+        <div class="metric">Health / fall-detection</div>
+        <div class="tcol lead">LivingWell — #1 in Canada</div>
+        <div class="lag">None</div>
+        <div class="lag">None</div>
+
+        <div class="metric">IoT / connected devices</div>
+        <div class="tcol lead">716K adds '25</div>
+        <div class="mid">5G Home / fleet</div>
+        <div class="mid">enterprise IoT</div>
+      </div>
+
+      <div class="note" style="border-left-color:var(--acid)">◈ <b>The asymmetry that matters:</b> TELUS is the <em>only</em> carrier with a full-stack household offer — it leads home security (inherited ADT Canada's base, "most trusted" 2022–2026) <em>and</em> owns the entire health/fall-detection category (LivingWell is the largest Canadian-owned medical alert provider). Rogers exited consumer home monitoring; Bell competes on security price but has no health-device play. Neither rival can bundle a senior's medical-alert pendant with their mobile plan. That's a moat.</div>
+    </div>
+  </section>
+
+  <section id="b-interchange">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--telus-2)">11</span><h2>How subscribers interchange across the bundle</h2><span class="sub">stickiness = services per household</span></div>
+      <p class="intro">The core mechanic: the more services a household holds, the harder it is to leave. A mobile-only customer churns easily; a household with mobile + fibre + security + a parent's fall-detection pendant almost never does. This is why the services war <em>is</em> the churn war.</p>
+
+      <div class="stack" id="stackViz"></div>
+
+      <div class="two" style="margin-top:20px">
+        <div class="card">
+          <h3>The pull-through engine</h3>
+          <ul class="clean" style="margin-top:8px">
+            <li><span class="mk">→</span><span><b>Fibre pulls TV</b> — IP-based TELUS TV rides the PureFibre build</span></li>
+            <li><span class="mk">→</span><span><b>Internet unlocks security</b> — in BC/AB, SmartHome requires TELUS internet</span></li>
+            <li><span class="mk">→</span><span><b>Mobility discounts everything</b> — $10/mo off security, $10 off LivingWell for Mobility customers</span></li>
+            <li><span class="mk">→</span><span><b>Health captures the aging household</b> — the pendant keeps the whole family on TELUS</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Why it beats Rogers & Bell</h3>
+          <ul class="clean" style="margin-top:8px">
+            <li><span class="mk">◈</span><span>Each added service drops churn probability materially</span></li>
+            <li><span class="mk">◈</span><span>TELUS can stack <b>6 lines</b> on one bill; Rogers/Bell top out at ~4</span></li>
+            <li><span class="mk">◈</span><span>Health + security are <b>contract-based</b> (3–5 yr) — structurally sticky</span></li>
+            <li><span class="mk">◈</span><span>Cross-sell CAC is near-zero — selling line #4 to an existing customer costs a fraction of a new acquisition</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="note" style="border-left-color:var(--acid)">◈ <b>The CEO thesis in one line:</b> "We don't win the household by having the cheapest single service — we win it by being the only one that can put wireless, fibre, TV, security, and a parent's medical pendant on one bill. Every line we add compounds the 0.91% churn advantage. My growth plan is depth-per-household, not just subscriber count."</div>
+      <div class="note">◈ Subscriber-interchange stickiness is modelled directionally from public churn data and TELUS's disclosed bundle mechanics (security requiring internet in the West, Mobility cross-discounts). Exact per-line churn deltas aren't publicly disclosed — the structural relationship (more services → lower churn) is well-established; precise percentages are illustrative.</div>
     </div>
   </section>
 </div>
@@ -851,7 +1031,7 @@
 
   // ---- subnav definitions per view ----
   const SUB={
-    brief:[['b-share','Market'],['b-rivals','Rivals'],['b-demo','Demographics'],['b-history','History'],['b-edge','Edge & Risk'],['b-brands','Flanker Brands'],['b-regions','Regions & Stores']],
+    brief:[['b-share','Market'],['b-rivals','Rivals'],['b-demo','Demographics'],['b-history','History'],['b-edge','Edge & Risk'],['b-brands','Flanker Brands'],['b-regions','Provincial Map'],['b-fibre','Fibre'],['b-pricelock','5yr Price Lock'],['b-services','All Services'],['b-interchange','Bundle Stickiness']],
     debt:[['d-lev','Leverage'],['d-card','Balance Sheet'],['d-glide','Glide Path'],['d-take','The Take']],
     play:[['p-reality','Reality'],['p-score','Scorecard'],['p-acq','Acquire'],['p-cac','CAC Model'],['p-beat','Beat Them']],
     network:[['n-flow','Switching Flow'],['n-loyalty','Brand Loyalty'],['n-5g','5G & Spectrum']],
@@ -889,6 +1069,7 @@
     // network view: start visuals; other views: pause the flow loop
     if(view==='network'){ setTimeout(initNetworkView,60); }
     else if(flowRAF){ cancelAnimationFrame(flowRAF); flowRAF=null; }
+    if(view==='brief'){ renderStack(); setTimeout(animateStack,120); }
     $('tabs').classList.remove('open');
   }
   tabs.forEach(t=>t.addEventListener('click',()=>show(t.dataset.view)));
@@ -1102,10 +1283,35 @@
   }
   window.addEventListener('resize',()=>{ if($('v-network').classList.contains('on')) resizeFlow(); });
 
+  // ---- services bundle stickiness stack ----
+  const STACK=[
+    {n:1,label:'Mobile only',sub:'high churn risk',ret:22,col:'#ff5964'},
+    {n:2,label:'+ Internet',sub:'fibre pull-through',ret:42,col:'#ffb703'},
+    {n:3,label:'+ TV',sub:'IP TV bundle',ret:58,col:'#ffb703'},
+    {n:4,label:'+ Security',sub:'3–5yr contract',ret:78,col:'#7a4fa0'},
+    {n:5,label:'+ Smart Home',sub:'automation lock-in',ret:88,col:'#7a4fa0'},
+    {n:6,label:'+ Health / Fall-detect',sub:'whole-family anchor',ret:96,col:'#2ec4b6'}
+  ];
+  function renderStack(){
+    const wrap=$('stackViz'); if(!wrap||wrap.dataset.done) return;
+    wrap.innerHTML='';
+    STACK.forEach(s=>{
+      const row=document.createElement('div'); row.className='stackrow';
+      row.innerHTML='<div class="lbl"><b>'+s.label+'</b><small>'+s.n+' service'+(s.n>1?'s':'')+' · '+s.sub+'</small></div>'+
+        '<div class="stackbar"><div class="stackfill" data-w="'+s.ret+'" style="background:'+s.col+'">'+s.ret+' retention index</div></div>';
+      wrap.appendChild(row);
+    });
+    wrap.dataset.done='1';
+  }
+  function animateStack(){
+    $('stackViz')?.querySelectorAll('.stackfill').forEach((f,i)=>{ f.style.width='0'; setTimeout(()=>f.style.width=f.dataset.w+'%',80+i*90); });
+  }
+
   // ---- init ----
   buildSub('brief');
   calc();
-  setTimeout(()=>animateBars($('v-brief')),200);
+  renderStack();
+  setTimeout(()=>{ animateBars($('v-brief')); animateStack(); },200);
 </script>
 </body>
 </html>
