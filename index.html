@@ -260,6 +260,73 @@
   .stackbar{height:38px;background:var(--panel-2);border:1px solid var(--line);border-radius:2px;position:relative;overflow:hidden}
   .stackfill{height:100%;width:0;transition:width 1.3s cubic-bezier(.2,.7,.2,1);display:flex;align-items:center;padding-left:12px;font-family:'IBM Plex Mono';font-size:11px;color:#0a0d0f;font-weight:600}
 
+  /* world cost bars */
+  .wcrow{display:grid;grid-template-columns:130px 1fr 60px;align-items:center;gap:12px;margin-bottom:11px}
+  @media(max-width:640px){.wcrow{grid-template-columns:90px 1fr 50px}}
+  .wcrow .cty{font-family:'Space Grotesk';font-weight:600;font-size:13px;display:flex;align-items:center;gap:6px}
+  .wctrack{height:22px;background:var(--panel-2);border:1px solid var(--line);border-radius:2px;overflow:hidden}
+  .wcfill{height:100%;width:0;transition:width 1.2s cubic-bezier(.2,.7,.2,1)}
+  .wcval{font-family:'IBM Plex Mono';font-size:12px;font-weight:600;text-align:right}
+
+  /* coverage reach bars */
+  .covrow{display:grid;grid-template-columns:90px 1fr 52px;align-items:center;gap:12px;margin-bottom:13px}
+  .covrow .co{font-family:'Space Grotesk';font-weight:600;font-size:14px}
+  .covtrack{height:24px;background:var(--panel-2);border:1px solid var(--line);border-radius:2px;overflow:hidden}
+  .covfill{height:100%;width:0;transition:width 1.2s cubic-bezier(.2,.7,.2,1)}
+  .covval{font-family:'IBM Plex Mono';font-size:12px;font-weight:600;text-align:right}
+
+  /* live migration engine */
+  .livewrap{position:relative;background:radial-gradient(ellipse at 50% 40%,#12181d 0%,#0a0d0f 78%);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  #liveCanvas{display:block;width:100%;height:520px}
+  @media(max-width:640px){#liveCanvas{height:440px}}
+  .livehud{position:absolute;top:14px;left:14px;display:flex;flex-direction:column;gap:8px}
+  .livehud .hcard{display:flex;align-items:center;gap:9px;background:rgba(10,13,15,.55);border:1px solid var(--line);border-radius:3px;padding:6px 11px;cursor:pointer;transition:.15s;min-width:168px}
+  .livehud .hcard:hover,.livehud .hcard.active{border-color:var(--acid)}
+  .livehud .hcard.dim{opacity:.4}
+  .livehud .hsw{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+  .livehud .hname{font-family:'Space Grotesk';font-weight:600;font-size:13px;color:var(--ink)}
+  .livehud .hnum{font-family:'IBM Plex Mono';font-size:12px;font-weight:600;margin-left:auto;transition:color .3s}
+  .livehud .htick{font-family:'IBM Plex Mono';font-size:9px;color:var(--dim);margin-left:6px}
+  .livespeed{position:absolute;bottom:14px;right:14px;display:flex;gap:5px}
+  .lsbtn{font-family:'IBM Plex Mono';font-size:11px;color:var(--mute);background:rgba(10,13,15,.55);border:1px solid var(--line);border-radius:14px;padding:5px 11px;cursor:pointer;transition:.15s}
+  .lsbtn:hover{color:var(--ink)}
+  .lsbtn.on{color:#0a0d0f;background:var(--acid);border-color:var(--acid);font-weight:600}
+
+  /* TEAMTELUS pride bar */
+  .pridebar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:30px;border-left:2px solid var(--acid)}
+  .pridebar .pb{background:var(--panel);padding:16px 18px}
+  .pridebar .pbn{font-family:'Space Grotesk';font-weight:700;font-size:22px;color:var(--acid)}
+  .pridebar .pbl{font-family:'IBM Plex Mono';font-size:10px;color:var(--mute);margin-top:5px;text-transform:uppercase;letter-spacing:.06em;line-height:1.4}
+  @media(max-width:760px){.pridebar{grid-template-columns:repeat(2,1fr)}}
+
+  /* live network coverage canvas */
+  .covmapwrap{background:radial-gradient(ellipse at 45% 45%,#12181d 0%,#0a0d0f 80%);border:1px solid var(--line);border-radius:4px;padding:16px}
+  .covmaptoggles{display:flex;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+  .togglegroup{display:flex;gap:5px;flex-wrap:wrap}
+  .tgbtn{font-family:'IBM Plex Mono';font-size:11px;color:var(--mute);background:rgba(10,13,15,.5);border:1px solid var(--line);border-radius:14px;padding:6px 13px;cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:6px}
+  .tgbtn:hover{color:var(--ink)}
+  .tgbtn.on{color:#0a0d0f;font-weight:600}
+  .tgbtn .tgsw{width:9px;height:9px;border-radius:50%}
+  .covmapstage{position:relative}
+  #netCanvas{display:block;width:100%;height:480px}
+  @media(max-width:640px){#netCanvas{height:400px}}
+  .covmaplegend{position:absolute;bottom:10px;left:12px;font-family:'IBM Plex Mono';font-size:10px;color:var(--dim);line-height:1.6}
+
+  /* debt gauges */
+  .gaugerow{background:radial-gradient(ellipse at 50% 40%,#12181d 0%,#0a0d0f 82%);border:1px solid var(--line);border-radius:4px;padding:10px}
+  #gaugeCanvas{display:block;width:100%;height:300px}
+  @media(max-width:640px){#gaugeCanvas{height:520px}}
+
+  /* merged all-carrier chart */
+  .mergedwrap{background:radial-gradient(ellipse at 50% 30%,#12181d 0%,#0a0d0f 82%);border:1px solid var(--line);border-radius:4px;padding:16px}
+  #mergedCanvas{display:block;width:100%;height:420px}
+  @media(max-width:640px){#mergedCanvas{height:380px}}
+  .mergedlegend{display:flex;gap:20px;align-items:center;margin-top:10px;font-family:'IBM Plex Mono';font-size:11px;color:var(--mute);flex-wrap:wrap}
+  .mergedlegend .msw{display:inline-block;width:14px;height:11px;border-radius:2px;margin-right:6px;vertical-align:middle}
+  .mergedlegend .msw.solid{background:var(--mute)}
+  .mergedlegend .msw.hatch{background:repeating-linear-gradient(45deg,var(--mute) 0 2px,transparent 2px 4px);border:1px solid var(--line)}
+  .mergedlegend .mtot{margin-left:auto;color:var(--acid);font-weight:600}
+
   footer{padding:40px 0 60px}
   .src{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);line-height:1.9}
   .src a{color:var(--mute)}
@@ -277,7 +344,8 @@
       <button class="tab" data-view="debt"><span class="no">02</span>Debt vs Rivals</button>
       <button class="tab" data-view="play"><span class="no">03</span>Growth & M&A</button>
       <button class="tab" data-view="network"><span class="no">04</span>Network & Loyalty</button>
-      <button class="tab" data-view="ir"><span class="no">05</span>Investor Relations</button>
+      <button class="tab" data-view="coverage"><span class="no">05</span>Coverage & Plans</button>
+      <button class="tab" data-view="ir"><span class="no">06</span>Investor Relations</button>
     </div>
   </div>
 </header>
@@ -639,6 +707,71 @@
       <div class="note">◈ Subscriber-interchange stickiness is modelled directionally from public churn data and TELUS's disclosed bundle mechanics (security requiring internet in the West, Mobility cross-discounts). Exact per-line churn deltas aren't publicly disclosed — the structural relationship (more services → lower churn) is well-established; precise percentages are illustrative.</div>
     </div>
   </section>
+
+  <section id="b-cost">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--telus-2)">12</span><h2>The cost of cellular</h2><span class="sub">what Canadians pay · and the politics of it</span></div>
+      <p class="intro">This is the question a TELUS CEO gets grilled on by regulators, media and the public. The honest picture has two halves: Canada <em>is</em> among the world's most expensive for mobile data, <em>and</em> prices have fallen sharply in the price war. A CEO has to hold both truths.</p>
+
+      <div class="demo" style="margin-bottom:24px">
+        <div class="dbox"><div class="big">$7.36</div><div class="cap">Avg price per GB — 10th priciest in the world</div></div>
+        <div class="dbox"><div class="big">26×</div><div class="cap">More than France ($0.28/GB) for the same data</div></div>
+        <div class="dbox"><div class="big">~$43.51</div><div class="cap">Avg monthly plan today — down from $75–85</div></div>
+        <div class="dbox"><div class="big">90%</div><div class="cap">Market held by Big Three — the pricing-power root</div></div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <h3>Canada vs the world — price per GB of mobile data</h3>
+        <p style="color:var(--dim);font-size:13px;margin:6px 0 16px">The affordability critique in one chart. Higher bar = more expensive.</p>
+        <div id="worldCost"></div>
+        <div style="margin-top:14px;font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);line-height:1.7">◈ Cable.co.uk / Gov't of Canada data. Canada & the US sit near the top of developed nations; Europe and India are a fraction of the cost.</div>
+      </div>
+
+      <div class="vs" style="grid-template-columns:1fr 1fr 1fr">
+        <div class="h" style="border-left:2px solid var(--telus-2)">Premium (Big Three flagship)</div>
+        <div class="h">Flanker (Koodo/Fido/Virgin)</div>
+        <div class="h">Budget (Public/Chatr/Lucky)</div>
+
+        <div class="c telcell"><span class="lab">Typical price</span><br><b>$80–85/mo</b> · unlimited, premium coverage, perks, price-lock</div>
+        <div class="c"><span class="lab">Typical price</span><br><b>$34–55/mo</b> · same towers, 20–30% less, fewer perks</div>
+        <div class="c"><span class="lab">Typical price</span><br><b>$21–45/mo</b> · prepaid, BYOD, self-serve, no storefront</div>
+
+        <div class="c telcell"><span class="lab">Who buys it</span><br>Premium households, families bundling, business</div>
+        <div class="c"><span class="lab">Who buys it</span><br>Value-conscious, younger, BYOD switchers</div>
+        <div class="c"><span class="lab">Who buys it</span><br>Students, newcomers, price-first users</div>
+
+        <div class="c telcell"><span class="lab">Same network?</span><br>—</div>
+        <div class="c"><span class="lab">Same network?</span><br><b>Yes</b> — identical coverage to parent</div>
+        <div class="c"><span class="lab">Same network?</span><br><b>Yes</b> — runs on Big Three towers</div>
+      </div>
+
+      <div class="two" style="margin-top:16px">
+        <div class="card">
+          <h3>The affordability critique (know the attack)</h3>
+          <ul class="clean" style="margin-top:8px">
+            <li><span class="mk">✗</span><span>Canada 10th most expensive globally — <b>26× France</b> per GB</span></li>
+            <li><span class="mk">✗</span><span>Big Three own <b>90%</b> — critics call it an oligopoly</span></li>
+            <li><span class="mk">✗</span><span>Most Canadians use <b>under 5GB</b> but pay for 25–50GB plans</span></li>
+            <li><span class="mk">✗</span><span>Retention-desk discounts ($10–20/mo) reward hagglers, not loyalty</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>The industry defence (know the rebuttal)</h3>
+          <ul class="clean" style="margin-top:8px">
+            <li><span class="mk">✓</span><span>Prices <b>down sharply</b> — avg plan now ~$43.51 vs old $75–85</span></li>
+            <li><span class="mk">✓</span><span>Vast geography, <b>4 people/km²</b> — high build cost per capita</span></li>
+            <li><span class="mk">✓</span><span><b>$40B+</b> TELUS 5G/fibre capex — someone funds the network</span></li>
+            <li><span class="mk">✓</span><span>Flankers + Freedom price war <b>pushing prices lower</b></span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="note" style="border-left-color:var(--amber)">◈ <b>The regulatory reality you'd inherit:</b> as of <b>June 12, 2026</b>, carriers can no longer charge activation, plan-change, upgrade, or cancellation fees — a consumer-friendly rule that makes switching frictionless and <em>raises</em> the stakes on churn. Combined with the CRTC wholesale-access mandate letting carriers resell into each other's territory, the regulatory wind is blowing toward lower prices and easier switching. A CEO plans for margin compression, not expansion, on the mobile line.</div>
+
+      <div class="note" style="border-left-color:var(--acid)">◈ <b>The balanced CEO answer</b> (for the affordability question): "Canadians have historically paid among the highest prices in the world — that's real, and I won't dismiss it. But the trend is what matters: average bills have fallen sharply, the fee ban has removed switching friction, and flanker competition is intensifying. My job isn't to defend high prices — it's to earn premium pricing through a genuinely premium, reliable, full-household experience, while our flanker brands compete hard at the value end. We win on <em>value delivered</em>, not on locking people in."</div>
+      <div class="note">◈ Price-per-GB figures are from Cable.co.uk (2023 data, latest comprehensive global set); the ~$43.51 average monthly plan is a 2026 market estimate and methodologies differ (stand-alone-data GB price vs blended plan cost). Plan-tier prices vary constantly by promo cycle. Verify current numbers before quoting in an interview.</div>
+    </div>
+  </section>
 </div>
 
 <!-- ===================== VIEW 2: DEBT ===================== -->
@@ -651,9 +784,20 @@
     </div>
   </div>
 
+  <section id="d-live">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--telus-2)">01</span><h2>Debt vs EBITDA — live pressure</h2><span class="sub">needle = leverage · lower is safer</span></div>
+      <p class="intro">Three live gauges. The needle sits at each carrier's net-debt/EBITDA and drifts toward its target as the deleveraging plays out. Green zone is safe, red is stretched. TELUS sits lowest and glides to 3.0× fastest.</p>
+      <div class="gaugerow">
+        <canvas id="gaugeCanvas"></canvas>
+      </div>
+      <div class="note">◈ Live animation of stated leverage and targets (TELUS 3.4×→3.0×, Bell ~3.5×→3.0× by 2030, Rogers 3.9×→3.25×). Needle drift is illustrative of trajectory, not a real-time feed. Ratios aren't calculated identically across carriers — direction and ranking are robust, exact decimals approximate.</div>
+    </div>
+  </section>
+
   <section id="d-lev">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--telus-2)">01</span><h2>Net debt ÷ EBITDA — who's most leveraged</h2><span class="sub">lower is safer · YE2025</span></div>
+      <div class="shead"><span class="sno" style="color:var(--telus-2)">02</span><h2>Net debt ÷ EBITDA — who's most leveraged</h2><span class="sub">lower is safer · YE2025</span></div>
       <p class="intro">The core solvency metric. The teal marker on each bar is that company's stated deleveraging target.</p>
       <div class="lev">
         <div class="lrow"><div class="co">TELUS<small>TSX: T</small></div><div class="ltrack"><div class="lfill" data-lev="3.4" style="background:var(--telus-2)">3.4×</div><div class="tgt" style="left:60%"><span>target 3.0×</span></div></div></div>
@@ -667,7 +811,7 @@
 
   <section id="d-card">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--telus-2)">02</span><h2>The full balance-sheet card</h2><span class="sub">latest reported</span></div>
+      <div class="shead"><span class="sno" style="color:var(--telus-2)">03</span><h2>The full balance-sheet card</h2><span class="sub">latest reported</span></div>
       <div class="grid3">
         <div class="dcard t"><div class="co">TELUS</div><div class="tk">TSX: T · NYSE: TU</div><div class="big best">3.4×</div><div class="biglab">Net debt / EBITDA</div>
           <div style="margin-top:16px">
@@ -697,13 +841,13 @@
           </div>
         </div>
       </div>
-      <div class="note">◈ Absolute net debt: <b>Bell carries the heaviest load (~$40B)</b> from fibre capex plus Ziply. Rogers is heaviest on <em>ratio</em> because Shaw stretched the sheet. TELUS wins on both ratio and trajectory — the only one that hasn't cut its dividend to get there.</div>
+      <div class="note">◈ Absolute net debt: <b>Bell carries the heaviest load (~$40B)</b> from fibre capex plus Ziply. Rogers is heaviest on <em>ratio</em> because Shaw stretched the sheet. TELUS wins on both ratio and trajectory — and by mid-2026 all three had taken dividend discipline: Bell cut in 2025, TELUS reset 55% in July 2026, Rogers alone held ($0.50/qtr) while selling infra to Blackstone instead.</div>
     </div>
   </section>
 
   <section id="d-glide">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--telus-2)">03</span><h2>Who deleverages fastest</h2><span class="sub">stated glide paths</span></div>
+      <div class="shead"><span class="sno" style="color:var(--telus-2)">04</span><h2>Who deleverages fastest</h2><span class="sub">stated glide paths</span></div>
       <p class="intro">Same destination (~3.0×), very different arrival times. TELUS gets there years ahead of Bell.</p>
       <div class="glide">
         <div class="path"><h4><span class="swatch" style="background:var(--telus-2)"></span>TELUS</h4>
@@ -728,7 +872,7 @@
 
   <section id="d-take">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--telus-2)">04</span><h2>What this means for the chair</h2><span class="sub">the interview line</span></div>
+      <div class="shead"><span class="sno" style="color:var(--telus-2)">05</span><h2>What this means for the chair</h2><span class="sub">the interview line</span></div>
       <div class="note" style="border-left-color:var(--acid)">◈ <b>Say this:</b> "On the balance sheet, TELUS already leads the Big Three — 3.4× versus Rogers at 3.9× and Bell carrying $40 billion in net debt. In July 2026 we made the disciplined call to reset the dividend 55% and lower the payout ratio to 45–60% of free cash flow — the same medicine Bell took a year earlier — which accelerates us to 3.0× by 2027, three years ahead of Bell. My job is to protect that lead: fund every growth move from divestiture proceeds and free cash flow, never new leverage."</div>
       <div class="note">◈ <b>The one caveat to acknowledge:</b> ratios aren't perfectly comparable — each defines "net debt" and "adjusted EBITDA" differently (Rogers adjusts 50% of subordinated notes; MLSE/Shaw distort trailing EBITDA). Quote the direction and ranking with confidence; footnote the exact decimals.</div>
     </div>
@@ -911,7 +1055,159 @@
   </section>
 </div>
 
-<!-- ===================== VIEW 5: INVESTOR RELATIONS ===================== -->
+<!-- ===================== VIEW 5: COVERAGE & PLANS ===================== -->
+<div class="view" id="v-coverage">
+  <div class="wrap">
+    <div class="hero">
+      <div class="eyebrow" style="color:var(--acid)">#TEAMTELUS · Network Coverage · Pre / Post / Fibre</div>
+      <h1>Bring your<br><span class="fade">best suit.</span><br>We cover Canada.</h1>
+      <p class="lede">The network is the pride. TELUS and Bell share the widest rural reach, PureFibre lights up the West, and every plan — prepaid, postpaid, fibre — rides a top-3 network. This is the coverage story you walk in owning.</p>
+      <div class="pridebar" id="prideBar"></div>
+    </div>
+  </div>
+
+  <!-- LIVE MIGRATION ENGINE -->
+  <section id="cov-live">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--acid)">01</span><h2>Live subscriber migration</h2><span class="sub">real-time flow model · watch the base move</span></div>
+      <p class="intro">Every dot is a block of subscribers in motion. Orbs are sized to each carrier's base and pulse as they gain and lose. Freedom keeps pulling from the incumbents; TELUS bleeds slowest. Tap an orb to isolate its flows.</p>
+      <div class="livewrap">
+        <canvas id="liveCanvas"></canvas>
+        <div class="livehud" id="liveHud"></div>
+        <div class="livespeed">
+          <button class="lsbtn on" data-sp="1">1×</button>
+          <button class="lsbtn" data-sp="2.5">2.5×</button>
+          <button class="lsbtn" data-sp="6">6×</button>
+        </div>
+      </div>
+      <div class="note">◈ Directional flow model — carriers don't publish who-switched-to-whom. Particle rates are calibrated from public churn (TELUS 0.91% vs Rogers ~1.5%), subscriber share, and Freedom's low-cost mandate. Orb sizes reflect Q2'25 subscriber base (Rogers ~12.1M, Bell ~10.4M, TELUS ~10M, Freedom ~2M). The motion is illustrative of direction and relative volume, not a real-time feed.</div>
+    </div>
+  </section>
+
+  <!-- LIVE NETWORK COVERAGE -->
+  <section id="cov-map">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--acid)">02</span><h2>Live network coverage — greater mode</h2><span class="sub">big 3 + freedom · all at once</span></div>
+      <p class="intro">All four carriers on one map, all the time. Every city renders four concentric rings — TELUS purple, Bell blue, Rogers red, Freedom teal — ring weight is that carrier's strength there. Two layers only: <b>postpaid vs prepaid</b>. Tap a single carrier to isolate; tap All to merge back. The nation still beats as one.</p>
+      <div class="covmapwrap">
+        <div class="covmaptoggles">
+          <div class="togglegroup" id="layerToggle"></div>
+          <div class="togglegroup" id="carrierToggle"></div>
+        </div>
+        <div class="covmapstage">
+          <canvas id="netCanvas"></canvas>
+          <div class="covmaplegend" id="covMapLegend"></div>
+        </div>
+      </div>
+      <div class="note">◈ Stylised motion schematic — node positions approximate major population centres, not survey-grade signal data. All-mode rings show each carrier's relative strength per city (TELUS/Bell strongest West/East via their shared rural network, Rogers widest, Freedom urban-only). Prepaid and postpaid run the <em>same towers</em> — the layer difference reflects where each brand actively sells, not real coverage gaps. For actual signal checks use each carrier's coverage tool or Opensignal.</div>
+    </div>
+  </section>
+
+  <!-- MERGED ALL-CARRIER CHART -->
+  <section id="cov-merged">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--acid)">03</span><h2>The whole market — all four at once</h2><span class="sub">38.2M subscribers · postpaid + prepaid</span></div>
+      <p class="intro">Everything on one frame: every carrier's subscriber base stacked into postpaid (solid) and prepaid (hatched), sized to real scale. Rogers leads, then Bell, TELUS, Freedom — together ~86% of a 38.2M market. Bars animate up on the shared beat.</p>
+      <div class="mergedwrap">
+        <canvas id="mergedCanvas"></canvas>
+        <div class="mergedlegend">
+          <span><span class="msw solid"></span>Postpaid</span>
+          <span><span class="msw hatch"></span>Prepaid</span>
+          <span class="mtot" id="mergedTotal"></span>
+        </div>
+      </div>
+      <div class="note">◈ Totals: Canada ~38.2M wireless subs (Q4'25). Per-carrier bases Q2'24–'25: Rogers ~12.5M, Bell ~11.1M, TELUS ~10.0M, Freedom ~2.3M (Quebecor). <b>TELUS, Videotron/Freedom and SaskTel don't publicly break out prepaid vs postpaid</b> — those splits are modelled at the ~90/10 national norm and flagged as estimates. Big Three ~86% of market. Verify against CRTC's latest before quoting exact splits.</div>
+    </div>
+  </section>
+
+  <!-- COVERAGE BARS -->
+  <section id="cov-reach">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--acid)">04</span><h2>Geographic vs population coverage</h2><span class="sub">the two numbers carriers quote</span></div>
+      <p class="intro">The gap between these two is the whole story of Canadian coverage: carriers cover a small slice of the <em>landmass</em> but nearly all the <em>people</em>, because Canadians cluster in cities.</p>
+      <div class="two">
+        <div class="card">
+          <h3>Geographic landmass covered</h3>
+          <p style="color:var(--dim);font-size:13px;margin:6px 0 16px">Share of Canada's physical area.</p>
+          <div id="geoBars"></div>
+        </div>
+        <div class="card">
+          <h3>Population reached</h3>
+          <p style="color:var(--dim);font-size:13px;margin:6px 0 16px">Share of Canadians who can get signal.</p>
+          <div id="popBars"></div>
+        </div>
+      </div>
+      <div class="note">◈ TELUS & Bell lead on landmass (~37% / ~36%) because of their shared rural network; Rogers (~28%) concentrates on population centres. On <em>population</em> coverage all three are within a point of each other (~99%). Freedom covers ~1.3% of landmass — urban only, expanding via wholesale roaming on TELUS's network outside its footprint.</div>
+    </div>
+  </section>
+
+  <!-- PREPAID VS POSTPAID -->
+  <section id="cov-plans">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--acid)">05</span><h2>Prepaid vs postpaid — all carriers</h2><span class="sub">the profit engine vs the value battleground</span></div>
+      <p class="intro">Postpaid (monthly bill, credit check, contract) is ~90% of the base — low churn, high ARPU, the profit core. Prepaid (pay-ahead, no contract) is where budget brands and newcomers live. Each carrier plays both, but with different brands.</p>
+
+      <div class="two" style="margin-bottom:20px">
+        <div class="card">
+          <h3>Postpaid — the profit engine</h3>
+          <ul class="clean" style="margin-top:8px">
+            <li><span class="mk">◈</span><span><b>~90%</b> of the total wireless base</span></li>
+            <li><span class="mk">◈</span><span>Low churn (TELUS 0.91%), high ARPU (~$57)</span></li>
+            <li><span class="mk">◈</span><span>Credit check + device financing + contracts</span></li>
+            <li><span class="mk">◈</span><span>Flagship brands: <b>TELUS · Rogers · Bell</b></span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Prepaid — the value battleground</h3>
+          <ul class="clean" style="margin-top:8px">
+            <li><span class="mk">◈</span><span><b>~10%</b> of base, but fastest-growing via newcomers</span></li>
+            <li><span class="mk">◈</span><span>No credit check, no contract, BYOD, self-serve</span></li>
+            <li><span class="mk">◈</span><span>Lower ARPU but near-zero acquisition cost</span></li>
+            <li><span class="mk">◈</span><span>Where Freedom & Fizz attack hardest</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="board" style="grid-template-columns:1.1fr 1fr 1fr 1fr">
+        <div class="hd">Carrier group</div><div class="hd tcol">TELUS</div><div class="hd">Rogers</div><div class="hd">Bell</div>
+
+        <div class="metric">Postpaid flagship</div>
+        <div class="tcol">TELUS Mobility</div>
+        <div>Rogers</div>
+        <div>Bell Mobility</div>
+
+        <div class="metric">Mid-tier (postpaid)</div>
+        <div class="tcol">Koodo</div>
+        <div>Fido</div>
+        <div>Virgin Plus</div>
+
+        <div class="metric">Prepaid / budget</div>
+        <div class="tcol">Public Mobile</div>
+        <div>Chatr</div>
+        <div>Lucky Mobile</div>
+
+        <div class="metric">Wireless subs (Q2'25)</div>
+        <div class="tcol mid">~10M</div>
+        <div class="lead">~12.1M (#1)</div>
+        <div class="mid">~10.4M</div>
+
+        <div class="metric">Prepaid 5G access</div>
+        <div class="tcol lead">Public Mobile — yes</div>
+        <div class="mid">Chatr — limited</div>
+        <div class="mid">Lucky — limited</div>
+
+        <div class="metric">Cheapest entry (prepaid)</div>
+        <div class="tcol">~$30/35GB (Public)</div>
+        <div>~$21/1GB (Chatr)</div>
+        <div>~$21/1GB (Lucky)</div>
+      </div>
+      <div class="note" style="border-left-color:var(--acid)">◈ <b>The CEO read:</b> "Postpaid is where we win — the 0.91% churn and premium ARPU live there, and that's the base I defend first. But prepaid is the on-ramp: newcomers and students start on Public Mobile, and our job is to graduate them to postpaid TELUS over time. Public Mobile having true 5G — which Chatr and Lucky don't fully match — means our budget door is also our best door. We don't cede the value end; we make it a feeder."</div>
+      <div class="note">◈ Subscriber totals are Q2 2025 (Inside Towers / carrier reports); the ~90/10 postpaid-prepaid split is the long-run Canadian market norm. Prepaid entry prices shift with promo cycles. Verify current figures before quoting.</div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== VIEW 6: INVESTOR RELATIONS ===================== -->
 <div class="view" id="v-ir">
   <div class="wrap">
     <div class="hero">
@@ -1031,13 +1327,14 @@
 
   // ---- subnav definitions per view ----
   const SUB={
-    brief:[['b-share','Market'],['b-rivals','Rivals'],['b-demo','Demographics'],['b-history','History'],['b-edge','Edge & Risk'],['b-brands','Flanker Brands'],['b-regions','Provincial Map'],['b-fibre','Fibre'],['b-pricelock','5yr Price Lock'],['b-services','All Services'],['b-interchange','Bundle Stickiness']],
-    debt:[['d-lev','Leverage'],['d-card','Balance Sheet'],['d-glide','Glide Path'],['d-take','The Take']],
+    brief:[['b-share','Market'],['b-rivals','Rivals'],['b-demo','Demographics'],['b-history','History'],['b-edge','Edge & Risk'],['b-brands','Flanker Brands'],['b-regions','Provincial Map'],['b-fibre','Fibre'],['b-pricelock','5yr Price Lock'],['b-services','All Services'],['b-interchange','Bundle Stickiness'],['b-cost','Cost of Cellular']],
+    debt:[['d-live','Live Pressure'],['d-lev','Leverage'],['d-card','Balance Sheet'],['d-glide','Glide Path'],['d-take','The Take']],
     play:[['p-reality','Reality'],['p-score','Scorecard'],['p-acq','Acquire'],['p-cac','CAC Model'],['p-beat','Beat Them']],
     network:[['n-flow','Switching Flow'],['n-loyalty','Brand Loyalty'],['n-5g','5G & Spectrum']],
+    coverage:[['cov-live','Live Migration'],['cov-map','Coverage Map'],['cov-merged','Merged Chart'],['cov-reach','Geo vs Population'],['cov-plans','Prepaid vs Postpaid']],
     ir:[['ir-listing','Listing'],['ir-guidance','Guidance'],['ir-calendar','Calendar & Contacts']]
   };
-  const LBL={brief:'Company Brief',debt:'Debt vs Rivals',play:'Growth & M&A',network:'Network & Loyalty',ir:'Investor Relations'};
+  const LBL={brief:'Company Brief',debt:'Debt vs Rivals',play:'Growth & M&A',network:'Network & Loyalty',coverage:'Coverage & Plans',ir:'Investor Relations'};
 
   function buildSub(view){
     const n=$('subnav'); n.innerHTML='';
@@ -1055,6 +1352,71 @@
     root.querySelectorAll('.lfill').forEach(f=>{ if(f.dataset.lev) f.style.width=(parseFloat(f.dataset.lev)/5*100)+'%'; });
   }
 
+  // ---- LIVE DEBT vs EBITDA GAUGES ----
+  const GAUGES=[
+    {name:'TELUS',color:'#7a4fa0',cur:3.4,target:3.0},
+    {name:'Bell',color:'#3a86ff',cur:3.5,target:3.0},
+    {name:'Rogers',color:'#ff5964',cur:3.9,target:3.25}
+  ];
+  let gcv,gctx,gDPR=1,gRAF=null,gT=0,gVals=null;
+  function gResize(){
+    if(!gcv) return;
+    gDPR=window.devicePixelRatio||1;
+    const r=gcv.getBoundingClientRect();
+    gcv.width=r.width*gDPR; gcv.height=r.height*gDPR;
+    gctx.setTransform(gDPR,0,0,gDPR,0,0);
+  }
+  function initGauges(){
+    gcv=$('gaugeCanvas'); if(!gcv) return;
+    gctx=gcv.getContext('2d');
+    gResize();
+    gVals=GAUGES.map(g=>g.cur+0.6);
+    if(gRAF) cancelAnimationFrame(gRAF);
+    gRAF=requestAnimationFrame(gDrawGauges);
+  }
+  function gArc(cx,cy,rad,a0,a1,col,lw){
+    gctx.strokeStyle=col; gctx.lineWidth=lw; gctx.lineCap='round';
+    gctx.beginPath(); gctx.arc(cx,cy,rad,a0,a1); gctx.stroke();
+  }
+  function gDrawGauges(){
+    if(!gcv) return;
+    gT+=0.016;
+    const r=gcv.getBoundingClientRect(), w=r.width, h=r.height;
+    gctx.clearRect(0,0,w,h);
+    const vertical=w<560, n=GAUGES.length;
+    GAUGES.forEach((g,i)=>{
+      const cx = vertical ? w/2 : w*(i+0.5)/n;
+      const cy = vertical ? h*(i+0.5)/n : h*0.60;
+      const rad = Math.min(vertical? w*0.30 : (w/n)*0.34, h*(vertical?0.13:0.34));
+      gVals[i]+=(g.cur-gVals[i])*0.05;
+      const MIN=2.5,MAX=5.0,A0=Math.PI*0.75,A1=Math.PI*2.25;
+      const va=v=>A0+(Math.min(MAX,Math.max(MIN,v))-MIN)/(MAX-MIN)*(A1-A0);
+      gArc(cx,cy,rad,A0,A1,'rgba(125,143,150,0.15)',8);
+      gArc(cx,cy,rad,va(MIN),va(3.25),'rgba(46,196,182,0.5)',8);
+      gArc(cx,cy,rad,va(3.25),va(4.0),'rgba(255,183,3,0.45)',8);
+      gArc(cx,cy,rad,va(4.0),va(MAX),'rgba(255,89,100,0.5)',8);
+      const ta=va(g.target);
+      gctx.strokeStyle='#2ec4b6'; gctx.lineWidth=3;
+      gctx.beginPath(); gctx.moveTo(cx+Math.cos(ta)*(rad-11),cy+Math.sin(ta)*(rad-11)); gctx.lineTo(cx+Math.cos(ta)*(rad+11),cy+Math.sin(ta)*(rad+11)); gctx.stroke();
+      const pulse=1+0.03*Math.sin(gT*3+i), na=va(gVals[i]);
+      gctx.strokeStyle=g.color; gctx.lineWidth=3; gctx.lineCap='round';
+      gctx.beginPath(); gctx.moveTo(cx,cy); gctx.lineTo(cx+Math.cos(na)*rad*0.86*pulse,cy+Math.sin(na)*rad*0.86*pulse); gctx.stroke();
+      const cr=parseInt(g.color.slice(1,3),16),cg=parseInt(g.color.slice(3,5),16),cb=parseInt(g.color.slice(5,7),16);
+      const glow=gctx.createRadialGradient(cx,cy,1,cx,cy,14*pulse);
+      glow.addColorStop(0,'rgba('+cr+','+cg+','+cb+',0.9)'); glow.addColorStop(1,'rgba('+cr+','+cg+','+cb+',0)');
+      gctx.fillStyle=glow; gctx.beginPath(); gctx.arc(cx,cy,14*pulse,0,6.283); gctx.fill();
+      gctx.fillStyle=g.color; gctx.beginPath(); gctx.arc(cx,cy,4,0,6.283); gctx.fill();
+      gctx.fillStyle='#e8f0f2'; gctx.textAlign='center'; gctx.textBaseline='middle';
+      gctx.font='700 24px "Space Grotesk",sans-serif';
+      gctx.fillText(gVals[i].toFixed(2)+'×',cx,cy+rad*0.42);
+      gctx.font='600 12px "IBM Plex Mono",monospace'; gctx.fillStyle=g.color;
+      gctx.fillText(g.name,cx,cy-rad*0.42);
+      gctx.font='600 10px "IBM Plex Mono",monospace'; gctx.fillStyle='#2ec4b6';
+      gctx.fillText('target '+g.target.toFixed(2)+'×',cx,cy+rad*0.42+20);
+    });
+    gRAF=requestAnimationFrame(gDrawGauges);
+  }
+
   // ---- tab switching ----
   const tabs=document.querySelectorAll('.tab');
   function show(view){
@@ -1069,7 +1431,11 @@
     // network view: start visuals; other views: pause the flow loop
     if(view==='network'){ setTimeout(initNetworkView,60); }
     else if(flowRAF){ cancelAnimationFrame(flowRAF); flowRAF=null; }
-    if(view==='brief'){ renderStack(); setTimeout(animateStack,120); }
+    if(view==='coverage'){ setTimeout(initCoverageView,60); }
+    else { if(lRAF){ cancelAnimationFrame(lRAF); lRAF=null; } if(nRAF){ cancelAnimationFrame(nRAF); nRAF=null; } if(mRAF){ cancelAnimationFrame(mRAF); mRAF=null; } }
+    if(view==='debt'){ setTimeout(initGauges,60); }
+    else if(gRAF){ cancelAnimationFrame(gRAF); gRAF=null; }
+    if(view==='brief'){ renderStack(); renderWorld(); setTimeout(()=>{animateStack();animateWorld();},120); }
     $('tabs').classList.remove('open');
   }
   tabs.forEach(t=>t.addEventListener('click',()=>show(t.dataset.view)));
@@ -1281,7 +1647,470 @@
     initFlow();
     setTimeout(()=>{ animateLoyalty(); animate5G(); },120);
   }
-  window.addEventListener('resize',()=>{ if($('v-network').classList.contains('on')) resizeFlow(); });
+  window.addEventListener('resize',()=>{ if($('v-network').classList.contains('on')) resizeFlow(); if($('v-coverage').classList.contains('on')){ lResize(); nResize(); mResize(); } if($('v-debt').classList.contains('on')) gResize(); });
+
+  /* =================================================================
+     COVERAGE & PLANS VISUALS
+     ================================================================= */
+  // ---- TEAMTELUS pride bar ----
+  const PRIDE=[
+    {n:'$0.75',l:'Annual dividend / share · still paying'},
+    {n:'25×',l:'Dividend raises since 2011'},
+    {n:'$1.85B+',l:'Given to communities since 2000'},
+    {n:'~99%',l:'Canadians covered by the network'}
+  ];
+  function renderPride(){
+    const wrap=$('prideBar'); if(!wrap||wrap.dataset.done) return;
+    wrap.innerHTML=PRIDE.map(p=>'<div class="pb"><div class="pbn">'+p.n+'</div><div class="pbl">'+p.l+'</div></div>').join('');
+    wrap.dataset.done='1';
+  }
+
+  // ---- SHARED NATIONAL PULSE ----
+  // One heartbeat the whole map locks onto, so nodes bounce in symmetry as Canada.
+  // Amplitude surges when the subscriber base is actively shifting.
+  const NP={t:0, beat:0, surge:0, lastTotalDelta:0};
+  function nationalPulse(dt){
+    NP.t+=dt*0.05;
+    // base heartbeat: a double-thump cardiac rhythm, not a plain sine
+    const cyc=NP.t%1;
+    let hb=Math.exp(-Math.pow((cyc-0.15)/0.06,2))*1.0      // thump 1
+          + Math.exp(-Math.pow((cyc-0.30)/0.07,2))*0.65;   // thump 2
+    // surge decays; fed by subscriber movement from the live engine
+    NP.surge*=Math.pow(0.94,dt);
+    NP.beat = hb*(1+NP.surge*1.6);
+    return NP.beat;
+  }
+  function feedPulse(amount){ NP.surge=Math.min(2.2, NP.surge+amount); }
+
+
+  // Node clusters approximate major population centres on a stylised Canada.
+  // x,y in 0–1 space (west→east, north→south). tier: coverage strength baseline.
+  const NET_NODES=[
+    {city:'Vancouver',x:0.10,y:0.62,w:1.0},
+    {city:'Victoria',x:0.07,y:0.70,w:0.7},
+    {city:'Calgary',x:0.22,y:0.58,w:0.95},
+    {city:'Edmonton',x:0.22,y:0.48,w:0.95},
+    {city:'Saskatoon',x:0.33,y:0.52,w:0.6},
+    {city:'Regina',x:0.35,y:0.60,w:0.55},
+    {city:'Winnipeg',x:0.43,y:0.60,w:0.7},
+    {city:'Toronto',x:0.62,y:0.72,w:1.0},
+    {city:'Ottawa',x:0.68,y:0.64,w:0.85},
+    {city:'Montreal',x:0.74,y:0.60,w:0.95},
+    {city:'Quebec City',x:0.80,y:0.52,w:0.7},
+    {city:'Halifax',x:0.90,y:0.66,w:0.65},
+    {city:"St John's",x:0.96,y:0.50,w:0.55},
+    {city:'Yellowknife',x:0.26,y:0.22,w:0.35},
+    {city:'Whitehorse',x:0.12,y:0.24,w:0.3}
+  ];
+  // Per-carrier per-region strength weighting (west/central/east/north)
+  const NET_CARRIER={
+    telus:{name:'TELUS',color:'#7a4fa0',west:1.0,central:0.7,east:0.7,north:0.85},
+    bell:{name:'Bell',color:'#3a86ff',west:0.75,central:0.9,east:1.0,north:0.8},
+    rogers:{name:'Rogers',color:'#ff5964',west:0.8,central:1.0,east:0.85,north:0.45},
+    freedom:{name:'Freedom',color:'#2ec4b6',west:0.55,central:0.7,east:0.4,north:0.08}
+  };
+  // Layers: prepaid/postpaid ride same towers; fibre concentrated in West cities.
+  const NET_LAYER={
+    postpaid:{name:'Postpaid',mult:1.0,fibreOnly:false},
+    prepaid:{name:'Prepaid',mult:0.82,fibreOnly:false}
+  };
+  const FIBRE_CITIES={Vancouver:1,Victoria:1,Calgary:1,Edmonton:1,Toronto:0.6,Montreal:0.5,Ottawa:0.5,Winnipeg:0.4,'Quebec City':0.4,Halifax:0.4,Regina:0.5,Saskatoon:0.5};
+  function nodeRegion(x){ return x<0.30?'west':x<0.55?'central':'east'; }
+  let ncv,nctx,nDPR=1,netCarrier='all',netLayer='postpaid',nRAF=null,nT=0,nNodes=[];
+  function netStrength(node,ck){
+    const c=NET_CARRIER[ck||netCarrier], L=NET_LAYER[netLayer];
+    if(!c) return 0;
+    let base = node.y<0.35 ? c.north : c[nodeRegion(node.x)];
+    let s=base*node.w*(L?L.mult:1);
+    if(L&&L.fibreOnly){ s = (FIBRE_CITIES[node.city]||0)*base; }
+    return Math.max(0,Math.min(1,s));
+  }
+  function nMaxStrength(n){ return Math.max(netStrength(n,'telus'),netStrength(n,'bell'),netStrength(n,'rogers'),netStrength(n,'freedom')); }
+  function nResize(){
+    if(!ncv) return;
+    nDPR=window.devicePixelRatio||1;
+    const r=ncv.getBoundingClientRect();
+    ncv.width=r.width*nDPR; ncv.height=r.height*nDPR;
+    nctx.setTransform(nDPR,0,0,nDPR,0,0);
+    nNodes=NET_NODES.map(n=>({...n, px:0.06*r.width+n.x*0.88*r.width, py:0.08*r.height+n.y*0.84*r.height, ph:Math.random()*6.28}));
+    // national centre (weighted heart of the map) + max radius, for symmetric ripple
+    const cx=nNodes.reduce((a,n)=>a+n.px,0)/nNodes.length;
+    const cy=nNodes.reduce((a,n)=>a+n.py,0)/nNodes.length;
+    NP.cx=cx; NP.cy=cy;
+    let mx=0; nNodes.forEach(n=>{ n.dist=Math.hypot(n.px-cx,n.py-cy); if(n.dist>mx)mx=n.dist; });
+    NP.maxDist=mx||1;
+  }
+  function initNetMap(){
+    ncv=$('netCanvas'); if(!ncv) return;
+    nctx=ncv.getContext('2d');
+    nResize();
+    // layer toggle
+    const lt=$('layerToggle'); lt.innerHTML='';
+    Object.entries(NET_LAYER).forEach(([k,L])=>{
+      const b=document.createElement('button'); b.className='tgbtn'+(k===netLayer?' on':''); b.dataset.k=k; b.textContent=L.name;
+      if(k===netLayer) b.style.background='var(--acid)';
+      b.onclick=()=>{ netLayer=k; lt.querySelectorAll('.tgbtn').forEach(x=>{const on=x.dataset.k===k;x.classList.toggle('on',on);x.style.background=on?'var(--acid)':'';}); };
+      lt.appendChild(b);
+    });
+    // carrier toggle — All (merged) first
+    const ct=$('carrierToggle'); ct.innerHTML='';
+    const bgFor=kk=> kk==='all' ? 'linear-gradient(90deg,#7a4fa0,#3a86ff,#ff5964,#2ec4b6)' : NET_CARRIER[kk].color;
+    const opts=[['all',{name:'All'}]].concat(Object.entries(NET_CARRIER));
+    opts.forEach(([k,c])=>{
+      const b=document.createElement('button'); b.className='tgbtn'+(k===netCarrier?' on':''); b.dataset.k=k;
+      b.innerHTML = k==='all'
+        ? '<span class="tgsw" style="background:linear-gradient(90deg,#7a4fa0,#3a86ff,#ff5964,#2ec4b6)"></span>All'
+        : '<span class="tgsw" style="background:'+c.color+'"></span>'+c.name;
+      if(k===netCarrier) b.style.background=bgFor(k);
+      b.onclick=()=>{ netCarrier=k; ct.querySelectorAll('.tgbtn').forEach(x=>{const on=x.dataset.k===k;x.classList.toggle('on',on);x.style.background=on?bgFor(k):'';}); };
+      ct.appendChild(b);
+    });
+    $('covMapLegend').innerHTML='◈ rings inner→outer: TELUS · Bell · Rogers · Freedom · ring weight = strength there';
+    if(nRAF) cancelAnimationFrame(nRAF);
+    nRAF=requestAnimationFrame(nDraw);
+  }
+  function nDraw(){
+    if(!ncv) return;
+    nT+=0.016;
+    const beat=nationalPulse(0.016*60);
+    const r=ncv.getBoundingClientRect(), w=r.width, h=r.height;
+    nctx.clearRect(0,0,w,h);
+    const isAll=(netCarrier==='all');
+    const c=isAll?null:NET_CARRIER[netCarrier];
+    const rgb=isAll?'232,240,242':(parseInt(c.color.slice(1,3),16)+','+parseInt(c.color.slice(3,5),16)+','+parseInt(c.color.slice(5,7),16));
+    // national shockwave from the heart of the map
+    const waveProg=(NP.t*1.0)%1, waveR=waveProg*NP.maxDist*1.35;
+    nctx.strokeStyle='rgba('+rgb+','+((1-waveProg)*0.10*(1+NP.surge))+')';
+    nctx.lineWidth=1.5; nctx.beginPath(); nctx.arc(NP.cx,NP.cy,waveR,0,6.283); nctx.stroke();
+    // mesh links breathe with the beat
+    for(let i=0;i<nNodes.length;i++){
+      for(let j=i+1;j<nNodes.length;j++){
+        const a=nNodes[i],b=nNodes[j];
+        const d=Math.hypot(a.px-b.px,a.py-b.py);
+        if(d<w*0.18){
+          const sa=isAll?nMaxStrength(a):netStrength(a), sb=isAll?nMaxStrength(b):netStrength(b);
+          if(sa>0.25&&sb>0.25){
+            nctx.strokeStyle='rgba('+rgb+','+(0.05*Math.min(sa,sb)*(0.6+beat*0.5))+')';
+            nctx.lineWidth=1; nctx.beginPath(); nctx.moveTo(a.px,a.py); nctx.lineTo(b.px,b.py); nctx.stroke();
+          }
+        }
+      }
+    }
+    const KEYS=['telus','bell','rogers','freedom'];
+    nNodes.forEach(n=>{
+      const delay=(n.dist/NP.maxDist)*0.22;
+      const localBeat=nationalPulseAt(delay);
+      if(isAll){
+        const sAgg=nMaxStrength(n);
+        if(sAgg<=0.02) return;
+        // neutral expanding signal ring on the national clock
+        const prog=(NP.t*1.0)%1;
+        nctx.strokeStyle='rgba(232,240,242,'+((1-prog)*0.22*sAgg*(0.7+localBeat*0.5))+')';
+        nctx.lineWidth=1.2;
+        nctx.beginPath(); nctx.arc(n.px,n.py,(8+sAgg*26)*(0.6+prog*2.0)*(1+localBeat*0.1),0,6.283); nctx.stroke();
+        // four concentric carrier rings — inner→outer TELUS, Bell, Rogers, Freedom
+        let maxS=0;
+        KEYS.forEach((k,ki)=>{
+          const s=netStrength(n,k); if(s<=0.03) return; maxS=Math.max(maxS,s);
+          const col=NET_CARRIER[k].color;
+          const kr=parseInt(col.slice(1,3),16),kg=parseInt(col.slice(3,5),16),kb=parseInt(col.slice(5,7),16);
+          nctx.strokeStyle='rgba('+kr+','+kg+','+kb+','+((0.25+0.6*s)*(0.65+localBeat*0.45))+')';
+          nctx.lineWidth=2+s*1.6;
+          nctx.beginPath(); nctx.arc(n.px,n.py,((6+ki*6)+s*10)*(1+localBeat*0.10),0,6.283); nctx.stroke();
+        });
+        // core + label
+        nctx.fillStyle='rgba(232,240,242,'+(0.5+localBeat*0.4)+')';
+        nctx.beginPath(); nctx.arc(n.px,n.py,2+maxS*2.5,0,6.283); nctx.fill();
+        if(maxS>0.45){
+          nctx.fillStyle='rgba(232,240,242,'+(0.35+maxS*0.5)+')';
+          nctx.font='600 10px "IBM Plex Mono",monospace'; nctx.textAlign='center'; nctx.textBaseline='top';
+          nctx.fillText(n.city,n.px,n.py+40);
+        }
+      } else {
+        const s=netStrength(n);
+        if(s<=0.02) return;
+        const baseR=8+s*30;
+        for(let k=0;k<2;k++){
+          const prog=((NP.t*1.0+k*0.5)%1);
+          const rr=baseR*(0.6+prog*2.2)*(1+localBeat*0.12);
+          const alpha=(1-prog)*0.5*s*(0.7+localBeat*0.5);
+          nctx.strokeStyle='rgba('+rgb+','+alpha+')';
+          nctx.lineWidth=1.5; nctx.beginPath(); nctx.arc(n.px,n.py,rr,0,6.283); nctx.stroke();
+        }
+        const pulse=1+localBeat*0.28;
+        const g=nctx.createRadialGradient(n.px,n.py,1,n.px,n.py,baseR*1.6*pulse);
+        g.addColorStop(0,'rgba('+rgb+','+(0.55*s*(0.7+localBeat*0.5))+')');
+        g.addColorStop(1,'rgba('+rgb+',0)');
+        nctx.fillStyle=g; nctx.beginPath(); nctx.arc(n.px,n.py,baseR*1.6*pulse,0,6.283); nctx.fill();
+        nctx.fillStyle=c.color; nctx.beginPath(); nctx.arc(n.px,n.py,(2.5+s*3)*(1+localBeat*0.35),0,6.283); nctx.fill();
+        if(s>0.45){
+          nctx.fillStyle='rgba(232,240,242,'+(0.35+s*0.5)+')';
+          nctx.font='600 10px "IBM Plex Mono",monospace'; nctx.textAlign='center'; nctx.textBaseline='top';
+          nctx.fillText(n.city,n.px,n.py+baseR*0.6+4);
+        }
+      }
+    });
+    nRAF=requestAnimationFrame(nDraw);
+  }
+  // sample the national pulse at a time offset (for the outward ripple delay)
+  function nationalPulseAt(delay){
+    const cyc=(NP.t-delay)%1; if(cyc<0) return 0;
+    let hb=Math.exp(-Math.pow((cyc-0.15)/0.06,2))*1.0
+          + Math.exp(-Math.pow((cyc-0.30)/0.07,2))*0.65;
+    return hb*(1+NP.surge*1.6);
+  }
+
+  // coverage reach bars
+  const GEO=[['TELUS',37,'#7a4fa0'],['Bell',36,'#3a86ff'],['Rogers',28,'#ff5964'],['Freedom',1.3,'#2ec4b6']];
+  const POP=[['TELUS',99,'#7a4fa0'],['Bell',99,'#3a86ff'],['Rogers',99,'#ff5964'],['Freedom',60,'#2ec4b6']];
+  function renderCovBars(wrapId,data,unit){
+    const wrap=$(wrapId); if(!wrap||wrap.dataset.done) return;
+    const max=Math.max(...data.map(d=>d[1]));
+    wrap.innerHTML='';
+    data.forEach(([co,v,col])=>{
+      const row=document.createElement('div'); row.className='covrow';
+      row.innerHTML='<div class="co">'+co+'</div>'+
+        '<div class="covtrack"><div class="covfill" data-w="'+(v/max*100)+'" style="background:'+col+'"></div></div>'+
+        '<div class="covval" style="color:'+col+'">'+v+'%</div>';
+      wrap.appendChild(row);
+    });
+    wrap.dataset.done='1';
+  }
+  function animateCovBars(){
+    ['geoBars','popBars'].forEach(id=>$(id)?.querySelectorAll('.covfill').forEach((f,i)=>{ f.style.width='0'; setTimeout(()=>f.style.width=f.dataset.w+'%',80+i*70); }));
+  }
+  function initCoverageView(){
+    renderPride();
+    initNetMap();
+    renderCovBars('geoBars',GEO); renderCovBars('popBars',POP);
+    setTimeout(animateCovBars,120);
+    initMerged();
+    initLive();
+  }
+
+  // ---- MERGED ALL-CARRIER CHART (postpaid + prepaid, all at once) ----
+  const MERGED=[
+    {name:'Rogers',color:'#ff5964',post:11.0,pre:1.5},
+    {name:'Bell',color:'#3a86ff',post:9.8,pre:1.3},
+    {name:'TELUS',color:'#7a4fa0',post:9.1,pre:0.9},
+    {name:'Freedom',color:'#2ec4b6',post:1.7,pre:0.6}
+  ];
+  let mcv,mctx,mDPR=1,mRAF=null,mGrow=0;
+  function mResize(){
+    if(!mcv) return;
+    mDPR=window.devicePixelRatio||1;
+    const r=mcv.getBoundingClientRect();
+    mcv.width=r.width*mDPR; mcv.height=r.height*mDPR;
+    mctx.setTransform(mDPR,0,0,mDPR,0,0);
+  }
+  function initMerged(){
+    mcv=$('mergedCanvas'); if(!mcv) return;
+    mctx=mcv.getContext('2d');
+    mResize();
+    mGrow=0;
+    const tot=MERGED.reduce((a,c)=>a+c.post+c.pre,0);
+    const el=$('mergedTotal'); if(el) el.textContent='Big Three + Freedom ≈ '+tot.toFixed(1)+'M of 38.2M';
+    if(mRAF) cancelAnimationFrame(mRAF);
+    mRAF=requestAnimationFrame(mDraw);
+  }
+  function mDraw(){
+    if(!mcv) return;
+    mGrow+=(1-mGrow)*0.06;
+    const beat = (typeof NP!=='undefined') ? (0.5+NP.beat*0.5) : 1;
+    const r=mcv.getBoundingClientRect(), w=r.width, h=r.height;
+    mctx.clearRect(0,0,w,h);
+    const padL=44,padR=20,padT=24,padB=42;
+    const plot=h-padT-padB, plotW=w-padL-padR;
+    const maxV=13; // M subs ceiling
+    // y gridlines
+    mctx.strokeStyle='rgba(125,143,150,0.12)'; mctx.fillStyle='#54646b';
+    mctx.font='600 10px "IBM Plex Mono",monospace'; mctx.textAlign='right'; mctx.textBaseline='middle';
+    for(let v=0;v<=12;v+=3){
+      const y=padT+plot-(v/maxV)*plot;
+      mctx.beginPath(); mctx.moveTo(padL,y); mctx.lineTo(w-padR,y); mctx.stroke();
+      mctx.fillText(v+'M',padL-8,y);
+    }
+    const n=MERGED.length, slot=plotW/n, bw=Math.min(slot*0.5,90);
+    MERGED.forEach((c,i)=>{
+      const cx=padL+slot*(i+0.5);
+      const postH=(c.post/maxV)*plot*mGrow;
+      const preH=(c.pre/maxV)*plot*mGrow;
+      const x=cx-bw/2, yBase=padT+plot;
+      const cr=parseInt(c.color.slice(1,3),16),cg=parseInt(c.color.slice(3,5),16),cb=parseInt(c.color.slice(5,7),16);
+      // postpaid (solid, breathes with beat)
+      const gb=0.82+0.18*beat;
+      mctx.fillStyle='rgba('+cr+','+cg+','+cb+','+gb+')';
+      mctx.fillRect(x,yBase-postH,bw,postH);
+      // prepaid (hatched) stacked on top
+      const preY=yBase-postH-preH;
+      mctx.fillStyle='rgba('+cr+','+cg+','+cb+',0.28)';
+      mctx.fillRect(x,preY,bw,preH);
+      mctx.save();
+      mctx.beginPath(); mctx.rect(x,preY,bw,preH); mctx.clip();
+      mctx.strokeStyle='rgba('+cr+','+cg+','+cb+',0.9)'; mctx.lineWidth=1.5;
+      for(let hx=-bw;hx<bw+preH;hx+=7){ mctx.beginPath(); mctx.moveTo(x+hx,preY+preH); mctx.lineTo(x+hx+preH,preY); mctx.stroke(); }
+      mctx.restore();
+      // top cap glow on the beat
+      mctx.fillStyle='rgba('+cr+','+cg+','+cb+','+(0.3*beat)+')';
+      mctx.fillRect(x,preY-2,bw,2);
+      // labels
+      const total=c.post+c.pre;
+      mctx.fillStyle='#e8f0f2'; mctx.textAlign='center'; mctx.textBaseline='bottom';
+      mctx.font='700 15px "Space Grotesk",sans-serif';
+      if(mGrow>0.6) mctx.fillText(total.toFixed(1)+'M',cx,preY-8);
+      mctx.fillStyle=c.color; mctx.font='600 12px "IBM Plex Mono",monospace'; mctx.textBaseline='top';
+      mctx.fillText(c.name,cx,yBase+8);
+      // split detail under name
+      mctx.fillStyle='#54646b'; mctx.font='600 9px "IBM Plex Mono",monospace';
+      mctx.fillText(c.post.toFixed(1)+' post · '+c.pre.toFixed(1)+' pre',cx,yBase+24);
+    });
+    mRAF=requestAnimationFrame(mDraw);
+  }
+
+  /* ---- LIVE SUBSCRIBER MIGRATION ENGINE ---- */
+  const LIVE={
+    telus:{name:'TELUS',color:'#7a4fa0',subs:10.0,base:10.0},
+    rogers:{name:'Rogers',color:'#ff5964',subs:12.1,base:12.1},
+    bell:{name:'Bell',color:'#3a86ff',subs:10.4,base:10.4},
+    freedom:{name:'Freedom',color:'#2ec4b6',subs:2.0,base:2.0}
+  };
+  // net migration routes [from,to,rate] — rate = relative particle spawn weight
+  const LROUTES=[
+    ['rogers','freedom',9],['bell','freedom',7],['telus','freedom',3.5],
+    ['rogers','telus',5],['bell','telus',4.5],['rogers','bell',3],['bell','rogers',3],
+    ['telus','rogers',2],['freedom','telus',2.5],['freedom','bell',1.5]
+  ];
+  let lcv,lctx,lDPR=1,lNodes={},lParts=[],lRAF=null,lFilter=null,lSpeed=1,lAcc=0,lLast=0;
+  function lLayout(w,h){
+    lNodes={
+      telus:{x:w*0.28,y:h*0.35,ph:Math.random()*6.28},
+      rogers:{x:w*0.72,y:h*0.30,ph:Math.random()*6.28},
+      bell:{x:w*0.70,y:h*0.70,ph:Math.random()*6.28},
+      freedom:{x:w*0.30,y:h*0.72,ph:Math.random()*6.28}
+    };
+  }
+  function lRadius(k){ return 16+Math.sqrt(LIVE[k].subs)*8; }
+  function lResize(){
+    if(!lcv) return;
+    lDPR=window.devicePixelRatio||1;
+    const r=lcv.getBoundingClientRect();
+    lcv.width=r.width*lDPR; lcv.height=r.height*lDPR;
+    lctx.setTransform(lDPR,0,0,lDPR,0,0);
+    lLayout(r.width,r.height);
+  }
+  function lSpawn(route){
+    const [f,t]=route, a=lNodes[f], b=lNodes[t];
+    if(!a||!b) return null;
+    const rr=lRadius(f);
+    return {f,t,x:a.x+(Math.random()-0.5)*rr,y:a.y+(Math.random()-0.5)*rr,
+      tt:0,dur:120+Math.random()*90,size:1.3+Math.random()*2.2,
+      ctrl:{x:(a.x+b.x)/2+(Math.random()-0.5)*160,y:(a.y+b.y)/2+(Math.random()-0.5)*160}};
+  }
+  function initLive(){
+    lcv=$('liveCanvas'); if(!lcv) return;
+    lctx=lcv.getContext('2d');
+    lResize();
+    Object.keys(LIVE).forEach(k=>LIVE[k].subs=LIVE[k].base);
+    lParts=[];
+    // HUD
+    const hud=$('liveHud'); hud.innerHTML='';
+    Object.entries(LIVE).forEach(([k,c])=>{
+      const d=document.createElement('div'); d.className='hcard'; d.dataset.k=k;
+      d.innerHTML='<span class="hsw" style="background:'+c.color+'"></span><span class="hname">'+c.name+'</span><span class="hnum" data-num="'+k+'" style="color:'+c.color+'">'+c.subs.toFixed(2)+'M</span>';
+      d.onclick=()=>{ lFilter=(lFilter===k)?null:k;
+        hud.querySelectorAll('.hcard').forEach(x=>{ x.classList.toggle('active',x.dataset.k===lFilter); x.classList.toggle('dim',lFilter&&x.dataset.k!==lFilter); });
+      };
+      hud.appendChild(d);
+    });
+    // speed
+    $('.lsbtn'); document.querySelectorAll('.lsbtn').forEach(b=>{
+      b.onclick=()=>{ lSpeed=parseFloat(b.dataset.sp); document.querySelectorAll('.lsbtn').forEach(x=>x.classList.toggle('on',x===b)); };
+    });
+    if(lRAF) cancelAnimationFrame(lRAF);
+    lLast=performance.now();
+    lRAF=requestAnimationFrame(lTick);
+  }
+  function lTick(now){
+    const dt=Math.min((now-lLast)/16.67,3)*lSpeed; lLast=now;
+    lStep(dt); lDraw();
+    lRAF=requestAnimationFrame(lTick);
+  }
+  function lStep(dt){
+    // spawn
+    lAcc+=dt;
+    if(lAcc>2){ lAcc=0;
+      LROUTES.forEach(rt=>{ if(Math.random()<rt[2]/28*lSpeed){ const p=lSpawn(rt); if(p) lParts.push(p); } });
+    }
+    // move
+    for(let i=lParts.length-1;i>=0;i--){
+      const p=lParts[i]; p.tt+=dt/p.dur;
+      if(p.tt>=1){
+        // arrival: shift subscriber mass a touch
+        LIVE[p.t].subs=Math.min(LIVE[p.t].base*1.25, LIVE[p.t].subs+0.004);
+        LIVE[p.f].subs=Math.max(LIVE[p.f].base*0.80, LIVE[p.f].subs-0.004);
+        feedPulse(0.02); // every subscriber landing feeds the national heartbeat
+        lParts.splice(i,1);
+      }
+    }
+    // gentle pull back toward base so it stays bounded
+    Object.keys(LIVE).forEach(k=>{ LIVE[k].subs+=(LIVE[k].base-LIVE[k].subs)*0.0009*dt; });
+    if(lParts.length>900) lParts.splice(0,lParts.length-900);
+  }
+  function lBez(a,c,b,t){ const u=1-t; return {x:u*u*a.x+2*u*t*c.x+t*t*b.x, y:u*u*a.y+2*u*t*c.y+t*t*b.y}; }
+  function lDraw(){
+    if(!lcv) return;
+    const r=lcv.getBoundingClientRect(), w=r.width, h=r.height, t=performance.now()/1000;
+    lctx.clearRect(0,0,w,h);
+    // faint routes
+    LROUTES.forEach(rt=>{
+      if(lFilter&&rt[0]!==lFilter&&rt[1]!==lFilter) return;
+      const a=lNodes[rt[0]],b=lNodes[rt[1]]; if(!a||!b) return;
+      lctx.strokeStyle='rgba(125,143,150,0.07)'; lctx.lineWidth=1;
+      lctx.beginPath(); lctx.moveTo(a.x,a.y); lctx.lineTo(b.x,b.y); lctx.stroke();
+    });
+    // particles
+    lParts.forEach(p=>{
+      const a=lNodes[p.f],b=lNodes[p.t]; if(!a||!b) return;
+      const pos=lBez(a,p.ctrl,b,p.tt);
+      const dim=lFilter&&p.f!==lFilter&&p.t!==lFilter;
+      lctx.globalAlpha=dim?0.05:(0.35+0.55*Math.sin(p.tt*Math.PI));
+      lctx.fillStyle=LIVE[p.f].color;
+      lctx.beginPath(); lctx.arc(pos.x,pos.y,p.size,0,6.283); lctx.fill();
+    });
+    lctx.globalAlpha=1;
+    // orbs
+    Object.entries(lNodes).forEach(([k,n])=>{
+      const c=LIVE[k], active=!lFilter||lFilter===k;
+      const pulse=1+0.04*Math.sin(t*2+n.ph);
+      const rad=lRadius(k)*pulse;
+      lctx.globalAlpha=active?1:0.25;
+      // halo
+      const g=lctx.createRadialGradient(n.x,n.y,rad*0.3,n.x,n.y,rad*2.2);
+      g.addColorStop(0,c.color+'55'); g.addColorStop(1,'rgba(0,0,0,0)');
+      lctx.fillStyle=g; lctx.beginPath(); lctx.arc(n.x,n.y,rad*2.2,0,6.283); lctx.fill();
+      // ring
+      lctx.strokeStyle=c.color; lctx.lineWidth=2;
+      lctx.beginPath(); lctx.arc(n.x,n.y,rad,0,6.283); lctx.stroke();
+      // core
+      lctx.fillStyle=c.color+'22'; lctx.beginPath(); lctx.arc(n.x,n.y,rad,0,6.283); lctx.fill();
+      // label
+      lctx.globalAlpha=active?1:0.4;
+      lctx.fillStyle='#e8f0f2'; lctx.textAlign='center'; lctx.textBaseline='middle';
+      lctx.font='600 13px "Space Grotesk",sans-serif';
+      lctx.fillText(c.name,n.x,n.y-4);
+      lctx.font='600 11px "IBM Plex Mono",monospace'; lctx.fillStyle=c.color;
+      lctx.fillText(c.subs.toFixed(2)+'M',n.x,n.y+12);
+    });
+    lctx.globalAlpha=1;
+    // update HUD counters
+    Object.keys(LIVE).forEach(k=>{
+      const el=document.querySelector('.hnum[data-num="'+k+'"]');
+      if(el){ const v=LIVE[k].subs, d=v-LIVE[k].base;
+        el.textContent=v.toFixed(2)+'M';
+        el.style.color = d>0.03 ? '#2ec4b6' : d<-0.03 ? '#ff5964' : LIVE[k].color;
+      }
+    });
+  }
 
   // ---- services bundle stickiness stack ----
   const STACK=[
@@ -1307,11 +2136,41 @@
     $('stackViz')?.querySelectorAll('.stackfill').forEach((f,i)=>{ f.style.width='0'; setTimeout(()=>f.style.width=f.dataset.w+'%',80+i*90); });
   }
 
+  // ---- world cost of data bars ----
+  const WORLD=[
+    {c:'🇿🇼 Zimbabwe',v:60.00,col:'#ff5964'},
+    {c:'🇨🇭 Switzerland',v:9.99,col:'#ff5964'},
+    {c:'🇺🇸 USA',v:8.22,col:'#ffb703'},
+    {c:'🇨🇦 Canada',v:7.36,col:'#7a4fa0'},
+    {c:'🇰🇷 S. Korea',v:5.00,col:'#ffb703'},
+    {c:'🇬🇧 UK',v:0.79,col:'#2ec4b6'},
+    {c:'🇫🇷 France',v:0.28,col:'#2ec4b6'},
+    {c:'🇮🇹 Italy',v:0.12,col:'#2ec4b6'}
+  ];
+  function renderWorld(){
+    const wrap=$('worldCost'); if(!wrap||wrap.dataset.done) return;
+    const max=Math.max(...WORLD.map(w=>w.v));
+    wrap.innerHTML='';
+    WORLD.forEach(w=>{
+      const row=document.createElement('div'); row.className='wcrow';
+      const hl=w.c.includes('Canada');
+      row.innerHTML='<div class="cty" style="'+(hl?'color:var(--telus-2)':'')+'">'+w.c+'</div>'+
+        '<div class="wctrack"><div class="wcfill" data-w="'+(w.v/max*100)+'" style="background:'+w.col+'"></div></div>'+
+        '<div class="wcval" style="color:'+w.col+'">$'+w.v.toFixed(2)+'</div>';
+      wrap.appendChild(row);
+    });
+    wrap.dataset.done='1';
+  }
+  function animateWorld(){
+    $('worldCost')?.querySelectorAll('.wcfill').forEach((f,i)=>{ f.style.width='0'; setTimeout(()=>f.style.width=f.dataset.w+'%',80+i*70); });
+  }
+
   // ---- init ----
   buildSub('brief');
   calc();
   renderStack();
-  setTimeout(()=>{ animateBars($('v-brief')); animateStack(); },200);
+  renderWorld();
+  setTimeout(()=>{ animateBars($('v-brief')); animateStack(); animateWorld(); },200);
 </script>
 </body>
 </html>
