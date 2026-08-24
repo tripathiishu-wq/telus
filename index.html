@@ -327,6 +327,59 @@
   .mergedlegend .msw.hatch{background:repeating-linear-gradient(45deg,var(--mute) 0 2px,transparent 2px 4px);border:1px solid var(--line)}
   .mergedlegend .mtot{margin-left:auto;color:var(--acid);font-weight:600}
 
+  /* dominance scatter */
+  .domwrap{position:relative;background:radial-gradient(ellipse at 70% 25%,#12181d 0%,#0a0d0f 82%);border:1px solid var(--line);border-radius:4px;padding:14px}
+  #domCanvas{display:block;width:100%;height:520px}
+  @media(max-width:640px){#domCanvas{height:440px}}
+  .domtip{position:absolute;pointer-events:none;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:9px 12px;font-family:'IBM Plex Mono';font-size:11px;color:var(--ink);opacity:0;transition:opacity .12s;white-space:nowrap;z-index:6;line-height:1.6}
+  .domtip.show{opacity:1}
+  .domtip b{font-family:'Space Grotesk';font-size:13px}
+  .domkey{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-family:'IBM Plex Mono';font-size:11px;color:var(--mute)}
+  .domkey span{display:inline-flex;align-items:center;gap:6px}
+  .domkey .ks{width:11px;height:11px;border-radius:50%}
+
+  /* spectrum penetration */
+  .specwrap{position:relative;background:radial-gradient(ellipse at 50% 20%,#12181d 0%,#0a0d0f 82%);border:1px solid var(--line);border-radius:4px;padding:14px}
+  #specCanvas{display:block;width:100%;height:440px}
+  @media(max-width:640px){#specCanvas{height:400px}}
+  .spectip{position:absolute;pointer-events:none;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:9px 12px;font-family:'IBM Plex Mono';font-size:11px;color:var(--ink);opacity:0;transition:opacity .12s;white-space:nowrap;z-index:6;line-height:1.6}
+  .spectip.show{opacity:1}
+  .spectip b{font-family:'Space Grotesk';font-size:13px}
+  .speckey{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-family:'IBM Plex Mono';font-size:11px;color:var(--mute)}
+  .speckey span{display:inline-flex;align-items:center;gap:6px}
+  .speckey .ks{width:11px;height:11px;border-radius:2px}
+
+  /* provincial dominance */
+  .provwrap{position:relative;background:radial-gradient(ellipse at 30% 20%,#12181d 0%,#0a0d0f 82%);border:1px solid var(--line);border-radius:4px;padding:16px}
+  #provCanvas{display:block;width:100%;height:560px}
+  @media(max-width:640px){#provCanvas{height:620px}}
+  .provtip{position:absolute;pointer-events:none;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:9px 12px;font-family:'IBM Plex Mono';font-size:11px;color:var(--ink);opacity:0;transition:opacity .12s;white-space:nowrap;z-index:6;line-height:1.6}
+  .provtip.show{opacity:1}
+  .provtip b{font-family:'Space Grotesk';font-size:13px}
+  .provkey{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-family:'IBM Plex Mono';font-size:11px;color:var(--mute)}
+  .provkey span{display:inline-flex;align-items:center;gap:6px}
+  .provkey .ks{width:11px;height:11px;border-radius:2px}
+
+  /* air-dominance signal waves */
+  .sigtabs{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+  .sigtabrow{display:flex;gap:6px;flex-wrap:wrap}
+  .sigtab{font-family:'IBM Plex Mono';font-size:12px;color:var(--mute);background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:7px 15px;cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:7px}
+  .sigtab:hover{color:var(--ink)}
+  .sigtab.on{color:#0a0d0f;font-weight:600}
+  .sigtab .ts{width:9px;height:9px;border-radius:50%}
+  .sigwrap{position:relative;background:radial-gradient(ellipse at 50% 0%,#12181d 0%,#0a0d0f 84%);border:1px solid var(--line);border-radius:4px;padding:14px}
+  #sigCanvas{display:block;width:100%;height:560px}
+  @media(max-width:640px){#sigCanvas{height:640px}}
+  .sigtip{position:absolute;pointer-events:none;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:9px 12px;font-family:'IBM Plex Mono';font-size:11px;color:var(--ink);opacity:0;transition:opacity .12s;white-space:nowrap;z-index:6;line-height:1.6}
+  .sigtip.show{opacity:1}
+  .sigtip b{font-family:'Space Grotesk';font-size:13px}
+  .sigspec{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .sigspec .sc{flex:1;min-width:120px;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:10px 12px;border-top:2px solid var(--line)}
+  .sigspec .scn{font-family:'Space Grotesk';font-weight:600;font-size:13px}
+  .sigspec .scm{font-family:'IBM Plex Mono';font-size:11px;color:var(--mute);margin-top:3px}
+  .sigspec .scbar{height:5px;background:var(--panel-2);border-radius:3px;margin-top:8px;overflow:hidden}
+  .sigspec .scfill{height:100%;border-radius:3px;transition:width .8s cubic-bezier(.2,.7,.2,1)}
+
   footer{padding:40px 0 60px}
   .src{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);line-height:1.9}
   .src a{color:var(--mute)}
@@ -1084,22 +1137,21 @@
     </div>
   </section>
 
-  <!-- LIVE NETWORK COVERAGE -->
+  <!-- AIR DOMINANCE (spectrum × signal, merged) -->
   <section id="cov-map">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--acid)">02</span><h2>Live network coverage — greater mode</h2><span class="sub">big 3 + freedom · all at once</span></div>
-      <p class="intro">All four carriers on one map, all the time. Every city renders four concentric rings — TELUS purple, Bell blue, Rogers red, Freedom teal — ring weight is that carrier's strength there. Two layers only: <b>postpaid vs prepaid</b>. Tap a single carrier to isolate; tap All to merge back. The nation still beats as one.</p>
-      <div class="covmapwrap">
-        <div class="covmaptoggles">
-          <div class="togglegroup" id="layerToggle"></div>
-          <div class="togglegroup" id="carrierToggle"></div>
-        </div>
-        <div class="covmapstage">
-          <canvas id="netCanvas"></canvas>
-          <div class="covmaplegend" id="covMapLegend"></div>
-        </div>
+      <div class="shead"><span class="sno" style="color:var(--acid)">02</span><h2>Air dominance — live signal × spectrum by province</h2><span class="sub">MHz-weighted signal · prepaid + postpaid</span></div>
+      <p class="intro">One greater view: each province emits a live signal wave whose <b>strength blends market dominance with the spectrum that carrier actually holds</b> — more MHz = a taller, denser, faster wave that carries more energy. Pick a carrier tab to watch its air light up province by province with its spectrum footprint, or Overall to see every carrier stacked. Flip prepaid/postpaid. The leader's wave pulses brightest, and its MHz shows on the right.</p>
+      <div class="sigtabs">
+        <div class="sigtabrow" id="sigCarrierTabs"></div>
+        <div class="sigtabrow" id="sigModeTabs"></div>
       </div>
-      <div class="note">◈ Stylised motion schematic — node positions approximate major population centres, not survey-grade signal data. All-mode rings show each carrier's relative strength per city (TELUS/Bell strongest West/East via their shared rural network, Rogers widest, Freedom urban-only). Prepaid and postpaid run the <em>same towers</em> — the layer difference reflects where each brand actively sells, not real coverage gaps. For actual signal checks use each carrier's coverage tool or Opensignal.</div>
+      <div class="sigwrap">
+        <canvas id="sigCanvas"></canvas>
+        <div class="sigtip" id="sigTip"></div>
+      </div>
+      <div class="sigspec" id="sigSpec"></div>
+      <div class="note">◈ <b>Signal strength = market dominance × spectrum held</b>, a visual metaphor for air dominance, not literal RF telemetry. Spectrum (ISED, Nov 2023 3800 MHz auction + 2024 3500 MHz holdings): TELUS ~100 MHz contiguous mid-band across 96% of Canada — single-radio deployment where Bell/Rogers need carrier aggregation; Rogers 40.5 MHz of 3800; Bell 100 MHz combined across ~99% pop; SaskTel + Quebecor hold regional spectrum. Flankers and prepaid brands own <em>no spectrum</em> — Koodo/Public ride TELUS, Fido/Chatr ride Rogers, Virgin/Lucky ride Bell, Fizz rides Videotron. Provincial strengths are 2020–2025 blended estimates from CRTC + market data. Prepaid reweights toward discount brands. Verify against CRTC + ISED before quoting.</div>
     </div>
   </section>
 
@@ -1331,7 +1383,7 @@
     debt:[['d-live','Live Pressure'],['d-lev','Leverage'],['d-card','Balance Sheet'],['d-glide','Glide Path'],['d-take','The Take']],
     play:[['p-reality','Reality'],['p-score','Scorecard'],['p-acq','Acquire'],['p-cac','CAC Model'],['p-beat','Beat Them']],
     network:[['n-flow','Switching Flow'],['n-loyalty','Brand Loyalty'],['n-5g','5G & Spectrum']],
-    coverage:[['cov-live','Live Migration'],['cov-map','Coverage Map'],['cov-merged','Merged Chart'],['cov-reach','Geo vs Population'],['cov-plans','Prepaid vs Postpaid']],
+    coverage:[['cov-live','Live Migration'],['cov-map','Air Dominance'],['cov-merged','Merged Chart'],['cov-reach','Geo vs Population'],['cov-plans','Prepaid vs Postpaid']],
     ir:[['ir-listing','Listing'],['ir-guidance','Guidance'],['ir-calendar','Calendar & Contacts']]
   };
   const LBL={brief:'Company Brief',debt:'Debt vs Rivals',play:'Growth & M&A',network:'Network & Loyalty',coverage:'Coverage & Plans',ir:'Investor Relations'};
@@ -1432,7 +1484,7 @@
     if(view==='network'){ setTimeout(initNetworkView,60); }
     else if(flowRAF){ cancelAnimationFrame(flowRAF); flowRAF=null; }
     if(view==='coverage'){ setTimeout(initCoverageView,60); }
-    else { if(lRAF){ cancelAnimationFrame(lRAF); lRAF=null; } if(nRAF){ cancelAnimationFrame(nRAF); nRAF=null; } if(mRAF){ cancelAnimationFrame(mRAF); mRAF=null; } }
+    else { if(lRAF){ cancelAnimationFrame(lRAF); lRAF=null; } if(sigRAF){ cancelAnimationFrame(sigRAF); sigRAF=null; } if(mRAF){ cancelAnimationFrame(mRAF); mRAF=null; } }
     if(view==='debt'){ setTimeout(initGauges,60); }
     else if(gRAF){ cancelAnimationFrame(gRAF); gRAF=null; }
     if(view==='brief'){ renderStack(); renderWorld(); setTimeout(()=>{animateStack();animateWorld();},120); }
@@ -1683,174 +1735,157 @@
   function feedPulse(amount){ NP.surge=Math.min(2.2, NP.surge+amount); }
 
 
-  // Node clusters approximate major population centres on a stylised Canada.
-  // x,y in 0–1 space (west→east, north→south). tier: coverage strength baseline.
-  const NET_NODES=[
-    {city:'Vancouver',x:0.10,y:0.62,w:1.0},
-    {city:'Victoria',x:0.07,y:0.70,w:0.7},
-    {city:'Calgary',x:0.22,y:0.58,w:0.95},
-    {city:'Edmonton',x:0.22,y:0.48,w:0.95},
-    {city:'Saskatoon',x:0.33,y:0.52,w:0.6},
-    {city:'Regina',x:0.35,y:0.60,w:0.55},
-    {city:'Winnipeg',x:0.43,y:0.60,w:0.7},
-    {city:'Toronto',x:0.62,y:0.72,w:1.0},
-    {city:'Ottawa',x:0.68,y:0.64,w:0.85},
-    {city:'Montreal',x:0.74,y:0.60,w:0.95},
-    {city:'Quebec City',x:0.80,y:0.52,w:0.7},
-    {city:'Halifax',x:0.90,y:0.66,w:0.65},
-    {city:"St John's",x:0.96,y:0.50,w:0.55},
-    {city:'Yellowknife',x:0.26,y:0.22,w:0.35},
-    {city:'Whitehorse',x:0.12,y:0.24,w:0.3}
+  // ---- AIR DOMINANCE: LIVE SIGNAL WAVES × SPECTRUM BY PROVINCE ----
+  const SIG_C={telus:'#7a4fa0',bell:'#3a86ff',rogers:'#ff5964',quebecor:'#ffb703',sasktel:'#2ec4b6',eastlink:'#e8f0f2'};
+  const SIG_NAME={telus:'TELUS',bell:'Bell',rogers:'Rogers',quebecor:'Quebecor',sasktel:'SaskTel',eastlink:'Eastlink'};
+  // total mid+low MHz held (ISED 2023-24) → normalised spectrum weight 0-1
+  const SIG_MHZ={telus:143,bell:140,rogers:143,quebecor:95,sasktel:85,eastlink:40};
+  const SIG_MHZMAX=143;
+  function specWeight(car){ return 0.55+0.45*((SIG_MHZ[car]||0)/SIG_MHZMAX); } // spectrum enriches the wave
+  // per province, per carrier: [postpaid strength, prepaid strength] 0-1
+  const SIGP=[
+    {p:'British Columbia',s:{telus:[0.95,0.85],rogers:[0.72,0.80],bell:[0.55,0.5],quebecor:[0.30,0.45],sasktel:[0,0],eastlink:[0,0]}},
+    {p:'Alberta',s:{telus:[1.0,0.9],rogers:[0.62,0.72],bell:[0.45,0.42],quebecor:[0.28,0.40],sasktel:[0,0],eastlink:[0,0]}},
+    {p:'Saskatchewan',s:{telus:[0.20,0.18],rogers:[0.50,0.55],bell:[0.42,0.40],quebecor:[0,0],sasktel:[1.0,0.95],eastlink:[0,0]}},
+    {p:'Manitoba',s:{telus:[0.35,0.33],rogers:[0.72,0.78],bell:[0.90,0.80],quebecor:[0.15,0.25],sasktel:[0,0],eastlink:[0,0]}},
+    {p:'Ontario',s:{telus:[0.48,0.45],rogers:[1.0,0.92],bell:[0.66,0.60],quebecor:[0.40,0.55],sasktel:[0,0],eastlink:[0,0]}},
+    {p:'Quebec',s:{telus:[0.46,0.42],rogers:[0.30,0.38],bell:[0.80,0.72],quebecor:[0.85,0.90],sasktel:[0,0],eastlink:[0,0]}},
+    {p:'Atlantic',s:{telus:[0.30,0.28],rogers:[0.56,0.60],bell:[0.95,0.85],quebecor:[0,0],sasktel:[0,0],eastlink:[0.55,0.62]}},
+    {p:'Territories',s:{telus:[0.72,0.60],rogers:[0.10,0.12],bell:[1.0,0.80],quebecor:[0,0],sasktel:[0,0],eastlink:[0,0]}}
   ];
-  // Per-carrier per-region strength weighting (west/central/east/north)
-  const NET_CARRIER={
-    telus:{name:'TELUS',color:'#7a4fa0',west:1.0,central:0.7,east:0.7,north:0.85},
-    bell:{name:'Bell',color:'#3a86ff',west:0.75,central:0.9,east:1.0,north:0.8},
-    rogers:{name:'Rogers',color:'#ff5964',west:0.8,central:1.0,east:0.85,north:0.45},
-    freedom:{name:'Freedom',color:'#2ec4b6',west:0.55,central:0.7,east:0.4,north:0.08}
-  };
-  // Layers: prepaid/postpaid ride same towers; fibre concentrated in West cities.
-  const NET_LAYER={
-    postpaid:{name:'Postpaid',mult:1.0,fibreOnly:false},
-    prepaid:{name:'Prepaid',mult:0.82,fibreOnly:false}
-  };
-  const FIBRE_CITIES={Vancouver:1,Victoria:1,Calgary:1,Edmonton:1,Toronto:0.6,Montreal:0.5,Ottawa:0.5,Winnipeg:0.4,'Quebec City':0.4,Halifax:0.4,Regina:0.5,Saskatoon:0.5};
-  function nodeRegion(x){ return x<0.30?'west':x<0.55?'central':'east'; }
-  let ncv,nctx,nDPR=1,netCarrier='all',netLayer='postpaid',nRAF=null,nT=0,nNodes=[];
-  function netStrength(node,ck){
-    const c=NET_CARRIER[ck||netCarrier], L=NET_LAYER[netLayer];
-    if(!c) return 0;
-    let base = node.y<0.35 ? c.north : c[nodeRegion(node.x)];
-    let s=base*node.w*(L?L.mult:1);
-    if(L&&L.fibreOnly){ s = (FIBRE_CITIES[node.city]||0)*base; }
-    return Math.max(0,Math.min(1,s));
+  const SIG_CARRIERS=['overall','telus','bell','rogers','quebecor','sasktel','eastlink'];
+  let sigcv,sigctx,sigDPR=1,sigRAF=null,sigT=0,sigCar='overall',sigMode='postpaid',sigHover=-1,sigRows=[];
+  function sigStrength(prov,car){ const v=prov.s[car]; return v?(sigMode==='postpaid'?v[0]:v[1]):0; }
+  function sigResize(){
+    if(!sigcv) return;
+    sigDPR=window.devicePixelRatio||1;
+    const r=sigcv.getBoundingClientRect();
+    sigcv.width=r.width*sigDPR; sigcv.height=r.height*sigDPR;
+    sigctx.setTransform(sigDPR,0,0,sigDPR,0,0);
   }
-  function nMaxStrength(n){ return Math.max(netStrength(n,'telus'),netStrength(n,'bell'),netStrength(n,'rogers'),netStrength(n,'freedom')); }
-  function nResize(){
-    if(!ncv) return;
-    nDPR=window.devicePixelRatio||1;
-    const r=ncv.getBoundingClientRect();
-    ncv.width=r.width*nDPR; ncv.height=r.height*nDPR;
-    nctx.setTransform(nDPR,0,0,nDPR,0,0);
-    nNodes=NET_NODES.map(n=>({...n, px:0.06*r.width+n.x*0.88*r.width, py:0.08*r.height+n.y*0.84*r.height, ph:Math.random()*6.28}));
-    // national centre (weighted heart of the map) + max radius, for symmetric ripple
-    const cx=nNodes.reduce((a,n)=>a+n.px,0)/nNodes.length;
-    const cy=nNodes.reduce((a,n)=>a+n.py,0)/nNodes.length;
-    NP.cx=cx; NP.cy=cy;
-    let mx=0; nNodes.forEach(n=>{ n.dist=Math.hypot(n.px-cx,n.py-cy); if(n.dist>mx)mx=n.dist; });
-    NP.maxDist=mx||1;
-  }
-  function initNetMap(){
-    ncv=$('netCanvas'); if(!ncv) return;
-    nctx=ncv.getContext('2d');
-    nResize();
-    // layer toggle
-    const lt=$('layerToggle'); lt.innerHTML='';
-    Object.entries(NET_LAYER).forEach(([k,L])=>{
-      const b=document.createElement('button'); b.className='tgbtn'+(k===netLayer?' on':''); b.dataset.k=k; b.textContent=L.name;
-      if(k===netLayer) b.style.background='var(--acid)';
-      b.onclick=()=>{ netLayer=k; lt.querySelectorAll('.tgbtn').forEach(x=>{const on=x.dataset.k===k;x.classList.toggle('on',on);x.style.background=on?'var(--acid)':'';}); };
-      lt.appendChild(b);
-    });
-    // carrier toggle — All (merged) first
-    const ct=$('carrierToggle'); ct.innerHTML='';
-    const bgFor=kk=> kk==='all' ? 'linear-gradient(90deg,#7a4fa0,#3a86ff,#ff5964,#2ec4b6)' : NET_CARRIER[kk].color;
-    const opts=[['all',{name:'All'}]].concat(Object.entries(NET_CARRIER));
-    opts.forEach(([k,c])=>{
-      const b=document.createElement('button'); b.className='tgbtn'+(k===netCarrier?' on':''); b.dataset.k=k;
-      b.innerHTML = k==='all'
-        ? '<span class="tgsw" style="background:linear-gradient(90deg,#7a4fa0,#3a86ff,#ff5964,#2ec4b6)"></span>All'
-        : '<span class="tgsw" style="background:'+c.color+'"></span>'+c.name;
-      if(k===netCarrier) b.style.background=bgFor(k);
-      b.onclick=()=>{ netCarrier=k; ct.querySelectorAll('.tgbtn').forEach(x=>{const on=x.dataset.k===k;x.classList.toggle('on',on);x.style.background=on?bgFor(k):'';}); };
-      ct.appendChild(b);
-    });
-    $('covMapLegend').innerHTML='◈ rings inner→outer: TELUS · Bell · Rogers · Freedom · ring weight = strength there';
-    if(nRAF) cancelAnimationFrame(nRAF);
-    nRAF=requestAnimationFrame(nDraw);
-  }
-  function nDraw(){
-    if(!ncv) return;
-    nT+=0.016;
-    const beat=nationalPulse(0.016*60);
-    const r=ncv.getBoundingClientRect(), w=r.width, h=r.height;
-    nctx.clearRect(0,0,w,h);
-    const isAll=(netCarrier==='all');
-    const c=isAll?null:NET_CARRIER[netCarrier];
-    const rgb=isAll?'232,240,242':(parseInt(c.color.slice(1,3),16)+','+parseInt(c.color.slice(3,5),16)+','+parseInt(c.color.slice(5,7),16));
-    // national shockwave from the heart of the map
-    const waveProg=(NP.t*1.0)%1, waveR=waveProg*NP.maxDist*1.35;
-    nctx.strokeStyle='rgba('+rgb+','+((1-waveProg)*0.10*(1+NP.surge))+')';
-    nctx.lineWidth=1.5; nctx.beginPath(); nctx.arc(NP.cx,NP.cy,waveR,0,6.283); nctx.stroke();
-    // mesh links breathe with the beat
-    for(let i=0;i<nNodes.length;i++){
-      for(let j=i+1;j<nNodes.length;j++){
-        const a=nNodes[i],b=nNodes[j];
-        const d=Math.hypot(a.px-b.px,a.py-b.py);
-        if(d<w*0.18){
-          const sa=isAll?nMaxStrength(a):netStrength(a), sb=isAll?nMaxStrength(b):netStrength(b);
-          if(sa>0.25&&sb>0.25){
-            nctx.strokeStyle='rgba('+rgb+','+(0.05*Math.min(sa,sb)*(0.6+beat*0.5))+')';
-            nctx.lineWidth=1; nctx.beginPath(); nctx.moveTo(a.px,a.py); nctx.lineTo(b.px,b.py); nctx.stroke();
-          }
-        }
-      }
+  function buildSigTabs(){
+    const ct=$('sigCarrierTabs'); if(ct){ ct.innerHTML='';
+      SIG_CARRIERS.forEach(k=>{
+        const b=document.createElement('button'); b.className='sigtab'+(k===sigCar?' on':''); b.dataset.k=k;
+        const col=k==='overall'?'linear-gradient(90deg,#7a4fa0,#3a86ff,#ff5964,#ffb703)':SIG_C[k];
+        b.innerHTML='<span class="ts" style="background:'+col+'"></span>'+(k==='overall'?'Overall':SIG_NAME[k]);
+        if(k===sigCar) b.style.background=(k==='overall'?'linear-gradient(90deg,#7a4fa0,#3a86ff,#ff5964,#ffb703)':SIG_C[k]);
+        b.onclick=()=>{ sigCar=k; ct.querySelectorAll('.sigtab').forEach(x=>{const on=x.dataset.k===k;x.classList.toggle('on',on);x.style.background=on?(k==='overall'?'linear-gradient(90deg,#7a4fa0,#3a86ff,#ff5964,#ffb703)':SIG_C[k]):'';}); renderSigSpec(); };
+        ct.appendChild(b);
+      });
     }
-    const KEYS=['telus','bell','rogers','freedom'];
-    nNodes.forEach(n=>{
-      const delay=(n.dist/NP.maxDist)*0.22;
-      const localBeat=nationalPulseAt(delay);
-      if(isAll){
-        const sAgg=nMaxStrength(n);
-        if(sAgg<=0.02) return;
-        // neutral expanding signal ring on the national clock
-        const prog=(NP.t*1.0)%1;
-        nctx.strokeStyle='rgba(232,240,242,'+((1-prog)*0.22*sAgg*(0.7+localBeat*0.5))+')';
-        nctx.lineWidth=1.2;
-        nctx.beginPath(); nctx.arc(n.px,n.py,(8+sAgg*26)*(0.6+prog*2.0)*(1+localBeat*0.1),0,6.283); nctx.stroke();
-        // four concentric carrier rings — inner→outer TELUS, Bell, Rogers, Freedom
-        let maxS=0;
-        KEYS.forEach((k,ki)=>{
-          const s=netStrength(n,k); if(s<=0.03) return; maxS=Math.max(maxS,s);
-          const col=NET_CARRIER[k].color;
-          const kr=parseInt(col.slice(1,3),16),kg=parseInt(col.slice(3,5),16),kb=parseInt(col.slice(5,7),16);
-          nctx.strokeStyle='rgba('+kr+','+kg+','+kb+','+((0.25+0.6*s)*(0.65+localBeat*0.45))+')';
-          nctx.lineWidth=2+s*1.6;
-          nctx.beginPath(); nctx.arc(n.px,n.py,((6+ki*6)+s*10)*(1+localBeat*0.10),0,6.283); nctx.stroke();
-        });
-        // core + label
-        nctx.fillStyle='rgba(232,240,242,'+(0.5+localBeat*0.4)+')';
-        nctx.beginPath(); nctx.arc(n.px,n.py,2+maxS*2.5,0,6.283); nctx.fill();
-        if(maxS>0.45){
-          nctx.fillStyle='rgba(232,240,242,'+(0.35+maxS*0.5)+')';
-          nctx.font='600 10px "IBM Plex Mono",monospace'; nctx.textAlign='center'; nctx.textBaseline='top';
-          nctx.fillText(n.city,n.px,n.py+40);
+    const mt=$('sigModeTabs'); if(mt){ mt.innerHTML='';
+      [['postpaid','Postpaid'],['prepaid','Prepaid']].forEach(([k,lab])=>{
+        const b=document.createElement('button'); b.className='sigtab'+(k===sigMode?' on':''); b.dataset.k=k; b.textContent=lab;
+        if(k===sigMode) b.style.background='var(--acid)';
+        b.onclick=()=>{ sigMode=k; mt.querySelectorAll('.sigtab').forEach(x=>{const on=x.dataset.k===k;x.classList.toggle('on',on);x.style.background=on?'var(--acid)':'';}); };
+        mt.appendChild(b);
+      });
+    }
+    renderSigSpec();
+  }
+  function renderSigSpec(){
+    const wrap=$('sigSpec'); if(!wrap) return;
+    const list = sigCar==='overall' ? ['telus','bell','rogers','quebecor','sasktel','eastlink'] : [sigCar];
+    wrap.innerHTML=list.map(k=>{
+      const mhz=SIG_MHZ[k]||0, pct=Math.round(mhz/SIG_MHZMAX*100);
+      const rides = k==='telus'?'Koodo · Public ride here':k==='rogers'?'Fido · Chatr ride here':k==='bell'?'Virgin · Lucky ride here':k==='quebecor'?'Videotron · Fizz · Freedom':k==='sasktel'?'own network':'own network';
+      return '<div class="sc" style="border-top-color:'+SIG_C[k]+'"><div class="scn" style="color:'+SIG_C[k]+'">'+SIG_NAME[k]+'</div><div class="scm">~'+mhz+' MHz held · '+rides+'</div><div class="scbar"><div class="scfill" style="width:'+pct+'%;background:'+SIG_C[k]+'"></div></div></div>';
+    }).join('');
+  }
+  function initNetMap(){ // signal-wave engine (name kept for initCoverageView call)
+    sigcv=$('sigCanvas'); if(!sigcv) return;
+    sigctx=sigcv.getContext('2d');
+    sigResize(); buildSigTabs();
+    sigcv.onmousemove=e=>{
+      const r=sigcv.getBoundingClientRect(), my=e.clientY-r.top;
+      sigHover=-1;
+      sigRows.forEach((rw,i)=>{ if(my>=rw.y0&&my<=rw.y1) sigHover=i; });
+      const tip=$('sigTip');
+      if(sigHover>=0){ const p=SIGP[sigHover];
+        let lead='',lv=-1; Object.keys(SIG_C).forEach(k=>{const v=sigStrength(p,k); if(v>lv){lv=v;lead=k;}});
+        tip.innerHTML='<b>'+p.p+'</b><br>'+sigMode+' leader: '+SIG_NAME[lead]+'<br>signal '+Math.round(lv*100)+'/100';
+        tip.style.left=Math.min(e.clientX-r.left+14,r.width-150)+'px'; tip.style.top=(my+14)+'px'; tip.classList.add('show');
+      } else tip.classList.remove('show');
+    };
+    sigcv.onmouseleave=()=>{ sigHover=-1; $('sigTip')?.classList.remove('show'); };
+    if(sigRAF) cancelAnimationFrame(sigRAF);
+    sigRAF=requestAnimationFrame(sigDraw);
+  }
+  function nResize(){ sigResize(); }
+  function sigWave(ctx,x0,x1,y,amp,phase,speed,col,alpha,lw){
+    ctx.strokeStyle='rgba('+col+','+alpha+')'; ctx.lineWidth=lw; ctx.beginPath();
+    const steps=Math.max(24,Math.floor((x1-x0)/6));
+    for(let i=0;i<=steps;i++){
+      const t=i/steps, x=x0+(x1-x0)*t;
+      // amplitude tapers in/out at edges, denser oscillation = stronger signal
+      const env=Math.sin(t*Math.PI);
+      const yy=y - Math.sin(t*Math.PI*(4+speed*8)+phase)*amp*env;
+      i?ctx.lineTo(x,yy):ctx.moveTo(x,yy);
+    }
+    ctx.stroke();
+  }
+  function sigDraw(){
+    if(!sigcv) return;
+    sigT+=0.02;
+    const r=sigcv.getBoundingClientRect(), w=r.width, h=r.height;
+    sigctx.clearRect(0,0,w,h);
+    const padL=140,padR=90,padT=16,padB=16, pw=w-padL-padR, ph=h-padT-padB;
+    const n=SIGP.length, rowH=ph/n;
+    sigRows=[];
+    SIGP.forEach((prov,i)=>{
+      const yc=padT+rowH*(i+0.5);
+      sigRows.push({y0:padT+rowH*i,y1:padT+rowH*(i+1)});
+      // province label
+      sigctx.fillStyle='#e8f0f2'; sigctx.font='700 13px "Space Grotesk",sans-serif';
+      sigctx.textAlign='right'; sigctx.textBaseline='middle';
+      sigctx.fillText(prov.p,padL-16,yc);
+      // baseline
+      sigctx.strokeStyle='rgba(125,143,150,0.10)'; sigctx.lineWidth=1;
+      sigctx.beginPath(); sigctx.moveTo(padL,yc); sigctx.lineTo(padL+pw,yc); sigctx.stroke();
+      const hov=(i===sigHover);
+      // which carriers to draw
+      const list = sigCar==='overall' ? Object.keys(SIG_C) : [sigCar];
+      // find leader for glow
+      let lead='',lv=-1; Object.keys(SIG_C).forEach(k=>{const v=sigStrength(prov,k); if(v>lv){lv=v;lead=k;}});
+      list.forEach(k=>{
+        const s0=sigStrength(prov,k); if(s0<=0.02) return;
+        const sw=specWeight(k);            // spectrum enrichment
+        const s=Math.min(1,s0*sw);         // MHz-weighted signal strength
+        const col=SIG_C[k], cr=parseInt(col.slice(1,3),16),cg=parseInt(col.slice(3,5),16),cb=parseInt(col.slice(5,7),16);
+        const rgb=cr+','+cg+','+cb;
+        const amp=6+s*(rowH*0.38);
+        const isLead=(k===lead);
+        const speed=s;
+        // motion: phase advances faster for stronger signal + more spectrum ("richer air")
+        const phase=sigT*(2+s*4+sw*1.5)*(sigCar==='overall'?1:1.3);
+        const alpha=(sigCar==='overall'? (isLead?0.85:0.30) : 0.9)*(hov?1:0.9);
+        // primary wave
+        sigWave(sigctx,padL,padL+pw,yc,amp,phase,speed,rgb,alpha,isLead?2.4:1.4);
+        // spectrum overlay: a second, tighter harmonic whose richness = MHz held
+        if(sigCar!=='overall'||isLead){
+          sigWave(sigctx,padL,padL+pw,yc,amp*0.5,phase*1.7+1,speed*1.4,rgb,alpha*0.4*sw,1);
         }
-      } else {
-        const s=netStrength(n);
-        if(s<=0.02) return;
-        const baseR=8+s*30;
-        for(let k=0;k<2;k++){
-          const prog=((NP.t*1.0+k*0.5)%1);
-          const rr=baseR*(0.6+prog*2.2)*(1+localBeat*0.12);
-          const alpha=(1-prog)*0.5*s*(0.7+localBeat*0.5);
-          nctx.strokeStyle='rgba('+rgb+','+alpha+')';
-          nctx.lineWidth=1.5; nctx.beginPath(); nctx.arc(n.px,n.py,rr,0,6.283); nctx.stroke();
+        // travelling pulse dot
+        if(isLead||sigCar!=='overall'){
+          const tt=(sigT*(0.15+s*0.25))%1, x=padL+pw*tt, env=Math.sin(tt*Math.PI);
+          const yy=yc-Math.sin(tt*Math.PI*(4+speed*8)+phase)*amp*env;
+          sigctx.fillStyle='rgba('+rgb+',0.95)'; sigctx.beginPath(); sigctx.arc(x,yy,isLead?3:2.2,0,6.283); sigctx.fill();
         }
-        const pulse=1+localBeat*0.28;
-        const g=nctx.createRadialGradient(n.px,n.py,1,n.px,n.py,baseR*1.6*pulse);
-        g.addColorStop(0,'rgba('+rgb+','+(0.55*s*(0.7+localBeat*0.5))+')');
-        g.addColorStop(1,'rgba('+rgb+',0)');
-        nctx.fillStyle=g; nctx.beginPath(); nctx.arc(n.px,n.py,baseR*1.6*pulse,0,6.283); nctx.fill();
-        nctx.fillStyle=c.color; nctx.beginPath(); nctx.arc(n.px,n.py,(2.5+s*3)*(1+localBeat*0.35),0,6.283); nctx.fill();
-        if(s>0.45){
-          nctx.fillStyle='rgba(232,240,242,'+(0.35+s*0.5)+')';
-          nctx.font='600 10px "IBM Plex Mono",monospace'; nctx.textAlign='center'; nctx.textBaseline='top';
-          nctx.fillText(n.city,n.px,n.py+baseR*0.6+4);
-        }
+      });
+      // leader tag at right
+      if(lead){
+        const col=SIG_C[lead];
+        sigctx.fillStyle=col; sigctx.font='700 11px "IBM Plex Mono",monospace';
+        sigctx.textAlign='left'; sigctx.textBaseline='middle';
+        sigctx.fillText(SIG_NAME[lead]+' '+Math.round(lv*100),padL+pw+12,yc);
       }
     });
-    nRAF=requestAnimationFrame(nDraw);
+    // axis hint
+    sigctx.fillStyle='#54646b'; sigctx.font='600 10px "IBM Plex Mono",monospace';
+    sigctx.textAlign='center'; sigctx.textBaseline='top';
+    sigctx.fillText('◄ denser + taller wave = stronger '+sigMode+' air dominance ►',w/2,h-4);
+    sigRAF=requestAnimationFrame(sigDraw);
   }
   // sample the national pulse at a time offset (for the outward ripple delay)
   function nationalPulseAt(delay){
