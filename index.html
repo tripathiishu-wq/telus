@@ -380,6 +380,92 @@
   .sigspec .scbar{height:5px;background:var(--panel-2);border-radius:3px;margin-top:8px;overflow:hidden}
   .sigspec .scfill{height:100%;border-radius:3px;transition:width .8s cubic-bezier(.2,.7,.2,1)}
 
+  /* telecom 101 — expanded */
+  .chainwrap{position:relative;background:radial-gradient(ellipse at 50% 30%,#12181d 0%,#0a0d0f 84%);border:1px solid var(--line);border-radius:4px;padding:14px}
+  #chainCanvas{display:block;width:100%;height:330px;cursor:pointer}
+  @media(max-width:640px){#chainCanvas{height:460px}}
+  .chaindetail{margin-top:12px;background:var(--panel);border:1px solid var(--line);border-left:2px solid var(--amber);border-radius:4px;padding:18px 20px;min-height:120px}
+  .chaindetail h4{font-family:'Space Grotesk';font-weight:700;font-size:17px;margin-bottom:4px}
+  .chaindetail .cdsub{font-family:'IBM Plex Mono';font-size:11px;color:var(--amber);margin-bottom:12px}
+  .chaindetail p{font-size:14px;color:var(--mute);margin-bottom:12px}
+  .cdgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .cdgrid div{background:var(--panel-2);padding:10px 12px}
+  .cdgrid .k{font-family:'IBM Plex Mono';font-size:9.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
+  .cdgrid .v{font-size:13px;color:var(--ink);margin-top:3px;font-weight:500}
+  /* latency waterfall */
+  .latwrap{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:20px}
+  .latrow{display:grid;grid-template-columns:150px 1fr 64px;gap:14px;align-items:center;margin-bottom:12px}
+  @media(max-width:640px){.latrow{grid-template-columns:100px 1fr 52px}}
+  .latrow .ln{font-family:'IBM Plex Mono';font-size:11.5px;color:var(--mute)}
+  .lattrack{height:26px;background:var(--panel-2);border-radius:3px;position:relative;overflow:hidden}
+  .latfill{height:100%;width:0;border-radius:3px;transition:width 1.1s cubic-bezier(.2,.7,.2,1);position:absolute}
+  .latval{font-family:'IBM Plex Mono';font-size:12px;font-weight:600;text-align:right;color:var(--amber)}
+  .lattotal{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:12px;margin-top:6px;font-family:'IBM Plex Mono';font-size:12px;color:var(--mute)}
+  .lattotal b{font-family:'Space Grotesk';font-size:18px;color:var(--acid)}
+  /* protocol stack */
+  .stackviz{display:flex;flex-direction:column;gap:4px}
+  .slayer{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:12px 16px;transition:.18s;cursor:default}
+  .slayer:hover{border-color:var(--amber);transform:translateX(5px)}
+  @media(max-width:640px){.slayer{grid-template-columns:80px 1fr;padding:10px 12px}}
+  .slayer .sl{font-family:'Space Grotesk';font-weight:700;font-size:13px}
+  .slayer .sd{font-size:13px;color:var(--mute)}
+  .slayer .sd small{display:block;font-family:'IBM Plex Mono';font-size:10px;color:var(--dim);margin-top:3px}
+  /* topology */
+  .topotabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+  .topotab{font-family:'IBM Plex Mono';font-size:12px;color:var(--mute);background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:7px 15px;cursor:pointer;transition:.15s}
+  .topotab:hover{color:var(--ink)}
+  .topotab.on{background:var(--amber);color:#0a0d0f;border-color:var(--amber);font-weight:600}
+  .topowrap{background:radial-gradient(ellipse at 50% 40%,#12181d 0%,#0a0d0f 84%);border:1px solid var(--line);border-radius:4px;padding:14px}
+  #topoCanvas{display:block;width:100%;height:260px}
+  .topoinfo{margin-top:12px;background:var(--panel-2);border:1px solid var(--line);border-left:2px solid var(--amber);border-radius:4px;padding:14px 18px;font-size:13.5px;color:var(--mute);min-height:64px}
+  .topoinfo b{color:var(--ink)}
+  /* wave physics */
+  .wavewrap{background:radial-gradient(ellipse at 20% 50%,#12181d 0%,#0a0d0f 84%);border:1px solid var(--line);border-radius:4px;padding:14px}
+  #waveCanvas{display:block;width:100%;height:420px}
+  /* holdings viz */
+  .holdviz{display:flex;flex-direction:column;gap:14px}
+  .hvrow{display:grid;grid-template-columns:112px 1fr 80px;gap:14px;align-items:center}
+  @media(max-width:640px){.hvrow{grid-template-columns:84px 1fr 62px}}
+  .hvrow .hvn{font-family:'Space Grotesk';font-weight:700;font-size:14px}
+  .hvrow .hvn small{display:block;font-family:'IBM Plex Mono';font-weight:400;font-size:9.5px;color:var(--dim);margin-top:2px}
+  .hvtrack{height:32px;background:var(--panel-2);border:1px solid var(--line);border-radius:3px;display:flex;overflow:hidden}
+  .hvseg{height:100%;width:0;transition:width 1.1s cubic-bezier(.2,.7,.2,1);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono';font-size:10px;color:#0a0d0f;font-weight:600}
+  .hvtot{font-family:'IBM Plex Mono';font-size:13px;font-weight:600;text-align:right}
+  /* generations */
+  .gens{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  @media(max-width:820px){.gens{grid-template-columns:1fr 1fr}}
+  .gcell{background:var(--panel);padding:18px 16px;border-top:3px solid var(--line)}
+  .gcell .gg{font-family:'Space Grotesk';font-weight:700;font-size:22px}
+  .gcell .gy{font-family:'IBM Plex Mono';font-size:10px;color:var(--dim);margin-top:2px}
+  .gcell .gw{font-size:12.5px;color:var(--mute);margin-top:10px;line-height:1.5}
+  .gcell .gs{font-family:'IBM Plex Mono';font-size:10px;color:var(--acid);margin-top:8px}
+
+  /* wireless vs wireline split */
+  .splitviz{display:grid;grid-template-columns:1fr 0.8fr 1fr;gap:14px;align-items:start}
+  @media(max-width:880px){.splitviz{grid-template-columns:1fr}}
+  .sidecol{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--line);border-radius:4px;padding:18px}
+  .sidehd{font-family:'Space Grotesk';font-weight:700;font-size:17px}
+  .sidesub{font-family:'IBM Plex Mono';font-size:10px;color:var(--dim);margin-top:3px;margin-bottom:14px;text-transform:uppercase;letter-spacing:.06em}
+  .sr{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:13px}
+  .sr:last-child{border-bottom:0}
+  .sr span{font-family:'IBM Plex Mono';font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.05em;flex-shrink:0;padding-top:2px}
+  .sr b{text-align:right;font-weight:500;color:var(--ink)}
+  .sidemid{background:var(--panel-2);border:1px solid var(--line);border-radius:4px;padding:18px;text-align:center}
+  .smconv{font-family:'IBM Plex Mono';font-size:10px;color:var(--amber);letter-spacing:.18em;margin-bottom:12px}
+  .smitem{font-size:12.5px;color:var(--mute);padding:7px 0;border-bottom:1px dashed var(--line)}
+  .smarrow{color:var(--amber);font-size:18px;margin:10px 0}
+  .smnote{font-size:12px;color:var(--dim);line-height:1.6;text-align:left}
+  /* fibre war */
+  .fibrewar{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .fibrewar div{background:var(--panel);padding:13px 15px;font-size:13.5px;transition:background .15s}
+  .fibrewar .fwh{background:var(--panel-2);font-family:'Space Grotesk';font-weight:700;font-size:14px}
+  .fibrewar .fwm{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.05em}
+  .fibrewar .fwt{border-left:2px solid var(--telus-2)}
+  .fibrewar .fwb{border-left:2px solid var(--blue)}
+  .fwwin{color:var(--acid);font-weight:600}
+  .fwtie{color:var(--amber)}
+  @media(max-width:760px){.fibrewar{grid-template-columns:1fr}.fibrewar .fwm{background:var(--panel-2);margin-top:6px}}
+
   footer{padding:40px 0 60px}
   .src{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);line-height:1.9}
   .src a{color:var(--mute)}
@@ -398,7 +484,8 @@
       <button class="tab" data-view="play"><span class="no">03</span>Growth & M&A</button>
       <button class="tab" data-view="network"><span class="no">04</span>Network & Loyalty</button>
       <button class="tab" data-view="coverage"><span class="no">05</span>Coverage & Plans</button>
-      <button class="tab" data-view="ir"><span class="no">06</span>Investor Relations</button>
+      <button class="tab" data-view="telecom"><span class="no">06</span>Telecom 101</button>
+      <button class="tab" data-view="ir"><span class="no">07</span>Investor Relations</button>
     </div>
   </div>
 </header>
@@ -1259,7 +1346,197 @@
   </section>
 </div>
 
-<!-- ===================== VIEW 6: INVESTOR RELATIONS ===================== -->
+<!-- ===================== VIEW 6: TELECOM 101 ===================== -->
+<div class="view" id="v-telecom">
+  <div class="wrap">
+    <div class="hero">
+      <div class="eyebrow" style="color:var(--amber)">#Telecom · The full anatomy</div>
+      <h1>From the air<br><span class="fade">to the</span><br>handset.</h1>
+      <p class="lede">How a telecom network actually works — the physical path a packet takes, the latency budget it must fit inside, the protocol stack it climbs, the spectrum physics that governs everything, and exactly who holds which megahertz in Canada.</p>
+      <div class="pridebar" style="border-left-color:var(--amber)">
+        <div class="pb"><div class="pbn" style="color:var(--amber)">&lt;1 ms</div><div class="pbl">5G air-interface target latency</div></div>
+        <div class="pb"><div class="pbn" style="color:var(--amber)">25 GB/s</div><div class="pbl">Fronthaul rate on a busy 5G site</div></div>
+        <div class="pb"><div class="pbn" style="color:var(--amber)">~100 MHz</div><div class="pbl">TELUS contiguous mid-band</div></div>
+        <div class="pb"><div class="pbn" style="color:var(--amber)">3GPP</div><div class="pbl">The standards body behind it all</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WIRELESS VS WIRELINE -->
+  <section id="t-split">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--amber)">01</span><h2>Wireless vs wireline — the two halves</h2><span class="sub">every telco runs both businesses</span></div>
+      <p class="intro">A telecom company is really two companies sharing a brand. <b>Wireless</b> sells mobility — air, towers, spectrum, a subscriber who can churn next month. <b>Wireline</b> sells a physical drop into a building — fibre in the ground, a 20-year asset, a household that almost never leaves. They have opposite economics, and TELUS wins differently in each.</p>
+      <div class="splitviz">
+        <div class="sidecol" style="border-top-color:var(--acid)">
+          <div class="sidehd" style="color:var(--acid)">📡 WIRELESS</div>
+          <div class="sidesub">Mobility · spectrum · towers</div>
+          <div class="sr"><span>Asset</span><b>Spectrum licences</b></div>
+          <div class="sr"><span>Delivery</span><b>Radio waves, shared air</b></div>
+          <div class="sr"><span>Capacity limit</span><b>MHz held × spectral efficiency</b></div>
+          <div class="sr"><span>Cost driver</span><b>Auctions + tower density</b></div>
+          <div class="sr"><span>Churn</span><b>0.91% monthly — mobile</b></div>
+          <div class="sr"><span>ARPU trend</span><b style="color:var(--red)">$57.01, declining</b></div>
+          <div class="sr"><span>Switching cost</span><b>Low — keep your number</b></div>
+          <div class="sr"><span>TELUS brands</span><b>TELUS · Koodo · Public</b></div>
+        </div>
+        <div class="sidemid">
+          <div class="smconv">SHARED</div>
+          <div class="smitem">Same core network</div>
+          <div class="smitem">Same billing + bundle</div>
+          <div class="smitem">Fibre backhauls the towers</div>
+          <div class="smitem">Bundle = lower churn on both</div>
+          <div class="smarrow">↓</div>
+          <div class="smnote">This is the convergence play: wireline fibre is what carries wireless traffic back from the tower. Owning both means you don't rent from a rival.</div>
+        </div>
+        <div class="sidecol" style="border-top-color:var(--telus-2)">
+          <div class="sidehd" style="color:var(--telus-2)">🔌 WIRELINE</div>
+          <div class="sidesub">Fibre · copper · coax</div>
+          <div class="sr"><span>Asset</span><b>Fibre in the ground</b></div>
+          <div class="sr"><span>Delivery</span><b>Light in glass, dedicated</b></div>
+          <div class="sr"><span>Capacity limit</span><b>Practically unlimited (swap optics)</b></div>
+          <div class="sr"><span>Cost driver</span><b>Trenching cost per home passed</b></div>
+          <div class="sr"><span>Churn</span><b>Much lower — household-level</b></div>
+          <div class="sr"><span>ARPU trend</span><b style="color:var(--acid)">+6%, rising</b></div>
+          <div class="sr"><span>Switching cost</span><b>High — install, contract, hardware</b></div>
+          <div class="sr"><span>TELUS brand</span><b>TELUS PureFibre</b></div>
+        </div>
+      </div>
+      <div class="note" style="border-left-color:var(--acid)">◈ <b>The asymmetry that drives strategy:</b> wireless ARPU is <em>falling</em> (−2.8%) while internet ARPU is <em>rising</em> (+6%). Wireless is a rented relationship; wireline is an owned one. A fibre drop is a 20–30 year asset with a near-permanent customer attached, and the same fibre also backhauls the cell towers above it. That's why TELUS has committed $45B+ to PureFibre — it's simultaneously the wireline product, the wireless backbone, and the churn moat.</div>
+    </div>
+  </section>
+
+  <!-- PUREFIBRE VS BELL -->
+  <section id="t-fibre">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--amber)">02</span><h2>PureFibre vs Bell Fibe — the fibre war</h2><span class="sub">same technology · different geography</span></div>
+      <p class="intro">The most important wireline matchup in Canada. Here's the honest read: <b>both run the same underlying technology</b> — XGS-PON, 100% fibre to the home, symmetrical speeds. Neither has a physics advantage. The war is won on footprint, execution, price certainty and who got there first. Hover a row.</p>
+      <div class="fibrewar" id="fibreWar"></div>
+      <div class="two" style="margin-top:16px">
+        <div class="card"><h3>Where TELUS wins</h3>
+          <ul class="clean" style="margin-top:8px">
+            <li><span class="mk">✓</span><span><b>The West is owned</b> — BC and Alberta are PureFibre country, last-mile owned outright</span></li>
+            <li><span class="mk">✓</span><span><b>5-year price lock</b> — Bell guarantees only 2 years. The single clearest differentiator.</span></li>
+            <li><span class="mk">✓</span><span><b>Copper retirement</b> — actively migrating customers to fibre free, so the base is all-fibre</span></li>
+            <li><span class="mk">✓</span><span><b>100% FTTH purity</b> — no hybrid coax anywhere in the footprint</span></li>
+          </ul>
+        </div>
+        <div class="card"><h3>Where Bell wins</h3>
+          <ul class="clean" style="margin-top:8px">
+            <li><span class="mk">✓</span><span><b>Scale</b> — ~7.3M premises passed, Canada's largest FTTH network</span></li>
+            <li><span class="mk">✓</span><span><b>Top speed</b> — 8 Gbps tiers in select ON/QC; TELUS tops out ~3 Gbps</span></li>
+            <li><span class="mk">✓</span><span><b>Ontario + Quebec density</b> — the two biggest markets are home turf</span></li>
+            <li><span class="mk">✓</span><span><b>Ziply acquisition</b> — buying further fibre scale (~$5B)</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="note">◈ <b>The regulatory twist that shaped this:</b> a 2023 CRTC decision requiring Bell to open its Ontario/Quebec fibre to wholesale competitors prompted Bell to <em>scale back</em> its planned fibre build and cut its 2025 target, arguing the ruling discouraged investment. That same wholesale regime is how TELUS is now entering Ontario and Quebec — competing on Bell's turf partly over Bell's own fibre. Worth knowing: expansion via wholesale carries thinner margins than owned last-mile, which is a real question a board will ask.</div>
+      <div class="note" style="border-left-color:var(--acid)">◈ <b>The CEO line:</b> "Bell has more homes passed and a faster headline tier. I'm not going to out-trench them in Ontario. What I own is the West outright, a 100% fibre base with no coax legacy, and the only five-year price lock in the market. We win the fibre war on certainty and retention, not on a speed-test number almost no household actually uses."</div>
+    </div>
+  </section>
+
+  <!-- SIGNAL CHAIN -->
+  <section id="t-chain">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--amber)">03</span><h2>The signal chain — click any stage</h2><span class="sub">phone → RU → DU → CU → core → internet</span></div>
+      <p class="intro">Every call, stream and text follows this path in milliseconds. Packets flow outbound in amber, return in teal. <b>Click a node</b> to open its full technical spec below — hardware, protocol, latency budget and what breaks if it fails.</p>
+      <div class="chainwrap">
+        <canvas id="chainCanvas"></canvas>
+      </div>
+      <div class="chaindetail" id="chainDetail"></div>
+    </div>
+  </section>
+
+  <!-- LATENCY BUDGET -->
+  <section id="t-latency">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--amber)">04</span><h2>The latency budget</h2><span class="sub">where the milliseconds go</span></div>
+      <p class="intro">5G promises single-digit millisecond response. That budget gets spent across every hop — and it's why the CU and edge compute moved closer to the tower. Watch the waterfall fill.</p>
+      <div class="latwrap"><div id="latViz"></div></div>
+      <div class="note">◈ Indicative budget for a 5G Standalone URLLC-class path. Real-world consumer latency is higher (typically 20–40 ms round trip to a public server) because of internet transit beyond the core. 3GPP targets 1 ms on the air interface alone; the end-to-end figure depends on how far the application server sits — which is exactly why <b>edge compute at the CU/midhaul layer</b> is the architectural answer.</div>
+    </div>
+  </section>
+
+  <!-- PROTOCOL STACK -->
+  <section id="t-stack">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--amber)">05</span><h2>The protocol stack</h2><span class="sub">what wraps your data at each layer</span></div>
+      <p class="intro">Your data gets wrapped in envelopes on the way down and unwrapped on the way up. Hover a layer to see what it does and where it runs.</p>
+      <div class="stackviz" id="stackViz2"></div>
+      <div class="note">◈ Since 4G the network core is <b>all-IP</b> — control plane tunnelled over SCTP/IP, user plane over GTP/UDP/IP. Before that, cellular internals were circuit-switched, a legacy of the network's origins as a voice system. That single change is what turned carriers from telephone companies into data companies.</div>
+    </div>
+  </section>
+
+  <!-- TOPOLOGY EVOLUTION -->
+  <section id="t-topo">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--amber)">06</span><h2>RAN topology — the three architectures</h2><span class="sub">click to morph the network</span></div>
+      <p class="intro">The tower used to hold everything. Modern networks split it apart and centralise the brains — cheaper to densify, and the reason 5G can slice itself into private networks. <b>Click an architecture</b> to watch the topology rearrange.</p>
+      <div class="topotabs" id="topoTabs"></div>
+      <div class="topowrap"><canvas id="topoCanvas"></canvas></div>
+      <div class="topoinfo" id="topoInfo"></div>
+    </div>
+  </section>
+
+  <!-- SPECTRUM PHYSICS -->
+  <section id="t-spectrum">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--amber)">07</span><h2>Spectrum physics — why frequency is destiny</h2><span class="sub">live wave propagation</span></div>
+      <p class="intro">One physical trade-off governs the entire industry: <b>low frequency travels far but carries little; high frequency carries enormous data but barely travels.</b> The waves below are drawn to their real relative wavelength — watch how the low band stretches across the map while mmWave crowds into a few hundred metres.</p>
+      <div class="wavewrap"><canvas id="waveCanvas"></canvas></div>
+      <div class="note">◈ Wavelength λ = c/f. At 600 MHz λ is half a metre — it diffracts around hills and penetrates walls. At 26 GHz λ is ~11 mm — it behaves almost like light, blocked by a hand or a pane of glass. This is why carriers need <em>all three</em> bands, and why the 3500/3800 MHz mid-band — reach and capacity both acceptable — was the most contested spectrum in Canadian history.</div>
+    </div>
+  </section>
+
+  <!-- CANADIAN HOLDINGS -->
+  <section id="t-holdings">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--amber)">08</span><h2>Who holds what — Canadian spectrum</h2><span class="sub">MHz by carrier · ISED licences</span></div>
+      <p class="intro">Spectrum is licensed by ISED through auctions, then held as time-limited licences per geographic tier. Bars are scaled to total holdings — hover for the band split.</p>
+      <div class="holdviz" id="holdViz"></div>
+      <div class="note">◈ <b>The contiguity story:</b> TELUS's 3500 MHz sits adjacent to its 3800 MHz, forming ~100 MHz of <em>contiguous</em> mid-band across ~96% of Canada — deployable with a single radio, where Bell and Rogers must run carrier aggregation across separated blocks. Contiguity is a genuine cost and latency advantage that never shows up in a simple MHz count. Flankers and prepaid brands own <b>no spectrum</b> — they ride the parent's licences. Figures from the ISED 3800 MHz auction (Nov 2023) and 3500 MHz holdings (2024); set-aside blocks reserved for regional players shaped the outcome. Verify against ISED's published tables before quoting.</div>
+    </div>
+  </section>
+
+  <!-- GENERATIONS -->
+  <section id="t-gens">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--amber)">09</span><h2>1G to 5G — what actually changed</h2><span class="sub">forty years, and the one shift that mattered</span></div>
+      <div class="gens" id="gensViz"></div>
+      <div class="note">◈ Each generation roughly a decade apart. The jump that mattered commercially wasn't speed — it was <b>4G moving the network onto IP</b>. 5G Standalone repeats that shift by making the core cloud-native and sliceable: one physical network, many logical networks, each with its own guaranteed latency and bandwidth.</div>
+    </div>
+  </section>
+
+  <!-- MONEY -->
+  <section id="t-money">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--amber)">10</span><h2>How the money actually works</h2><span class="sub">where a dollar of ARPU goes</span></div>
+      <p class="intro">Telecom is a capital machine: buy spectrum, build network, rent it monthly, repeat. Enormous fixed costs, near-zero marginal cost per extra gigabyte.</p>
+      <div class="two">
+        <div class="card"><h3>The cost stack</h3>
+          <ul class="clean" style="margin-top:8px">
+            <li><span class="mk">1</span><span><b>Spectrum licences</b> — billions upfront at auction. A sunk 20-year bet.</span></li>
+            <li><span class="mk">2</span><span><b>Network capex</b> — towers, fibre, radios. TELUS ~$2.3B/yr, trending down as the 5G build matures.</span></li>
+            <li><span class="mk">3</span><span><b>Subscriber acquisition</b> — device subsidies, commissions, marketing. The biggest variable cost.</span></li>
+            <li><span class="mk">4</span><span><b>Operating</b> — backhaul leases, power, site rent, staff, roaming settlements.</span></li>
+          </ul>
+        </div>
+        <div class="card"><h3>Why churn is the whole game</h3>
+          <ul class="clean" style="margin-top:8px">
+            <li><span class="mk">◈</span><span>Network cost is <b>fixed</b> — same whether 9M or 11M people use it</span></li>
+            <li><span class="mk">◈</span><span>Every retained subscriber is nearly <b>pure margin</b> on an already-built network</span></li>
+            <li><span class="mk">◈</span><span>Every churned one must be <b>re-bought</b> at full acquisition cost</span></li>
+            <li><span class="mk">◈</span><span>That's why 0.91% churn compounds into the strongest economics of the Big Three</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="note" style="border-left-color:var(--acid)">◈ <b>The industry in one sentence:</b> you spend billions on spectrum and steel to build a pipe that costs almost nothing to run, then you win or lose on how long people stay attached to it.</div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ===================== VIEW 7: INVESTOR RELATIONS ===================== -->
 <div class="view" id="v-ir">
   <div class="wrap">
     <div class="hero">
@@ -1384,9 +1661,10 @@
     play:[['p-reality','Reality'],['p-score','Scorecard'],['p-acq','Acquire'],['p-cac','CAC Model'],['p-beat','Beat Them']],
     network:[['n-flow','Switching Flow'],['n-loyalty','Brand Loyalty'],['n-5g','5G & Spectrum']],
     coverage:[['cov-live','Live Migration'],['cov-map','Air Dominance'],['cov-merged','Merged Chart'],['cov-reach','Geo vs Population'],['cov-plans','Prepaid vs Postpaid']],
+    telecom:[['t-split','Wireless vs Wireline'],['t-fibre','PureFibre vs Bell'],['t-chain','Signal Chain'],['t-latency','Latency Budget'],['t-stack','Protocol Stack'],['t-topo','RAN Topology'],['t-spectrum','Wave Physics'],['t-holdings','Who Holds What'],['t-gens','1G→5G'],['t-money','The Money']],
     ir:[['ir-listing','Listing'],['ir-guidance','Guidance'],['ir-calendar','Calendar & Contacts']]
   };
-  const LBL={brief:'Company Brief',debt:'Debt vs Rivals',play:'Growth & M&A',network:'Network & Loyalty',coverage:'Coverage & Plans',ir:'Investor Relations'};
+  const LBL={brief:'Company Brief',debt:'Debt vs Rivals',play:'Growth & M&A',network:'Network & Loyalty',coverage:'Coverage & Plans',telecom:'Telecom 101',ir:'Investor Relations'};
 
   function buildSub(view){
     const n=$('subnav'); n.innerHTML='';
@@ -1485,6 +1763,8 @@
     else if(flowRAF){ cancelAnimationFrame(flowRAF); flowRAF=null; }
     if(view==='coverage'){ setTimeout(initCoverageView,60); }
     else { if(lRAF){ cancelAnimationFrame(lRAF); lRAF=null; } if(sigRAF){ cancelAnimationFrame(sigRAF); sigRAF=null; } if(mRAF){ cancelAnimationFrame(mRAF); mRAF=null; } }
+    if(view==='telecom'){ setTimeout(initTelecomView,60); }
+    else { if(cRAF){ cancelAnimationFrame(cRAF); cRAF=null; } if(tRAF){ cancelAnimationFrame(tRAF); tRAF=null; } if(wRAF){ cancelAnimationFrame(wRAF); wRAF=null; } }
     if(view==='debt'){ setTimeout(initGauges,60); }
     else if(gRAF){ cancelAnimationFrame(gRAF); gRAF=null; }
     if(view==='brief'){ renderStack(); renderWorld(); setTimeout(()=>{animateStack();animateWorld();},120); }
@@ -1699,7 +1979,7 @@
     initFlow();
     setTimeout(()=>{ animateLoyalty(); animate5G(); },120);
   }
-  window.addEventListener('resize',()=>{ if($('v-network').classList.contains('on')) resizeFlow(); if($('v-coverage').classList.contains('on')){ lResize(); nResize(); mResize(); } if($('v-debt').classList.contains('on')) gResize(); });
+  window.addEventListener('resize',()=>{ if($('v-network').classList.contains('on')) resizeFlow(); if($('v-coverage').classList.contains('on')){ lResize(); nResize(); mResize(); } if($('v-debt').classList.contains('on')) gResize(); if($('v-telecom').classList.contains('on')){ cResize(); tResize(); wResize(); } });
 
   /* =================================================================
      COVERAGE & PLANS VISUALS
@@ -2200,8 +2480,346 @@
     $('worldCost')?.querySelectorAll('.wcfill').forEach((f,i)=>{ f.style.width='0'; setTimeout(()=>f.style.width=f.dataset.w+'%',80+i*70); });
   }
 
+  /* =================================================================
+     TELECOM 101 VISUALS — expanded
+     ================================================================= */
+  const CHAIN=[
+    {n:'Handset',i:'📱',sub:'User Equipment (UE)',
+     d:'Your phone. Encodes voice and data into radio waves on whichever licensed band your carrier holds, negotiates power and timing with the tower, and hands off between cells as you move.',
+     specs:[['Protocol','5G NR / LTE'],['Latency added','~0.5 ms'],['Key function','Modulation, power control'],['Fails →','No service at all']]},
+    {n:'RU',i:'📡',sub:'Radio Unit — at the tower',
+     d:'Radio Unit mounted at the cell site. Converts digital baseband into RF and back, drives the antenna array (massive MIMO on 5G), and amplifies the transmit chain.',
+     specs:[['Interface','eCPRI / O-RAN 7.2x'],['Latency added','~0.2 ms'],['Link out','Fronthaul fibre'],['Fails →','That cell goes dark']]},
+    {n:'DU',i:'▦',sub:'Distributed Unit — cell site or hub',
+     d:'Real-time baseband processing: scheduling, HARQ retransmission, and the lower protocol layers. Must sit close to the RU because the fronthaul is latency-critical.',
+     specs:[['Layers','RLC / MAC / High-PHY'],['Latency added','~1 ms'],['Max distance','~20 km from RU'],['Fails →','Cluster of cells drop']]},
+    {n:'CU',i:'▣',sub:'Centralised Unit — regional DC',
+     d:'Higher-layer protocol handling and mobility. Increasingly virtualised software on commodity servers. This is where edge compute (MEC) lives, serving content before it ever reaches the core.',
+     specs:[['Layers','PDCP / RRC / SDAP'],['Latency added','~2 ms'],['Max distance','~80 km (midhaul)'],['Fails →','Region loses handover']]},
+    {n:'Core',i:'⬢',sub:'5G Standalone Core',
+     d:'Cloud-native service-based architecture. Authentication, session management, policy, billing, and network slicing — carving one physical network into many logical ones with guaranteed performance.',
+     specs:[['Key functions','AMF / SMF / UPF / UDM'],['Latency added','~2 ms'],['Max distance','~200 km (backhaul)'],['Fails →','Nationwide outage']]},
+    {n:'Internet',i:'🌐',sub:'Peering & transit',
+     d:'The user-plane function hands traffic out to public internet peering points, private enterprise networks, or cloud on-ramps. Beyond here the carrier no longer controls latency.',
+     specs:[['Protocol','BGP / IP transit'],['Latency added','10–30 ms'],['Controlled by','Nobody (public net)'],['Fails →','No internet, calls fine']]}
+  ];
+  let ccv,cctx,cDPR=1,cRAF=null,cT=0,cHover=-1,cSel=0,cNodes=[];
+  function cResize(){ if(!ccv) return; cDPR=window.devicePixelRatio||1;
+    const r=ccv.getBoundingClientRect(); ccv.width=r.width*cDPR; ccv.height=r.height*cDPR;
+    cctx.setTransform(cDPR,0,0,cDPR,0,0); }
+  function renderChainDetail(){
+    const el=$('chainDetail'); if(!el) return; const c=CHAIN[cSel];
+    el.innerHTML='<h4>'+c.i+' '+c.n+'</h4><div class="cdsub">'+c.sub+'</div><p>'+c.d+'</p>'+
+      '<div class="cdgrid">'+c.specs.map(([k,v])=>'<div><div class="k">'+k+'</div><div class="v">'+v+'</div></div>').join('')+'</div>';
+  }
+  function initChain(){
+    ccv=$('chainCanvas'); if(!ccv) return;
+    cctx=ccv.getContext('2d'); cResize();
+    const hit=(mx,my)=>{ let f=-1; cNodes.forEach((n,i)=>{ if(Math.hypot(mx-n.x,my-n.y)<36) f=i; }); return f; };
+    ccv.onmousemove=e=>{ const r=ccv.getBoundingClientRect(); cHover=hit(e.clientX-r.left,e.clientY-r.top);
+      ccv.style.cursor=cHover>=0?'pointer':'default'; };
+    ccv.onmouseleave=()=>{ cHover=-1; };
+    ccv.onclick=e=>{ const r=ccv.getBoundingClientRect(); const i=hit(e.clientX-r.left,e.clientY-r.top);
+      if(i>=0){ cSel=i; renderChainDetail(); } };
+    renderChainDetail();
+    if(cRAF) cancelAnimationFrame(cRAF);
+    cRAF=requestAnimationFrame(cDraw);
+  }
+  function cDraw(){
+    if(!ccv) return;
+    cT+=0.011;
+    const r=ccv.getBoundingClientRect(), w=r.width, h=r.height;
+    cctx.clearRect(0,0,w,h);
+    const vert=w<560, n=CHAIN.length;
+    cNodes=CHAIN.map((c,i)=>vert?{x:w*0.42,y:h*(i+0.55)/n}:{x:w*(i+0.5)/n,y:h*0.44});
+    const SEGL=['air interface','fronthaul <20km','midhaul <80km','backhaul <200km','peering'];
+    for(let i=0;i<n-1;i++){
+      const a=cNodes[i],b=cNodes[i+1];
+      cctx.strokeStyle='rgba(125,143,150,0.20)'; cctx.lineWidth=1.5;
+      cctx.setLineDash(i===0?[4,4]:[]);
+      cctx.beginPath(); cctx.moveTo(a.x,a.y); cctx.lineTo(b.x,b.y); cctx.stroke();
+      cctx.setLineDash([]);
+      cctx.fillStyle='#54646b'; cctx.font='600 9px "IBM Plex Mono",monospace';
+      if(vert){ cctx.textAlign='left'; cctx.textBaseline='middle'; cctx.fillText(SEGL[i],a.x+46,(a.y+b.y)/2); }
+      else { cctx.textAlign='center'; cctx.textBaseline='bottom'; cctx.fillText(SEGL[i],(a.x+b.x)/2,a.y-36); }
+    }
+    for(let d=0;d<2;d++){
+      for(let k=0;k<4;k++){
+        const t=((cT*0.40+k*0.25+d*0.12)%1);
+        const seg=Math.min(n-2,Math.floor(t*(n-1))), lt=(t*(n-1))-seg;
+        const a=cNodes[d?n-1-seg:seg], b=cNodes[d?n-2-seg:seg+1];
+        if(!a||!b) continue;
+        const x=a.x+(b.x-a.x)*lt, y=a.y+(b.y-a.y)*lt;
+        cctx.fillStyle=d?'rgba(46,196,182,0.9)':'rgba(255,183,3,0.9)';
+        cctx.beginPath(); cctx.arc(x,y,3.2,0,6.283); cctx.fill();
+      }
+    }
+    cNodes.forEach((p,i)=>{
+      const c=CHAIN[i], hov=(i===cHover), sel=(i===cSel);
+      const pulse=1+0.05*Math.sin(cT*3+i*0.7);
+      const rad=(sel?30:hov?27:24)*pulse;
+      const g=cctx.createRadialGradient(p.x,p.y,2,p.x,p.y,rad*1.9);
+      g.addColorStop(0,'rgba(255,183,3,'+(sel?0.42:hov?0.3:0.16)+')'); g.addColorStop(1,'rgba(255,183,3,0)');
+      cctx.fillStyle=g; cctx.beginPath(); cctx.arc(p.x,p.y,rad*1.9,0,6.283); cctx.fill();
+      cctx.fillStyle='#11161a'; cctx.beginPath(); cctx.arc(p.x,p.y,rad,0,6.283); cctx.fill();
+      cctx.strokeStyle=sel?'#ffb703':hov?'rgba(255,183,3,0.85)':'rgba(255,183,3,0.5)';
+      cctx.lineWidth=sel?2.6:1.5;
+      cctx.beginPath(); cctx.arc(p.x,p.y,rad,0,6.283); cctx.stroke();
+      cctx.textAlign='center'; cctx.textBaseline='middle';
+      cctx.font='17px sans-serif'; cctx.fillText(c.i,p.x,p.y-3);
+      cctx.fillStyle=sel?'#ffb703':'#e8f0f2'; cctx.font='700 11px "Space Grotesk",sans-serif';
+      cctx.fillText(c.n,p.x,p.y+rad+14);
+    });
+    cRAF=requestAnimationFrame(cDraw);
+  }
+
+  // ---- latency waterfall ----
+  const LAT=[['Handset encode',0.5,'#54646b'],['Air interface (RU)',1.0,'#ffb703'],['Fronthaul + DU',1.0,'#ffb703'],
+             ['Midhaul + CU',2.0,'#7a4fa0'],['Backhaul + Core',2.0,'#3a86ff'],['Internet transit',20,'#ff5964']];
+  function renderLat(){
+    const wrap=$('latViz'); if(!wrap||wrap.dataset.done) return;
+    const max=LAT.reduce((a,l)=>a+l[1],0);
+    let acc=0;
+    wrap.innerHTML=LAT.map(([n,ms,col])=>{
+      const left=(acc/max)*100, wid=(ms/max)*100; acc+=ms;
+      return '<div class="latrow"><div class="ln">'+n+'</div><div class="lattrack">'+
+        '<div class="latfill" data-l="'+left+'" data-w="'+wid+'" style="background:'+col+'"></div></div>'+
+        '<div class="latval">'+ms+' ms</div></div>';
+    }).join('')+'<div class="lattotal"><span>End-to-end round trip (typical consumer path)</span><b>~'+max.toFixed(1)+' ms</b></div>';
+    wrap.dataset.done='1';
+  }
+  function animateLat(){
+    $('latViz')?.querySelectorAll('.latfill').forEach((f,i)=>{
+      f.style.width='0'; f.style.left=f.dataset.l+'%';
+      setTimeout(()=>{ f.style.width=f.dataset.w+'%'; },100+i*130);
+    });
+  }
+
+  // ---- protocol stack ----
+  const PSTACK=[
+    ['Application','#2ec4b6','Your app — video, voice, web. Sees only an IP socket.','runs on the handset + server'],
+    ['IP','#3a86ff','Addressing and routing. Since 4G the entire cellular core is IP-based.','end to end'],
+    ['SDAP / PDCP','#7a4fa0','QoS flow mapping, header compression, ciphering and integrity protection.','CU'],
+    ['RLC','#a06fc4','Segmentation and reliable delivery — ARQ retransmission of lost blocks.','DU'],
+    ['MAC','#ffb703','Scheduling. Decides which user gets which time-frequency block, every slot.','DU'],
+    ['PHY','#ff9f1c','Modulation (QAM), coding, MIMO layer mapping — turning bits into waveform.','DU + RU'],
+    ['RF / Air','#ff5964','The actual electromagnetic wave on the licensed band.','RU ↔ handset']
+  ];
+  function renderStack2(){
+    const wrap=$('stackViz2'); if(!wrap||wrap.dataset.done) return;
+    wrap.innerHTML=PSTACK.map(([l,col,d,where])=>
+      '<div class="slayer" style="border-left:3px solid '+col+'"><div class="sl" style="color:'+col+'">'+l+
+      '</div><div class="sd">'+d+'<small>runs at: '+where+'</small></div></div>').join('');
+    wrap.dataset.done='1';
+  }
+
+  // ---- topology morph ----
+  const TOPO={
+    classic:{name:'Classic cell-site RAN',era:'2G–4G',
+      nodes:[{l:'RU+BBU',x:0.22},{l:'Core',x:0.75}],
+      info:'<b>Everything at the tower.</b> Baseband unit and radio head sit together at each cell site, linked straight to the core by backhaul. Simple and robust — but every new site needs a full set of expensive hardware, which makes densifying a city prohibitively costly.'},
+    split:{name:'Split RAN (C-RAN)',era:'4G–5G NSA',
+      nodes:[{l:'RU',x:0.14},{l:'DU+CU',x:0.48},{l:'Core',x:0.82}],
+      info:'<b>Brains centralised.</b> Radio heads stay at the tower; baseband processing pools in a regional hub over fronthaul fibre. Far cheaper to add cells, better interference coordination between sites, and the first step toward virtualised networks.'},
+    vran:{name:'Dual-split vRAN + 5G SA',era:'5G Standalone — current',
+      nodes:[{l:'RU',x:0.10},{l:'DU',x:0.36},{l:'CU',x:0.62},{l:'Core',x:0.88}],
+      info:'<b>Fully disaggregated, software-defined.</b> RU, DU and CU each sit in different places running as virtualised functions on commodity servers. This unlocks network slicing, edge compute at the midhaul layer, and private 5G for enterprise. <b>TELUS went 5G Standalone in 2023.</b>'}
+  };
+  let tcv,tctx,tDPR=1,tRAF=null,tT=0,topoKey='vran',topoPos=[];
+  function tResize(){ if(!tcv) return; tDPR=window.devicePixelRatio||1;
+    const r=tcv.getBoundingClientRect(); tcv.width=r.width*tDPR; tcv.height=r.height*tDPR;
+    tctx.setTransform(tDPR,0,0,tDPR,0,0); }
+  function initTopo(){
+    tcv=$('topoCanvas'); if(!tcv) return;
+    tctx=tcv.getContext('2d'); tResize();
+    const tabs=$('topoTabs'); if(tabs){ tabs.innerHTML='';
+      Object.entries(TOPO).forEach(([k,v])=>{
+        const b=document.createElement('button'); b.className='topotab'+(k===topoKey?' on':''); b.dataset.k=k;
+        b.textContent=v.name;
+        b.onclick=()=>{ topoKey=k; topoPos=[]; tabs.querySelectorAll('.topotab').forEach(x=>x.classList.toggle('on',x.dataset.k===k)); setTopoInfo(); };
+        tabs.appendChild(b);
+      });
+    }
+    setTopoInfo();
+    if(tRAF) cancelAnimationFrame(tRAF);
+    tRAF=requestAnimationFrame(tDraw);
+  }
+  function setTopoInfo(){ const el=$('topoInfo'); if(el){ const t=TOPO[topoKey];
+    el.innerHTML='<span style="font-family:\'IBM Plex Mono\';font-size:10px;color:var(--amber)">'+t.era+'</span><br>'+t.info; } }
+  function tDraw(){
+    if(!tcv) return;
+    tT+=0.014;
+    const r=tcv.getBoundingClientRect(), w=r.width, h=r.height, cy=h*0.48;
+    tctx.clearRect(0,0,w,h);
+    const t=TOPO[topoKey], n=t.nodes.length;
+    // ease node positions toward target (morph)
+    if(topoPos.length!==n) topoPos=t.nodes.map(nd=>({x:w*0.5,l:nd.l}));
+    t.nodes.forEach((nd,i)=>{ const tx=w*nd.x+w*0.06; topoPos[i].x+=(tx-topoPos[i].x)*0.09; topoPos[i].l=nd.l; });
+    // links + flowing packets
+    for(let i=0;i<n-1;i++){
+      const a=topoPos[i],b=topoPos[i+1];
+      tctx.strokeStyle='rgba(255,183,3,0.22)'; tctx.lineWidth=1.5;
+      tctx.beginPath(); tctx.moveTo(a.x,cy); tctx.lineTo(b.x,cy); tctx.stroke();
+      for(let k=0;k<3;k++){
+        const p=((tT*0.5+k*0.33+i*0.2)%1);
+        const x=a.x+(b.x-a.x)*p;
+        tctx.fillStyle='rgba(255,183,3,'+(0.85*Math.sin(p*Math.PI))+')';
+        tctx.beginPath(); tctx.arc(x,cy,2.6,0,6.283); tctx.fill();
+      }
+    }
+    // nodes
+    topoPos.forEach((p,i)=>{
+      const pulse=1+0.06*Math.sin(tT*2.4+i);
+      const rad=26*pulse;
+      const g=tctx.createRadialGradient(p.x,cy,2,p.x,cy,rad*1.9);
+      g.addColorStop(0,'rgba(255,183,3,0.22)'); g.addColorStop(1,'rgba(255,183,3,0)');
+      tctx.fillStyle=g; tctx.beginPath(); tctx.arc(p.x,cy,rad*1.9,0,6.283); tctx.fill();
+      tctx.fillStyle='#11161a'; tctx.beginPath(); tctx.arc(p.x,cy,rad,0,6.283); tctx.fill();
+      tctx.strokeStyle='rgba(255,183,3,0.75)'; tctx.lineWidth=1.8;
+      tctx.beginPath(); tctx.arc(p.x,cy,rad,0,6.283); tctx.stroke();
+      tctx.fillStyle='#e8f0f2'; tctx.font='700 11px "Space Grotesk",sans-serif';
+      tctx.textAlign='center'; tctx.textBaseline='middle';
+      tctx.fillText(p.l,p.x,cy);
+    });
+    tctx.fillStyle='#54646b'; tctx.font='600 10px "IBM Plex Mono",monospace';
+    tctx.textAlign='center'; tctx.textBaseline='top';
+    tctx.fillText(t.name+' · '+t.era,w/2,h-20);
+    tRAF=requestAnimationFrame(tDraw);
+  }
+
+  // ---- wave physics ----
+  const WAVES=[
+    {b:'600 MHz',lam:'λ ≈ 50 cm',cyc:1.6,reach:0.94,col:'#3a86ff',note:'~100 km · through walls'},
+    {b:'2.5 GHz',lam:'λ ≈ 12 cm',cyc:5,reach:0.66,col:'#7a4fa0',note:'~8 km · LTE workhorse'},
+    {b:'3500 MHz',lam:'λ ≈ 8.5 cm',cyc:8,reach:0.46,col:'#2ec4b6',note:'~2 km · ★ 5G sweet spot'},
+    {b:'26 GHz',lam:'λ ≈ 11 mm',cyc:26,reach:0.16,col:'#ffb703',note:'~300 m · line of sight'}
+  ];
+  let wcv,wctx,wDPR=1,wRAF=null,wT=0;
+  function wResize(){ if(!wcv) return; wDPR=window.devicePixelRatio||1;
+    const r=wcv.getBoundingClientRect(); wcv.width=r.width*wDPR; wcv.height=r.height*wDPR;
+    wctx.setTransform(wDPR,0,0,wDPR,0,0); }
+  function initWave(){
+    wcv=$('waveCanvas'); if(!wcv) return;
+    wctx=wcv.getContext('2d'); wResize();
+    if(wRAF) cancelAnimationFrame(wRAF);
+    wRAF=requestAnimationFrame(wDraw);
+  }
+  function wDraw(){
+    if(!wcv) return;
+    wT+=0.02;
+    const r=wcv.getBoundingClientRect(), w=r.width, h=r.height;
+    wctx.clearRect(0,0,w,h);
+    const padL=104,padR=20, pw=w-padL-padR, n=WAVES.length, rowH=h/n;
+    WAVES.forEach((wv,i)=>{
+      const yc=rowH*(i+0.5);
+      const cr=parseInt(wv.col.slice(1,3),16),cg=parseInt(wv.col.slice(3,5),16),cb=parseInt(wv.col.slice(5,7),16);
+      const rgb=cr+','+cg+','+cb;
+      // tower icon
+      wctx.fillStyle=wv.col; wctx.font='16px sans-serif'; wctx.textAlign='center'; wctx.textBaseline='middle';
+      wctx.fillText('📡',padL-16,yc);
+      // label
+      wctx.fillStyle='#e8f0f2'; wctx.font='700 13px "Space Grotesk",sans-serif';
+      wctx.textAlign='right'; wctx.fillText(wv.b,padL-34,yc-8);
+      wctx.fillStyle='#54646b'; wctx.font='600 9.5px "IBM Plex Mono",monospace';
+      wctx.fillText(wv.lam,padL-34,yc+8);
+      // the wave — real relative wavelength, amplitude decays over its reach
+      const reachX=pw*wv.reach;
+      wctx.strokeStyle='rgba('+rgb+',0.95)'; wctx.lineWidth=1.8;
+      wctx.beginPath();
+      const steps=Math.max(120,Math.floor(reachX/2));
+      for(let k=0;k<=steps;k++){
+        const t=k/steps, x=padL+reachX*t;
+        const decay=Math.pow(1-t,0.7);
+        const amp=(rowH*0.30)*decay;
+        const y=yc-Math.sin(t*Math.PI*2*wv.cyc - wT*3)*amp;
+        k?wctx.lineTo(x,y):wctx.moveTo(x,y);
+      }
+      wctx.stroke();
+      // faded continuation showing signal died
+      wctx.strokeStyle='rgba('+rgb+',0.12)'; wctx.setLineDash([3,5]); wctx.lineWidth=1;
+      wctx.beginPath(); wctx.moveTo(padL+reachX,yc); wctx.lineTo(padL+pw,yc); wctx.stroke(); wctx.setLineDash([]);
+      // reach marker
+      wctx.fillStyle=wv.col; wctx.beginPath(); wctx.arc(padL+reachX,yc,3.5,0,6.283); wctx.fill();
+      wctx.fillStyle='rgba('+rgb+',0.9)'; wctx.font='600 10px "IBM Plex Mono",monospace';
+      wctx.textAlign='left'; wctx.textBaseline='middle';
+      wctx.fillText(wv.note,padL+reachX+10,yc);
+    });
+    wRAF=requestAnimationFrame(wDraw);
+  }
+
+  // ---- Canadian holdings viz ----
+  const HOLDV=[
+    {c:'TELUS',col:'#7a4fa0',low:43,m35:28,m38:72,rides:'Koodo · Public Mobile'},
+    {c:'Bell',col:'#3a86ff',low:40,m35:50,m38:50,rides:'Virgin Plus · Lucky Mobile'},
+    {c:'Rogers',col:'#ff5964',low:52,m35:50,m38:41,rides:'Fido · Chatr'},
+    {c:'Quebecor',col:'#ffb703',low:20,m35:40,m38:35,rides:'Videotron · Fizz · Freedom'},
+    {c:'SaskTel',col:'#2ec4b6',low:20,m35:40,m38:25,rides:'own network (SK)'},
+    {c:'Eastlink',col:'#e8f0f2',low:15,m35:25,m38:0,rides:'own network (Atlantic)'}
+  ];
+  function renderHoldViz(){
+    const wrap=$('holdViz'); if(!wrap||wrap.dataset.done) return;
+    const max=Math.max(...HOLDV.map(d=>d.low+d.m35+d.m38));
+    wrap.innerHTML=HOLDV.map(d=>{
+      const tot=d.low+d.m35+d.m38, scale=(tot/max)*100;
+      const seg=(v,shade,lab)=>'<div class="hvseg" data-w="'+(v/tot*100)+'" style="background:'+d.col+';opacity:'+shade+'" title="'+lab+' '+v+' MHz">'+(v>=25?v:'')+'</div>';
+      return '<div class="hvrow"><div class="hvn" style="color:'+d.col+'">'+d.c+'<small>'+d.rides+'</small></div>'+
+        '<div class="hvtrack" style="width:'+scale+'%">'+seg(d.low,0.45,'low')+seg(d.m35,0.72,'3500')+seg(d.m38,1,'3800')+'</div>'+
+        '<div class="hvtot" style="color:'+d.col+'">'+tot+' MHz</div></div>';
+    }).join('')+'<div style="font-family:\'IBM Plex Mono\';font-size:10.5px;color:var(--dim);margin-top:4px">◈ shade light→dark: low-band 600/700 · 3500 MHz · 3800 MHz</div>';
+    wrap.dataset.done='1';
+  }
+  function animateHoldViz(){
+    $('holdViz')?.querySelectorAll('.hvseg').forEach((s,i)=>{ s.style.width='0'; setTimeout(()=>s.style.width=s.dataset.w+'%',80+i*45); });
+  }
+
+  // ---- generations ----
+  const GENS=[
+    {g:'1G',y:'1980s',w:'Analog voice only. Car phones the size of bricks, no security, no data.',s:'~2 kbps',col:'#54646b'},
+    {g:'2G',y:'1990s',w:'Digital voice + SMS. GSM standardised the world and made handsets pocketable.',s:'~64 kbps',col:'#3a86ff'},
+    {g:'3G',y:'2000s',w:'Mobile data arrives. The first real mobile internet, packet-switched alongside voice.',s:'~2 Mbps',col:'#7a4fa0'},
+    {g:'4G LTE',y:'2010s',w:'All-IP network. Carriers become data companies. The streaming and app economy era.',s:'~100 Mbps',col:'#ff5964'},
+    {g:'5G SA',y:'2020s',w:'Cloud-native core, network slicing, massive IoT, private networks. TELUS live 2023.',s:'1 Gbps+',col:'#2ec4b6'}
+  ];
+  function renderGens(){
+    const wrap=$('gensViz'); if(!wrap||wrap.dataset.done) return;
+    wrap.innerHTML=GENS.map(g=>
+      '<div class="gcell" style="border-top-color:'+g.col+'"><div class="gg" style="color:'+g.col+'">'+g.g+'</div>'+
+      '<div class="gy">'+g.y+'</div><div class="gw">'+g.w+'</div><div class="gs">'+g.s+'</div></div>').join('');
+    wrap.dataset.done='1';
+  }
+
+  // ---- PureFibre vs Bell Fibe ----
+  const FWAR=[
+    ['Technology','XGS-PON, 100% FTTH','XGS-PON + GPON, FTTH','tie'],
+    ['Symmetrical speeds','Yes — up & down equal','Yes on fibre tiers','tie'],
+    ['Top consumer tier','~3 Gbps (PureFibre X)','8 Gbps select ON/QC','bell'],
+    ['Premises passed','~3.7M','~7.3M — largest in Canada','bell'],
+    ['Home turf','BC · Alberta (owned last-mile)','Ontario · Quebec · Atlantic','tie'],
+    ['Expanding into','ON · QC (partly wholesale)','West + Ziply (~$5B)','tie'],
+    ['Price guarantee','5-YEAR price lock','2-year guarantee','telus'],
+    ['Legacy tech in base','None — copper being retired','Some FTTN/DSL remains','telus'],
+    ['Wi-Fi hardware','Wi-Fi 6 std · Wi-Fi 7 high tiers','Giga Hub (Wi-Fi 6E/7)','tie'],
+    ['Committed capex','$45B+ to PureFibre','Tens of billions; 2025 target cut','telus']
+  ];
+  function renderFWar(){
+    const wrap=$('fibreWar'); if(!wrap||wrap.dataset.done) return;
+    let h='<div class="fwh">Dimension</div><div class="fwh fwt" style="color:var(--telus-2)">TELUS PureFibre</div><div class="fwh fwb" style="color:var(--blue)">Bell Fibe</div>';
+    FWAR.forEach(([dim,t,b,win])=>{
+      h+='<div class="fwm">'+dim+'</div>';
+      h+='<div class="fwt'+(win==='telus'?' fwwin':win==='tie'?' fwtie':'')+'">'+t+(win==='telus'?' ✓':'')+'</div>';
+      h+='<div class="fwb'+(win==='bell'?' fwwin':win==='tie'?' fwtie':'')+'">'+b+(win==='bell'?' ✓':'')+'</div>';
+    });
+    wrap.innerHTML=h; wrap.dataset.done='1';
+  }
+
+  function initTelecomView(){
+    renderFWar();
+    renderStack2(); renderGens(); renderLat(); renderHoldViz();
+    initChain(); initTopo(); initWave();
+    setTimeout(()=>{ animateLat(); animateHoldViz(); },140);
+  }
+
   // ---- init ----
-  buildSub('brief');
   calc();
   renderStack();
   renderWorld();
