@@ -30,11 +30,12 @@
 
   /* primary tabs */
   .tabs{display:flex;gap:4px;margin-left:auto}
-  .tab{font-family:'IBM Plex Mono';font-size:12.5px;font-weight:500;color:var(--mute);background:none;border:1px solid transparent;padding:8px 15px;cursor:pointer;letter-spacing:.02em;transition:.15s;border-radius:2px;white-space:nowrap}
+  .tab{font-family:'IBM Plex Mono';font-size:12px;font-weight:500;color:var(--mute);background:none;border:1px solid transparent;padding:7px 10px;cursor:pointer;letter-spacing:0;transition:.15s;border-radius:2px;white-space:nowrap}
   .tab:hover{color:var(--ink);background:var(--panel)}
   .tab.on{color:var(--acid);border-color:var(--line);background:var(--panel)}
-  .tab .no{color:var(--dim);margin-right:7px}
-  .tab.on .no{color:var(--telus-2)}
+  .tab .no{color:var(--dim);margin-right:5px;font-size:10px;opacity:.7}
+  .tab.on .no{color:var(--telus-2);opacity:1}
+  @media(max-width:1080px){.tab{padding:7px 8px;font-size:11.5px}.tab .no{display:none}}
 
   /* mobile menu */
   .menubtn{display:none;background:var(--panel);border:1px solid var(--line);color:var(--ink);padding:8px 12px;font-family:'IBM Plex Mono';font-size:12px;cursor:pointer;border-radius:2px;flex-shrink:0}
@@ -466,6 +467,31 @@
   .fwtie{color:var(--amber)}
   @media(max-width:760px){.fibrewar{grid-template-columns:1fr}.fibrewar .fwm{background:var(--panel-2);margin-top:6px}}
 
+  /* 100-day plan */
+  .phasetabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+  @media(max-width:760px){.phasetabs{grid-template-columns:1fr 1fr}}
+  .ptab{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--line);border-radius:4px;padding:14px 16px;cursor:pointer;transition:.16s;text-align:left}
+  .ptab:hover{border-color:var(--acid)}
+  .ptab.on{border-top-color:var(--acid);background:var(--panel-2)}
+  .ptab .pd{font-family:'IBM Plex Mono';font-size:10px;color:var(--acid);letter-spacing:.08em}
+  .ptab .pt{font-family:'Space Grotesk';font-weight:700;font-size:15px;margin-top:4px}
+  .ptab .pm{font-size:11.5px;color:var(--dim);margin-top:4px}
+  .phasebody{background:var(--panel);border:1px solid var(--line);border-left:2px solid var(--acid);border-radius:4px;padding:22px 24px;min-height:210px}
+  .phasebody h4{font-family:'Space Grotesk';font-weight:700;font-size:19px;margin-bottom:3px}
+  .phasebody .pbsub{font-family:'IBM Plex Mono';font-size:11px;color:var(--acid);margin-bottom:16px}
+  .phasebody ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+  .phasebody li{display:flex;gap:12px;font-size:14px;color:var(--mute);line-height:1.55}
+  .phasebody li b{color:var(--ink);font-weight:600}
+  .phasebody li .pn{font-family:'IBM Plex Mono';font-size:11px;color:var(--acid);flex-shrink:0;padding-top:2px;min-width:18px}
+  /* scorecard */
+  .scorelist{display:flex;flex-direction:column;gap:8px}
+  .scitem{display:grid;grid-template-columns:28px 1fr 130px;gap:14px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:13px 16px;transition:.16s}
+  .scitem:hover{border-color:var(--acid);transform:translateX(4px)}
+  @media(max-width:640px){.scitem{grid-template-columns:24px 1fr;gap:10px}.scitem .scm{grid-column:2}}
+  .scitem .scb{width:18px;height:18px;border:1.5px solid var(--acid);border-radius:3px;display:flex;align-items:center;justify-content:center;color:var(--acid);font-size:11px}
+  .scitem .sct{font-size:14px;color:var(--ink)}
+  .scitem .scm{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);text-align:right}
+
   footer{padding:40px 0 60px}
   .src{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);line-height:1.9}
   .src a{color:var(--mute)}
@@ -479,13 +505,14 @@
     <div class="brand"><span class="dot"></span>TELCOS&nbsp;<small>/ CEO COMMAND CENTER</small></div>
     <button class="menubtn" id="menubtn">☰ Menu</button>
     <div class="tabs" id="tabs">
-      <button class="tab on" data-view="brief"><span class="no">01</span>Company Brief</button>
-      <button class="tab" data-view="debt"><span class="no">02</span>Debt vs Rivals</button>
-      <button class="tab" data-view="play"><span class="no">03</span>Growth & M&A</button>
-      <button class="tab" data-view="network"><span class="no">04</span>Network & Loyalty</button>
-      <button class="tab" data-view="coverage"><span class="no">05</span>Coverage & Plans</button>
-      <button class="tab" data-view="telecom"><span class="no">06</span>Telecom 101</button>
-      <button class="tab" data-view="ir"><span class="no">07</span>Investor Relations</button>
+      <button class="tab on" data-view="brief" title="Company Brief"><span class="no">1</span>Brief</button>
+      <button class="tab" data-view="debt" title="Debt vs Rivals"><span class="no">2</span>Debt</button>
+      <button class="tab" data-view="play" title="Growth &amp; M&amp;A"><span class="no">3</span>Growth</button>
+      <button class="tab" data-view="network" title="Network &amp; Loyalty"><span class="no">4</span>Loyalty</button>
+      <button class="tab" data-view="coverage" title="Coverage &amp; Plans"><span class="no">5</span>Coverage</button>
+      <button class="tab" data-view="telecom" title="Telecom 101"><span class="no">6</span>Telecom</button>
+      <button class="tab" data-view="plan" title="The 100-Day Plan"><span class="no">7</span>100 Days</button>
+      <button class="tab" data-view="ir" title="Investor Relations"><span class="no">8</span>IR</button>
     </div>
   </div>
 </header>
@@ -1536,7 +1563,79 @@
 </div>
 
 
-<!-- ===================== VIEW 7: INVESTOR RELATIONS ===================== -->
+<!-- ===================== VIEW 7: 100-DAY PLAN ===================== -->
+<div class="view" id="v-plan">
+  <div class="wrap">
+    <div class="hero">
+      <div class="eyebrow" style="color:var(--acid)">The First 100 Days · Sequence, not analysis</div>
+      <h1>Day one,<br><span class="fade">I already</span><br>know the plan.</h1>
+      <p class="lede">Analysis is table stakes — every serious candidate will have the numbers. What separates the hire is knowing the <em>sequence</em>: what you do in week one, what you refuse to touch until day sixty, and which three commitments you'd put your name against publicly.</p>
+      <div class="pridebar">
+        <div class="pb"><div class="pbn">&lt;1.0%</div><div class="pbl">Churn — defend it first</div></div>
+        <div class="pb"><div class="pbn">3.0×</div><div class="pbl">Leverage by 2027 — non-negotiable</div></div>
+        <div class="pb"><div class="pbn">$2B</div><div class="pbl">Health revenue by 2028</div></div>
+        <div class="pb"><div class="pbn">0</div><div class="pbl">New leverage taken on</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <section id="pl-timeline">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--acid)">01</span><h2>The sequence</h2><span class="sub">click a phase</span></div>
+      <p class="intro">Four phases. Listen before you move, commit before you're comfortable, and put the first visible win on the board before day 100.</p>
+      <div class="phasetabs" id="phaseTabs"></div>
+      <div class="phasebody" id="phaseBody"></div>
+    </div>
+  </section>
+
+  <!-- FIRST DECISIONS -->
+  <section id="pl-decisions">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--acid)">02</span><h2>The three commitments</h2><span class="sub">what I'd say publicly on day one</span></div>
+      <p class="intro">A new CEO gets one credibility budget. I'd spend it on three promises that are specific, measurable, and survivable.</p>
+      <div class="grid3">
+        <div class="card"><span class="tag win">Commit</span><h3>Churn stays under 1%</h3><p>The 0.91% is the franchise. It ticked to ~1.11% in Q3 under promo pressure — I own that number publicly and report it every quarter. Bundle depth, not discounting, is how we hold it.</p></div>
+        <div class="card"><span class="tag win">Commit</span><h3>3.0× leverage by 2027</h3><p>No new leverage for any growth move. Every acquisition is tuck-in scale or funded by divestitures already in motion. The board's #1 KPI becomes mine.</p></div>
+        <div class="card"><span class="tag win">Commit</span><h3>Fibre + health, not scale</h3><p>We stop trying to out-scale Rogers. Capital goes to PureFibre depth and the health/digital flywheel — the two assets rivals cannot buy back.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT I WON'T DO -->
+  <section id="pl-restraint">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--acid)">03</span><h2>What I won't do in 100 days</h2><span class="sub">restraint is a strategy</span></div>
+      <p class="intro">Half of a first-100-days plan is the discipline to <em>not</em> act. These are deliberate holds — each one a mistake a new CEO is tempted into.</p>
+      <div class="two">
+        <div class="card"><h3>Deliberate holds</h3>
+          <ul class="clean" style="margin-top:8px">
+            <li><span class="mk">✗</span><span><b>No reorg.</b> Restructuring before you understand the org destroys more value than it creates. Not before day 120.</span></li>
+            <li><span class="mk">✗</span><span><b>No big acquisition.</b> Leverage discipline is the promise. Nothing that breaks it, however good the asset looks.</span></li>
+            <li><span class="mk">✗</span><span><b>No price war.</b> Matching Quebecor's $34 plans on the flagship torches ARPU. That fight belongs to Koodo and Public.</span></li>
+            <li><span class="mk">✗</span><span><b>No new strategy deck.</b> The strategy is sound. Execution and sequencing are the gap, not vision.</span></li>
+          </ul>
+        </div>
+        <div class="card"><h3>The hard question I'd expect</h3>
+          <p style="color:var(--mute);font-size:14px;margin-bottom:12px"><b style="color:var(--ink)">"Churn hit 1.11% and mobile net adds fell to 207K. Is the moat eroding?"</b></p>
+          <p style="color:var(--mute);font-size:13.5px;line-height:1.65">Honest answer: the mobile moat is under real pressure — that's promo intensity plus the June 2026 fee ban making switching frictionless. But churn is a <em>household</em> metric, not a handset one. A mobile-only customer leaves easily; a household with fibre, security and a parent's medical pendant does not. My response isn't to defend the mobile number in isolation — it's to raise services-per-household so the number stops being fragile. That's measurable, and I'd report it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCORECARD -->
+  <section id="pl-score">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--acid)">04</span><h2>Day-100 scorecard</h2><span class="sub">how you'd judge me</span></div>
+      <p class="intro">If I've done this right, here's what's true on day 100 — each item verifiable, no vanity metrics.</p>
+      <div class="scorelist" id="scoreList"></div>
+      <div class="note" style="border-left-color:var(--acid)">◈ <b>The closing line:</b> "In a hundred days I won't have transformed TELUS — nobody does, and anyone who promises it is selling. What I will have done is listened hard, committed publicly to three numbers I can be fired over, protected the churn franchise, and put the first visible win on the board. The transformation is years two and three. The first hundred days are about earning the right to run them."</div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== VIEW 8: INVESTOR RELATIONS ===================== -->
 <div class="view" id="v-ir">
   <div class="wrap">
     <div class="hero">
@@ -1662,9 +1761,10 @@
     network:[['n-flow','Switching Flow'],['n-loyalty','Brand Loyalty'],['n-5g','5G & Spectrum']],
     coverage:[['cov-live','Live Migration'],['cov-map','Air Dominance'],['cov-merged','Merged Chart'],['cov-reach','Geo vs Population'],['cov-plans','Prepaid vs Postpaid']],
     telecom:[['t-split','Wireless vs Wireline'],['t-fibre','PureFibre vs Bell'],['t-chain','Signal Chain'],['t-latency','Latency Budget'],['t-stack','Protocol Stack'],['t-topo','RAN Topology'],['t-spectrum','Wave Physics'],['t-holdings','Who Holds What'],['t-gens','1G→5G'],['t-money','The Money']],
+    plan:[['pl-timeline','The Sequence'],['pl-decisions','Three Commitments'],['pl-restraint','What I Won\'t Do'],['pl-score','Day-100 Scorecard']],
     ir:[['ir-listing','Listing'],['ir-guidance','Guidance'],['ir-calendar','Calendar & Contacts']]
   };
-  const LBL={brief:'Company Brief',debt:'Debt vs Rivals',play:'Growth & M&A',network:'Network & Loyalty',coverage:'Coverage & Plans',telecom:'Telecom 101',ir:'Investor Relations'};
+  const LBL={brief:'Company Brief',debt:'Debt vs Rivals',play:'Growth & M&A',network:'Network & Loyalty',coverage:'Coverage & Plans',telecom:'Telecom 101',plan:'The 100-Day Plan',ir:'Investor Relations'};
 
   function buildSub(view){
     const n=$('subnav'); n.innerHTML='';
@@ -1765,6 +1865,7 @@
     else { if(lRAF){ cancelAnimationFrame(lRAF); lRAF=null; } if(sigRAF){ cancelAnimationFrame(sigRAF); sigRAF=null; } if(mRAF){ cancelAnimationFrame(mRAF); mRAF=null; } }
     if(view==='telecom'){ setTimeout(initTelecomView,60); }
     else { if(cRAF){ cancelAnimationFrame(cRAF); cRAF=null; } if(tRAF){ cancelAnimationFrame(tRAF); tRAF=null; } if(wRAF){ cancelAnimationFrame(wRAF); wRAF=null; } }
+    if(view==='plan'){ setTimeout(initPlanView,60); }
     if(view==='debt'){ setTimeout(initGauges,60); }
     else if(gRAF){ cancelAnimationFrame(gRAF); gRAF=null; }
     if(view==='brief'){ renderStack(); renderWorld(); setTimeout(()=>{animateStack();animateWorld();},120); }
@@ -2818,6 +2919,80 @@
     initChain(); initTopo(); initWave();
     setTimeout(()=>{ animateLat(); animateHoldViz(); },140);
   }
+
+  // ---- 100-DAY PLAN ----
+  const PHASES=[
+    {d:'DAYS 1–14',t:'Listen',m:'Before changing anything',
+     h:'Listen — and change nothing',sub:'Days 1–14 · the discipline phase',
+     items:[
+      ['01','<b>Front line first.</b> Ride along with retail, install techs and the care floor in BC, Alberta and Ontario. The people who touch churn daily know why it moved before any dashboard does.'],
+      ['02','<b>Top 50 conversations.</b> Every direct report, the board chair, the CFO, and the leaders of Health, Digital and Agriculture. One question each: what would you fix if you had my job?'],
+      ['03','<b>Regulator and government.</b> CRTC and ISED early, not defensively. The fee ban and wholesale regime are now the operating environment — show up as a partner before you need something.'],
+      ['04','<b>Read the churn cohort data cold.</b> Not the headline rate — which segments, which provinces, which tenure bands. Find out if 1.11% is promo noise or structural.']]},
+    {d:'DAYS 15–45',t:'Diagnose',m:'Find the real gap',
+     h:'Diagnose — separate noise from structure',sub:'Days 15–45 · the evidence phase',
+     items:[
+      ['01','<b>Churn autopsy.</b> Decompose the Q3 move by segment. Mobile-only vs bundled households. If bundled churn held while mobile-only bled, the thesis is confirmed and the answer is depth-per-household.'],
+      ['02','<b>Capital allocation review.</b> Every dollar of the ~$2.3B capex against return. Where is fibre trenching earning its cost of capital and where is it vanity?'],
+      ['03','<b>Eastern expansion margin test.</b> The ON/QC push rides partly on CRTC wholesale, not owned last-mile. Model the true margin. If it is thin, say so early rather than defending it later.'],
+      ['04','<b>Health monetisation diligence.</b> The partnership is the funding engine for the whole deleveraging plan. Pressure-test the timeline and the valuation before committing publicly.']]},
+    {d:'DAYS 46–75',t:'Commit',m:'Go public with numbers',
+     h:'Commit — put numbers on the record',sub:'Days 46–75 · the credibility phase',
+     items:[
+      ['01','<b>Announce the three commitments.</b> Churn under 1%, 3.0× by 2027, zero new leverage. Specific, quarterly-reported, fireable.'],
+      ['02','<b>Reframe the growth metric.</b> Shift the internal and external scorecard from subscriber count to <b>services per household</b>. It is the honest measure of the moat and it aligns every business line.'],
+      ['03','<b>Extend the price-lock architecture.</b> The 5-year lock is the clearest differentiator TELUS owns. Push it across mobility, security and health — "the price you sign is the price you keep."'],
+      ['04','<b>Fund the flanker.</b> Give Koodo and Public the mandate and budget to fight Quebecor at the value end so the flagship never has to discount.']]},
+    {d:'DAYS 76–100',t:'Execute',m:'First visible win',
+     h:'Execute — land one visible win',sub:'Days 76–100 · the proof phase',
+     items:[
+      ['01','<b>Close one tuck-in.</b> A regional fibre ISP or a security/smart-home operator — sub-$300M, self-funding, leverage-neutral. Proves the discipline is real, not rhetoric.'],
+      ['02','<b>Ship the bundle push.</b> Health and security attach campaign into the existing fibre base. Near-zero acquisition cost, direct churn impact, measurable inside a quarter.'],
+      ['03','<b>First quarterly report as CEO.</b> Lead with churn and services-per-household, not revenue. Set the pattern for how this company is judged under me.'],
+      ['04','<b>Name the 2028 destination.</b> Not the biggest carrier — the one the market pays the highest multiple for. Say it out loud so the organisation can aim at it.']]}
+  ];
+  let phaseIdx=0;
+  function renderPhases(){
+    const tabs=$('phaseTabs'); if(!tabs) return;
+    tabs.innerHTML=PHASES.map((p,i)=>
+      '<button class="ptab'+(i===phaseIdx?' on':'')+'" data-i="'+i+'"><div class="pd">'+p.d+'</div><div class="pt">'+p.t+'</div><div class="pm">'+p.m+'</div></button>').join('');
+    tabs.querySelectorAll('.ptab').forEach(b=>{
+      b.onclick=()=>{ phaseIdx=+b.dataset.i;
+        tabs.querySelectorAll('.ptab').forEach(x=>x.classList.toggle('on',x===b));
+        renderPhaseBody(); };
+    });
+    renderPhaseBody();
+  }
+  function renderPhaseBody(){
+    const el=$('phaseBody'); if(!el) return; const p=PHASES[phaseIdx];
+    el.innerHTML='<h4>'+p.h+'</h4><div class="pbsub">'+p.sub+'</div><ul>'+
+      p.items.map(([n,t])=>'<li><span class="pn">'+n+'</span><span>'+t+'</span></li>').join('')+'</ul>';
+  }
+  const SCORE=[
+    ['Churn reported publicly, holding under 1.0%','quarterly'],
+    ['Three commitments on the record, board-aligned','day 60'],
+    ['Services-per-household adopted as the growth metric','internal + external'],
+    ['One tuck-in closed, leverage-neutral','sub-$300M'],
+    ['Health monetisation timeline confirmed','funds deleveraging'],
+    ['Leverage tracking to 3.3× or better','on glide path'],
+    ['Price-lock extended beyond internet','mobility + security'],
+    ['Zero new leverage taken on','non-negotiable']
+  ];
+  function renderScore(){
+    const el=$('scoreList'); if(!el||el.dataset.done) return;
+    el.innerHTML=SCORE.map(([t,m])=>'<div class="scitem"><div class="scb">✓</div><div class="sct">'+t+'</div><div class="scm">'+m+'</div></div>').join('');
+    el.dataset.done='1';
+  }
+  function initPlanView(){ renderPhases(); renderScore(); }
+
+  // ---- keyboard shortcuts: 1-8 jump tabs ----
+  document.addEventListener('keydown',e=>{
+    if(e.metaKey||e.ctrlKey||e.altKey) return;
+    const tag=(e.target&&e.target.tagName)||'';
+    if(tag==='INPUT'||tag==='TEXTAREA'||tag==='SELECT') return;
+    const n=parseInt(e.key,10);
+    if(n>=1&&n<=8){ const t=document.querySelectorAll('.tab')[n-1]; if(t) t.click(); }
+  });
 
   // ---- init ----
   calc();
