@@ -492,6 +492,24 @@
   .scitem .sct{font-size:14px;color:var(--ink)}
   .scitem .scm{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);text-align:right}
 
+  /* geographic province map */
+  .geowrap{position:relative;background:radial-gradient(ellipse at 50% 40%,#12181d 0%,#0a0d0f 84%);border:1px solid var(--line);border-radius:4px;padding:14px}
+  #geoCanvas{display:block;width:100%;height:520px;cursor:pointer}
+  @media(max-width:640px){#geoCanvas{height:400px}}
+  .geotip{position:absolute;pointer-events:none;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:9px 12px;font-family:'IBM Plex Mono';font-size:11px;color:var(--ink);opacity:0;transition:opacity .12s;white-space:nowrap;z-index:6;line-height:1.6}
+  .geotip.show{opacity:1}
+  .geotip b{font-family:'Space Grotesk';font-size:13px}
+  .geopanel{margin-top:12px;background:var(--panel);border:1px solid var(--line);border-left:2px solid var(--acid);border-radius:4px;padding:20px 22px;min-height:150px}
+  .geopanel h4{font-family:'Space Grotesk';font-weight:700;font-size:19px;margin-bottom:3px}
+  .geopanel .gpsub{font-family:'IBM Plex Mono';font-size:11px;color:var(--acid);margin-bottom:16px}
+  .gplist{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:9px}
+  .gpcard{background:var(--panel-2);border:1px solid var(--line);border-left:3px solid var(--line);border-radius:3px;padding:11px 13px}
+  .gpcard .gpn{font-family:'Space Grotesk';font-weight:600;font-size:13.5px;display:flex;justify-content:space-between;gap:8px}
+  .gpcard .gps{font-family:'IBM Plex Mono';font-size:12px}
+  .gpcard .gpb{font-family:'IBM Plex Mono';font-size:10px;color:var(--dim);margin-top:5px}
+  .gpcard.lead{background:var(--panel)}
+  .gpcard .gplead{font-family:'IBM Plex Mono';font-size:9px;background:var(--acid);color:#0a0d0f;padding:1px 6px;border-radius:7px;font-weight:600;margin-left:6px}
+
   footer{padding:40px 0 60px}
   .src{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);line-height:1.9}
   .src a{color:var(--mute)}
@@ -1252,9 +1270,23 @@
   </section>
 
   <!-- AIR DOMINANCE (spectrum × signal, merged) -->
+  <!-- GEOGRAPHIC PROVINCE MAP -->
+  <section id="cov-geo">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--acid)">02</span><h2>The coverage map — every telco, every province</h2><span class="sub">click a province</span></div>
+      <p class="intro">Canada's real competitive map. Each province is shaded by how many carriers actively compete there and bordered by its leader's colour. <b>Click any province</b> to see every telco present — flagship, flanker, discount and regional — with their share.</p>
+      <div class="geowrap">
+        <canvas id="geoCanvas"></canvas>
+        <div class="geotip" id="geoTip"></div>
+      </div>
+      <div class="geopanel" id="geoPanel"></div>
+      <div class="note">◈ Simplified geographic schematic — province shapes are stylised, not survey-grade cartography. Leader shares and carrier presence are 2020–2025 blended estimates from CRTC and market data; the Big Three operate nationally while regional players (SaskTel, Videotron, Eastlink) hold only their home markets. Flanker and discount brands ride the parent's network, so their presence mirrors the parent's footprint. Verify against CRTC's provincial breakdown before quoting.</div>
+    </div>
+  </section>
+
   <section id="cov-map">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--acid)">02</span><h2>Air dominance — live signal × spectrum by province</h2><span class="sub">MHz-weighted signal · prepaid + postpaid</span></div>
+      <div class="shead"><span class="sno" style="color:var(--acid)">03</span><h2>Air dominance — live signal × spectrum by province</h2><span class="sub">MHz-weighted signal · prepaid + postpaid</span></div>
       <p class="intro">One greater view: each province emits a live signal wave whose <b>strength blends market dominance with the spectrum that carrier actually holds</b> — more MHz = a taller, denser, faster wave that carries more energy. Pick a carrier tab to watch its air light up province by province with its spectrum footprint, or Overall to see every carrier stacked. Flip prepaid/postpaid. The leader's wave pulses brightest, and its MHz shows on the right.</p>
       <div class="sigtabs">
         <div class="sigtabrow" id="sigCarrierTabs"></div>
@@ -1272,7 +1304,7 @@
   <!-- MERGED ALL-CARRIER CHART -->
   <section id="cov-merged">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--acid)">03</span><h2>The whole market — all four at once</h2><span class="sub">38.2M subscribers · postpaid + prepaid</span></div>
+      <div class="shead"><span class="sno" style="color:var(--acid)">04</span><h2>The whole market — all four at once</h2><span class="sub">38.2M subscribers · postpaid + prepaid</span></div>
       <p class="intro">Everything on one frame: every carrier's subscriber base stacked into postpaid (solid) and prepaid (hatched), sized to real scale. Rogers leads, then Bell, TELUS, Freedom — together ~86% of a 38.2M market. Bars animate up on the shared beat.</p>
       <div class="mergedwrap">
         <canvas id="mergedCanvas"></canvas>
@@ -1289,7 +1321,7 @@
   <!-- COVERAGE BARS -->
   <section id="cov-reach">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--acid)">04</span><h2>Geographic vs population coverage</h2><span class="sub">the two numbers carriers quote</span></div>
+      <div class="shead"><span class="sno" style="color:var(--acid)">05</span><h2>Geographic vs population coverage</h2><span class="sub">the two numbers carriers quote</span></div>
       <p class="intro">The gap between these two is the whole story of Canadian coverage: carriers cover a small slice of the <em>landmass</em> but nearly all the <em>people</em>, because Canadians cluster in cities.</p>
       <div class="two">
         <div class="card">
@@ -1310,7 +1342,7 @@
   <!-- PREPAID VS POSTPAID -->
   <section id="cov-plans">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--acid)">05</span><h2>Prepaid vs postpaid — all carriers</h2><span class="sub">the profit engine vs the value battleground</span></div>
+      <div class="shead"><span class="sno" style="color:var(--acid)">06</span><h2>Prepaid vs postpaid — all carriers</h2><span class="sub">the profit engine vs the value battleground</span></div>
       <p class="intro">Postpaid (monthly bill, credit check, contract) is ~90% of the base — low churn, high ARPU, the profit core. Prepaid (pay-ahead, no contract) is where budget brands and newcomers live. Each carrier plays both, but with different brands.</p>
 
       <div class="two" style="margin-bottom:20px">
@@ -1759,7 +1791,7 @@
     debt:[['d-live','Live Pressure'],['d-lev','Leverage'],['d-card','Balance Sheet'],['d-glide','Glide Path'],['d-take','The Take']],
     play:[['p-reality','Reality'],['p-score','Scorecard'],['p-acq','Acquire'],['p-cac','CAC Model'],['p-beat','Beat Them']],
     network:[['n-flow','Switching Flow'],['n-loyalty','Brand Loyalty'],['n-5g','5G & Spectrum']],
-    coverage:[['cov-live','Live Migration'],['cov-map','Air Dominance'],['cov-merged','Merged Chart'],['cov-reach','Geo vs Population'],['cov-plans','Prepaid vs Postpaid']],
+    coverage:[['cov-live','Live Migration'],['cov-geo','Coverage Map'],['cov-map','Air Dominance'],['cov-merged','Merged Chart'],['cov-reach','Geo vs Population'],['cov-plans','Prepaid vs Postpaid']],
     telecom:[['t-split','Wireless vs Wireline'],['t-fibre','PureFibre vs Bell'],['t-chain','Signal Chain'],['t-latency','Latency Budget'],['t-stack','Protocol Stack'],['t-topo','RAN Topology'],['t-spectrum','Wave Physics'],['t-holdings','Who Holds What'],['t-gens','1G→5G'],['t-money','The Money']],
     plan:[['pl-timeline','The Sequence'],['pl-decisions','Three Commitments'],['pl-restraint','What I Won\'t Do'],['pl-score','Day-100 Scorecard']],
     ir:[['ir-listing','Listing'],['ir-guidance','Guidance'],['ir-calendar','Calendar & Contacts']]
@@ -1862,7 +1894,7 @@
     if(view==='network'){ setTimeout(initNetworkView,60); }
     else if(flowRAF){ cancelAnimationFrame(flowRAF); flowRAF=null; }
     if(view==='coverage'){ setTimeout(initCoverageView,60); }
-    else { if(lRAF){ cancelAnimationFrame(lRAF); lRAF=null; } if(sigRAF){ cancelAnimationFrame(sigRAF); sigRAF=null; } if(mRAF){ cancelAnimationFrame(mRAF); mRAF=null; } }
+    else { if(lRAF){ cancelAnimationFrame(lRAF); lRAF=null; } if(sigRAF){ cancelAnimationFrame(sigRAF); sigRAF=null; } if(mRAF){ cancelAnimationFrame(mRAF); mRAF=null; } if(gRAF2){ cancelAnimationFrame(gRAF2); gRAF2=null; } }
     if(view==='telecom'){ setTimeout(initTelecomView,60); }
     else { if(cRAF){ cancelAnimationFrame(cRAF); cRAF=null; } if(tRAF){ cancelAnimationFrame(tRAF); tRAF=null; } if(wRAF){ cancelAnimationFrame(wRAF); wRAF=null; } }
     if(view==='plan'){ setTimeout(initPlanView,60); }
@@ -2080,7 +2112,7 @@
     initFlow();
     setTimeout(()=>{ animateLoyalty(); animate5G(); },120);
   }
-  window.addEventListener('resize',()=>{ if($('v-network').classList.contains('on')) resizeFlow(); if($('v-coverage').classList.contains('on')){ lResize(); nResize(); mResize(); } if($('v-debt').classList.contains('on')) gResize(); if($('v-telecom').classList.contains('on')){ cResize(); tResize(); wResize(); } });
+  window.addEventListener('resize',()=>{ if($('v-network').classList.contains('on')) resizeFlow(); if($('v-coverage').classList.contains('on')){ lResize(); nResize(); mResize(); geoResize(); } if($('v-debt').classList.contains('on')) gResize(); if($('v-telecom').classList.contains('on')){ cResize(); tResize(); wResize(); } });
 
   /* =================================================================
      COVERAGE & PLANS VISUALS
@@ -2297,6 +2329,7 @@
   }
   function initCoverageView(){
     renderPride();
+    initGeoMap();
     initNetMap();
     renderCovBars('geoBars',GEO); renderCovBars('popBars',POP);
     setTimeout(animateCovBars,120);
@@ -2918,6 +2951,123 @@
     renderStack2(); renderGens(); renderLat(); renderHoldViz();
     initChain(); initTopo(); initWave();
     setTimeout(()=>{ animateLat(); animateHoldViz(); },140);
+  }
+
+  // ---- GEOGRAPHIC PROVINCE COVERAGE MAP ----
+  const CARC={telus:'#7a4fa0',bell:'#3a86ff',rogers:'#ff5964',quebecor:'#ffb703',sasktel:'#2ec4b6',eastlink:'#e8f0f2'};
+  // polygons in 0-1 space, stylised Canada. [name, abbr, leader, [[x,y],...], carriers]
+  const GEOP=[
+    {n:'Yukon',a:'YT',lead:'bell',pts:[[.05,.10],[.14,.08],[.16,.36],[.06,.38]],
+     car:[['bell',46],['telus',38],['rogers',16]]},
+    {n:'Northwest Territories',a:'NT',lead:'bell',pts:[[.14,.08],[.31,.06],[.33,.34],[.16,.36]],
+     car:[['bell',48],['telus',36],['rogers',16]]},
+    {n:'Nunavut',a:'NU',lead:'bell',pts:[[.31,.06],[.56,.05],[.58,.30],[.33,.34]],
+     car:[['bell',62],['telus',24],['rogers',14]]},
+    {n:'British Columbia',a:'BC',lead:'telus',pts:[[.06,.38],[.16,.36],[.18,.74],[.07,.72]],
+     car:[['telus',41],['rogers',30],['bell',20],['quebecor',5],['other',4]]},
+    {n:'Alberta',a:'AB',lead:'telus',pts:[[.16,.36],[.26,.36],[.27,.72],[.18,.74]],
+     car:[['telus',52],['rogers',26],['bell',15],['quebecor',4],['other',3]]},
+    {n:'Saskatchewan',a:'SK',lead:'sasktel',pts:[[.26,.36],[.35,.36],[.36,.71],[.27,.72]],
+     car:[['sasktel',52],['rogers',22],['bell',18],['telus',8]]},
+    {n:'Manitoba',a:'MB',lead:'bell',pts:[[.35,.36],[.44,.34],[.46,.70],[.36,.71]],
+     car:[['bell',44],['rogers',33],['telus',15],['quebecor',5],['other',3]]},
+    {n:'Ontario',a:'ON',lead:'rogers',pts:[[.44,.34],[.60,.32],[.63,.60],[.52,.76],[.46,.70]],
+     car:[['rogers',46],['bell',28],['telus',20],['quebecor',4],['other',2]]},
+    {n:'Quebec',a:'QC',lead:'bell',pts:[[.60,.32],[.76,.30],[.78,.58],[.65,.68],[.63,.60]],
+     car:[['bell',34],['quebecor',33],['telus',20],['rogers',13]]},
+    {n:'New Brunswick',a:'NB',lead:'bell',pts:[[.78,.58],[.84,.57],[.85,.68],[.79,.69]],
+     car:[['bell',42],['rogers',24],['eastlink',22],['telus',12]]},
+    {n:'Nova Scotia',a:'NS',lead:'bell',pts:[[.85,.62],[.93,.64],[.94,.74],[.86,.72]],
+     car:[['bell',40],['eastlink',26],['rogers',22],['telus',12]]},
+    {n:'PEI',a:'PE',lead:'bell',pts:[[.86,.555],[.92,.545],[.925,.60],[.865,.605]],
+     car:[['bell',44],['eastlink',28],['rogers',18],['telus',10]]},
+    {n:'Newfoundland & Labrador',a:'NL',lead:'bell',pts:[[.82,.34],[.95,.32],[.97,.50],[.84,.52]],
+     car:[['bell',46],['rogers',24],['eastlink',18],['telus',12]]}
+  ];
+  const BRANDS={telus:'TELUS · Koodo · Public',rogers:'Rogers · Fido · Chatr',bell:'Bell · Virgin · Lucky',
+    quebecor:'Videotron · Fizz · Freedom',sasktel:'SaskTel',eastlink:'Eastlink',other:'Regional ISPs'};
+  const CARN={telus:'TELUS',rogers:'Rogers',bell:'Bell',quebecor:'Quebecor',sasktel:'SaskTel',eastlink:'Eastlink',other:'Others'};
+  let gcv2,gctx2,gDPR2=1,gRAF2=null,gT2=0,geoSel=3,geoHover=-1,geoPoly=[];
+  function geoResize(){ if(!gcv2) return; gDPR2=window.devicePixelRatio||1;
+    const r=gcv2.getBoundingClientRect(); gcv2.width=r.width*gDPR2; gcv2.height=r.height*gDPR2;
+    gctx2.setTransform(gDPR2,0,0,gDPR2,0,0); buildGeoPoly(r.width,r.height); }
+  function buildGeoPoly(w,h){
+    geoPoly=GEOP.map(p=>({...p, px:p.pts.map(([x,y])=>[0.03*w+x*0.94*w, 0.04*h+y*0.94*h])}));
+    geoPoly.forEach(p=>{ const xs=p.px.map(q=>q[0]), ys=p.px.map(q=>q[1]);
+      p.cx=(Math.min(...xs)+Math.max(...xs))/2; p.cy=(Math.min(...ys)+Math.max(...ys))/2; });
+  }
+  function ptIn(poly,x,y){ let c=false;
+    for(let i=0,j=poly.length-1;i<poly.length;j=i++){
+      const [xi,yi]=poly[i],[xj,yj]=poly[j];
+      if(((yi>y)!=(yj>y))&&(x<(xj-xi)*(y-yi)/(yj-yi)+xi)) c=!c; }
+    return c; }
+  function renderGeoPanel(){
+    const el=$('geoPanel'); if(!el) return; const p=GEOP[geoSel];
+    el.innerHTML='<h4>'+p.n+'</h4><div class="gpsub">'+p.car.length+' carrier groups competing · leader '+CARN[p.lead]+'</div>'+
+      '<div class="gplist">'+p.car.map(([k,s])=>{
+        const col=CARC[k]||'#54646b', isLead=(k===p.lead);
+        return '<div class="gpcard'+(isLead?' lead':'')+'" style="border-left-color:'+col+'">'+
+          '<div class="gpn"><span style="color:'+col+'">'+CARN[k]+(isLead?'<span class="gplead">LEADER</span>':'')+'</span>'+
+          '<span class="gps" style="color:'+col+'">'+s+'%</span></div>'+
+          '<div class="gpb">'+(BRANDS[k]||'—')+'</div></div>';
+      }).join('')+'</div>';
+  }
+  function initGeoMap(){
+    gcv2=$('geoCanvas'); if(!gcv2) return;
+    gctx2=gcv2.getContext('2d'); geoResize();
+    gcv2.onmousemove=e=>{
+      const r=gcv2.getBoundingClientRect(), mx=e.clientX-r.left, my=e.clientY-r.top;
+      geoHover=-1;
+      geoPoly.forEach((p,i)=>{ if(ptIn(p.px,mx,my)) geoHover=i; });
+      const tip=$('geoTip');
+      if(geoHover>=0){ const p=GEOP[geoHover];
+        tip.innerHTML='<b>'+p.n+'</b><br>leader: '+CARN[p.lead]+' '+p.car[0][1]+'%<br>'+p.car.length+' carrier groups';
+        tip.style.left=Math.min(mx+14,r.width-170)+'px'; tip.style.top=(my+14)+'px'; tip.classList.add('show');
+      } else tip.classList.remove('show');
+    };
+    gcv2.onmouseleave=()=>{ geoHover=-1; $('geoTip')?.classList.remove('show'); };
+    gcv2.onclick=e=>{ const r=gcv2.getBoundingClientRect(), mx=e.clientX-r.left, my=e.clientY-r.top;
+      geoPoly.forEach((p,i)=>{ if(ptIn(p.px,mx,my)){ geoSel=i; renderGeoPanel(); } }); };
+    renderGeoPanel();
+    if(gRAF2) cancelAnimationFrame(gRAF2);
+    gRAF2=requestAnimationFrame(geoDraw);
+  }
+  function geoDraw(){
+    if(!gcv2) return;
+    gT2+=0.016;
+    const r=gcv2.getBoundingClientRect(), w=r.width, h=r.height;
+    gctx2.clearRect(0,0,w,h);
+    geoPoly.forEach((p,i)=>{
+      const lead=CARC[p.lead]||'#54646b';
+      const cr=parseInt(lead.slice(1,3),16),cg=parseInt(lead.slice(3,5),16),cb=parseInt(lead.slice(5,7),16);
+      const sel=(i===geoSel), hov=(i===geoHover);
+      // fill intensity = number of competing carriers
+      const comp=Math.min(1,p.car.length/5);
+      const pulse=sel?(0.10*Math.sin(gT2*2.6)):0;
+      const alpha=(sel?0.42:hov?0.32:0.13+comp*0.10)+pulse;
+      gctx2.beginPath();
+      p.px.forEach(([x,y],k)=>k?gctx2.lineTo(x,y):gctx2.moveTo(x,y));
+      gctx2.closePath();
+      gctx2.fillStyle='rgba('+cr+','+cg+','+cb+','+alpha+')'; gctx2.fill();
+      gctx2.strokeStyle=sel?lead:'rgba('+cr+','+cg+','+cb+',0.65)';
+      gctx2.lineWidth=sel?2.4:1.3; gctx2.stroke();
+      // carrier presence dots
+      const n=p.car.length, dw=7;
+      p.car.forEach(([k],j)=>{
+        const col=CARC[k]||'#54646b';
+        const x=p.cx-(n-1)*dw/2+j*dw, y=p.cy+13;
+        gctx2.fillStyle=col; gctx2.beginPath(); gctx2.arc(x,y,2.4,0,6.283); gctx2.fill();
+      });
+      // label
+      gctx2.fillStyle=sel?'#e8f0f2':'rgba(232,240,242,0.78)';
+      gctx2.font=(sel?'700 ':'600 ')+'11px "Space Grotesk",sans-serif';
+      gctx2.textAlign='center'; gctx2.textBaseline='middle';
+      gctx2.fillText(p.a,p.cx,p.cy);
+    });
+    gctx2.fillStyle='#54646b'; gctx2.font='600 10px "IBM Plex Mono",monospace';
+    gctx2.textAlign='left'; gctx2.textBaseline='top';
+    gctx2.fillText('◈ border + tint = provincial leader · dots = carrier groups competing · click to open',12,h-18);
+    gRAF2=requestAnimationFrame(geoDraw);
   }
 
   // ---- 100-DAY PLAN ----
