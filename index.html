@@ -492,13 +492,19 @@
   .scitem .sct{font-size:14px;color:var(--ink)}
   .scitem .scm{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);text-align:right}
 
-  /* geographic province map */
-  .geowrap{position:relative;background:radial-gradient(ellipse at 50% 40%,#12181d 0%,#0a0d0f 84%);border:1px solid var(--line);border-radius:4px;padding:14px}
-  #geoCanvas{display:block;width:100%;height:520px;cursor:pointer}
-  @media(max-width:640px){#geoCanvas{height:400px}}
-  .geotip{position:absolute;pointer-events:none;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:9px 12px;font-family:'IBM Plex Mono';font-size:11px;color:var(--ink);opacity:0;transition:opacity .12s;white-space:nowrap;z-index:6;line-height:1.6}
-  .geotip.show{opacity:1}
-  .geotip b{font-family:'Space Grotesk';font-size:13px}
+  /* geographic Canada map */
+  .camapwrap{background:radial-gradient(ellipse at 48% 42%,#12181d 0%,#0a0d0f 86%);border:1px solid var(--line);border-radius:6px;padding:10px}
+  #caMap{display:block;width:100%;height:auto}
+  #caMap .prov{cursor:pointer;transition:fill-opacity .2s,stroke-width .2s;stroke-linejoin:round}
+  #caMap .prov:hover{fill-opacity:.9!important}
+  #caMap .water{fill:#0a0d0f;stroke:#1f2a30;stroke-width:1}
+  #caMap .plab{font-family:'Space Grotesk',sans-serif;font-weight:700;pointer-events:none}
+  #caMap .psub{font-family:'IBM Plex Mono',monospace;font-weight:600;pointer-events:none}
+  #caMap .plead{font-family:'IBM Plex Mono',monospace;pointer-events:none;fill:#7d8f96}
+  #caMap .cline{stroke:#54646b;stroke-width:1;fill:none}
+  .tilekey{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;font-family:'IBM Plex Mono';font-size:11.5px;color:var(--mute);align-items:center}
+  .tilekey span{display:inline-flex;align-items:center;gap:7px}
+  .tilekey .ks{width:13px;height:13px;border-radius:3px}
   .geopanel{margin-top:12px;background:var(--panel);border:1px solid var(--line);border-left:2px solid var(--acid);border-radius:4px;padding:20px 22px;min-height:150px}
   .geopanel h4{font-family:'Space Grotesk';font-weight:700;font-size:19px;margin-bottom:3px}
   .geopanel .gpsub{font-family:'IBM Plex Mono';font-size:11px;color:var(--acid);margin-bottom:16px}
@@ -507,6 +513,8 @@
   .gpcard .gpn{font-family:'Space Grotesk';font-weight:600;font-size:13.5px;display:flex;justify-content:space-between;gap:8px}
   .gpcard .gps{font-family:'IBM Plex Mono';font-size:12px}
   .gpcard .gpb{font-family:'IBM Plex Mono';font-size:10px;color:var(--dim);margin-top:5px}
+  .gpcard .gpbar{height:4px;background:var(--line);border-radius:2px;margin-top:8px;overflow:hidden}
+  .gpcard .gpfill{height:100%;border-radius:2px;transition:width .7s cubic-bezier(.2,.7,.2,1)}
   .gpcard.lead{background:var(--panel)}
   .gpcard .gplead{font-family:'IBM Plex Mono';font-size:9px;background:var(--acid);color:#0a0d0f;padding:1px 6px;border-radius:7px;font-weight:600;margin-left:6px}
 
@@ -1274,13 +1282,13 @@
   <section id="cov-geo">
     <div class="wrap">
       <div class="shead"><span class="sno" style="color:var(--acid)">02</span><h2>The coverage map — every telco, every province</h2><span class="sub">click a province</span></div>
-      <p class="intro">Canada's real competitive map. Each province is shaded by how many carriers actively compete there and bordered by its leader's colour. <b>Click any province</b> to see every telco present — flagship, flanker, discount and regional — with their share.</p>
-      <div class="geowrap">
-        <canvas id="geoCanvas"></canvas>
-        <div class="geotip" id="geoTip"></div>
+      <p class="intro">Canada at true proportion — you can see the landmass each carrier has to cover. Every province is filled by its leader's colour, and <b>brightness scales to subscriber mass</b>, so the population reality cuts against the geography: Nunavut is vast and nearly empty, Ontario is compact and holds 14.81M. <b>Click a province</b> for the full breakdown.</p>
+      <div class="camapwrap">
+        <svg id="caMap" viewBox="0 0 960 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Canada carrier coverage map"></svg>
       </div>
+      <div class="tilekey" id="tileKey"></div>
       <div class="geopanel" id="geoPanel"></div>
-      <div class="note">◈ Simplified geographic schematic — province shapes are stylised, not survey-grade cartography. Leader shares and carrier presence are 2020–2025 blended estimates from CRTC and market data; the Big Three operate nationally while regional players (SaskTel, Videotron, Eastlink) hold only their home markets. Flanker and discount brands ride the parent's network, so their presence mirrors the parent's footprint. Verify against CRTC's provincial breakdown before quoting.</div>
+      <div class="note">◈ Simplified geographic schematic — province shapes are stylised, not survey-grade cartography. <b>Subscriber counts are derived, not reported:</b> StatCan 2025 provincial populations × 92% wireless penetration, which totals 38.1M against the 38.2M actually reported nationally — then split by provincial market share. Carriers do not publish per-province subscriber numbers, so treat these as a calibrated model. Leader shares are 2020–2025 blended CRTC and market estimates; regional players (SaskTel, Videotron, Eastlink) hold only their home markets, and flanker/discount brands ride the parent's network. Verify against CRTC's provincial breakdown before quoting.</div>
     </div>
   </section>
 
@@ -1894,7 +1902,7 @@
     if(view==='network'){ setTimeout(initNetworkView,60); }
     else if(flowRAF){ cancelAnimationFrame(flowRAF); flowRAF=null; }
     if(view==='coverage'){ setTimeout(initCoverageView,60); }
-    else { if(lRAF){ cancelAnimationFrame(lRAF); lRAF=null; } if(sigRAF){ cancelAnimationFrame(sigRAF); sigRAF=null; } if(mRAF){ cancelAnimationFrame(mRAF); mRAF=null; } if(gRAF2){ cancelAnimationFrame(gRAF2); gRAF2=null; } }
+    else { if(lRAF){ cancelAnimationFrame(lRAF); lRAF=null; } if(sigRAF){ cancelAnimationFrame(sigRAF); sigRAF=null; } if(mRAF){ cancelAnimationFrame(mRAF); mRAF=null; } }
     if(view==='telecom'){ setTimeout(initTelecomView,60); }
     else { if(cRAF){ cancelAnimationFrame(cRAF); cRAF=null; } if(tRAF){ cancelAnimationFrame(tRAF); tRAF=null; } if(wRAF){ cancelAnimationFrame(wRAF); wRAF=null; } }
     if(view==='plan'){ setTimeout(initPlanView,60); }
@@ -2112,7 +2120,7 @@
     initFlow();
     setTimeout(()=>{ animateLoyalty(); animate5G(); },120);
   }
-  window.addEventListener('resize',()=>{ if($('v-network').classList.contains('on')) resizeFlow(); if($('v-coverage').classList.contains('on')){ lResize(); nResize(); mResize(); geoResize(); } if($('v-debt').classList.contains('on')) gResize(); if($('v-telecom').classList.contains('on')){ cResize(); tResize(); wResize(); } });
+  window.addEventListener('resize',()=>{ if($('v-network').classList.contains('on')) resizeFlow(); if($('v-coverage').classList.contains('on')){ lResize(); nResize(); mResize(); } if($('v-debt').classList.contains('on')) gResize(); if($('v-telecom').classList.contains('on')){ cResize(); tResize(); wResize(); } });
 
   /* =================================================================
      COVERAGE & PLANS VISUALS
@@ -2957,118 +2965,115 @@
   const CARC={telus:'#7a4fa0',bell:'#3a86ff',rogers:'#ff5964',quebecor:'#ffb703',sasktel:'#2ec4b6',eastlink:'#e8f0f2'};
   // polygons in 0-1 space, stylised Canada. [name, abbr, leader, [[x,y],...], carriers]
   const GEOP=[
-    {n:'Yukon',a:'YT',lead:'bell',pts:[[.05,.10],[.14,.08],[.16,.36],[.06,.38]],
+    {n:'Yukon',a:'YT',pop:0.048,lead:'bell',pts:[[.05,.10],[.14,.08],[.16,.36],[.06,.38]],
      car:[['bell',46],['telus',38],['rogers',16]]},
-    {n:'Northwest Territories',a:'NT',lead:'bell',pts:[[.14,.08],[.31,.06],[.33,.34],[.16,.36]],
+    {n:'Northwest Territories',a:'NT',pop:0.045,lead:'bell',pts:[[.14,.08],[.31,.06],[.33,.34],[.16,.36]],
      car:[['bell',48],['telus',36],['rogers',16]]},
-    {n:'Nunavut',a:'NU',lead:'bell',pts:[[.31,.06],[.56,.05],[.58,.30],[.33,.34]],
+    {n:'Nunavut',a:'NU',pop:0.041,lead:'bell',pts:[[.31,.06],[.56,.05],[.58,.30],[.33,.34]],
      car:[['bell',62],['telus',24],['rogers',14]]},
-    {n:'British Columbia',a:'BC',lead:'telus',pts:[[.06,.38],[.16,.36],[.18,.74],[.07,.72]],
+    {n:'British Columbia',a:'BC',pop:5.70,lead:'telus',pts:[[.06,.38],[.16,.36],[.18,.74],[.07,.72]],
      car:[['telus',41],['rogers',30],['bell',20],['quebecor',5],['other',4]]},
-    {n:'Alberta',a:'AB',lead:'telus',pts:[[.16,.36],[.26,.36],[.27,.72],[.18,.74]],
+    {n:'Alberta',a:'AB',pop:5.03,lead:'telus',pts:[[.16,.36],[.26,.36],[.27,.72],[.18,.74]],
      car:[['telus',52],['rogers',26],['bell',15],['quebecor',4],['other',3]]},
-    {n:'Saskatchewan',a:'SK',lead:'sasktel',pts:[[.26,.36],[.35,.36],[.36,.71],[.27,.72]],
+    {n:'Saskatchewan',a:'SK',pop:1.27,lead:'sasktel',pts:[[.26,.36],[.35,.36],[.36,.71],[.27,.72]],
      car:[['sasktel',52],['rogers',22],['bell',18],['telus',8]]},
-    {n:'Manitoba',a:'MB',lead:'bell',pts:[[.35,.36],[.44,.34],[.46,.70],[.36,.71]],
+    {n:'Manitoba',a:'MB',pop:1.50,lead:'bell',pts:[[.35,.36],[.44,.34],[.46,.70],[.36,.71]],
      car:[['bell',44],['rogers',33],['telus',15],['quebecor',5],['other',3]]},
-    {n:'Ontario',a:'ON',lead:'rogers',pts:[[.44,.34],[.60,.32],[.63,.60],[.52,.76],[.46,.70]],
+    {n:'Ontario',a:'ON',pop:16.10,lead:'rogers',pts:[[.44,.34],[.60,.32],[.63,.60],[.52,.76],[.46,.70]],
      car:[['rogers',46],['bell',28],['telus',20],['quebecor',4],['other',2]]},
-    {n:'Quebec',a:'QC',lead:'bell',pts:[[.60,.32],[.76,.30],[.78,.58],[.65,.68],[.63,.60]],
+    {n:'Quebec',a:'QC',pop:9.06,lead:'bell',pts:[[.60,.32],[.76,.30],[.78,.58],[.65,.68],[.63,.60]],
      car:[['bell',34],['quebecor',33],['telus',20],['rogers',13]]},
-    {n:'New Brunswick',a:'NB',lead:'bell',pts:[[.78,.58],[.84,.57],[.85,.68],[.79,.69]],
+    {n:'New Brunswick',a:'NB',pop:0.855,lead:'bell',pts:[[.78,.58],[.84,.57],[.85,.68],[.79,.69]],
      car:[['bell',42],['rogers',24],['eastlink',22],['telus',12]]},
-    {n:'Nova Scotia',a:'NS',lead:'bell',pts:[[.85,.62],[.93,.64],[.94,.74],[.86,.72]],
+    {n:'Nova Scotia',a:'NS',pop:1.08,lead:'bell',pts:[[.85,.62],[.93,.64],[.94,.74],[.86,.72]],
      car:[['bell',40],['eastlink',26],['rogers',22],['telus',12]]},
-    {n:'PEI',a:'PE',lead:'bell',pts:[[.86,.555],[.92,.545],[.925,.60],[.865,.605]],
+    {n:'PEI',a:'PE',pop:0.18,lead:'bell',pts:[[.86,.555],[.92,.545],[.925,.60],[.865,.605]],
      car:[['bell',44],['eastlink',28],['rogers',18],['telus',10]]},
-    {n:'Newfoundland & Labrador',a:'NL',lead:'bell',pts:[[.82,.34],[.95,.32],[.97,.50],[.84,.52]],
+    {n:'Newfoundland & Labrador',a:'NL',pop:0.545,lead:'bell',pts:[[.82,.34],[.95,.32],[.97,.50],[.84,.52]],
      car:[['bell',46],['rogers',24],['eastlink',18],['telus',12]]}
   ];
   const BRANDS={telus:'TELUS · Koodo · Public',rogers:'Rogers · Fido · Chatr',bell:'Bell · Virgin · Lucky',
     quebecor:'Videotron · Fizz · Freedom',sasktel:'SaskTel',eastlink:'Eastlink',other:'Regional ISPs'};
   const CARN={telus:'TELUS',rogers:'Rogers',bell:'Bell',quebecor:'Quebecor',sasktel:'SaskTel',eastlink:'Eastlink',other:'Others'};
-  let gcv2,gctx2,gDPR2=1,gRAF2=null,gT2=0,geoSel=3,geoHover=-1,geoPoly=[];
-  function geoResize(){ if(!gcv2) return; gDPR2=window.devicePixelRatio||1;
-    const r=gcv2.getBoundingClientRect(); gcv2.width=r.width*gDPR2; gcv2.height=r.height*gDPR2;
-    gctx2.setTransform(gDPR2,0,0,gDPR2,0,0); buildGeoPoly(r.width,r.height); }
-  function buildGeoPoly(w,h){
-    geoPoly=GEOP.map(p=>({...p, px:p.pts.map(([x,y])=>[0.03*w+x*0.94*w, 0.04*h+y*0.94*h])}));
-    geoPoly.forEach(p=>{ const xs=p.px.map(q=>q[0]), ys=p.px.map(q=>q[1]);
-      p.cx=(Math.min(...xs)+Math.max(...xs))/2; p.cy=(Math.min(...ys)+Math.max(...ys))/2; });
+  const PEN=0.92; // wireless penetration → 38.1M national, matches 38.2M reported
+  const subsOf=p=>p.pop*PEN;
+  const fmtS=v=>v>=1?v.toFixed(2)+'M':(v*1000).toFixed(0)+'K';
+  // simplified but proportional Canada geometry (viewBox 960x620)
+  const SHAPES={
+    YT:'M58,262 L68,108 L98,92 L152,98 L156,266 Z',
+    NT:'M156,98 L196,66 L286,58 L328,104 L320,186 L338,236 L298,268 L156,266 Z',
+    NU:'M328,104 L404,44 L548,40 L594,96 L572,168 L512,198 L466,188 L424,226 L356,246 L320,186 Z',
+    BC:'M58,262 L156,266 L174,298 L170,452 L118,470 L74,398 Z',
+    AB:'M174,298 L256,290 L256,456 L170,452 Z',
+    SK:'M256,290 L336,284 L338,456 L256,456 Z',
+    MB:'M336,284 L356,246 L422,254 L426,398 L398,458 L338,456 Z',
+    ON:'M426,398 L422,254 L466,236 L494,298 L556,308 L596,286 L616,338 L606,418 L556,468 L516,498 L476,468 L452,428 Z',
+    QC:'M596,286 L616,196 L676,146 L736,156 L756,226 L776,296 L756,376 L696,426 L636,446 L606,418 L616,338 Z',
+    NL:'M736,156 L796,136 L826,196 L796,266 L756,226 Z M826,296 L886,286 L900,336 L846,356 Z',
+    NB:'M696,426 L741,436 L746,486 L706,486 Z',
+    NS:'M756,466 L811,451 L836,496 L786,516 Z',
+    PE:'M766,433 L796,426 L801,443 L771,448 Z'
+  };
+  const HUDSON='M466,236 L494,298 L556,308 L596,286 L616,196 L556,186 L516,198 Z';
+  // label anchors; callout:[lx,ly] for small provinces placed outside the shape
+  const ANCH={
+    YT:[106,190],NT:[240,168],NU:[452,130],BC:[116,372],AB:[214,378],SK:[296,376],
+    MB:[382,356],ON:[516,372],QC:[686,312],NL:[792,206],
+    NB:[721,461,640,520],NS:[796,486,884,470],PE:[784,438,884,414]
+  };
+  let geoSel=GEOP.findIndex(p=>p.a==='ON');
+  function renderTileMap(){
+    const svg=$('caMap'); if(!svg) return;
+    const maxS=Math.max(...GEOP.map(subsOf));
+    let out='';
+    GEOP.forEach((p,i)=>{
+      const d=SHAPES[p.a]; if(!d) return;
+      const lead=CARC[p.lead]||'#54646b', subs=subsOf(p);
+      // opacity carries subscriber density so big markets glow
+      const op=(0.16+Math.sqrt(subs/maxS)*0.62).toFixed(3);
+      const sel=(i===geoSel);
+      out+='<path class="prov" data-i="'+i+'" d="'+d+'" fill="'+lead+'" fill-opacity="'+(sel?0.95:op)+
+        '" stroke="'+(sel?'#e8f0f2':lead)+'" stroke-width="'+(sel?2.4:1.1)+'"><title>'+p.n+' — '+fmtS(subs)+' subscribers · '+CARN[p.lead]+' leads '+p.car[0][1]+'%</title></path>';
+    });
+    out+='<path class="water" d="'+HUDSON+'"/>';
+    // labels on top
+    GEOP.forEach((p,i)=>{
+      const a=ANCH[p.a]; if(!a) return;
+      const subs=subsOf(p), big=subs>=1, lead=CARC[p.lead]||'#54646b';
+      const [x,y,lx,ly]=a;
+      const tx=lx!==undefined?lx:x, ty=ly!==undefined?ly:y;
+      if(lx!==undefined) out+='<path class="cline" d="M'+x+','+y+' L'+tx+','+ty+'"/>';
+      const anchor=lx!==undefined?(tx>x?'start':'end'):'middle';
+      const ox=lx!==undefined?(tx>x?6:-6):0;
+      out+='<text class="plab" x="'+(tx+ox)+'" y="'+ty+'" text-anchor="'+anchor+'" font-size="'+(big?17:13)+'" fill="#e8f0f2">'+p.a+'</text>';
+      out+='<text class="psub" x="'+(tx+ox)+'" y="'+(ty+(big?18:15))+'" text-anchor="'+anchor+'" font-size="'+(big?14:11)+'" fill="'+lead+'">'+fmtS(subs)+'</text>';
+      if(big) out+='<text class="plead" x="'+(tx+ox)+'" y="'+(ty+33)+'" text-anchor="'+anchor+'" font-size="9.5">'+CARN[p.lead]+' '+p.car[0][1]+'%</text>';
+    });
+    svg.innerHTML=out;
+    svg.querySelectorAll('.prov').forEach(el=>{
+      el.addEventListener('click',()=>{ geoSel=+el.dataset.i; renderTileMap(); renderGeoPanel(); });
+    });
+    const key=$('tileKey');
+    if(key) key.innerHTML=['telus','bell','rogers','quebecor','sasktel','eastlink']
+      .map(k=>'<span><span class="ks" style="background:'+CARC[k]+'"></span>'+CARN[k]+'</span>').join('')+
+      '<span style="margin-left:auto">fill = provincial leader · brightness = subscriber mass · click a province</span>';
   }
-  function ptIn(poly,x,y){ let c=false;
-    for(let i=0,j=poly.length-1;i<poly.length;j=i++){
-      const [xi,yi]=poly[i],[xj,yj]=poly[j];
-      if(((yi>y)!=(yj>y))&&(x<(xj-xi)*(y-yi)/(yj-yi)+xi)) c=!c; }
-    return c; }
+
   function renderGeoPanel(){
     const el=$('geoPanel'); if(!el) return; const p=GEOP[geoSel];
-    el.innerHTML='<h4>'+p.n+'</h4><div class="gpsub">'+p.car.length+' carrier groups competing · leader '+CARN[p.lead]+'</div>'+
+    const tot=subsOf(p), maxSh=Math.max(...p.car.map(c=>c[1]));
+    el.innerHTML='<h4>'+p.n+'</h4><div class="gpsub">'+fmtS(tot)+' wireless subscribers · pop '+p.pop.toFixed(2)+'M · '+p.car.length+' carrier groups · leader '+CARN[p.lead]+'</div>'+
       '<div class="gplist">'+p.car.map(([k,s])=>{
-        const col=CARC[k]||'#54646b', isLead=(k===p.lead);
+        const col=CARC[k]||'#54646b', isLead=(k===p.lead), cs=tot*s/100;
         return '<div class="gpcard'+(isLead?' lead':'')+'" style="border-left-color:'+col+'">'+
           '<div class="gpn"><span style="color:'+col+'">'+CARN[k]+(isLead?'<span class="gplead">LEADER</span>':'')+'</span>'+
-          '<span class="gps" style="color:'+col+'">'+s+'%</span></div>'+
-          '<div class="gpb">'+(BRANDS[k]||'—')+'</div></div>';
+          '<span class="gps" style="color:'+col+'">'+fmtS(cs)+'</span></div>'+
+          '<div class="gpbar"><div class="gpfill" style="width:'+(s/maxSh*100)+'%;background:'+col+'"></div></div>'+
+          '<div class="gpb">'+s+'% share · '+(BRANDS[k]||'—')+'</div></div>';
       }).join('')+'</div>';
   }
-  function initGeoMap(){
-    gcv2=$('geoCanvas'); if(!gcv2) return;
-    gctx2=gcv2.getContext('2d'); geoResize();
-    gcv2.onmousemove=e=>{
-      const r=gcv2.getBoundingClientRect(), mx=e.clientX-r.left, my=e.clientY-r.top;
-      geoHover=-1;
-      geoPoly.forEach((p,i)=>{ if(ptIn(p.px,mx,my)) geoHover=i; });
-      const tip=$('geoTip');
-      if(geoHover>=0){ const p=GEOP[geoHover];
-        tip.innerHTML='<b>'+p.n+'</b><br>leader: '+CARN[p.lead]+' '+p.car[0][1]+'%<br>'+p.car.length+' carrier groups';
-        tip.style.left=Math.min(mx+14,r.width-170)+'px'; tip.style.top=(my+14)+'px'; tip.classList.add('show');
-      } else tip.classList.remove('show');
-    };
-    gcv2.onmouseleave=()=>{ geoHover=-1; $('geoTip')?.classList.remove('show'); };
-    gcv2.onclick=e=>{ const r=gcv2.getBoundingClientRect(), mx=e.clientX-r.left, my=e.clientY-r.top;
-      geoPoly.forEach((p,i)=>{ if(ptIn(p.px,mx,my)){ geoSel=i; renderGeoPanel(); } }); };
-    renderGeoPanel();
-    if(gRAF2) cancelAnimationFrame(gRAF2);
-    gRAF2=requestAnimationFrame(geoDraw);
-  }
-  function geoDraw(){
-    if(!gcv2) return;
-    gT2+=0.016;
-    const r=gcv2.getBoundingClientRect(), w=r.width, h=r.height;
-    gctx2.clearRect(0,0,w,h);
-    geoPoly.forEach((p,i)=>{
-      const lead=CARC[p.lead]||'#54646b';
-      const cr=parseInt(lead.slice(1,3),16),cg=parseInt(lead.slice(3,5),16),cb=parseInt(lead.slice(5,7),16);
-      const sel=(i===geoSel), hov=(i===geoHover);
-      // fill intensity = number of competing carriers
-      const comp=Math.min(1,p.car.length/5);
-      const pulse=sel?(0.10*Math.sin(gT2*2.6)):0;
-      const alpha=(sel?0.42:hov?0.32:0.13+comp*0.10)+pulse;
-      gctx2.beginPath();
-      p.px.forEach(([x,y],k)=>k?gctx2.lineTo(x,y):gctx2.moveTo(x,y));
-      gctx2.closePath();
-      gctx2.fillStyle='rgba('+cr+','+cg+','+cb+','+alpha+')'; gctx2.fill();
-      gctx2.strokeStyle=sel?lead:'rgba('+cr+','+cg+','+cb+',0.65)';
-      gctx2.lineWidth=sel?2.4:1.3; gctx2.stroke();
-      // carrier presence dots
-      const n=p.car.length, dw=7;
-      p.car.forEach(([k],j)=>{
-        const col=CARC[k]||'#54646b';
-        const x=p.cx-(n-1)*dw/2+j*dw, y=p.cy+13;
-        gctx2.fillStyle=col; gctx2.beginPath(); gctx2.arc(x,y,2.4,0,6.283); gctx2.fill();
-      });
-      // label
-      gctx2.fillStyle=sel?'#e8f0f2':'rgba(232,240,242,0.78)';
-      gctx2.font=(sel?'700 ':'600 ')+'11px "Space Grotesk",sans-serif';
-      gctx2.textAlign='center'; gctx2.textBaseline='middle';
-      gctx2.fillText(p.a,p.cx,p.cy);
-    });
-    gctx2.fillStyle='#54646b'; gctx2.font='600 10px "IBM Plex Mono",monospace';
-    gctx2.textAlign='left'; gctx2.textBaseline='top';
-    gctx2.fillText('◈ border + tint = provincial leader · dots = carrier groups competing · click to open',12,h-18);
-    gRAF2=requestAnimationFrame(geoDraw);
-  }
+  function initGeoMap(){ renderTileMap(); renderGeoPanel(); }
+
 
   // ---- 100-DAY PLAN ----
   const PHASES=[
