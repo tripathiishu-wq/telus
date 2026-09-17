@@ -518,6 +518,84 @@
   .gpcard.lead{background:var(--panel)}
   .gpcard .gplead{font-family:'IBM Plex Mono';font-size:9px;background:var(--acid);color:#0a0d0f;padding:1px 6px;border-radius:7px;font-weight:600;margin-left:6px}
 
+  /* ON+QC acquisition roadmap */
+  .prizegrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:760px){.prizegrid{grid-template-columns:1fr}}
+  .pz{background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:16px 18px}
+  .pzl{font-family:'IBM Plex Mono';font-size:10.5px;color:var(--mute);letter-spacing:.09em;margin-bottom:11px}
+  .pzbar{display:flex;height:30px;border-radius:4px;overflow:hidden;border:1px solid var(--line)}
+  .pzs{display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono';font-size:10px;font-weight:600;color:#0a0d0f;white-space:nowrap;overflow:hidden}
+  .pzn{font-family:'IBM Plex Mono';font-size:11.5px;color:var(--dim);margin-top:10px}
+  .vectors{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+  @media(max-width:900px){.vectors{grid-template-columns:1fr}}
+  .vec{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--line);border-radius:5px;padding:18px 19px}
+  .vech{display:flex;align-items:baseline;gap:10px}
+  .vech h3{font-family:'Space Grotesk';font-weight:700;font-size:18px}
+  .vecn{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim)}
+  .vecm{font-family:'IBM Plex Mono';font-size:11px;color:var(--acid);margin:6px 0 12px;font-weight:600}
+  .vec p{font-size:13.5px;color:var(--mute);line-height:1.6;margin-bottom:13px}
+  .vec ul.clean{gap:9px}
+  .vec ul.clean li{font-size:12.5px}
+  /* gates */
+  .gates{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:820px){.gates{grid-template-columns:1fr}}
+  .gate{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--acid);border-radius:5px;padding:18px 20px}
+  .gate .gd{font-family:'IBM Plex Mono';font-size:10.5px;color:var(--acid);letter-spacing:.09em}
+  .gate .gt{font-family:'Space Grotesk';font-weight:700;font-size:17px;margin:4px 0 12px}
+  .gate ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .gate li{display:flex;gap:10px;font-size:13px;color:var(--mute);line-height:1.55}
+  .gate li b{color:var(--ink)}
+  .gate li .gk{color:var(--acid);font-family:'IBM Plex Mono';font-size:11px;flex-shrink:0}
+  .gate .gmetric{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-family:'IBM Plex Mono';font-size:11px;color:var(--dim)}
+  .gate .gmetric b{color:var(--acid);font-family:'Space Grotesk';font-size:16px}
+
+  /* Q4 Monopoly board */
+  .boardwrap{background:radial-gradient(ellipse at 50% 50%,#12181d 0%,#0a0d0f 88%);border:1px solid var(--line);border-radius:8px;padding:16px}
+  .board{display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);gap:5px;aspect-ratio:1/1;max-width:760px;margin:0 auto}
+  @media(max-width:600px){.board{gap:3px}}
+  .sq{position:relative;border-radius:4px;background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--line);padding:6px 5px;cursor:pointer;transition:.16s;display:flex;flex-direction:column;overflow:hidden;min-height:0}
+  .sq:hover{transform:scale(1.06);z-index:4;border-color:var(--acid)}
+  .sq.on{box-shadow:0 0 0 2px var(--acid) inset;z-index:3}
+  .sq.inplay{border-color:var(--acid)}
+  .sq.inplay::after{content:'';position:absolute;top:3px;right:3px;width:6px;height:6px;border-radius:50%;background:var(--acid);animation:sqp 1.8s infinite}
+  @keyframes sqp{0%,100%{opacity:1}50%{opacity:.25}}
+  .sq .sqn{font-family:'Space Grotesk';font-weight:700;font-size:10px;line-height:1.15;color:var(--ink)}
+  .sq .sqv{font-family:'IBM Plex Mono';font-size:9px;margin-top:auto;font-weight:600}
+  .sq .sqo{font-family:'IBM Plex Mono';font-size:7.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.04em}
+  @media(max-width:600px){.sq .sqn{font-size:8px}.sq .sqv{font-size:7.5px}.sq .sqo{display:none}}
+  .sq.corner{background:var(--panel-2);border-top-width:1px;align-items:center;justify-content:center;text-align:center}
+  .sq.corner .cn{font-family:'Space Grotesk';font-weight:700;font-size:11px;letter-spacing:.02em}
+  .sq.corner .cs{font-family:'IBM Plex Mono';font-size:7.5px;color:var(--dim);margin-top:3px}
+  .boardmid{grid-column:2/8;grid-row:2/8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:radial-gradient(ellipse at 50% 50%,rgba(122,79,160,.14) 0%,transparent 72%);border-radius:6px;padding:12px}
+  .boardmid .bm1{font-family:'IBM Plex Mono';font-size:10px;color:var(--telus-2);letter-spacing:.2em}
+  .boardmid .bm2{font-family:'Space Grotesk';font-weight:700;font-size:clamp(26px,5vw,52px);letter-spacing:-.02em;line-height:1}
+  .boardmid .bm3{font-family:'IBM Plex Mono';font-size:11px;color:var(--mute);text-align:center;max-width:300px;line-height:1.6}
+  .boardmid .bmbar{display:flex;height:22px;width:min(300px,80%);border-radius:4px;overflow:hidden;border:1px solid var(--line);margin-top:4px}
+  .boardmid .bmseg{display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono';font-size:9px;font-weight:600;color:#0a0d0f}
+  .boardkey{display:flex;gap:15px;flex-wrap:wrap;margin-top:16px;font-family:'IBM Plex Mono';font-size:11.5px;color:var(--mute);align-items:center}
+  .boardkey span{display:inline-flex;align-items:center;gap:7px}
+  .boardkey .ks{width:12px;height:12px;border-radius:3px}
+  .sqdetail{margin-top:14px;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--telus-2);border-radius:5px;padding:20px 22px;min-height:116px}
+  .sqdetail h4{font-family:'Space Grotesk';font-weight:700;font-size:19px;margin-bottom:3px}
+  .sqdetail .sdm{font-family:'IBM Plex Mono';font-size:11px;color:var(--telus-2);margin-bottom:13px}
+  .sqdetail p{font-size:14px;color:var(--mute);line-height:1.6}
+  .sqdetail .sdgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:14px}
+  .sqdetail .sdgrid div{background:var(--panel-2);padding:10px 12px}
+  .sqdetail .sdk{font-family:'IBM Plex Mono';font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
+  .sqdetail .sdv{font-size:13px;font-weight:500;margin-top:3px}
+  /* q4 track */
+  .q4track{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:820px){.q4track{grid-template-columns:1fr}}
+  .q4m{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--telus-2);border-radius:5px;padding:18px 20px}
+  .q4m .qmo{font-family:'IBM Plex Mono';font-size:10.5px;color:var(--telus-2);letter-spacing:.09em}
+  .q4m .qmt{font-family:'Space Grotesk';font-weight:700;font-size:17px;margin:4px 0 12px}
+  .q4m ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .q4m li{display:flex;gap:10px;font-size:13px;color:var(--mute);line-height:1.55}
+  .q4m li b{color:var(--ink)}
+  .q4m li .qk{color:var(--telus-2);font-family:'IBM Plex Mono';font-size:11px;flex-shrink:0}
+  .q4m .qmg{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-family:'IBM Plex Mono';font-size:11px;color:var(--dim)}
+  .q4m .qmg b{color:var(--acid);font-family:'Space Grotesk';font-size:16px}
+
   footer{padding:40px 0 60px}
   .src{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);line-height:1.9}
   .src a{color:var(--mute)}
@@ -538,7 +616,8 @@
       <button class="tab" data-view="coverage" title="Coverage &amp; Plans"><span class="no">5</span>Coverage</button>
       <button class="tab" data-view="telecom" title="Telecom 101"><span class="no">6</span>Telecom</button>
       <button class="tab" data-view="plan" title="The 100-Day Plan"><span class="no">7</span>100 Days</button>
-      <button class="tab" data-view="ir" title="Investor Relations"><span class="no">8</span>IR</button>
+      <button class="tab" data-view="q4" title="Q4 Wireless Challenge — ON/QC"><span class="no">8</span>Q4 Push</button>
+      <button class="tab" data-view="ir" title="Investor Relations"><span class="no">9</span>IR</button>
     </div>
   </div>
 </header>
@@ -1675,7 +1754,105 @@
   </section>
 </div>
 
-<!-- ===================== VIEW 8: INVESTOR RELATIONS ===================== -->
+<!-- ===================== VIEW 8: Q4 WIRELESS CHALLENGE ===================== -->
+<div class="view" id="v-q4">
+  <div class="wrap">
+    <div class="hero">
+      <div class="eyebrow" style="color:var(--telus-2)">Q4 Wireless Challenge · Ontario + Quebec · #GoTelusGo</div>
+      <h1>Take the<br><span class="fade">board.</span><br>23 million squares.</h1>
+      <p class="lede">Ontario and Quebec are the biggest board in Canada — 23.15M wireless subscribers across 24 markets and segments. Rogers holds Ontario. Bell and Videotron split Quebec. We hold 20%. Q4 is the one quarter where the whole board is in play at once: holiday upgrades, Black Friday, student and newcomer intake, and promo cohorts rolling off.</p>
+      <div class="pridebar" style="border-left-color:var(--telus-2)">
+        <div class="pb"><div class="pbn" style="color:var(--telus-2)">23.15M</div><div class="pbl">Subscribers on the board</div></div>
+        <div class="pb"><div class="pbn" style="color:var(--telus-2)">4.63M</div><div class="pbl">TELUS holds today — 20%</div></div>
+        <div class="pb"><div class="pbn" style="color:var(--telus-2)">231K</div><div class="pbl">Subscribers per share point</div></div>
+        <div class="pb"><div class="pbn" style="color:var(--acid)">+75K</div><div class="pbl">Q4 net-add target</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE BOARD -->
+  <section id="q4-board">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--telus-2)">01</span><h2>The board</h2><span class="sub">click a square</span></div>
+      <p class="intro">Every square is a market or segment in Ontario and Quebec, coloured by who owns it today. Purple is ours. <b>Squares outlined in teal are in play this quarter</b> — where promos roll off, students and newcomers arrive, and Black Friday lands. Click any square to see the play.</p>
+      <div class="boardwrap">
+        <div class="board" id="q4Board"></div>
+      </div>
+      <div class="boardkey" id="q4Key"></div>
+      <div class="sqdetail" id="q4Detail"></div>
+    </div>
+  </section>
+
+  <!-- THE PLAYS -->
+  <section id="q4-plays">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--telus-2)">02</span><h2>Three ways to take a square</h2><span class="sub">the Q4 playbook</span></div>
+      <div class="vectors">
+        <div class="vec" style="border-top-color:#2ec4b6">
+          <div class="vech"><span class="vecn">01</span><h3>Winback</h3></div>
+          <div class="vecm">25K · squares we used to own</div>
+          <p>Former TELUS and Koodo subscribers from the last 24 months. They know the network, need no education, and convert far above cold prospects. Segment by <em>why</em> they left, not just when.</p>
+          <ul class="clean">
+            <li><span class="mk">→</span><span>Lead with the <b>5-year price lock</b> — it answers the grievance that caused most exits</span></li>
+            <li><span class="mk">→</span><span>Device-balance buyout for anyone still financed elsewhere</span></li>
+            <li><span class="mk">→</span><span>Hold back service-quality churners until the local fix is confirmed</span></li>
+          </ul>
+        </div>
+        <div class="vec" style="border-top-color:#ffb703">
+          <div class="vech"><span class="vecn">02</span><h3>Intercept</h3></div>
+          <div class="vecm">40K · squares changing hands</div>
+          <p>The regulator now forces our rivals to tell their own customers when to shop. Under Policy 2026-67 they must flag an expiring promo <em>and</em> hand over alternatives. Be standing there when it happens.</p>
+          <ul class="clean">
+            <li><span class="mk">→</span><span>Build the competitor promo-expiry calendar; concentrate spend on those weeks</span></li>
+            <li><span class="mk">→</span><span>Own paid search on port-out and switching intent</span></li>
+            <li><span class="mk">→</span><span>Advertise the <b>4-hour port</b> as a promise, not fine print</span></li>
+          </ul>
+        </div>
+        <div class="vec" style="border-top-color:#7a4fa0">
+          <div class="vech"><span class="vecn">03</span><h3>Flank</h3></div>
+          <div class="vecm">25K · squares priced out of reach</div>
+          <p>Never fight Videotron's $34 pricing with the flagship — that torches ARPU across the whole base. <b>Koodo and Public take the value war.</b></p>
+          <ul class="clean">
+            <li><span class="mk">→</span><span>Public Mobile is the <b>only discount brand with true 5G</b></span></li>
+            <li><span class="mk">→</span><span>Koodo goes straight at the Fido and Virgin switcher</span></li>
+            <li><span class="mk">→</span><span>Flagship pricing never moves</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE QUARTER -->
+  <section id="q4-quarter">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--telus-2)">03</span><h2>The quarter, week by week</h2><span class="sub">Oct → Dec</span></div>
+      <p class="intro">Q4 has a shape. Load the machine in October, spend hard through Black Friday and the holiday upgrade window, then convert volume into depth before the quarter closes.</p>
+      <div class="q4track" id="q4Track"></div>
+      <div class="two" style="margin-top:18px">
+        <div class="card"><h3>The target — and the honest math</h3>
+          <ul class="clean" style="margin-top:8px">
+            <li><span class="mk">◈</span><span><b>90K gross adds</b> across ON+QC in the quarter</span></li>
+            <li><span class="mk">◈</span><span><b>75K net</b> after churn — roughly <b>0.32 share points</b></span></li>
+            <li><span class="mk">◈</span><span>Split: 25K winback · 40K intercept · 25K flanker</span></li>
+            <li><span class="mk">⚠</span><span><b>Reality check:</b> TELUS added 207K mobile subs <em>nationally</em> across all of 2025. 75K net in two provinces in one quarter is aggressive but real — I'd rather commit to a number we hit than promise a share point we miss.</span></li>
+          </ul>
+        </div>
+        <div class="card"><h3>Guardrails</h3>
+          <ul class="clean" style="margin-top:8px">
+            <li><span class="mk">✗</span><span><b>No flagship price cuts.</b> Volume bought with ARPU isn't growth.</span></li>
+            <li><span class="mk">✗</span><span><b>No unfunded subsidies.</b> Every one carries a payback test against the lock term.</span></li>
+            <li><span class="mk">✗</span><span><b>Kill anything under 3:1 LTV:CAC.</b> At $57 ARPU and ~110-month life the model holds near 4:1.</span></li>
+            <li><span class="mk">✗</span><span><b>No winback contact</b> until legal clears source, timing and method.</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="note">◈ <b>Compliance checkpoint.</b> CRTC winback restrictions were set for wireline ILEC/CLEC porting (Decision 2006-28) and were not extended to wireless in the same form — but porting conduct <em>is</em> regulated, and the June 2026 rules explicitly ban porting delays as a retention tactic. Every winback campaign clears regulatory review before launch.</div>
+      <div class="note" style="border-left-color:var(--acid)">◈ <b>The rally line:</b> "Twenty-three million subscribers, and we hold one in five. Q4 is the only quarter where every square is in play at once. We don't buy the board with flagship discounts — we take it at the moment customers are already shopping, because the regulator now makes our competitors tell them when that is. Winback who knows us. Intercept who's leaving. Let Koodo and Public hold the value line. Seventy-five thousand net, reported publicly. <b>Go TELUS Go.</b>"</div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== VIEW 9: INVESTOR RELATIONS ===================== -->
 <div class="view" id="v-ir">
   <div class="wrap">
     <div class="hero">
@@ -1802,9 +1979,10 @@
     coverage:[['cov-live','Live Migration'],['cov-geo','Coverage Map'],['cov-map','Air Dominance'],['cov-merged','Merged Chart'],['cov-reach','Geo vs Population'],['cov-plans','Prepaid vs Postpaid']],
     telecom:[['t-split','Wireless vs Wireline'],['t-fibre','PureFibre vs Bell'],['t-chain','Signal Chain'],['t-latency','Latency Budget'],['t-stack','Protocol Stack'],['t-topo','RAN Topology'],['t-spectrum','Wave Physics'],['t-holdings','Who Holds What'],['t-gens','1G→5G'],['t-money','The Money']],
     plan:[['pl-timeline','The Sequence'],['pl-decisions','Three Commitments'],['pl-restraint','What I Won\'t Do'],['pl-score','Day-100 Scorecard']],
+    q4:[['q4-board','The Board'],['q4-plays','Three Plays'],['q4-quarter','Oct → Dec']],
     ir:[['ir-listing','Listing'],['ir-guidance','Guidance'],['ir-calendar','Calendar & Contacts']]
   };
-  const LBL={brief:'Company Brief',debt:'Debt vs Rivals',play:'Growth & M&A',network:'Network & Loyalty',coverage:'Coverage & Plans',telecom:'Telecom 101',plan:'The 100-Day Plan',ir:'Investor Relations'};
+  const LBL={brief:'Company Brief',debt:'Debt vs Rivals',play:'Growth & M&A',network:'Network & Loyalty',coverage:'Coverage & Plans',telecom:'Telecom 101',plan:'The 100-Day Plan',q4:'Q4 Wireless Challenge · ON+QC',ir:'Investor Relations'};
 
   function buildSub(view){
     const n=$('subnav'); n.innerHTML='';
@@ -1906,6 +2084,7 @@
     if(view==='telecom'){ setTimeout(initTelecomView,60); }
     else { if(cRAF){ cancelAnimationFrame(cRAF); cRAF=null; } if(tRAF){ cancelAnimationFrame(tRAF); tRAF=null; } if(wRAF){ cancelAnimationFrame(wRAF); wRAF=null; } }
     if(view==='plan'){ setTimeout(initPlanView,60); }
+    if(view==='q4'){ setTimeout(initQ4View,60); }
     if(view==='debt'){ setTimeout(initGauges,60); }
     else if(gRAF){ cancelAnimationFrame(gRAF); gRAF=null; }
     if(view==='brief'){ renderStack(); renderWorld(); setTimeout(()=>{animateStack();animateWorld();},120); }
@@ -3138,7 +3317,32 @@
     el.innerHTML=SCORE.map(([t,m])=>'<div class="scitem"><div class="scb">✓</div><div class="sct">'+t+'</div><div class="scm">'+m+'</div></div>').join('');
     el.dataset.done='1';
   }
-  function initPlanView(){ renderPhases(); renderScore(); }
+  // ---- ON+QC 100-day gates ----
+  const GATES=[
+    {d:'DAYS 1–30',t:'Arm the machine',metric:'10K',ml:'gross adds — soft launch',
+     items:[['01','<b>Build the lapsed-base file.</b> 24 months of ON+QC churners, segmented by reason and tenure. Legal and privacy review before a single contact.'],
+            ['02','<b>Map the competitor promo calendar.</b> Rogers and Bell expiry cohorts by month — this is the targeting spine for the next 70 days.'],
+            ['03','<b>Ship the port-in offer.</b> 5-year price lock + device-balance buyout, live in ON+QC only.'],
+            ['04','<b>Reweight dealer comp</b> to ports-in over gross activations. Pay for stolen share, not churn-and-return.']]},
+    {d:'DAYS 31–70',t:'Hit the wave',metric:'50K',ml:'gross adds — peak push',
+     items:[['01','<b>Winback campaign live.</b> Sequenced against churn reason. Service-quality churners held back until the local fix is confirmed.'],
+            ['02','<b>Intercept the roll-offs.</b> Concentrate media on the weeks competitor promos expire, when the regulator forces them to tell customers to shop.'],
+            ['03','<b>Public Mobile 5G push</b> in GTA and Montreal — the only discount brand with true 5G. Newcomer and student channels.'],
+            ['04','<b>Advertise the 4-hour port</b> as a promise. Frictionless switching is now the law; make it our message before a rival does.']]},
+    {d:'DAYS 71–100',t:'Bank it',metric:'75K',ml:'NET adds — the commitment',
+     items:[['01','<b>Retention wall for the new cohort.</b> Attach internet, security or health inside 60 days of activation — the whole point is depth, not a revolving door.'],
+            ['02','<b>Kill what failed.</b> Any channel under 3:1 LTV:CAC gets cut, not defended.'],
+            ['03','<b>Report the number publicly.</b> ON+QC net adds and services-per-household in the quarterly.'],
+            ['04','<b>Lock the run-rate.</b> Whatever worked becomes the standing ON+QC motion into quarter two.']]}
+  ];
+  function renderGates(){
+    const el=$('gatesViz'); if(!el||el.dataset.done) return;
+    el.innerHTML=GATES.map(g=>'<div class="gate"><div class="gd">'+g.d+'</div><div class="gt">'+g.t+'</div><ul>'+
+      g.items.map(([n,t])=>'<li><span class="gk">'+n+'</span><span>'+t+'</span></li>').join('')+
+      '</ul><div class="gmetric"><b>'+g.metric+'</b> '+g.ml+'</div></div>').join('');
+    el.dataset.done='1';
+  }
+  function initPlanView(){ renderPhases(); renderScore(); renderGates(); }
 
   // ---- keyboard shortcuts: 1-8 jump tabs ----
   document.addEventListener('keydown',e=>{
@@ -3148,6 +3352,124 @@
     const n=parseInt(e.key,10);
     if(n>=1&&n<=8){ const t=document.querySelectorAll('.tab')[n-1]; if(t) t.click(); }
   });
+
+  // ---- Q4 MONOPOLY BOARD (ON + QC) ----
+  const OWN={telus:'#7a4fa0',rogers:'#ff5964',bell:'#3a86ff',videotron:'#ffb703',open:'#54646b'};
+  const OWNN={telus:'TELUS',rogers:'Rogers',bell:'Bell',videotron:'Videotron',open:'Contested'};
+  // 24 market squares, clockwise from top-left after GO
+  const SQUARES=[
+    {n:'GTA Core',o:'rogers',v:'2.9M',play:'Intercept',inplay:1,d:'Rogers heartland and the single densest wireless market in Canada. We will not win it on price — we win pockets of it at promo roll-off, with the 4-hour port advertised hard.',k:[['Subscribers','~2.9M'],['Owner','Rogers'],['Q4 play','Intercept'],['Target','+12K']]},
+    {n:'Peel / Mississauga',o:'rogers',v:'1.1M',play:'Flank',inplay:1,d:'Enormous newcomer population. Public Mobile with true 5G at a discount price is the sharpest weapon we have here — Chatr and Lucky cannot match the 5G claim.',k:[['Subscribers','~1.1M'],['Owner','Rogers'],['Q4 play','Flank — Public'],['Target','+9K']]},
+    {n:'York Region',o:'rogers',v:'0.9M',play:'Intercept',inplay:0,d:'Affluent, high-ARPU, family-account heavy. Bundle depth wins here — wireless attached to fibre and security, not a cheap single line.',k:[['Subscribers','~0.9M'],['Owner','Rogers'],['Q4 play','Bundle'],['Target','+5K']]},
+    {n:'Durham',o:'rogers',v:'0.6M',play:'Intercept',inplay:0,d:'Commuter belt. Steady, less promo-sensitive. Play for household depth rather than volume.',k:[['Subscribers','~0.6M'],['Owner','Rogers'],['Q4 play','Bundle'],['Target','+3K']]},
+    {n:'Hamilton / Niagara',o:'bell',v:'0.8M',play:'Intercept',inplay:1,d:'Bell-leaning and price-sensitive. Promo roll-offs cluster here — a concentrated intercept window in November.',k:[['Subscribers','~0.8M'],['Owner','Bell'],['Q4 play','Intercept'],['Target','+6K']]},
+    {n:'Kitchener–Waterloo',o:'rogers',v:'0.5M',play:'Intercept',inplay:1,d:'Tech corridor plus a large student population arriving each September and shopping again at holidays. Data-heavy, upgrade-hungry.',k:[['Subscribers','~0.5M'],['Owner','Rogers'],['Q4 play','Students'],['Target','+4K']]},
+    {n:'London',o:'rogers',v:'0.4M',play:'Winback',inplay:0,d:'Mid-size market with a meaningful lapsed TELUS base. Winback economics are strongest where we once had share.',k:[['Subscribers','~0.4M'],['Owner','Rogers'],['Q4 play','Winback'],['Target','+3K']]},
+    {n:'Windsor',o:'bell',v:'0.3M',play:'Winback',inplay:0,d:'Border market, cross-border roaming matters. Canada-US-Mexico plans are a genuine differentiator here.',k:[['Subscribers','~0.3M'],['Owner','Bell'],['Q4 play','Winback'],['Target','+2K']]},
+    {n:'Ottawa',o:'bell',v:'1.1M',play:'Intercept',inplay:1,d:'Bell home turf and heavy government and enterprise presence. Consumer intercept at roll-off; the enterprise play is a longer game than one quarter.',k:[['Subscribers','~1.1M'],['Owner','Bell'],['Q4 play','Intercept'],['Target','+7K']]},
+    {n:'Sudbury / North ON',o:'bell',v:'0.4M',play:'Coverage',inplay:0,d:'Rural and coverage-led. Our shared rural network with Bell means signal is not the differentiator — price certainty is.',k:[['Subscribers','~0.4M'],['Owner','Bell'],['Q4 play','Price lock'],['Target','+2K']]},
+    {n:'Kingston / East ON',o:'bell',v:'0.3M',play:'Winback',inplay:0,d:'Smaller but underserved by aggressive offers. Cheap share if we show up.',k:[['Subscribers','~0.3M'],['Owner','Bell'],['Q4 play','Winback'],['Target','+2K']]},
+    {n:'ON Students',o:'open',v:'0.6M',play:'Flank',inplay:1,d:'Segment, not a place. Price-first, BYOD, churns fast — which is exactly why it belongs to Koodo and Public, never the flagship.',k:[['Segment','~600K'],['Owner','Contested'],['Q4 play','Koodo/Public'],['Target','+6K']]},
+    {n:'Montreal Island',o:'videotron',v:'1.4M',play:'Flank',inplay:1,d:'Videotron fortress with the most aggressive pricing in Canada. Do not match it with the flagship. Koodo and Public fight here or we do not fight at all.',k:[['Subscribers','~1.4M'],['Owner','Videotron'],['Q4 play','Flank'],['Target','+8K']]},
+    {n:'Laval',o:'videotron',v:'0.4M',play:'Flank',inplay:0,d:'Videotron-dominant suburban market. Value brands only.',k:[['Subscribers','~0.4M'],['Owner','Videotron'],['Q4 play','Flank'],['Target','+2K']]},
+    {n:'Rive-Sud / Longueuil',o:'bell',v:'0.5M',play:'Intercept',inplay:1,d:'Genuinely contested between Bell and Videotron — the most winnable square in Quebec because neither owner is entrenched.',k:[['Subscribers','~0.5M'],['Owner','Bell'],['Q4 play','Intercept'],['Target','+4K']]},
+    {n:'Quebec City',o:'bell',v:'0.7M',play:'Intercept',inplay:1,d:'Bell-led, loyal, lower churn than Montreal. Needs a French-first offer and local retail presence, not a translated Ontario campaign.',k:[['Subscribers','~0.7M'],['Owner','Bell'],['Q4 play','Intercept'],['Target','+4K']]},
+    {n:'Gatineau',o:'videotron',v:'0.3M',play:'Intercept',inplay:0,d:'Ottawa spillover market. Cross-river households are a natural bundle target.',k:[['Subscribers','~0.3M'],['Owner','Videotron'],['Q4 play','Bundle'],['Target','+2K']]},
+    {n:'Sherbrooke',o:'videotron',v:'0.2M',play:'Winback',inplay:0,d:'University town. Small, but student intake makes it punch above its size.',k:[['Subscribers','~0.2M'],['Owner','Videotron'],['Q4 play','Students'],['Target','+2K']]},
+    {n:'Trois-Rivières',o:'bell',v:'0.2M',play:'Winback',inplay:0,d:'Regional Quebec. Price-lock messaging travels well in markets tired of promo churn.',k:[['Subscribers','~0.2M'],['Owner','Bell'],['Q4 play','Winback'],['Target','+1K']]},
+    {n:'Saguenay / Regions',o:'bell',v:'0.3M',play:'Coverage',inplay:0,d:'Rural Quebec, coverage-led, Bell-entrenched. A long game, not a Q4 target.',k:[['Subscribers','~0.3M'],['Owner','Bell'],['Q4 play','Hold'],['Target','+1K']]},
+    {n:'QC Newcomers',o:'open',v:'0.4M',play:'Flank',inplay:1,d:'Fastest-growing prepaid cohort in the province. Arrives without credit history, buys on price and on who is visible at the point of arrival.',k:[['Segment','~400K'],['Owner','Contested'],['Q4 play','Public Mobile'],['Target','+5K']]},
+    {n:'Lapsed TELUS',o:'open',v:'0.5M',play:'Winback',inplay:1,d:'Our own former subscribers across both provinces, 24 months back. The highest-converting pool on the board — they already know the network.',k:[['Pool','~500K'],['Owner','Lapsed'],['Q4 play','Winback'],['Target','+25K']]},
+    {n:'Small Business',o:'open',v:'0.7M',play:'Intercept',inplay:1,d:'Under-served by all three. Multi-line, low churn, high lifetime value. The 5-year price lock is an unusually strong pitch to an owner-operator.',k:[['Lines','~700K'],['Owner','Contested'],['Q4 play','Price lock'],['Target','+6K']]},
+    {n:'Seniors 55+',o:'open',v:'0.9M',play:'Winback',inplay:0,d:'Loyal, low-churn, and increasingly bundling health monitoring. The one segment where a TELUS medical-alert pendant closes a wireless deal.',k:[['Segment','~900K'],['Owner','Contested'],['Q4 play','Health bundle'],['Target','+4K']]}
+  ];
+  const CORNERS=[
+    {cn:'GO',cs:'Q4 starts Oct 1'},
+    {cn:'BLACK FRIDAY',cs:'Peak spend window'},
+    {cn:'HOLIDAY',cs:'Upgrade cycle'},
+    {cn:'BANK IT',cs:'Dec 31 · +75K net'}
+  ];
+  let q4Sel=0;
+  function renderQ4Board(){
+    const b=$('q4Board'); if(!b) return;
+    // build 8x8 perimeter: 28 cells, 4 corners + 24 squares
+    const cells=[];
+    for(let r=0;r<8;r++)for(let c=0;c<8;c++){
+      const edge=(r===0||r===7||c===0||c===7);
+      if(edge) cells.push({r,c});
+    }
+    // order clockwise starting top-left
+    const top=cells.filter(x=>x.r===0).sort((a,z)=>a.c-z.c);
+    const right=cells.filter(x=>x.c===7&&x.r>0).sort((a,z)=>a.r-z.r);
+    const bot=cells.filter(x=>x.r===7&&x.c<7).sort((a,z)=>z.c-a.c);
+    const left=cells.filter(x=>x.c===0&&x.r>0&&x.r<7).sort((a,z)=>z.r-a.r);
+    const ring=[...top,...right,...bot,...left];
+    const cornerIdx=[0,7,14,21];
+    let html='',si=0,ci=0;
+    ring.forEach((pos,idx)=>{
+      const style='grid-row:'+(pos.r+1)+';grid-column:'+(pos.c+1)+';';
+      if(cornerIdx.includes(idx)){
+        const co=CORNERS[ci++];
+        html+='<div class="sq corner" style="'+style+'"><div class="cn">'+co.cn+'</div><div class="cs">'+co.cs+'</div></div>';
+      } else {
+        const s=SQUARES[si];
+        if(s){
+          const col=OWN[s.o];
+          html+='<div class="sq'+(si===q4Sel?' on':'')+(s.inplay?' inplay':'')+'" data-i="'+si+'" style="'+style+'border-top-color:'+col+'">'+
+            '<div class="sqn">'+s.n+'</div><div class="sqo">'+OWNN[s.o]+'</div>'+
+            '<div class="sqv" style="color:'+col+'">'+s.v+'</div></div>';
+        }
+        si++;
+      }
+    });
+    html+='<div class="boardmid"><div class="bm1">ONTARIO + QUEBEC</div><div class="bm2">23.15M</div>'+
+      '<div class="bmbar"><div class="bmseg" style="width:34%;background:#ff5964">R 34%</div>'+
+      '<div class="bmseg" style="width:30%;background:#3a86ff">B 30%</div>'+
+      '<div class="bmseg" style="width:20%;background:#7a4fa0">T 20%</div>'+
+      '<div class="bmseg" style="width:16%;background:#ffb703">V 16%</div></div>'+
+      '<div class="bm3">We hold 1 in 5. Q4 target <b style="color:#2ec4b6">+75K net</b> — 0.32 share points.</div></div>';
+    b.innerHTML=html;
+    b.querySelectorAll('.sq[data-i]').forEach(el=>{
+      el.onclick=()=>{ q4Sel=+el.dataset.i;
+        b.querySelectorAll('.sq').forEach(x=>x.classList.toggle('on',x===el));
+        renderQ4Detail(); };
+    });
+    const k=$('q4Key');
+    if(k) k.innerHTML=['rogers','bell','videotron','telus','open'].map(o=>
+      '<span><span class="ks" style="background:'+OWN[o]+'"></span>'+OWNN[o]+'</span>').join('')+
+      '<span><span class="ks" style="background:transparent;border:1.5px solid #2ec4b6"></span>in play this quarter</span>';
+    renderQ4Detail();
+  }
+  function renderQ4Detail(){
+    const el=$('q4Detail'); if(!el) return; const s=SQUARES[q4Sel]; if(!s) return;
+    el.innerHTML='<h4>'+s.n+'</h4><div class="sdm">'+OWNN[s.o]+' holds this square · '+s.v+' subscribers · Q4 play: '+s.play+'</div>'+
+      '<p>'+s.d+'</p><div class="sdgrid">'+s.k.map(([a,b])=>'<div><div class="sdk">'+a+'</div><div class="sdv">'+b+'</div></div>').join('')+'</div>';
+  }
+  const Q4MONTHS=[
+    {mo:'OCTOBER',t:'Load the machine',g:'10K',gl:'gross adds',
+     items:[['01','<b>Lapsed-base file built and cleared.</b> 24 months of ON+QC churners segmented by reason. Legal and privacy sign-off before any contact.'],
+            ['02','<b>Competitor promo-expiry calendar mapped.</b> Rogers and Bell roll-off cohorts by week — this is the targeting spine for November.'],
+            ['03','<b>Dealer comp reweighted to ports-in.</b> Pay for stolen share, not churn-and-return.'],
+            ['04','<b>French-first Quebec creative shipped.</b> Not a translated Ontario campaign.']]},
+    {mo:'NOVEMBER',t:'Spend hard',g:'50K',gl:'gross adds',
+     items:[['01','<b>Black Friday is the peak.</b> Device-balance buyout plus the 5-year price lock — the offer nobody can copy inside a quarter.'],
+            ['02','<b>Winback campaign live</b>, sequenced by churn reason. Service-quality churners held until the local fix lands.'],
+            ['03','<b>Intercept the roll-off weeks.</b> Concentrate media where the regulator forces rivals to tell customers to shop.'],
+            ['04','<b>Public Mobile 5G blitz</b> in the GTA, Peel and Montreal. Newcomer and student channels.']]},
+    {mo:'DECEMBER',t:'Convert to depth',g:'75K',gl:'NET adds — banked',
+     items:[['01','<b>Attach a second service</b> to the new cohort inside 60 days. Volume without depth is a revolving door.'],
+            ['02','<b>Kill the losers.</b> Any channel under 3:1 LTV:CAC is cut, not defended into Q1.'],
+            ['03','<b>Hold the flagship line.</b> No December panic discounting to make the number.'],
+            ['04','<b>Report it publicly.</b> ON+QC net adds and services-per-household in the quarterly.']]}
+  ];
+  function renderQ4Track(){
+    const el=$('q4Track'); if(!el||el.dataset.done) return;
+    el.innerHTML=Q4MONTHS.map(m=>'<div class="q4m"><div class="qmo">'+m.mo+'</div><div class="qmt">'+m.t+'</div><ul>'+
+      m.items.map(([n,t])=>'<li><span class="qk">'+n+'</span><span>'+t+'</span></li>').join('')+
+      '</ul><div class="qmg"><b>'+m.g+'</b> '+m.gl+'</div></div>').join('');
+    el.dataset.done='1';
+  }
+  function initQ4View(){ renderQ4Board(); renderQ4Track(); }
 
   // ---- init ----
   calc();
