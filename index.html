@@ -700,6 +700,76 @@
   footer{padding:40px 0 60px}
   .src{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);line-height:1.9}
   .src a{color:var(--mute)}
+
+  /* ===== THE BUSINESS ===== */
+  .bizmeter{display:grid;grid-template-columns:1.35fr 1fr 1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin:40px 0 0}
+  .bizmeter>div{background:var(--panel);padding:22px 20px 26px;position:relative;overflow:hidden}
+  .bizmeter>div::after{content:'';position:absolute;left:0;bottom:0;height:2px;width:100%;background:linear-gradient(90deg,transparent,var(--mc,var(--acid)),transparent);animation:bizsweep 2.6s linear infinite}
+  @keyframes bizsweep{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+  .bizmeter .ml{font-family:'IBM Plex Mono';font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.1em;display:flex;align-items:center;gap:8px}
+  .bizmeter .mv{font-family:'Space Grotesk';font-weight:700;font-size:clamp(26px,3.3vw,42px);letter-spacing:-.01em;font-variant-numeric:tabular-nums;margin-top:8px;line-height:1.05}
+  .bizmeter .ms{font-size:12px;color:var(--dim);margin-top:8px;font-family:'IBM Plex Mono'}
+  .bizmeter .live{color:var(--red);font-weight:600}
+  .bizmeter .live i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red);animation:pulse 1.1s infinite}
+  .bizmeter .nextbar{height:4px;background:var(--panel-2);margin-top:10px;overflow:hidden}
+  .bizmeter .nextbar b{display:block;height:100%;width:0;background:var(--blue)}
+  @media(max-width:900px){.bizmeter{grid-template-columns:1fr 1fr}}
+  .bizfoot{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);margin-top:10px}
+
+  .bizsk{background:var(--panel);border:1px solid var(--line);padding:14px 8px 6px}
+  .bizsk svg{width:100%;height:auto;display:block}
+  .bizsk .band{opacity:.26;transition:opacity .2s;cursor:default}
+  .bizsk .band:hover{opacity:.55}
+  .bizsk .stream{fill:none;stroke:#fff;stroke-opacity:.16;stroke-dasharray:2 16;animation:bizflow 1s linear infinite;pointer-events:none}
+  .bizsk .stream.fast{stroke-opacity:.34;animation-duration:.55s}
+  @keyframes bizflow{to{stroke-dashoffset:-18}}
+  .bizsk .nd{animation:bizglow 2.4s ease-in-out infinite}
+  @keyframes bizglow{0%,100%{opacity:1}50%{opacity:.7}}
+  .bizleg{display:flex;gap:22px;flex-wrap:wrap;font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);margin-top:12px}
+  .bizleg b{color:var(--ink);font-weight:500}
+
+  .bizmix{display:flex;flex-direction:column;gap:22px}
+  .mxrow{display:grid;grid-template-columns:190px 1fr;gap:18px;align-items:center}
+  .mxl{font-family:'Space Grotesk';font-weight:600;font-size:17px}
+  .mxl span{display:block;font-family:'IBM Plex Mono';font-weight:400;font-size:11px;color:var(--dim);margin-top:2px}
+  .mxbar{display:flex;height:64px;background:var(--panel-2);border:1px solid var(--line);overflow:hidden}
+  .mxseg{height:100%;width:0;transition:width 1.3s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column;justify-content:center;padding-left:14px;overflow:hidden;white-space:nowrap;color:#0a0d0f;border-right:2px solid var(--bg)}
+  .mxseg b{font-family:'Space Grotesk';font-size:22px;font-weight:700;line-height:1}
+  .mxseg small{font-family:'IBM Plex Mono';font-size:11px;font-weight:600;opacity:.8;margin-top:3px}
+  @media(max-width:720px){.mxrow{grid-template-columns:1fr}}
+  .bizins{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+  .bizins .card .big{font-family:'Space Grotesk';font-weight:700;font-size:28px;letter-spacing:-.01em}
+  @media(max-width:820px){.bizins{grid-template-columns:1fr}}
+
+  .eng{border-top:3px solid var(--ec)}
+  .eng .role{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ec)}
+  .eng .rev{font-family:'Space Grotesk';font-weight:700;font-size:40px;letter-spacing:-.02em;margin:6px 0 2px}
+  .eng .revl{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim)}
+  .eng ul.clean{margin:16px 0}
+  .eng .mini{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+  .eng .mini .r{display:grid;grid-template-columns:62px 1fr 64px;gap:10px;align-items:center;font-family:'IBM Plex Mono';font-size:11px;color:var(--mute)}
+  .eng .mini .track{height:18px}
+  .eng .mini .r .v{text-align:right;color:var(--ink)}
+  .eng .move{border-top:1px solid var(--line);margin-top:16px;padding-top:14px;font-size:13px;color:var(--mute)}
+  .eng .move b{color:var(--ec)}
+
+  .wf{position:relative;height:340px;display:grid;grid-template-columns:repeat(5,1fr);gap:18px;align-items:end;border-bottom:1px solid var(--line);padding:0 6px;background:repeating-linear-gradient(0deg,transparent 0 41.5px,rgba(255,255,255,.035) 41.5px 42.5px)}
+  .wfc{position:relative;height:100%}
+  .wfb{position:absolute;left:0;right:0;height:0;transition:height 1.1s cubic-bezier(.2,.7,.2,1),bottom 1.1s cubic-bezier(.2,.7,.2,1)}
+  .wfb.ghost{background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.14) 0 6px,transparent 6px 12px)!important;border:1px dashed rgba(255,255,255,.35)}
+  .wfv{position:absolute;left:0;right:0;text-align:center;font-family:'Space Grotesk';font-weight:700;font-size:20px;opacity:0;transition:opacity .4s .9s}
+  .wf.go .wfv{opacity:1}
+  .wfl{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;padding:10px 6px 0;font-family:'IBM Plex Mono';font-size:11px;color:var(--mute);text-align:center}
+  .wfl span b{display:block;color:var(--ink);font-family:'Space Grotesk';font-size:13px;font-weight:600;margin-bottom:2px}
+  @media(max-width:720px){.wf{gap:8px}.wfl{gap:8px;font-size:10px}.wfv{font-size:14px}}
+
+  .lever{border-left:3px solid var(--lc)}
+  .lever .no{font-family:'IBM Plex Mono';font-size:11px;color:var(--lc);letter-spacing:.14em}
+  .lever .big{font-family:'Space Grotesk';font-weight:700;font-size:34px;letter-spacing:-.02em;margin:8px 0 4px;color:var(--lc)}
+  .lever .bl{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);margin-bottom:12px}
+  .bizquote{font-family:'Space Grotesk';font-size:clamp(20px,2.4vw,28px);line-height:1.3;font-weight:500;letter-spacing:-.01em;margin-top:34px;padding:28px 30px;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--acid)}
+  .bizquote .fade{color:var(--dim)}
+  .bizsrc{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);margin-top:22px;line-height:1.7}
 </style>
 </head>
 <body>
@@ -711,14 +781,15 @@
     <button class="menubtn" id="menubtn">☰ Menu</button>
     <div class="tabs" id="tabs">
       <button class="tab on" data-view="brief" title="Company Brief"><span class="no">1</span>Brief</button>
-      <button class="tab" data-view="debt" title="Debt vs Rivals"><span class="no">2</span>Debt</button>
-      <button class="tab" data-view="play" title="Growth &amp; M&amp;A"><span class="no">3</span>Growth</button>
-      <button class="tab" data-view="network" title="Network &amp; Loyalty"><span class="no">4</span>Loyalty</button>
-      <button class="tab" data-view="coverage" title="Coverage &amp; Plans"><span class="no">5</span>Coverage</button>
-      <button class="tab" data-view="telecom" title="Telecom 101"><span class="no">6</span>Telecom</button>
-      <button class="tab" data-view="plan" title="The 100-Day Plan"><span class="no">7</span>100 Days</button>
-      <button class="tab" data-view="q4" title="Q4 Wireless Challenge — ON/QC"><span class="no">8</span>Q4 Push</button>
-      <button class="tab" data-view="ir" title="Investor Relations"><span class="no">9</span>IR</button>
+      <button class="tab" data-view="biz" title="The Business — how TELUS makes $20.5B"><span class="no">2</span>Business</button>
+      <button class="tab" data-view="debt" title="Debt vs Rivals"><span class="no">3</span>Debt</button>
+      <button class="tab" data-view="play" title="Growth &amp; M&amp;A"><span class="no">4</span>Growth</button>
+      <button class="tab" data-view="network" title="Network &amp; Loyalty"><span class="no">5</span>Loyalty</button>
+      <button class="tab" data-view="coverage" title="Coverage &amp; Plans"><span class="no">6</span>Coverage</button>
+      <button class="tab" data-view="telecom" title="Telecom 101"><span class="no">7</span>Telecom</button>
+      <button class="tab" data-view="plan" title="The 100-Day Plan"><span class="no">8</span>100 Days</button>
+      <button class="tab" data-view="q4" title="Q4 Wireless Challenge — ON/QC"><span class="no">9</span>Q4 Push</button>
+      <button class="tab" data-view="ir" title="Investor Relations"><span class="no">10</span>IR</button>
     </div>
   </div>
 </header>
@@ -1148,6 +1219,141 @@
 </div>
 
 <!-- ===================== VIEW 2: DEBT ===================== -->
+<div class="view" id="v-biz">
+  <div class="wrap">
+    <div class="hero">
+      <div class="eyebrow" style="color:var(--acid)">The Business · FY2025 reported · as of Sep 2026</div>
+      <h1>$20.5B in.<br><span class="fade">$2.2B free.</span><br>Here's the machine.</h1>
+      <p class="lede">Everything else in this app zooms into wireless. This is the whole company: three segments, one cash engine, and the two numbers the board actually runs it on: free cash flow and leverage.</p>
+      <div class="bizmeter" id="biz-live">
+        <div class="lead" style="--mc:var(--acid)"><div class="ml"><span class="live"><i></i> LIVE</span> Revenue since you opened this tab</div><div class="mv" id="bmRev" style="color:var(--acid)">$0</div><div class="ms"><span id="bmClock">00:00</span> elapsed · $650 / second</div></div>
+        <div style="--mc:var(--amber)"><div class="ml">Adj. EBITDA</div><div class="mv" id="bmEb" style="color:var(--amber)">$0</div><div class="ms">$233 / second · 35.9% margin</div></div>
+        <div style="--mc:#8ce99a"><div class="ml">Free cash flow</div><div class="mv" id="bmFcf" style="color:#8ce99a">$0</div><div class="ms">$70 / second</div></div>
+        <div style="--mc:var(--blue)"><div class="ml">New connections</div><div class="mv" id="bmCon" style="color:var(--blue)">+0</div><div class="ms">1 every ~32 seconds</div><div class="nextbar"><b id="bmNext"></b></div></div>
+      </div>
+      <div class="bizfoot">Run-rate = FY2025 reported total ÷ seconds in a year. Connections: 20.18M → 21.16M (Q4'24 → Q4'25) = +985K a year.</div>
+    </div>
+    <div class="strip">
+      <div class="stat"><div class="n">$20.51B</div><div class="l">Operating revenue 2025</div><div class="d"><span class="up">+0.6%</span> vs $20.39B</div></div>
+      <div class="stat"><div class="n">$7.35B</div><div class="l">Adj. EBITDA</div><div class="d">35.9% margin · <span class="up">+0.3%</span></div></div>
+      <div class="stat"><div class="n" style="color:#8ce99a">$2.2B</div><div class="l">Free cash flow</div><div class="d"><span class="up">record, +11%</span></div></div>
+      <div class="stat"><div class="n">21.16M</div><div class="l">Connections</div><div class="d"><span class="up">+4.9%</span> YoY</div></div>
+      <div class="stat"><div class="n" style="color:var(--acid)">169.6M</div><div class="l">Health lives covered</div><div class="d">Q1'26 · was 76.2M</div></div>
+    </div>
+  </div>
+
+  <section id="biz-flow">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--acid)">01</span><h2>Where the $20.5B comes from, and where it goes</h2><span class="sub">FY2025 · live money flow</span></div>
+      <p class="intro">Four revenue streams feed one P&amp;L. About two-thirds goes to running the business. What's left is EBITDA, and the board's question is how much of it survives capex, interest and tax to become free cash. In 2025 that was $2.2B.</p>
+      <div class="bizsk"><svg id="bizSankey" viewBox="0 0 1200 570" preserveAspectRatio="xMidYMid meet" role="img" aria-label="TELUS money flow 2025"></svg></div>
+      <div class="bizleg"><span><b>$x.xxB</b> reported</span><span><b>≈$x.xB</b> derived: TTech ≈ consolidated − Health − Digital; mobile network ≈ ARPU $57.01 × 10.3M phones × 12</span><span>hover a band for detail</span></div>
+    </div>
+  </section>
+
+  <section id="biz-mix">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--acid)">02</span><h2>Revenue mix vs profit mix</h2><span class="sub">the one chart that explains the strategy</span></div>
+      <p class="intro">Same three segments, two very different pictures. The network is most of the revenue and nearly all of the profit. Health and AI are more than a fifth of the revenue but, so far, a much smaller slice of the profit.</p>
+      <div class="bizmix">
+        <div class="mxrow"><div class="mxl">Revenue<span>FY2025 · $20.51B</span></div><div class="mxbar" id="mxRev"></div></div>
+        <div class="mxrow"><div class="mxl">Adj. EBITDA<span>Q4 2025 · latest segment split</span></div><div class="mxbar" id="mxEb"></div></div>
+      </div>
+      <div class="bizins">
+        <div class="card"><div class="big" style="color:var(--telus-2)">78% → 87%</div><h3 style="margin-top:6px">TTech pays the bills</h3><p>Mobile and fixed earn a 40.9% margin (Q4). Every dividend, every debt paydown and every acquisition is funded from here.</p></div>
+        <div class="card"><div class="big" style="color:var(--acid)">22% → 12%</div><h3 style="margin-top:6px">Health + AI buy the future</h3><p>Lower margin today (Health ≈19% in Q4, derived), but growing faster. Health revenue rose 15% last year; telecom service revenue grows 2–4%.</p></div>
+        <div class="card"><div class="big" style="color:var(--amber)">So what</div><h3 style="margin-top:6px">Two jobs, one company</h3><p>Run TTech for cash and churn. Run Health and AI for growth and value, then show investors what each one is worth on its own.</p></div>
+      </div>
+      <div class="bizleg" style="margin-top:14px"><span><b style="color:#7a4fa0">■</b> TTech</span><span><b style="color:#2ec4b6">■</b> TELUS Health</span><span><b style="color:#3a86ff">■</b> Digital &amp; AI</span></div>
+      <div class="bizfoot">EBITDA shares use Q4 2025 segment adj. EBITDA before eliminations: TTech $1,637M · Health $96M · Digital $138M · eliminations −$32M · total $1,839M. Revenue split for TTech and Digital is derived.</div>
+    </div>
+  </section>
+
+  <section id="biz-seg">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--acid)">03</span><h2>Three engines</h2><span class="sub">what each one is, and what I'd do with it</span></div>
+      <div class="grid3">
+        <div class="card eng" style="--ec:var(--telus-2)">
+          <div class="role">TTech · the cash machine</div>
+          <div class="rev">≈$16.0B</div><div class="revl">revenue 2025 (derived) · Q4 adj. EBITDA $1,637M · 40.9% margin</div>
+          <ul class="clean">
+            <li><span class="mk">◈</span><span><b>10.3M</b> mobile phones · <b>4.4M</b> connected devices · <b>2.8M</b> internet</span></li>
+            <li><span class="mk">◈</span><span>5G reaches <b>33.3M</b> Canadians (90%)</span></li>
+            <li><span class="mk">◈</span><span>FY adj. EBITDA <b>+3.1%</b> while equipment revenue fell</span></li>
+            <li><span class="mk">◈</span><span>Mobile, PureFibre, TV, security &amp; smart home, B2B, Agriculture &amp; Consumer Goods</span></li>
+          </ul>
+          <div class="mini">
+            <div class="r"><span>Q4'24</span><div class="track"><div class="fill" data-w="95.3" data-c="#4b286d"></div></div><span class="v">20.18M</span></div>
+            <div class="r"><span>Q4'25</span><div class="track"><div class="fill" data-w="100" data-c="#7a4fa0"></div></div><span class="v">21.16M</span></div>
+          </div>
+          <div class="move"><b>My move:</b> protect it. Churn under 1%, PureFibre attached to every mobile line, ARPU flat then up. This segment funds everything else.</div>
+        </div>
+        <div class="card eng" style="--ec:var(--acid)">
+          <div class="role">TELUS Health · the moat</div>
+          <div class="rev">$2.04B</div><div class="revl">revenue 2025, +15% (from $1.78B) · Q4 adj. EBITDA $96M, +9%</div>
+          <ul class="clean">
+            <li><span class="mk">◈</span><span><b>169.6M</b> lives covered worldwide (Q1'26)</span></li>
+            <li><span class="mk">◈</span><span>Workplace Options (May 2025) added <b>79.3M</b> lives</span></li>
+            <li><span class="mk">◈</span><span>LifeWorks synergies delivered: <b>$431M</b></span></li>
+            <li><span class="mk">◈</span><span>Employer benefits, virtual care, EMR, pharmacy, LivingWell senior monitoring</span></li>
+          </ul>
+          <div class="mini">
+            <div class="r"><span>Q4'24</span><div class="track"><div class="fill" data-w="44.9" data-c="#1d7f76"></div></div><span class="v">76.2M</span></div>
+            <div class="r"><span>Q4'25</span><div class="track"><div class="fill" data-w="95" data-c="#2ec4b6"></div></div><span class="v">161.2M</span></div>
+            <div class="r"><span>Q1'26</span><div class="track"><div class="fill" data-w="100" data-c="#2ec4b6"></div></div><span class="v">169.6M</span></div>
+          </div>
+          <div class="move"><b>My move:</b> sell a minority stake to a strategic partner, keep control, and put the money into AI-led care and paying down debt.</div>
+        </div>
+        <div class="card eng" style="--ec:var(--blue)">
+          <div class="role">Digital &amp; AI · the option</div>
+          <div class="rev">≈$2.5B</div><div class="revl">revenue from outside customers (derived) · Q4 adj. EBITDA $138M</div>
+          <ul class="clean">
+            <li><span class="mk">◈</span><span>TELUS Digital taken private <b>Oct 31 2025</b> (~US$539M for the rest)</span></li>
+            <li><span class="mk">◈</span><span>Revenue from AI products and services: <b>~$0.8B</b> in 2025, target <b>~$2B by 2028</b></span></li>
+            <li><span class="mk">◈</span><span>Sovereign AI Factories: Canadian-owned AI compute</span></li>
+            <li><span class="mk">◈</span><span>Integration cash synergies <b>$150–200M</b> a year</span></li>
+          </ul>
+          <div class="mini">
+            <div class="r"><span>2025</span><div class="track"><div class="fill" data-w="40" data-c="#3a86ff">$0.8B</div></div><span class="v">40%</span></div>
+            <div class="r"><span>2028</span><div class="track"><div class="fill" data-w="100" data-c="rgba(58,134,255,.35)">target $2B</div></div><span class="v">2.5×</span></div>
+          </div>
+          <div class="move"><b>My move:</b> sell sovereign AI compute to Canadian banks, governments and hospitals. That could be the next PureFibre: owned infrastructure nobody else in Canada has.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="biz-cash">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--acid)">04</span><h2>The cash engine</h2><span class="sub">EBITDA → free cash flow → balance sheet</span></div>
+      <p class="intro">This is the number the board watches. Of every $7.35 of EBITDA, $2.20 became free cash in 2025. The 2026 plan takes that to $2.45B by spending less on capex, not by cutting the network.</p>
+      <div class="wf" id="bizWF"></div>
+      <div class="wfl" id="bizWFL"></div>
+      <div class="tiles" style="margin-top:34px">
+        <div class="tile"><h4>Service revenue</h4><div class="cur">2026 guidance</div><div class="goal">+2–4%</div></div>
+        <div class="tile"><h4>Adj. EBITDA</h4><div class="cur">2026 guidance</div><div class="goal">+2–4%</div></div>
+        <div class="tile"><h4>Free cash flow</h4><div class="cur">$2.2B <span class="arrow">→</span></div><div class="goal">~$2.45B · +10%</div></div>
+        <div class="tile"><h4>Capex</h4><div class="cur">$2.5B · 12% of revenue <span class="arrow">→</span></div><div class="goal" style="color:var(--amber)">~$2.3B · ~10% by '28</div></div>
+        <div class="tile"><h4>Leverage (net debt ÷ EBITDA)</h4><div class="cur">3.4× <span class="arrow">→</span> 3.3× (2026)</div><div class="goal">3.0× by 2027</div></div>
+        <div class="tile"><h4>Dividend</h4><div class="cur">$0.4184 <span class="arrow">→</span> $0.1875 / qtr (Oct 2026)</div><div class="goal" style="color:var(--amber)">45–60% of FCF</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="biz-ceo">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--acid)">05</span><h2>The CEO line</h2><span class="sub">three levers, one balance sheet</span></div>
+      <div class="grid3">
+        <div class="card lever" style="--lc:var(--telus-2)"><div class="no">LEVER 01 · PROTECT</div><div class="big">$85M</div><div class="bl">a year in revenue for every 0.1pt of monthly churn (derived)</div><p>0.1pt on 10.3M phones is ~124K customers a year, worth $684 each at $57.01 ARPU. Churn is the cheapest growth this company has.</p></div>
+        <div class="card lever" style="--lc:#8ce99a"><div class="no">LEVER 02 · FREE THE CASH</div><div class="big">$410M</div><div class="bl">a year freed by moving capex from 12% to 10% of revenue (derived)</div><p>The fibre and 5G build is mostly done. Capex comes down, free cash flow goes up, and debt falls to 3.0× by 2027.</p></div>
+        <div class="card lever" style="--lc:var(--acid)"><div class="no">LEVER 03 · RE-RATE</div><div class="big">$4.5B</div><div class="bl">revenue in Health + Digital &amp; AI today (≈22%)</div><p>These grow faster than telecom. If each is valued on its own, the whole company is worth more than a carrier with a 3.4× debt load.</p></div>
+      </div>
+      <div class="bizquote">"TELUS is a $20.5B company that makes its money on the network <span class="fade">and earns its future on Health and AI.</span> My job: keep the network throwing off cash, put that cash to work on the balance sheet, and let Health and AI prove what they're worth."</div>
+      <div class="bizsrc">Sources: TELUS 2025 Annual Report; Q4 &amp; FY2025 results and 2026 targets (Feb 12 2026); Q1 2026 results; TELUS Digital privatization (Oct 2025); July 2026 dividend reset. ≈ marks figures derived from reported totals.</div>
+    </div>
+  </section>
+</div>
+
 <div class="view" id="v-debt">
   <div class="wrap">
     <div class="hero">
@@ -1307,7 +1513,7 @@
           </div>
         </div>
         <div class="deal"><div class="top"><span class="rank">03</span><span class="nm">TELUS Health bolt-ons (AI / EMR / benefits)</span><span class="badge build">Capability</span></div>
-          <div class="body"><div class="thesis">Fund via the <b>Health monetisation</b> partner: reinvest proceeds into AI-clinical and payor/provider SaaS. Health is the engine rivals can't copy (~$2B revenue target by 2028). Self-funding — the partner brings capital.</div>
+          <div class="body"><div class="thesis">Fund via the <b>Health monetisation</b> partner: reinvest proceeds into AI-clinical and payor/provider SaaS. Health is the engine rivals can't copy: $2.04B revenue in 2025, up 15%. Self-funding — the partner brings capital.</div>
             <div><div class="kv"><span>Target metric</span><span>Non-telecom EBITDA</span></div><div class="kv"><span>Ticket</span><span>Partner-funded</span></div><div class="kv"><span>Funding</span><span>Health stake sale</span></div><div class="kv"><span>Beats</span><span>Both — unmatched</span></div></div>
           </div>
         </div>
@@ -1356,7 +1562,7 @@
       <div class="tiles">
         <div class="tile"><h4>Hold churn under 1.0%</h4><div class="cur">Now ~0.91–1.11% <span class="arrow">→</span></div><div class="goal">&lt; 1.0% locked</div><p>Bundle depth (security, health, fibre) is the retention flywheel. Every 10bps = years of LTV.</p></div>
         <div class="tile"><h4>Arrest ARPU decline</h4><div class="cur">$57.01, -2.8% <span class="arrow">→</span></div><div class="goal">Flat, then +</div><p>Push unlimited + Canada-US-Mexico plans. Fighter-brand absorbs discounters.</p></div>
-        <div class="tile"><h4>Grow non-telecom EBITDA</h4><div class="cur">Health ~$800M rev <span class="arrow">→</span></div><div class="goal">~$2B by 2028</div><p>The moat neither rival has. Where you win the multiple, not just subs.</p></div>
+        <div class="tile"><h4>Grow non-telecom EBITDA</h4><div class="cur">Health $2.04B · AI ~$0.8B <span class="arrow">→</span></div><div class="goal">AI ~$2B by 2028</div><p>The moat neither rival has. Where you win the multiple, not just subs.</p></div>
         <div class="tile"><h4>Lead connected devices</h4><div class="cur">716K adds 2025 <span class="arrow">→</span></div><div class="goal">Category #1</div><p>Turn IoT SIMs into SaaS-attached B2B revenue on 5G SA.</p></div>
         <div class="tile"><h4>FCF compounding</h4><div class="cur">$2.2B record <span class="arrow">→</span></div><div class="goal">10%+ CAGR to '28</div><p>Capital intensity 12%→10% funds tuck-ins without new leverage.</p></div>
         <div class="tile"><h4>Deleverage on schedule</h4><div class="cur">3.4× today <span class="arrow">→</span></div><div class="goal">3.0× by 2027</div><p>The board's #1 KPI. Hit it and you earn the right to get acquisitive in '28.</p></div>
@@ -2236,6 +2442,7 @@
   // ---- subnav definitions per view ----
   const SUB={
     brief:[['b-share','Market'],['b-rivals','Rivals'],['b-demo','Demographics'],['b-history','History'],['b-edge','Edge & Risk'],['b-brands','Flanker Brands'],['b-regions','Provincial Map'],['b-fibre','Fibre'],['b-pricelock','5yr Price Lock'],['b-services','All Services'],['b-interchange','Bundle Stickiness'],['b-cost','Cost of Cellular']],
+    biz:[['biz-flow','Money Flow'],['biz-mix','Revenue vs Profit'],['biz-seg','Three Engines'],['biz-cash','Cash Engine'],['biz-ceo','The CEO Line']],
     debt:[['d-live','Live Pressure'],['d-lev','Leverage'],['d-card','Balance Sheet'],['d-glide','Glide Path'],['d-take','The Take']],
     play:[['p-reality','Reality'],['p-score','Scorecard'],['p-acq','Acquire'],['p-cac','CAC Model'],['p-beat','Beat Them']],
     network:[['n-flow','Switching Flow'],['n-loyalty','Brand Loyalty'],['n-5g','5G & Spectrum']],
@@ -2245,7 +2452,7 @@
     q4:[['q4-board','The Board'],['q4-plays','Three Plays'],['q4-history','Pricing 2020→26'],['q4-btl','In-Market vs BTL'],['q4-model','Financial Model'],['q4-gov','Governance & Risk'],['q4-quarter','Oct → Dec']],
     ir:[['ir-listing','Listing'],['ir-guidance','Guidance'],['ir-calendar','Calendar & Contacts']]
   };
-  const LBL={brief:'Company Brief',debt:'Debt vs Rivals',play:'Growth & M&A',network:'Network & Loyalty',coverage:'Coverage & Plans',telecom:'Telecom 101',plan:'The 100-Day Plan',q4:'Q4 Wireless Challenge · ON+QC',ir:'Investor Relations'};
+  const LBL={brief:'Company Brief',biz:'The Business',debt:'Debt vs Rivals',play:'Growth & M&A',network:'Network & Loyalty',coverage:'Coverage & Plans',telecom:'Telecom 101',plan:'The 100-Day Plan',q4:'Q4 Wireless Challenge · ON+QC',ir:'Investor Relations'};
 
   function buildSub(view){
     const n=$('subnav'); n.innerHTML='';
@@ -2351,6 +2558,8 @@
     else if(sbRAF){ cancelAnimationFrame(sbRAF); sbRAF=null; }
     if(view==='debt'){ setTimeout(initGauges,60); }
     else if(gRAF){ cancelAnimationFrame(gRAF); gRAF=null; }
+    if(view==='biz'){ setTimeout(initBizView,60); }
+    else if(bizRAF){ cancelAnimationFrame(bizRAF); bizRAF=null; }
     if(view==='brief'){ renderStack(); renderWorld(); setTimeout(()=>{animateStack();animateWorld();},120); }
     $('tabs').classList.remove('open');
   }
@@ -3608,13 +3817,139 @@
   }
   function initPlanView(){ renderPhases(); renderScore(); renderGates(); }
 
-  // ---- keyboard shortcuts: 1-8 jump tabs ----
+
+  // ---- THE BUSINESS ----
+  const BIZ_SEC=31536000;
+  const BIZ_RATE={rev:20506e6/BIZ_SEC, eb:7354e6/BIZ_SEC, fcf:2200e6/BIZ_SEC, con:985000/BIZ_SEC};
+  let bizRAF=null, bizT0=0, bizLast=0;
+  const bizFmt=v=>'$'+Math.floor(v).toLocaleString('en-CA');
+  function bizTick(ts){
+    if(!bizT0) bizT0=ts;
+    if(ts-bizLast>45){
+      bizLast=ts;
+      const s=(ts-bizT0)/1000;
+      $('bmRev').textContent=bizFmt(s*BIZ_RATE.rev);
+      $('bmEb').textContent=bizFmt(s*BIZ_RATE.eb);
+      $('bmFcf').textContent=bizFmt(s*BIZ_RATE.fcf);
+      const c=s*BIZ_RATE.con;
+      $('bmCon').textContent='+'+Math.floor(c);
+      $('bmNext').style.width=((c%1)*100).toFixed(1)+'%';
+      const m=Math.floor(s/60), ss=Math.floor(s%60);
+      $('bmClock').textContent=String(m).padStart(2,'0')+':'+String(ss).padStart(2,'0');
+    }
+    bizRAF=requestAnimationFrame(bizTick);
+  }
+  function bizMeterStart(){
+    if(bizRAF) cancelAnimationFrame(bizRAF);
+    bizT0=0; bizLast=0;
+    bizRAF=requestAnimationFrame(bizTick);
+  }
+
+  // Sankey: sources -> revenue -> (costs, EBITDA) -> (capex, interest/tax/other, FCF)
+  const BIZN={
+    mob:{c:0,v:7.05,col:'#7a4fa0',n:'Mobile network',s:'≈$7.05B · 34%',d:1},
+    fix:{c:0,v:8.95,col:'#b08ad8',n:'Fixed, devices, B2B, Ag',s:'≈$8.95B · 44%',d:1},
+    hl:{c:0,v:2.04,col:'#2ec4b6',n:'TELUS Health',s:'$2.04B · 10% · +15%'},
+    dg:{c:0,v:2.47,col:'#3a86ff',n:'Digital & AI',s:'≈$2.47B · 12%',d:1},
+    rev:{c:1,v:20.51,col:'#dfe8ea',n:'Operating revenue',s:'$20.51B'},
+    eb:{c:2,v:7.35,col:'#ffb703',n:'Adj. EBITDA',s:'$7.35B · 35.9% margin'},
+    cost:{c:2,v:13.16,col:'#54646b',n:'Operating costs',s:'≈$13.16B · people, network, devices',d:1},
+    cap:{c:3,v:2.5,col:'#ff7b54',n:'Capex',s:'$2.5B · 12% of revenue'},
+    oth:{c:3,v:2.65,col:'#ff5964',n:'Interest & tax',s:'≈$2.65B · leases, other',d:1},
+    fcf:{c:3,v:2.2,col:'#8ce99a',n:'Free cash flow',s:'$2.2B · record, +11%'}
+  };
+  const BIZL=[
+    ['mob','rev',7.05,'#7a4fa0'],['fix','rev',8.95,'#b08ad8'],['hl','rev',2.04,'#2ec4b6'],['dg','rev',2.47,'#3a86ff'],
+    ['rev','eb',7.35,'#ffb703'],['rev','cost',13.16,'#54646b'],
+    ['eb','cap',2.5,'#ff7b54'],['eb','oth',2.65,'#ff5964'],['eb','fcf',2.2,'#8ce99a']
+  ];
+  function renderBizSankey(){
+    const svg=$('bizSankey'); if(!svg||svg.dataset.done) return;
+    const NS='http://www.w3.org/2000/svg';
+    const X=[270,560,840,980], W=14, TOP=74, H=462, k=(H-66)/20.51;
+    // stack nodes
+    const col0=['mob','fix','hl','dg']; let y=TOP;
+    col0.forEach(id=>{ const n=BIZN[id]; n.x=X[0]; n.y=y; n.h=n.v*k; y+=n.h+22; });
+    const r=BIZN.rev; r.x=X[1]; r.h=r.v*k; r.y=TOP+(H-r.h)/2;
+    const e=BIZN.eb; e.x=X[2]; e.h=e.v*k; e.y=TOP;
+    const co=BIZN.cost; co.x=X[2]; co.h=co.v*k; co.y=e.y+e.h+40;
+    const c3=['cap','oth','fcf'], g3=30; const tot3=c3.reduce((a,id)=>a+BIZN[id].v*k,0)+g3*2;
+    let y3=Math.max(24,e.y+e.h/2-tot3/2);
+    c3.forEach(id=>{ const n=BIZN[id]; n.x=X[3]; n.y=y3; n.h=n.v*k; y3+=n.h+g3; });
+    Object.values(BIZN).forEach(n=>{ n.out=0; n.in=0; });
+    let html='<defs><filter id="bizGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>';
+    // bands
+    BIZL.forEach(([a,b,v,col])=>{
+      const A=BIZN[a], B=BIZN[b], h=v*k;
+      const x0=A.x+W, x1=B.x, y0=A.y+A.out, y1=B.y+B.in, xm=(x0+x1)/2;
+      A.out+=h; B.in+=h;
+      const d='M'+x0+','+y0+' C'+xm+','+y0+' '+xm+','+y1+' '+x1+','+y1+' L'+x1+','+(y1+h)+' C'+xm+','+(y1+h)+' '+xm+','+(y0+h)+' '+x0+','+(y0+h)+' Z';
+      const dc='M'+x0+','+(y0+h/2)+' C'+xm+','+(y0+h/2)+' '+xm+','+(y1+h/2)+' '+x1+','+(y1+h/2);
+      const tip=BIZN[a].n+' → '+BIZN[b].n+': '+(BIZN[a].d||BIZN[b].d?'≈':'')+'$'+v.toFixed(2)+'B';
+      html+='<path class="band" d="'+d+'" fill="'+col+'"><title>'+tip+'</title></path>';
+      html+='<path class="stream'+(b==='fcf'?' fast':'')+'" d="'+dc+'" stroke-width="'+Math.max(2,h*0.9).toFixed(1)+'"/>';
+    });
+    // nodes + labels
+    Object.entries(BIZN).forEach(([id,n])=>{
+      html+='<rect class="nd" x="'+n.x+'" y="'+n.y.toFixed(1)+'" width="'+W+'" height="'+n.h.toFixed(1)+'" fill="'+n.col+'"'+(id==='fcf'?' filter="url(#bizGlow)"':'')+'/>';
+      const cy=n.y+n.h/2;
+      if(n.c===0){
+        html+='<text x="'+(n.x-14)+'" y="'+(cy-3)+'" text-anchor="end" font-size="17" font-weight="600" fill="#e8f0f2" font-family="Space Grotesk">'+n.n+'</text>';
+        html+='<text x="'+(n.x-14)+'" y="'+(cy+16)+'" text-anchor="end" font-size="13" fill="'+n.col+'" font-family="IBM Plex Mono">'+n.s+'</text>';
+      } else if(id==='rev'||id==='eb'){
+        const cx=n.x+W/2;
+        html+='<text x="'+cx+'" y="'+(n.y-34)+'" text-anchor="middle" font-size="14" fill="#7d8f96" font-family="IBM Plex Mono">'+n.n.toUpperCase()+'</text>';
+        html+='<text x="'+cx+'" y="'+(n.y-10)+'" text-anchor="middle" font-size="24" font-weight="700" fill="'+(id==='eb'?'#ffb703':'#e8f0f2')+'" font-family="Space Grotesk">'+n.s.split(' · ')[0]+(id==='eb'?' <tspan font-size="14" fill="#7d8f96" font-weight="400">35.9%</tspan>':'')+'</text>';
+      } else {
+        html+='<text x="'+(n.x+W+12)+'" y="'+(cy-3)+'" font-size="17" font-weight="600" fill="'+(id==='fcf'?'#8ce99a':'#e8f0f2')+'" font-family="Space Grotesk">'+n.n+'</text>';
+        html+='<text x="'+(n.x+W+12)+'" y="'+(cy+16)+'" font-size="13" fill="#7d8f96" font-family="IBM Plex Mono">'+n.s+'</text>';
+      }
+    });
+    // TTech bracket
+    const m=BIZN.mob, f=BIZN.fix, by0=m.y, by1=f.y+f.h;
+    html+='<path d="M22,'+by0+' h-8 V'+by1+' h8" fill="none" stroke="#7a4fa0" stroke-width="2"/>';
+    html+='<text transform="translate(8,'+((by0+by1)/2)+') rotate(-90)" text-anchor="middle" font-size="12" fill="#b08ad8" font-family="IBM Plex Mono" letter-spacing="2">TTECH ≈ $16.0B</text>';
+    svg.innerHTML=html;
+    svg.dataset.done='1';
+  }
+
+  function renderBizMix(){
+    const rev=[['TTech',78,'#7a4fa0','≈$16.0B'],['Health',10,'#2ec4b6','$2.04B'],['Digital & AI',12,'#3a86ff','≈$2.47B']];
+    const eb=[['TTech',87.5,'#7a4fa0','$1,637M'],['Health',5.1,'#2ec4b6','$96M'],['Digital & AI',7.4,'#3a86ff','$138M']];
+    [['mxRev',rev],['mxEb',eb]].forEach(([id,arr])=>{
+      const el=$(id); if(!el) return;
+      el.innerHTML=arr.map(([n,p,c,v])=>'<div class="mxseg" data-w="'+p+'" style="background:'+c+'" title="'+n+' '+v+'"><b>'+Math.round(p)+'%</b><small>'+(p>=15?n+' · '+v:(p>=9?n:''))+'</small></div>').join('');
+      el.querySelectorAll('.mxseg').forEach(s=>{ s.style.width='0'; });
+      setTimeout(()=>el.querySelectorAll('.mxseg').forEach(s=>{ s.style.width=s.dataset.w+'%'; }),120);
+    });
+  }
+
+  function renderBizWF(){
+    const wf=$('bizWF'), lb=$('bizWFL'); if(!wf) return;
+    const MAX=8;
+    const S=[
+      {n:'Adj. EBITDA',sub:'2025',base:0,v:7.35,c:'#ffb703',t:'$7.35B'},
+      {n:'Capex',sub:'network & fibre',base:4.85,v:2.5,c:'#ff7b54',t:'−$2.5B'},
+      {n:'Interest, tax, leases',sub:'and other (≈)',base:2.2,v:2.65,c:'#ff5964',t:'−$2.65B'},
+      {n:'Free cash flow',sub:'2025 record',base:0,v:2.2,c:'#8ce99a',t:'$2.2B'},
+      {n:'FCF 2026',sub:'guidance, +10%',base:0,v:2.45,c:'#2ec4b6',t:'~$2.45B',ghost:1}
+    ];
+    wf.classList.remove('go');
+    wf.innerHTML=S.map(s=>'<div class="wfc"><div class="wfb'+(s.ghost?' ghost':'')+'" style="background:'+s.c+';bottom:'+(s.base/MAX*100)+'%" data-h="'+(s.v/MAX*100)+'"></div><div class="wfv" style="bottom:calc('+((s.base+s.v)/MAX*100)+'% + 8px);color:'+s.c+'">'+s.t+'</div></div>').join('');
+    lb.innerHTML=S.map(s=>'<span><b>'+s.n+'</b>'+s.sub+'</span>').join('');
+    setTimeout(()=>{ wf.querySelectorAll('.wfb').forEach(b=>{ b.style.height=b.dataset.h+'%'; }); wf.classList.add('go'); },140);
+  }
+
+  function initBizView(){ renderBizSankey(); renderBizMix(); renderBizWF(); bizMeterStart(); }
+
+  // ---- keyboard shortcuts: 1-9, 0 = tab 10 ----
   document.addEventListener('keydown',e=>{
     if(e.metaKey||e.ctrlKey||e.altKey) return;
     const tag=(e.target&&e.target.tagName)||'';
     if(tag==='INPUT'||tag==='TEXTAREA'||tag==='SELECT') return;
     const n=parseInt(e.key,10);
-    if(n>=1&&n<=8){ const t=document.querySelectorAll('.tab')[n-1]; if(t) t.click(); }
+    if(e.key==='0'){ const t=document.querySelectorAll('.tab')[9]; if(t) t.click(); return; }
+    if(n>=1&&n<=9){ const t=document.querySelectorAll('.tab')[n-1]; if(t) t.click(); }
   });
 
   // ---- Q4 LIVE SCOREBOARD ----
