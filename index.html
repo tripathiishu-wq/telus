@@ -770,6 +770,119 @@
   .bizquote{font-family:'Space Grotesk';font-size:clamp(20px,2.4vw,28px);line-height:1.3;font-weight:500;letter-spacing:-.01em;margin-top:34px;padding:28px 30px;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--acid)}
   .bizquote .fade{color:var(--dim)}
   .bizsrc{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);margin-top:22px;line-height:1.7}
+
+  /* ===== CAC -> LTV MACHINE ===== */
+  .lvctl{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+  .lvchips{display:flex;gap:6px;flex-wrap:wrap}
+  .lvchip{font-family:'IBM Plex Mono';font-size:12px;padding:9px 14px;background:var(--panel);border:1px solid var(--line);color:var(--mute);cursor:pointer;border-radius:2px;display:inline-flex;align-items:center;gap:8px;transition:.15s}
+  .lvchip i{width:9px;height:9px;border-radius:50%;background:var(--c)}
+  .lvchip:hover{color:var(--ink)}
+  .lvchip.on{color:var(--ink);border-color:var(--c);background:var(--panel-2);box-shadow:inset 0 -2px 0 var(--c)}
+  .lvpipe{display:grid;grid-template-columns:1fr 34px 1fr 34px 1fr 34px 1fr 34px 1fr;align-items:stretch;margin-bottom:16px}
+  .lvst{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--sc);padding:16px 14px}
+  .lvst .k{font-family:'IBM Plex Mono';font-size:10.5px;letter-spacing:.14em;color:var(--sc);text-transform:uppercase}
+  .lvst .v{font-family:'Space Grotesk';font-weight:700;font-size:clamp(20px,2.3vw,30px);margin:8px 0 4px;font-variant-numeric:tabular-nums;line-height:1.05}
+  .lvst .v small{font-size:.5em;color:var(--mute);font-weight:500;margin-left:2px}
+  .lvst .s{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);line-height:1.45}
+  .lvst.flash{animation:lvflash .6s ease}
+  @keyframes lvflash{0%{background:var(--panel-2)}100%{background:var(--panel)}}
+  .lvar{align-self:center;height:10px;background:radial-gradient(circle,var(--acid) 1.8px,transparent 2.4px) 0 50%/12px 10px repeat-x;animation:lvdots .7s linear infinite;opacity:.85}
+  @keyframes lvdots{to{background-position:12px 50%}}
+  @keyframes lvdotsv{to{background-position:50% 12px}}
+  @media(max-width:900px){.lvpipe{grid-template-columns:1fr}.lvar{height:22px;width:10px;justify-self:center;background:radial-gradient(circle,var(--acid) 1.8px,transparent 2.4px) 50% 0/10px 12px repeat-y;animation:lvdotsv .7s linear infinite}}
+  .lvmain{display:grid;grid-template-columns:1fr 300px;gap:16px}
+  @media(max-width:900px){.lvmain{grid-template-columns:1fr}}
+  .lvchart{background:var(--panel);border:1px solid var(--line);position:relative;padding:8px;display:flex;align-items:center}
+  .lvchart svg{width:100%;height:auto;display:block}
+  .lvping{transform-box:fill-box;transform-origin:center;animation:lvping 1.6s ease-out infinite}
+  @keyframes lvping{from{transform:scale(1);opacity:.9}to{transform:scale(3.2);opacity:0}}
+  .lvside{background:var(--panel);border:1px solid var(--line);padding:22px;display:flex;flex-direction:column;gap:12px}
+  .lvk{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);letter-spacing:.12em;text-transform:uppercase}
+  .lvbig{font-family:'Space Grotesk';font-weight:700;font-size:58px;line-height:1;color:var(--acid);font-variant-numeric:tabular-nums}
+  .lvbig span{font-size:24px;color:var(--mute)}
+  .lvsub{font-family:'IBM Plex Mono';font-size:11px;color:var(--mute)}
+  .lvbar{position:relative;height:14px;background:var(--panel-2);border:1px solid var(--line);margin:20px 0 4px}
+  .lvfill{height:100%;width:0;background:var(--acid);transition:width .9s cubic-bezier(.2,.7,.2,1),background .3s}
+  .lvkill{position:absolute;top:-6px;bottom:-6px;width:2px;background:var(--red);left:12%}
+  .lvkill span{position:absolute;top:-17px;left:-4px;white-space:nowrap;font-family:'IBM Plex Mono';font-size:10px;color:var(--red)}
+  .lvrow{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:var(--mute);border-top:1px solid var(--line);padding-top:10px}
+  .lvrow b{color:var(--ink);font-family:'Space Grotesk';font-size:17px;font-variant-numeric:tabular-nums}
+  .lvcoh{background:var(--panel-2);border:1px solid var(--line);padding:14px;margin-top:auto;font-size:14px;color:var(--mute);line-height:1.6}
+  .lvcoh b{color:#8ce99a;font-family:'Space Grotesk';font-size:22px}
+  .lvcoh b.in{color:var(--red)}
+  .lvtab{margin-top:16px;overflow-x:auto;border:1px solid var(--line)}
+  .lvtr{display:grid;grid-template-columns:1.8fr .6fr .75fr .75fr .9fr 1.6fr .75fr;min-width:880px;background:var(--panel);border-bottom:1px solid var(--line);cursor:pointer;transition:background .15s}
+  .lvtr>div{padding:12px 14px;font-size:14px;display:flex;flex-direction:column;justify-content:center}
+  .lvtr:last-child{border-bottom:0}
+  .lvtr.hd{background:var(--panel-2);cursor:default}
+  .lvtr.hd>div{font-family:'IBM Plex Mono';font-size:10.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+  .lvtr:not(.hd):hover{background:var(--panel-2)}
+  .lvtr.on{background:var(--panel-2);box-shadow:inset 3px 0 0 var(--c)}
+  .lvtr .nm{font-family:'Space Grotesk';font-weight:600;font-size:15px}
+  .lvtr .hw{font-family:'IBM Plex Mono';font-size:10.5px;color:var(--dim);margin-top:2px}
+  .lvtr .num{font-family:'IBM Plex Mono';font-variant-numeric:tabular-nums}
+  .lvrb{display:flex;align-items:center;gap:10px;flex-direction:row!important}
+  .lvrb .t{flex:1;height:10px;background:var(--panel-2);position:relative}
+  .lvrb .t b{display:block;height:100%;width:0;transition:width .9s cubic-bezier(.2,.7,.2,1)}
+  .lvrb .t i{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--red);left:12%}
+  .lvrb span{font-family:'IBM Plex Mono';font-weight:600;min-width:54px;text-align:right}
+
+  /* CAC -> LTV live meter */
+  .lmhead{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:4px 0 10px;font-family:'IBM Plex Mono';font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.1em}
+  .lmhead .live{color:var(--red);font-weight:600;display:inline-flex;align-items:center;gap:7px}
+  .lmhead .live i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red);animation:pulse 1.1s infinite}
+  .lmhead .lvchips{margin-left:auto}
+  .lmhead .lvchip{padding:6px 11px;font-size:11px;text-transform:none;letter-spacing:0}
+  .bizmeter.lvmeter{grid-template-columns:repeat(4,1fr);margin:0 0 8px}
+  @media(max-width:900px){.bizmeter.lvmeter{grid-template-columns:1fr 1fr}}
+
+  .lmclock{display:flex;gap:18px;align-items:baseline;flex-wrap:wrap;margin:0 0 10px}
+  .lmsplit{display:flex;flex-direction:column;gap:3px;margin-top:8px;font-family:'IBM Plex Mono';font-size:11px;color:var(--mute)}
+  .lmsplit span{display:flex;align-items:center;gap:7px}
+  .lmsplit i{width:8px;height:8px;border-radius:2px;display:inline-block}
+  .lmsplit b{margin-left:auto;color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+  .lmeb{display:grid;grid-template-columns:1.1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-top:3px solid var(--amber);margin:8px 0 8px}
+  .lmeb>div{background:var(--panel);padding:22px 22px 20px}
+  .lmeb .ml{font-family:'IBM Plex Mono';font-size:11px;color:var(--amber);text-transform:uppercase;letter-spacing:.1em}
+  .lmeb .mv{font-family:'Space Grotesk';font-weight:700;font-size:clamp(34px,4.4vw,56px);letter-spacing:-.01em;font-variant-numeric:tabular-nums;line-height:1.05;margin-top:8px}
+  .lmeb.flip{animation:lmflip .9s ease}
+  @keyframes lmflip{0%{box-shadow:0 0 0 0 rgba(140,233,154,.0)}30%{box-shadow:0 0 0 6px rgba(140,233,154,.35)}100%{box-shadow:0 0 0 0 rgba(140,233,154,0)}}
+  .lmeq{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:12px;font-family:'IBM Plex Mono';font-size:12px;color:var(--mute)}
+  .lmeq b{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+  .lmtl{position:relative;height:18px;margin-top:26px;background:linear-gradient(90deg,rgba(255,89,100,.32) 0 var(--be,50%),rgba(140,233,154,.3) var(--be,50%) 100%);border:1px solid var(--line)}
+  .lmtlq{position:absolute;left:0;top:0;bottom:0;width:8.4%;background:repeating-linear-gradient(45deg,rgba(58,134,255,.7) 0 4px,transparent 4px 8px)}
+  .lmbe{position:absolute;top:-8px;bottom:-8px;width:2px;background:var(--amber)}
+  .lmbe span{position:absolute;bottom:calc(100% + 2px);left:50%;transform:translateX(-50%);white-space:nowrap;font-family:'IBM Plex Mono';font-size:10px;color:var(--amber)}
+  .lmcur{position:absolute;top:-5px;bottom:-5px;width:3px;margin-left:-1px;background:#fff;box-shadow:0 0 10px #fff;left:0}
+  .lmtlx{position:relative;height:16px;margin-top:6px;font-family:'IBM Plex Mono';font-size:10px;color:var(--dim)}
+  .lmtlx span{position:absolute;top:0;white-space:nowrap}
+  .lmfacts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+  .lmfacts b{display:block;font-family:'Space Grotesk';font-size:20px;font-weight:700;font-variant-numeric:tabular-nums}
+  .lmfacts span{font-family:'IBM Plex Mono';font-size:10.5px;color:var(--dim);line-height:1.4;display:block;margin-top:2px}
+  @media(max-width:900px){.lmeb{grid-template-columns:1fr}.lmfacts{grid-template-columns:1fr 1fr 1fr}}
+  @media(max-width:600px){.lmfacts{grid-template-columns:1fr}.lmtlx span:nth-child(2){display:none}}
+
+  .bizmeter.lvmeter3{grid-template-columns:1fr 1fr 1.15fr}
+  .bizmeter.lvmeter3>div.flip{animation:lmflip .9s ease}
+  .lmprov{display:grid;grid-template-columns:repeat(8,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:0 0 8px}
+  .lmprov>div{background:var(--panel);padding:10px 12px 12px}
+  .lmprov .pa{font-family:'IBM Plex Mono';font-size:10.5px;color:var(--mute);letter-spacing:.06em;text-transform:uppercase;display:flex;justify-content:space-between}
+  .lmprov .pa span{color:var(--dim)}
+  .lmprov .pv{font-family:'Space Grotesk';font-weight:700;font-size:18px;color:var(--blue);font-variant-numeric:tabular-nums;margin:4px 0 6px}
+  .lmprov .pb{height:3px;background:var(--panel-2)}
+  .lmprov .pb b{display:block;height:100%;background:var(--blue);opacity:.7}
+  .lmeb.lmeb1{grid-template-columns:1fr}
+
+  .lmclock .lmd{font-family:'Space Grotesk';font-weight:700;font-size:22px;font-variant-numeric:tabular-nums}
+  .lmclock .lmp{font-family:'IBM Plex Mono';font-size:12px;color:var(--amber)}
+  .lmclock .lms{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);margin-left:auto;letter-spacing:.04em}
+  .ltg{display:flex;gap:6px;align-items:flex-end;margin-top:12px}
+  .ltg>div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:2px}
+  .ltg .col{position:relative;height:var(--h);background:var(--panel-2);border:1px solid var(--line)}
+  .ltg .col b{position:absolute;left:0;right:0;bottom:0;height:0;background:var(--c)}
+  .ltg .lb{font-family:'IBM Plex Mono';font-size:9.5px;color:var(--dim);text-align:center;line-height:1.25}
+  .lmeb.lmeb1 .lmtl{margin-top:22px}
+  @media(max-width:900px){.bizmeter.lvmeter3{grid-template-columns:1fr}.lmprov{grid-template-columns:repeat(4,1fr)}}
 </style>
 </head>
 <body>
@@ -1323,9 +1436,45 @@
     </div>
   </section>
 
+  <section id="biz-ltv">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--acid)">04</span><h2>The subscriber machine: CAC → LTV</h2><span class="sub">spend → break-even → profit, per subscriber</span></div>
+      <p class="intro">What it costs to win one subscriber, how long until they've paid it back, and what they're worth by the time they leave. It runs on the Q4 plan's channel costs: winback $180, in-market $420, flank $140, blended $276.</p>
+      <div class="lvctl"><div class="lvchips" id="lvPlans"></div><div class="lvchips" id="lvCases"></div></div>
+      <div id="ltBiz"></div>
+      <div class="bizfoot" style="margin:0 0 20px">Across Canada, a full year at FY2025 volumes: TELUS reported 339K, 376K, 419K and 499K mobile phone gross adds in Q1–Q4 2025 (1.63M). Each add is priced at the selected plan's CAC. The clock starts close to real time so you can watch the first subscribers arrive, then speeds up through the year and the payback. Province split follows TELUS's subscriber mix by province (derived from the Coverage tab). EBITDA is a cash view with acquisition costs expensed as they're spent; under IFRS 15 TELUS spreads handset subsidies and commissions over the contract, so reported EBITDA shows a shallower dip. The subsidy / commission / marketing split is illustrative.</div>
+      <div class="lvpipe">
+        <div class="lvst" style="--sc:var(--red)"><div class="k">01 · Spend</div><div class="v" id="lvS1" style="color:var(--red)">$276</div><div class="s" id="lvS1s">to win one gross add</div></div>
+        <div class="lvar"></div>
+        <div class="lvst" style="--sc:var(--amber)"><div class="k">02 · Keep</div><div class="v" id="lvS2">$331</div><div class="s">per subscriber kept: the plan books 75K of 90K gross adds (83%)</div></div>
+        <div class="lvar"></div>
+        <div class="lvst" style="--sc:var(--blue)"><div class="k">03 · Earn</div><div class="v">$31.35<small>/mo</small></div><div class="s">$57 ARPU × 55% margin</div></div>
+        <div class="lvar"></div>
+        <div class="lvst" style="--sc:var(--telus-2)"><div class="k">04 · Break-even</div><div class="v" id="lvS4">Month 10.6</div><div class="s" id="lvS4s">$331 ÷ $31.35 a month</div></div>
+        <div class="lvar"></div>
+        <div class="lvst" style="--sc:#8ce99a"><div class="k">05 · Profit</div><div class="v" id="lvS5" style="color:#8ce99a">+$3,117</div><div class="s" id="lvS5s">over a 110-month life</div></div>
+      </div>
+      <div class="lvmain">
+        <div class="lvchart"><svg id="lvCurve" viewBox="0 0 900 462" role="img" aria-label="Cumulative profit per subscriber by month"></svg></div>
+        <div class="lvside">
+          <div class="lvk">LTV : CAC</div>
+          <div class="lvbig" id="lvRatio">12.5<span>:1</span></div>
+          <div class="lvsub" id="lvRatioK">10.4:1 per subscriber kept</div>
+          <div class="lvbar"><div class="lvfill" id="lvFill"></div><div class="lvkill"><span>3:1 kill line</span></div></div>
+          <div class="lvrow"><span>Lifetime value</span><b id="lvLTV">$3,449</b></div>
+          <div class="lvrow"><span>Customer life</span><b id="lvLife">110 mo</b></div>
+          <div class="lvrow"><span>Max CAC before 3:1</span><b id="lvMax">$1,150</b></div>
+          <div class="lvcoh"><div class="lvk" style="margin-bottom:6px">Q4 ON+QC cohort · blended</div><b class="in">$24.8M</b> in → <b id="lvCoh">$259M</b> back<div class="lvsub" id="lvCohS">75K subscribers × lifetime value · 10.4× the spend</div></div>
+        </div>
+      </div>
+      <div class="lvtab" id="lvTab"></div>
+      <div class="bizfoot">LTV = monthly margin × expected life (1 ÷ monthly churn): lifetime gross margin before network and overhead costs, the same basis as the Q4 model. All plans use the Q4 model's $57 ARPU; flanker ARPU runs lower in practice, so treat flank as an upper bound. Stress case = new-cohort churn of 1.5% (Rogers-like) instead of TELUS's 0.91%. CAC headroom = how far CAC can rise before the plan drops under 3:1. Click a plan or a row.</div>
+    </div>
+  </section>
+
   <section id="biz-cash">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--acid)">04</span><h2>The cash engine</h2><span class="sub">EBITDA → free cash flow → balance sheet</span></div>
+      <div class="shead"><span class="sno" style="color:var(--acid)">05</span><h2>The cash engine</h2><span class="sub">EBITDA → free cash flow → balance sheet</span></div>
       <p class="intro">This is the number the board watches. Of every $7.35 of EBITDA, $2.20 became free cash in 2025. The 2026 plan takes that to $2.45B by spending less on capex, not by cutting the network.</p>
       <div class="wf" id="bizWF"></div>
       <div class="wfl" id="bizWFL"></div>
@@ -1342,7 +1491,7 @@
 
   <section id="biz-ceo">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--acid)">05</span><h2>The CEO line</h2><span class="sub">three levers, one balance sheet</span></div>
+      <div class="shead"><span class="sno" style="color:var(--acid)">06</span><h2>The CEO line</h2><span class="sub">three levers, one balance sheet</span></div>
       <div class="grid3">
         <div class="card lever" style="--lc:var(--telus-2)"><div class="no">LEVER 01 · PROTECT</div><div class="big">$85M</div><div class="bl">a year in revenue for every 0.1pt of monthly churn (derived)</div><p>0.1pt on 10.3M phones is ~124K customers a year, worth $684 each at $57.01 ARPU. Churn is the cheapest growth this company has.</p></div>
         <div class="card lever" style="--lc:#8ce99a"><div class="no">LEVER 02 · FREE THE CASH</div><div class="big">$410M</div><div class="bl">a year freed by moving capex from 12% to 10% of revenue (derived)</div><p>The fibre and 5G build is mostly done. Capex comes down, free cash flow goes up, and debt falls to 3.0× by 2027.</p></div>
@@ -2136,7 +2285,7 @@
           </ul>
         </div>
         <div class="vec" style="border-top-color:#ffb703">
-          <div class="vech"><span class="vecn">02</span><h3>Intercept</h3></div>
+          <div class="vech"><span class="vecn">02</span><h3>In-Market</h3></div>
           <div class="vecm">40K · squares changing hands</div>
           <p>The regulator now forces our rivals to tell their own customers when to shop. Under Policy 2026-67 they must flag an expiring promo <em>and</em> hand over alternatives. Be standing there when it happens.</p>
           <ul class="clean">
@@ -2238,13 +2387,14 @@
   <section id="q4-model">
     <div class="wrap">
       <div class="shead"><span class="sno" style="color:var(--telus-2)">05</span><h2>The financial model</h2><span class="sub">does the math clear the bar</span></div>
-      <p class="intro">Acquisition spend modelled per channel — winback runs on owned data and brand equity (cheapest), intercept needs paid media plus a device-balance buyout (most expensive), flank runs self-serve on the flanker brands (cheap by design).</p>
+      <p class="intro">Acquisition spend modelled per channel — winback runs on owned data and brand equity (cheapest), in-market needs paid media plus a device-balance buyout (most expensive), flank runs self-serve on the flanker brands (cheap by design).</p>
+      <div id="ltQ4" style="margin:4px 0 30px"></div>
 
       <div class="modelgrid">
         <div class="mtable">
           <div class="mrow mhead"><span>Channel</span><span>Adds</span><span>CAC</span><span>Spend</span></div>
           <div class="mrow"><span>Winback</span><span>25,000</span><span>$180</span><span>$4.50M</span></div>
-          <div class="mrow"><span>Intercept</span><span>40,000</span><span>$420</span><span>$16.80M</span></div>
+          <div class="mrow"><span>In-Market</span><span>40,000</span><span>$420</span><span>$16.80M</span></div>
           <div class="mrow"><span>Flank</span><span>25,000</span><span>$140</span><span>$3.50M</span></div>
           <div class="mrow mtot"><span>Blended</span><span>90,000</span><span>$276</span><span>$24.80M</span></div>
         </div>
@@ -2274,7 +2424,7 @@
 
       <div class="owngrid">
         <div class="ownrow"><span class="own-w">Winback — data, segmentation, offer</span><span class="own-o">VP Customer Retention, ON+QC</span></div>
-        <div class="ownrow"><span class="own-w">Intercept — media, search, promo calendar</span><span class="own-o">VP Acquisition Marketing</span></div>
+        <div class="ownrow"><span class="own-w">In-Market — media, search, promo calendar</span><span class="own-o">VP Acquisition Marketing</span></div>
         <div class="ownrow"><span class="own-w">Flank — Koodo, Public Mobile</span><span class="own-o">GM, Flanker Brands</span></div>
         <div class="ownrow"><span class="own-w">BTL discretion cap & reporting</span><span class="own-o">VP Customer Care</span></div>
         <div class="ownrow"><span class="own-w">Legal / regulatory clearance</span><span class="own-o">General Counsel</span></div>
@@ -2302,7 +2452,7 @@
           <ul class="clean" style="margin-top:8px">
             <li><span class="mk">◈</span><span><b>90K gross adds</b> across ON+QC in the quarter</span></li>
             <li><span class="mk">◈</span><span><b>75K net</b> after churn — roughly <b>0.32 share points</b></span></li>
-            <li><span class="mk">◈</span><span>Split: 25K winback · 40K intercept · 25K flanker</span></li>
+            <li><span class="mk">◈</span><span>Split: 25K winback · 40K in-market · 25K flanker</span></li>
             <li><span class="mk">⚠</span><span><b>Reality check:</b> TELUS added 207K mobile subs <em>nationally</em> across all of 2025. 75K net in two provinces in one quarter is aggressive but real — I'd rather commit to a number we hit than promise a share point we miss.</span></li>
           </ul>
         </div>
@@ -2310,13 +2460,13 @@
           <ul class="clean" style="margin-top:8px">
             <li><span class="mk">✗</span><span><b>No flagship price cuts.</b> Volume bought with ARPU isn't growth.</span></li>
             <li><span class="mk">✗</span><span><b>No unfunded subsidies.</b> Every one carries a payback test against the lock term.</span></li>
-            <li><span class="mk">✗</span><span><b>Kill anything under 3:1 LTV:CAC.</b> At $57 ARPU and ~110-month life the model holds near 4:1.</span></li>
+            <li><span class="mk">✗</span><span><b>Kill anything under 3:1 LTV:CAC.</b> At $57 ARPU and ~110-month life the Q4 model runs 12.5:1 blended; at 1.5% churn it still clears 7.6:1.</span></li>
             <li><span class="mk">✗</span><span><b>No winback contact</b> until legal clears source, timing and method.</span></li>
           </ul>
         </div>
       </div>
       <div class="note">◈ <b>Compliance checkpoint.</b> CRTC winback restrictions were set for wireline ILEC/CLEC porting (Decision 2006-28) and were not extended to wireless in the same form — but porting conduct <em>is</em> regulated, and the June 2026 rules explicitly ban porting delays as a retention tactic. Every winback campaign clears regulatory review before launch.</div>
-      <div class="note" style="border-left-color:var(--acid)">◈ <b>The rally line:</b> "Twenty-three million subscribers, and we hold one in five. Q4 is the only quarter where every square is in play at once. We don't buy the board with flagship discounts — we take it at the moment customers are already shopping, because the regulator now makes our competitors tell them when that is. Winback who knows us. Intercept who's leaving. Let Koodo and Public hold the value line. Seventy-five thousand net, reported publicly. <b>Go TELUS Go.</b>"</div>
+      <div class="note" style="border-left-color:var(--acid)">◈ <b>The rally line:</b> "Twenty-three million subscribers, and we hold one in five. Q4 is the only quarter where every square is in play at once. We don't buy the board with flagship discounts — we take it at the moment customers are already shopping, because the regulator now makes our competitors tell them when that is. Winback who knows us. Go In-Market for who's leaving. Let Koodo and Public hold the value line. Seventy-five thousand net, reported publicly. <b>Go TELUS Go.</b>"</div>
     </div>
   </section>
 </div>
@@ -2442,7 +2592,7 @@
   // ---- subnav definitions per view ----
   const SUB={
     brief:[['b-share','Market'],['b-rivals','Rivals'],['b-demo','Demographics'],['b-history','History'],['b-edge','Edge & Risk'],['b-brands','Flanker Brands'],['b-regions','Provincial Map'],['b-fibre','Fibre'],['b-pricelock','5yr Price Lock'],['b-services','All Services'],['b-interchange','Bundle Stickiness'],['b-cost','Cost of Cellular']],
-    biz:[['biz-flow','Money Flow'],['biz-mix','Revenue vs Profit'],['biz-seg','Three Engines'],['biz-cash','Cash Engine'],['biz-ceo','The CEO Line']],
+    biz:[['biz-flow','Money Flow'],['biz-mix','Revenue vs Profit'],['biz-seg','Three Engines'],['biz-ltv','CAC → LTV'],['biz-cash','Cash Engine'],['biz-ceo','The CEO Line']],
     debt:[['d-live','Live Pressure'],['d-lev','Leverage'],['d-card','Balance Sheet'],['d-glide','Glide Path'],['d-take','The Take']],
     play:[['p-reality','Reality'],['p-score','Scorecard'],['p-acq','Acquire'],['p-cac','CAC Model'],['p-beat','Beat Them']],
     network:[['n-flow','Switching Flow'],['n-loyalty','Brand Loyalty'],['n-5g','5G & Spectrum']],
@@ -2555,11 +2705,11 @@
     else { if(cRAF){ cancelAnimationFrame(cRAF); cRAF=null; } if(tRAF){ cancelAnimationFrame(tRAF); tRAF=null; } if(wRAF){ cancelAnimationFrame(wRAF); wRAF=null; } }
     if(view==='plan'){ setTimeout(initPlanView,60); }
     if(view==='q4'){ setTimeout(initQ4View,60); }
-    else if(sbRAF){ cancelAnimationFrame(sbRAF); sbRAF=null; }
+    else { if(sbRAF){ cancelAnimationFrame(sbRAF); sbRAF=null; } if(q4tRAF){ cancelAnimationFrame(q4tRAF); q4tRAF=null; } }
     if(view==='debt'){ setTimeout(initGauges,60); }
     else if(gRAF){ cancelAnimationFrame(gRAF); gRAF=null; }
     if(view==='biz'){ setTimeout(initBizView,60); }
-    else if(bizRAF){ cancelAnimationFrame(bizRAF); bizRAF=null; }
+    else { if(bizRAF){ cancelAnimationFrame(bizRAF); bizRAF=null; } if(lvRAF){ cancelAnimationFrame(lvRAF); lvRAF=null; } }
     if(view==='brief'){ renderStack(); renderWorld(); setTimeout(()=>{animateStack();animateWorld();},120); }
     $('tabs').classList.remove('open');
   }
@@ -3799,7 +3949,7 @@
             ['04','<b>Reweight dealer comp</b> to ports-in over gross activations. Pay for stolen share, not churn-and-return.']]},
     {d:'DAYS 31–70',t:'Hit the wave',metric:'50K',ml:'gross adds — peak push',
      items:[['01','<b>Winback campaign live.</b> Sequenced against churn reason. Service-quality churners held back until the local fix is confirmed.'],
-            ['02','<b>Intercept the roll-offs.</b> Concentrate media on the weeks competitor promos expire, when the regulator forces them to tell customers to shop.'],
+            ['02','<b>Go In-Market on the roll-offs.</b> Concentrate media on the weeks competitor promos expire, when the regulator forces them to tell customers to shop.'],
             ['03','<b>Public Mobile 5G push</b> in GTA and Montreal — the only discount brand with true 5G. Newcomer and student channels.'],
             ['04','<b>Advertise the 4-hour port</b> as a promise. Frictionless switching is now the law; make it our message before a rival does.']]},
     {d:'DAYS 71–100',t:'Bank it',metric:'75K',ml:'NET adds — the commitment',
@@ -3940,7 +4090,304 @@
     setTimeout(()=>{ wf.querySelectorAll('.wfb').forEach(b=>{ b.style.height=b.dataset.h+'%'; }); wf.classList.add('go'); },140);
   }
 
-  function initBizView(){ renderBizSankey(); renderBizMix(); renderBizWF(); bizMeterStart(); }
+
+  // ---- CAC -> LTV MACHINE ----
+  const LV_PLANS=[
+    {k:'blend',n:'Blended',cac:276,adds:90000,spend:24.8e6,split:[105,68.33,102.22],col:'#e8f0f2',how:'Q4 mix · 90K gross adds'},
+    {k:'win',n:'Winback',cac:180,adds:25000,spend:4.5e6,split:[70,40,70],col:'#2ec4b6',how:'lapsed TELUS customers · owned data'},
+    {k:'int',n:'In-Market',cac:420,adds:40000,spend:16.8e6,split:[180,110,130],col:'#ffb703',how:'Rogers/Bell port-ins · paid media + device buyout'},
+    {k:'flk',n:'Flank',cac:140,adds:25000,spend:3.5e6,split:[20,30,90],col:'#b08ad8',how:'Koodo / Public Mobile · self-serve'}
+  ];
+  const LV_CASE={plan:{churn:0.0091,n:'Plan case',s:'0.91% churn',col:'#2ec4b6'},stress:{churn:0.015,n:'Stress',s:'1.5% new-cohort churn',col:'#ff5964'}};
+  const LV={arpu:57,gm:0.55,keep:75/90,net:75000,spend:24.8e6};
+  let lvSel='blend', lvCase='plan', lvRAF=null, lvT0=0;
+  const lvFm=v=>'$'+Math.round(Math.abs(v)).toLocaleString('en-CA');
+  function lvCalc(p,cs){
+    const c=LV_CASE[cs].churn, life=Math.round(1/c), mm=LV.arpu*LV.gm, ltv=mm*life, kept=p.cac/LV.keep;
+    return {life,mm,ltv,kept,be:kept/mm,profit:ltv-kept,ratio:ltv/p.cac,ratioK:ltv/kept,max:ltv/3};
+  }
+  const LVG={X0:64,X1:880,Y0:24,Y1:420,M:120,YMIN:-800,YMAX:3600,
+    I:{x:84,y:28,w:330,h:162},IM:24,IMIN:-600,IMAX:400};
+  const lvSX=m=>LVG.X0+m/LVG.M*(LVG.X1-LVG.X0), lvSY=v=>LVG.Y0+(LVG.YMAX-v)/(LVG.YMAX-LVG.YMIN)*(LVG.Y1-LVG.Y0);
+  const lvIX0=()=>LVG.I.x+46, lvIX1=()=>LVG.I.x+LVG.I.w-12, lvIY0=()=>LVG.I.y+26, lvIY1=()=>LVG.I.y+LVG.I.h-22;
+  const lvIX=m=>lvIX0()+m/LVG.IM*(lvIX1()-lvIX0()), lvIY=v=>lvIY0()+(LVG.IMAX-v)/(LVG.IMAX-LVG.IMIN)*(lvIY1()-lvIY0());
+  function lvLine(r,fx,fy,M){ return 'M'+fx(0)+','+fy(-r.kept).toFixed(1)+' L'+fx(r.life).toFixed(1)+','+fy(r.profit).toFixed(1); }
+
+  function lvRenderChart(){
+    const svg=$('lvCurve'); if(!svg) return;
+    const {X0,X1,Y0,Y1,M,I}=LVG, z=lvSY(0);
+    const data=LV_PLANS.map(p=>({p,r:lvCalc(p,lvCase)}));
+    const sel=data.find(d=>d.p.k===lvSel), r=sel.r, col=sel.p.col;
+    let h='<defs><clipPath id="lvAb"><rect x="0" y="0" width="900" height="'+z.toFixed(1)+'"/></clipPath><clipPath id="lvBe"><rect x="0" y="'+z.toFixed(1)+'" width="900" height="400"/></clipPath>'+
+      '<clipPath id="lvIn"><rect x="'+lvIX0()+'" y="'+lvIY0()+'" width="'+(lvIX1()-lvIX0())+'" height="'+(lvIY1()-lvIY0())+'"/></clipPath>'+
+      '<filter id="lvGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>';
+    // grid + axes
+    [-500,1000,2000,3000].forEach(v=>{ const y=lvSY(v).toFixed(1); h+='<line x1="'+X0+'" x2="'+X1+'" y1="'+y+'" y2="'+y+'" stroke="#1f2a30" stroke-dasharray="2 4"/><text x="'+(X0-8)+'" y="'+(+y+4)+'" text-anchor="end" font-size="11" fill="#54646b" font-family="IBM Plex Mono">'+(v<0?'−$500':'$'+v/1000+'K')+'</text>'; });
+    for(let m=0;m<=M;m+=12){ const x=lvSX(m).toFixed(1); h+='<line x1="'+x+'" x2="'+x+'" y1="'+Y1+'" y2="'+(Y1+5)+'" stroke="#54646b"/><text x="'+x+'" y="'+(Y1+20)+'" text-anchor="middle" font-size="11" fill="#54646b" font-family="IBM Plex Mono">'+(m===0?'month 0':m===M?'10 yrs':(m/12)+'y')+'</text>'; }
+    h+='<line x1="'+X0+'" x2="'+X1+'" y1="'+Y1+'" y2="'+Y1+'" stroke="#1f2a30"/>';
+    // selected area (red below break-even, green above)
+    const area='M'+lvSX(0)+','+z+' L'+lvSX(0)+','+lvSY(-r.kept)+' L'+lvSX(r.life)+','+lvSY(r.profit)+' L'+lvSX(r.life)+','+z+' Z';
+    h+='<path d="'+area+'" fill="#8ce99a" fill-opacity=".13" clip-path="url(#lvAb)"/><path d="'+area+'" fill="#ff5964" fill-opacity=".28" clip-path="url(#lvBe)"/>';
+    // zero line
+    h+='<line x1="'+X0+'" x2="'+X1+'" y1="'+z+'" y2="'+z+'" stroke="#7d8f96" stroke-width="1.2"/><text x="'+(X0-8)+'" y="'+(z+4)+'" text-anchor="end" font-size="11" fill="#e8f0f2" font-family="IBM Plex Mono">$0</text>';
+    // other plans faint
+    const others=data.filter(d=>d.p.k!==lvSel);
+    others.forEach(({p,r:q})=>{
+      h+='<path d="'+lvLine(q,lvSX,lvSY)+' L'+lvSX(M)+','+lvSY(q.profit).toFixed(1)+'" fill="none" stroke="'+p.col+'" stroke-opacity=".3" stroke-width="1.5"/>'; });
+    const labs=others.map(({p,r:q})=>({p,y:lvSY(q.profit)-5})).sort((a,b)=>a.y-b.y);
+    labs.forEach((l,i)=>{ if(i&&l.y<labs[i-1].y+13) l.y=labs[i-1].y+13;
+      h+='<text x="'+X1+'" y="'+l.y.toFixed(1)+'" text-anchor="end" font-size="11" fill="'+l.p.col+'" fill-opacity=".7" font-family="IBM Plex Mono">'+l.p.n+'</text>'; });
+    // selected line
+    h+='<path d="'+lvLine(r,lvSX,lvSY)+'" fill="none" stroke="'+col+'" stroke-width="3.2" stroke-linecap="round"/>';
+    h+='<path d="M'+lvSX(r.life)+','+lvSY(r.profit).toFixed(1)+' L'+X1+','+lvSY(r.profit).toFixed(1)+'" fill="none" stroke="'+col+'" stroke-opacity=".5" stroke-width="2" stroke-dasharray="4 5"/>';
+    // start
+    const sy0=lvSY(-r.kept);
+    h+='<circle cx="'+lvSX(0)+'" cy="'+sy0+'" r="6" fill="#ff5964"/><text x="'+(lvSX(0)+12)+'" y="'+(sy0+18)+'" font-size="13" fill="#ff5964" font-family="IBM Plex Mono">spend −'+lvFm(r.kept)+'</text>';
+    // break-even
+    const bx=lvSX(r.be);
+    h+='<circle class="lvping" cx="'+bx+'" cy="'+z+'" r="7" fill="none" stroke="#ffb703" stroke-width="2"/><circle cx="'+bx+'" cy="'+z+'" r="6" fill="#ffb703" stroke="#11161a" stroke-width="2"/>';
+    h+='<text x="'+(bx+12)+'" y="'+(z+22)+'" font-size="13" font-weight="600" fill="#ffb703" font-family="IBM Plex Mono">BREAK-EVEN · month '+r.be.toFixed(1)+'</text>';
+    // end of life
+    const ex=lvSX(r.life), ey=lvSY(r.profit);
+    h+='<circle cx="'+ex+'" cy="'+ey+'" r="7" fill="#8ce99a" filter="url(#lvGlow)"/>';
+    const right=ex<600, lx=right?ex+14:ex-10, anc=right?'start':'end';
+    h+='<text x="'+lx+'" y="'+(ey-26)+'" text-anchor="'+anc+'" font-size="22" font-weight="700" fill="#8ce99a" font-family="Space Grotesk">+'+lvFm(r.profit)+'</text>';
+    h+='<text x="'+lx+'" y="'+(ey-10)+'" text-anchor="'+anc+'" font-size="11" fill="#7d8f96" font-family="IBM Plex Mono">leaves at month '+r.life+'</text>';
+    // inset zoom: first 24 months
+    const iz=lvIY(0);
+    h+='<rect x="'+I.x+'" y="'+I.y+'" width="'+I.w+'" height="'+I.h+'" fill="#0c1013" stroke="#1f2a30"/>';
+    h+='<text x="'+(I.x+12)+'" y="'+(I.y+16)+'" font-size="10.5" fill="#7d8f96" letter-spacing="1.5" font-family="IBM Plex Mono">ZOOM · FIRST 24 MONTHS</text>';
+    h+='<line x1="'+lvIX0()+'" x2="'+lvIX1()+'" y1="'+iz+'" y2="'+iz+'" stroke="#7d8f96"/><text x="'+(lvIX0()-6)+'" y="'+(iz+4)+'" text-anchor="end" font-size="10" fill="#e8f0f2" font-family="IBM Plex Mono">$0</text>';
+    h+='<text x="'+(lvIX0()-6)+'" y="'+(lvIY(-500)+4)+'" text-anchor="end" font-size="10" fill="#54646b" font-family="IBM Plex Mono">−$500</text>';
+    [0,6,12,18,24].forEach(m=>{ h+='<text x="'+lvIX(m)+'" y="'+(lvIY1()+15)+'" text-anchor="middle" font-size="10" fill="#54646b" font-family="IBM Plex Mono">'+m+'</text>'; });
+    h+='<g clip-path="url(#lvIn)">';
+    data.forEach(({p,r:q})=>{ const on=p.k===lvSel;
+      h+='<path d="'+lvLine(q,lvIX,lvIY)+'" fill="none" stroke="'+p.col+'" stroke-opacity="'+(on?1:.35)+'" stroke-width="'+(on?2.6:1.3)+'"/>';
+      h+='<circle cx="'+lvIX(q.be)+'" cy="'+iz+'" r="'+(on?5:3)+'" fill="'+p.col+'" fill-opacity="'+(on?1:.5)+'"/>'; });
+    h+='<circle id="lvDotI" r="5" fill="'+col+'" filter="url(#lvGlow)" cx="-20" cy="-20"/></g>';
+    // live readout (bottom-right, below the zero line)
+    h+='<text id="lvRM" x="'+(X1-6)+'" y="'+(z+30)+'" text-anchor="end" font-size="12" fill="#7d8f96" letter-spacing="1.5" font-family="IBM Plex Mono">MONTH 0</text>';
+    h+='<text id="lvRV" x="'+(X1-6)+'" y="'+(z+62)+'" text-anchor="end" font-size="32" font-weight="700" fill="#ff5964" font-family="Space Grotesk">−'+lvFm(r.kept)+'</text>';
+    // live dot
+    h+='<circle id="lvDot" r="8" fill="'+col+'" stroke="#0a0d0f" stroke-width="2" filter="url(#lvGlow)" cx="'+lvSX(0)+'" cy="'+sy0+'"/>';
+    svg.innerHTML=h;
+  }
+
+  function lvLoop(ts){
+    if(!lvT0) lvT0=ts;
+    const p=LV_PLANS.find(x=>x.k===lvSel), r=lvCalc(p,lvCase);
+    const DUR=7000, HOLD=1800, t=(ts-lvT0)%(DUR+HOLD);
+    const f=Math.min(1,t/DUR), m=r.life*Math.pow(f,1.8), v=r.mm*m-r.kept;
+    const d=$('lvDot'), di=$('lvDotI');
+    if(d){ d.setAttribute('cx',lvSX(m).toFixed(1)); d.setAttribute('cy',lvSY(v).toFixed(1)); }
+    if(di){ if(m<=LVG.IM){ di.setAttribute('cx',lvIX(m).toFixed(1)); di.setAttribute('cy',lvIY(v).toFixed(1)); } else { di.setAttribute('cx','-20'); } }
+    const rm=$('lvRM'), rv=$('lvRV');
+    if(rm&&rv){ rm.textContent='MONTH '+Math.floor(m)+(v<0?' · PAYING BACK':' · IN PROFIT'); rv.textContent=(v<0?'−':'+')+lvFm(v); rv.setAttribute('fill',v<0?'#ff5964':'#8ce99a'); }
+    ltBiz.tick(ts);
+    lvRAF=requestAnimationFrame(lvLoop);
+  }
+
+  function lvRenderCtl(){
+    const pl=$('lvPlans'), cs=$('lvCases'); if(!pl) return;
+    pl.innerHTML=LV_PLANS.map(p=>'<button class="lvchip'+(p.k===lvSel?' on':'')+'" data-k="'+p.k+'" style="--c:'+p.col+'"><i></i>'+p.n+' · $'+p.cac+'</button>').join('');
+    cs.innerHTML=Object.entries(LV_CASE).map(([k,c])=>'<button class="lvchip'+(k===lvCase?' on':'')+'" data-c="'+k+'" style="--c:'+c.col+'"><i></i>'+c.n+' · '+c.s+'</button>').join('');
+    pl.querySelectorAll('.lvchip').forEach(b=>b.onclick=()=>{ lvSel=b.dataset.k; lvUpdate(); });
+    cs.querySelectorAll('.lvchip').forEach(b=>b.onclick=()=>{ lvCase=b.dataset.c; lvUpdate(); });
+  }
+
+  function lvRenderTable(){
+    const el=$('lvTab'); if(!el) return;
+    let h='<div class="lvtr hd"><div>Plan</div><div>CAC</div><div>Per sub kept</div><div>Break-even</div><div>Lifetime profit</div><div>LTV : CAC vs 3:1 kill line</div><div>CAC headroom</div></div>';
+    LV_PLANS.forEach(p=>{ const r=lvCalc(p,lvCase);
+      h+='<div class="lvtr'+(p.k===lvSel?' on':'')+'" data-k="'+p.k+'" style="--c:'+p.col+'"><div><span class="nm" style="color:'+p.col+'">'+p.n+'</span><span class="hw">'+p.how+'</span></div>'+
+        '<div class="num">$'+p.cac+'</div><div class="num">'+lvFm(r.kept)+'</div><div class="num">'+r.be.toFixed(1)+' mo</div><div class="num" style="color:#8ce99a">+'+lvFm(r.profit)+'</div>'+
+        '<div><div class="lvrb"><div class="t"><b data-w="'+Math.min(100,r.ratio/25*100).toFixed(1)+'" style="background:'+p.col+'"></b><i></i></div><span>'+r.ratio.toFixed(1)+':1</span></div></div>'+
+        '<div class="num" style="color:'+(r.max>p.cac?'#2ec4b6':'#ff5964')+'">'+(r.max>p.cac?'+':'−')+lvFm(r.max-p.cac)+'</div></div>'; });
+    el.innerHTML=h;
+    el.querySelectorAll('.lvtr[data-k]').forEach(row=>row.onclick=()=>{ lvSel=row.dataset.k; lvUpdate(); });
+    setTimeout(()=>el.querySelectorAll('.lvrb b').forEach(b=>{ b.style.width=b.dataset.w+'%'; }),60);
+  }
+
+  function lvUpdate(){
+    const p=LV_PLANS.find(x=>x.k===lvSel), r=lvCalc(p,lvCase), blend=lvCalc(LV_PLANS[0],lvCase);
+    lvRenderCtl();
+    if(!$('lvS1')) return;
+    $('lvS1').textContent='$'+p.cac; $('lvS1s').textContent='subsidy $'+Math.round(p.split[0])+' · commission $'+Math.round(p.split[1])+' · marketing $'+Math.round(p.split[2]);
+    $('lvS2').textContent=lvFm(r.kept);
+    $('lvS4').textContent='Month '+r.be.toFixed(1); $('lvS4s').textContent=lvFm(r.kept)+' ÷ $31.35 a month';
+    $('lvS5').textContent='+'+lvFm(r.profit); $('lvS5s').textContent='over a '+r.life+'-month life ('+LV_CASE[lvCase].s+')';
+    document.querySelectorAll('.lvst').forEach(s=>{ s.classList.remove('flash'); void s.offsetWidth; s.classList.add('flash'); });
+    $('lvRatio').innerHTML=r.ratio.toFixed(1)+'<span>:1</span>';
+    const rc=r.ratio>=5?'var(--acid)':r.ratio>=3?'var(--amber)':'var(--red)';
+    $('lvRatio').style.color=rc;
+    $('lvRatioK').textContent=r.ratioK.toFixed(1)+':1 per subscriber kept · '+(r.ratio>=3?'clears':'fails')+' the 3:1 kill line';
+    const fl=$('lvFill'); fl.style.background=rc; fl.style.width=Math.min(100,r.ratio/25*100).toFixed(1)+'%';
+    $('lvLTV').textContent=lvFm(r.ltv); $('lvLife').textContent=r.life+' mo'; $('lvMax').textContent=lvFm(r.max);
+    const back=LV.net*blend.ltv;
+    $('lvCoh').textContent='$'+Math.round(back/1e6)+'M';
+    $('lvCohS').textContent='75K subscribers × '+lvFm(blend.ltv)+' lifetime value · '+(back/LV.spend).toFixed(1)+'× the spend';
+    lvRenderChart(); lvRenderTable();
+    lvT0=0; ltBiz.refresh();
+  }
+
+
+  // ---- LIVE ACQUISITION TRACKER (shared engine: Business = Canada full year, Q4 tab = ON+QC campaign) ----
+  const LM_MON=2629800, LT_DAY=86400;
+  const LM_MN=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const LT_REG=[['BC',['BC']],['AB',['AB']],['SK',['SK']],['MB',['MB']],['ON',['ON']],['QC',['QC']],['Atlantic',['NB','NS','PE','NL']],['North',['YT','NT','NU']]];
+  let ltRegShare=null;
+  function ltRegions(){
+    if(ltRegShare) return ltRegShare;
+    const subs={}; let tot=0;
+    GEOP.forEach(g=>{ const t=(g.car.find(c=>c[0]==='telus')||[0,0])[1]; const v=g.pop*PEN*t/100; subs[g.a]=v; tot+=v; });
+    ltRegShare=LT_REG.map(([n,codes])=>[n,codes.reduce((a,c)=>a+(subs[c]||0),0)/tot]);
+    return ltRegShare;
+  }
+  const ltMoney=v=>{ const a=Math.abs(v), s=v<0?'−':''; return a>=1e9?s+'$'+(a/1e9).toFixed(2)+'B':a>=1e6?s+'$'+(a/1e6).toFixed(2)+'M':a>=1e4?s+'$'+Math.floor(a).toLocaleString('en-CA'):s+'$'+a.toLocaleString('en-CA',{minimumFractionDigits:2,maximumFractionDigits:2}); };
+  const ltBig=v=>{ const a=Math.abs(v), s=v<0?'−':'+'; return a>=1e9?s+'$'+(a/1e9).toFixed(2)+'B':s+'$'+(a/1e6).toFixed(a<1e8?1:0)+'M'; };
+  const ltK=v=>v>=1e6?(v/1e6).toFixed(2)+'M':Math.round(v/1000)+'K';
+  const ltSpeedTxt=v=>v<90?Math.round(v)+'× real time':v<3600?Math.round(v/60)+' min / sec':v<LT_DAY?Math.round(v/3600)+' hrs / sec':Math.round(v/LT_DAY)+' days / sec';
+  function ltDate(t0,t,withTime){ const d=new Date(t0+t*1000), p=x=>String(x).padStart(2,'0');
+    return LM_MN[d.getUTCMonth()]+' '+d.getUTCDate()+' '+d.getUTCFullYear()+(withTime?' · '+p(d.getUTCHours())+':'+p(d.getUTCMinutes()):''); }
+
+  function LTracker(cfg){ this.cfg=cfg; this.el=null; this.q={}; this.reset(); }
+  LTracker.prototype.reset=function(){ this.sim=0; this.r=0; this.last=0; this.rEnd=null; this.ui=0; this.pos=null; this.done=false; };
+  LTracker.prototype.wins=function(){ return this.cfg.windows(); };
+  LTracker.prototype.acqEnd=function(){ return Math.max(...this.wins().map(w=>w.start+w.len)); };
+  LTracker.prototype.model=function(t){
+    const c=this.cfg, life=c.life(), lam=1/(life*LM_MON), mms=c.mm/LM_MON;
+    let won=0, spend=0, M=0; const per=[];
+    this.wins().forEach(w=>{ const a=w.adds/w.len, u=t-w.start, T=Math.max(0,Math.min(u,w.len)), n=a*T;
+      won+=n; spend+=n*w.cac; per.push(n);
+      if(T>0) M+=c.keep*a*mms/lam*(T-Math.exp(-lam*u)*Math.expm1(lam*T)/lam); });
+    return {won,spend,M,eb:M-spend,per};
+  };
+  LTracker.prototype.solve=function(){
+    let lo=this.acqEnd(), hi=40*12*LM_MON;
+    if(this.model(hi).eb<0) return null;
+    for(let i=0;i<70;i++){ const mid=(lo+hi)/2; if(this.model(mid).eb<0) lo=mid; else hi=mid; }
+    return hi;
+  };
+  LTracker.prototype.build=function(){
+    const c=this.cfg, el=$(c.el); if(!el) return false; this.el=el;
+    const H=c.horizonMon, acqPct=this.acqEnd()/(H*LM_MON)*100;
+    el.innerHTML=
+      '<div class="lmhead"><span class="live"><i></i> LIVE</span><span data-r="title"></span><button class="lvchip" data-r="replay" style="--c:var(--acid);margin-left:auto"><i></i>↺ Replay</button></div>'+
+      '<div class="lmclock"><span class="lmd" data-r="date"></span><span class="lmp" data-r="phase"></span><span class="lms" data-r="speed"></span></div>'+
+      '<div class="bizmeter lvmeter lvmeter3">'+
+        '<div style="--mc:var(--blue)"><div class="ml">Subscribers gained'+(c.where?' · '+c.where:'')+'</div><div class="mv" data-r="subs" style="color:var(--blue)">+0</div><div class="ms" data-r="subsR"></div><div class="ltg" data-r="groups"></div></div>'+
+        '<div style="--mc:var(--red)"><div class="ml">CAC spend</div><div class="mv" data-r="spend" style="color:var(--red)">$0.00</div><div class="lmsplit" data-r="split"></div><div class="ms" data-r="spendR"></div></div>'+
+        '<div style="--mc:var(--amber)" data-r="ebCell"><div class="ml">EBITDA · after subsidies, commission &amp; marketing</div><div class="mv" data-r="eb" style="color:var(--red)">$0.00</div>'+
+          '<div class="lmsplit"><span><i style="background:#2ec4b6"></i>Margin earned<b data-r="mar">$0.00</b></span><span><i style="background:#ff5964"></i>− CAC spend<b data-r="cac2">$0.00</b></span></div>'+
+          '<div class="ms">55% margin on $57 a month, from the day each subscriber joins</div></div>'+
+      '</div>'+
+      (c.regions?'<div class="lmprov" data-r="prov"></div>':'')+
+      '<div class="lmeb lmeb1" data-r="ebBox"><div>'+
+        '<div class="lmtl" data-r="tl"><div class="lmtlq" style="width:'+acqPct.toFixed(1)+'%"></div><div class="lmbe" data-r="be"><span data-r="bel"></span></div><div class="lmcur" data-r="cur"></div></div>'+
+        '<div class="lmtlx">'+c.axis.map(([l,p])=>'<span style="left:'+p+'%;'+(p>0&&p<100?'transform:translateX(-50%)':p>=100?'transform:translateX(-100%)':'')+'">'+l+'</span>').join('')+'</div>'+
+        '<div class="lmfacts"><div><b data-r="hit" style="color:var(--red)"></b><span>'+c.hitLabel+'</span></div><div><b data-r="bed" style="color:var(--amber)"></b><span data-r="bes"></span></div><div><b data-r="life" style="color:#8ce99a"></b><span>'+c.lifeLabel+'</span></div></div>'+
+      '</div></div>';
+    el.querySelectorAll('[data-r]').forEach(n=>{ this.q[n.dataset.r]=n; });
+    this.q.replay.onclick=()=>{ this.reset(); };
+    return true;
+  };
+  LTracker.prototype.refresh=function(){
+    if(!this.el&&!this.build()) return;
+    const c=this.cfg, q=this.q, W=this.wins(), be=this.solve(), end=this.acqEnd();
+    const totA=W.reduce((a,w)=>a+w.adds,0), totS=W.reduce((a,w)=>a+w.adds*w.cac,0);
+    const hit=this.model(end).eb, life=c.keep*totA*c.mm*c.life()-totS;
+    this.be=be;
+    q.title.textContent=c.title();
+    q.subsR.textContent=c.subsNote(totA);
+    q.spendR.textContent=c.spendNote(totS);
+    const mx=Math.max(...W.map(w=>w.adds));
+    q.groups.innerHTML=W.map((w,i)=>'<div><div class="col" style="--h:'+(w.adds/mx*34).toFixed(1)+'px;--c:'+w.col+'"><b data-g="'+i+'"></b></div><div class="lb">'+w.n+'</div><div class="lb">'+ltK(w.adds)+'</div></div>').join('');
+    this.gb=[...q.groups.querySelectorAll('b[data-g]')];
+    q.split.innerHTML=c.splitRows().map(([l,col],i)=>'<span><i style="background:'+col+'"></i>'+l+'<b data-s="'+i+'">$0.00</b></span>').join('');
+    this.sb=[...q.split.querySelectorAll('b[data-s]')];
+    if(q.prov){ const rs=ltRegions(), m2=Math.max(...rs.map(x=>x[1]));
+      q.prov.innerHTML=rs.map(([n,sh])=>'<div><div class="pa">'+n+' <span>'+(sh*100).toFixed(sh<.01?1:0)+'%</span></div><div class="pv">+0</div><div class="pb"><b style="width:'+(sh/m2*100).toFixed(1)+'%"></b></div></div>').join('');
+      this.pv=[...q.prov.querySelectorAll('.pv')]; }
+    q.hit.textContent=ltBig(hit).replace('+','');
+    const bd=be?new Date(c.t0+be*1000):null;
+    q.bed.textContent=bd?LM_MN[bd.getUTCMonth()]+' '+bd.getUTCFullYear():'never';
+    q.bes.textContent=be?'EBITDA turns positive · month '+(be/LM_MON).toFixed(1):'never pays back';
+    q.life.textContent=ltBig(life);
+    const bp=be?Math.min(100,be/(c.horizonMon*LM_MON)*100):100;
+    q.tl.style.setProperty('--be',bp.toFixed(2)+'%');
+    q.be.style.left=bp.toFixed(2)+'%'; q.be.style.display=be&&bp<100?'block':'none';
+    q.bel.textContent=bd?'break-even · '+LM_MN[bd.getUTCMonth()]+" '"+String(bd.getUTCFullYear()).slice(2):'';
+    this.reset();
+  };
+  LTracker.prototype.speed=function(){
+    const c=this.cfg, v=c.v0*Math.pow(2,this.r/c.h);
+    if(this.sim<this.acqEnd()) return Math.min(v,c.capA);
+    if(this.rEnd===null) this.rEnd=this.r;
+    return Math.min(c.capB,c.capA*Math.pow(2,(this.r-this.rEnd)/c.h));
+  };
+  LTracker.prototype.tick=function(ts){
+    if(!this.el) return;
+    if(!this.last) this.last=ts;
+    const dt=Math.min(0.25,(ts-this.last)/1000); this.last=ts;
+    const c=this.cfg, H=c.horizonMon*LM_MON;
+    let v=0;
+    if(!this.done){ this.r+=dt; v=this.speed(); this.sim=Math.min(H,this.sim+dt*v); if(this.sim>=H) this.done=true; }
+    if(ts-this.ui<45) return; this.ui=ts;
+    const q=this.q, t=this.sim, m=this.model(t), end=this.acqEnd(), set=(n,x)=>{ if(n.textContent!==x) n.textContent=x; };
+    set(q.date,ltDate(c.t0,t,v&&v<LT_DAY));
+    set(q.phase,t<end?c.phase(t):'acquisition closed · month '+Math.floor(t/LM_MON)+' · earning'+(m.eb>=0?' · EBITDA positive':''));
+    set(q.speed,this.done?'complete · '+c.horizonMon+' months':'time-lapse · '+ltSpeedTxt(v));
+    set(q.subs,'+'+Math.floor(m.won+1e-9).toLocaleString('en-CA'));
+    this.wins().forEach((w,i)=>{ if(this.gb[i]) this.gb[i].style.height=Math.min(100,m.per[i]/w.adds*100).toFixed(1)+'%'; });
+    set(q.spend,ltMoney(m.spend));
+    c.splitVals(m).forEach((x,i)=>{ if(this.sb[i]) set(this.sb[i],ltMoney(x)); });
+    set(q.eb,ltMoney(m.eb)); q.eb.style.color=m.eb<0?'var(--red)':'#8ce99a';
+    set(q.mar,ltMoney(m.M)); set(q.cac2,ltMoney(m.spend));
+    if(this.pv) ltRegions().forEach(([n,sh],i)=>set(this.pv[i],'+'+Math.floor(m.won*sh+1e-9).toLocaleString('en-CA')));
+    const pos=m.eb>=0; if(this.pos!==null&&pos!==this.pos){ [q.ebBox,q.ebCell].forEach(b=>{ b.classList.remove('flip'); void b.offsetWidth; b.classList.add('flip'); }); } this.pos=pos;
+    q.cur.style.left=Math.min(100,t/H*100).toFixed(2)+'%';
+  };
+
+  // Business tab: TELUS across Canada, a full year at FY2025 reported gross-add volumes
+  const LT_FY=[['Q1',0,90,339000],['Q2',90,91,376000],['Q3',181,92,419000],['Q4',273,92,499000]];
+  const ltBiz=new LTracker({
+    el:'ltBiz', where:'Canada', t0:Date.UTC(2026,0,1), horizonMon:36, keep:LV.keep, mm:LV.arpu*LV.gm,
+    life:()=>lvCalc(LV_PLANS[0],lvCase).life,
+    windows:()=>{ const p=LV_PLANS.find(x=>x.k===lvSel); return LT_FY.map(([n,s,l,a],i)=>({n,start:s*LT_DAY,len:l*LT_DAY,adds:a,cac:p.cac,col:['#2b5fb8','#3470d6','#3a86ff','#6aa5ff'][i]})); },
+    title:()=>{ const p=LV_PLANS.find(x=>x.k===lvSel); return 'TELUS across Canada · full year · priced at '+p.n+' CAC $'+p.cac+' · '+LV_CASE[lvCase].n.toLowerCase(); },
+    subsNote:a=>ltK(a)+' mobile phone gross adds a year (FY2025 reported, by quarter)',
+    splitRows:()=>[['Subsidies','#ff7b54'],['Commission','#ffb703'],['Marketing','#ff5964']],
+    splitVals:m=>{ const sp=LV_PLANS.find(x=>x.k===lvSel).split, tot=sp[0]+sp[1]+sp[2]; return sp.map(x=>m.spend*x/tot); },
+    spendNote:s=>{ const p=LV_PLANS.find(x=>x.k===lvSel), sp=p.split, tot=sp[0]+sp[1]+sp[2]; return 'per add: subsidy $'+Math.round(p.cac*sp[0]/tot)+' · commission $'+Math.round(p.cac*sp[1]/tot)+' · marketing $'+Math.round(p.cac*sp[2]/tot)+' · year '+ltMoney(s); },
+    phase:t=>{ const i=LT_FY.findIndex(([n,s,l])=>t<(s+l)*LT_DAY); return (LT_FY[i]?LT_FY[i][0]:'Q4')+' · day '+(Math.floor(t/LT_DAY)+1)+' of 365 · acquiring'; },
+    axis:[["Jan '26",0],['Dec 31',33.3],["Jan '28",66.7],['36 months',100]],
+    hitLabel:'EBITDA at year end (Dec 31), Canada', lifeLabel:"lifetime EBITDA from one year's adds, after all acquisition costs",
+    regions:true, v0:20, h:1.2, capA:14*LT_DAY, capB:30*LT_DAY
+  });
+
+  // Q4 tab: the ON+QC campaign, three channels running Oct 1 – Dec 31
+  const LT_Q4CH=[['Winback',25000,180,'#2ec4b6',[70,40,70]],['In-Market',40000,420,'#ffb703',[180,110,130]],['Flank',25000,140,'#b08ad8',[20,30,90]]];
+  const ltQ4=new LTracker({
+    el:'ltQ4', where:'ON + QC', t0:Date.UTC(2026,9,1), horizonMon:24, keep:LV.keep, mm:LV.arpu*LV.gm,
+    life:()=>lvCalc(LV_PLANS[0],'plan').life,
+    windows:()=>LT_Q4CH.map(([n,a,cac,col])=>({n,start:0,len:92*LT_DAY,adds:a,cac,col})),
+    title:()=>'Q4 wireless challenge · ON + QC · 90K gross adds · $24.8M · Oct 1 – Dec 31',
+    subsNote:a=>ltK(a)+' gross adds across three channels · 75K kept',
+    splitRows:()=>LT_Q4CH.map(([n,a,cac,col])=>[n+' · $'+cac,col]),
+    splitVals:m=>m.per.map((n,i)=>n*LT_Q4CH[i][2]),
+    spendNote:s=>'subsidies $9.45M · commission $6.15M · marketing $9.20M over Q4',
+    phase:t=>'Q4 · day '+(Math.floor(t/LT_DAY)+1)+' of 92 · acquiring',
+    axis:[["Oct '26",0],['Q4 close',12.6],["Oct '27",50],["Oct '28",100]],
+    hitLabel:'EBITDA at Q4 close (Dec 31)', lifeLabel:'lifetime EBITDA from the Q4 cohort, after all acquisition costs',
+    regions:false, v0:60, h:1.2, capA:3*LT_DAY, capB:30*LT_DAY
+  });
+  let q4tRAF=null;
+  function q4tLoop(ts){ ltQ4.tick(ts); q4tRAF=requestAnimationFrame(q4tLoop); }
+  function q4tStart(){ ltQ4.refresh(); if(q4tRAF) cancelAnimationFrame(q4tRAF); q4tRAF=requestAnimationFrame(q4tLoop); }
+
+  function lvStart(){ lvUpdate(); if(lvRAF) cancelAnimationFrame(lvRAF); lvT0=0; lvRAF=requestAnimationFrame(lvLoop); }
+
+  function initBizView(){ renderBizSankey(); renderBizMix(); renderBizWF(); bizMeterStart(); lvStart(); }
 
   // ---- keyboard shortcuts: 1-9, 0 = tab 10 ----
   document.addEventListener('keydown',e=>{
@@ -3955,7 +4402,7 @@
   // ---- Q4 LIVE SCOREBOARD ----
   const SB_CHANS=[
     {n:'Winback',target:25000,col:'#2ec4b6'},
-    {n:'Intercept',target:40000,col:'#ffb703'},
+    {n:'In-Market',target:40000,col:'#ffb703'},
     {n:'Flank',target:25000,col:'#7a4fa0'}
   ];
   const SB_TOTAL_GROSS=90000, SB_TOTAL_NET=75000;
@@ -4012,29 +4459,29 @@
   const OWNN={telus:'TELUS',rogers:'Rogers',bell:'Bell',videotron:'Videotron',open:'Contested'};
   // 24 market squares, clockwise from top-left after GO
   const SQUARES=[
-    {n:'GTA Core',o:'rogers',v:'2.9M',play:'Intercept',inplay:1,d:'Rogers heartland and the single densest wireless market in Canada. We will not win it on price — we win pockets of it at promo roll-off, with the 4-hour port advertised hard.',k:[['Subscribers','~2.9M'],['Owner','Rogers'],['Q4 play','Intercept'],['Target','+12K']]},
+    {n:'GTA Core',o:'rogers',v:'2.9M',play:'In-Market',inplay:1,d:'Rogers heartland and the single densest wireless market in Canada. We will not win it on price — we win pockets of it at promo roll-off, with the 4-hour port advertised hard.',k:[['Subscribers','~2.9M'],['Owner','Rogers'],['Q4 play','In-Market'],['Target','+12K']]},
     {n:'Peel / Mississauga',short:'Peel',o:'rogers',v:'1.1M',play:'Flank',inplay:1,d:'Enormous newcomer population. Public Mobile with true 5G at a discount price is the sharpest weapon we have here — Chatr and Lucky cannot match the 5G claim.',k:[['Subscribers','~1.1M'],['Owner','Rogers'],['Q4 play','Flank — Public'],['Target','+9K']]},
-    {n:'York Region',o:'rogers',v:'0.9M',play:'Intercept',inplay:0,d:'Affluent, high-ARPU, family-account heavy. Bundle depth wins here — wireless attached to fibre and security, not a cheap single line.',k:[['Subscribers','~0.9M'],['Owner','Rogers'],['Q4 play','Bundle'],['Target','+5K']]},
-    {n:'Durham',o:'rogers',v:'0.6M',play:'Intercept',inplay:0,d:'Commuter belt. Steady, less promo-sensitive. Play for household depth rather than volume.',k:[['Subscribers','~0.6M'],['Owner','Rogers'],['Q4 play','Bundle'],['Target','+3K']]},
-    {n:'Hamilton / Niagara',short:'Hamilton',o:'bell',v:'0.8M',play:'Intercept',inplay:1,d:'Bell-leaning and price-sensitive. Promo roll-offs cluster here — a concentrated intercept window in November.',k:[['Subscribers','~0.8M'],['Owner','Bell'],['Q4 play','Intercept'],['Target','+6K']]},
-    {n:'Kitchener–Waterloo',short:'Kitchener',o:'rogers',v:'0.5M',play:'Intercept',inplay:1,d:'Tech corridor plus a large student population arriving each September and shopping again at holidays. Data-heavy, upgrade-hungry.',k:[['Subscribers','~0.5M'],['Owner','Rogers'],['Q4 play','Students'],['Target','+4K']]},
+    {n:'York Region',o:'rogers',v:'0.9M',play:'In-Market',inplay:0,d:'Affluent, high-ARPU, family-account heavy. Bundle depth wins here — wireless attached to fibre and security, not a cheap single line.',k:[['Subscribers','~0.9M'],['Owner','Rogers'],['Q4 play','Bundle'],['Target','+5K']]},
+    {n:'Durham',o:'rogers',v:'0.6M',play:'In-Market',inplay:0,d:'Commuter belt. Steady, less promo-sensitive. Play for household depth rather than volume.',k:[['Subscribers','~0.6M'],['Owner','Rogers'],['Q4 play','Bundle'],['Target','+3K']]},
+    {n:'Hamilton / Niagara',short:'Hamilton',o:'bell',v:'0.8M',play:'In-Market',inplay:1,d:'Bell-leaning and price-sensitive. Promo roll-offs cluster here — a concentrated in-market window in November.',k:[['Subscribers','~0.8M'],['Owner','Bell'],['Q4 play','In-Market'],['Target','+6K']]},
+    {n:'Kitchener–Waterloo',short:'Kitchener',o:'rogers',v:'0.5M',play:'In-Market',inplay:1,d:'Tech corridor plus a large student population arriving each September and shopping again at holidays. Data-heavy, upgrade-hungry.',k:[['Subscribers','~0.5M'],['Owner','Rogers'],['Q4 play','Students'],['Target','+4K']]},
     {n:'London',o:'rogers',v:'0.4M',play:'Winback',inplay:0,d:'Mid-size market with a meaningful lapsed TELUS base. Winback economics are strongest where we once had share.',k:[['Subscribers','~0.4M'],['Owner','Rogers'],['Q4 play','Winback'],['Target','+3K']]},
     {n:'Windsor',o:'bell',v:'0.3M',play:'Winback',inplay:0,d:'Border market, cross-border roaming matters. Canada-US-Mexico plans are a genuine differentiator here.',k:[['Subscribers','~0.3M'],['Owner','Bell'],['Q4 play','Winback'],['Target','+2K']]},
-    {n:'Ottawa',o:'bell',v:'1.1M',play:'Intercept',inplay:1,d:'Bell home turf and heavy government and enterprise presence. Consumer intercept at roll-off; the enterprise play is a longer game than one quarter.',k:[['Subscribers','~1.1M'],['Owner','Bell'],['Q4 play','Intercept'],['Target','+7K']]},
+    {n:'Ottawa',o:'bell',v:'1.1M',play:'In-Market',inplay:1,d:'Bell home turf and heavy government and enterprise presence. Consumer in-market play at roll-off; the enterprise play is a longer game than one quarter.',k:[['Subscribers','~1.1M'],['Owner','Bell'],['Q4 play','In-Market'],['Target','+7K']]},
     {n:'Sudbury / North ON',short:'North ON',o:'bell',v:'0.4M',play:'Coverage',inplay:0,d:'Rural and coverage-led. Our shared rural network with Bell means signal is not the differentiator — price certainty is.',k:[['Subscribers','~0.4M'],['Owner','Bell'],['Q4 play','Price lock'],['Target','+2K']]},
     {n:'Kingston / East ON',short:'Kingston',o:'bell',v:'0.3M',play:'Winback',inplay:0,d:'Smaller but underserved by aggressive offers. Cheap share if we show up.',k:[['Subscribers','~0.3M'],['Owner','Bell'],['Q4 play','Winback'],['Target','+2K']]},
     {n:'ON Students',o:'open',v:'0.6M',play:'Flank',inplay:1,d:'Segment, not a place. Price-first, BYOD, churns fast — which is exactly why it belongs to Koodo and Public, never the flagship.',k:[['Segment','~600K'],['Owner','Contested'],['Q4 play','Koodo/Public'],['Target','+6K']]},
     {n:'Montreal Island',short:'Montreal',o:'videotron',v:'1.4M',play:'Flank',inplay:1,d:'Videotron fortress with the most aggressive pricing in Canada. Do not match it with the flagship. Koodo and Public fight here or we do not fight at all.',k:[['Subscribers','~1.4M'],['Owner','Videotron'],['Q4 play','Flank'],['Target','+8K']]},
     {n:'Laval',o:'videotron',v:'0.4M',play:'Flank',inplay:0,d:'Videotron-dominant suburban market. Value brands only.',k:[['Subscribers','~0.4M'],['Owner','Videotron'],['Q4 play','Flank'],['Target','+2K']]},
-    {n:'Rive-Sud / Longueuil',short:'Rive-Sud',o:'bell',v:'0.5M',play:'Intercept',inplay:1,d:'Genuinely contested between Bell and Videotron — the most winnable square in Quebec because neither owner is entrenched.',k:[['Subscribers','~0.5M'],['Owner','Bell'],['Q4 play','Intercept'],['Target','+4K']]},
-    {n:'Quebec City',o:'bell',v:'0.7M',play:'Intercept',inplay:1,d:'Bell-led, loyal, lower churn than Montreal. Needs a French-first offer and local retail presence, not a translated Ontario campaign.',k:[['Subscribers','~0.7M'],['Owner','Bell'],['Q4 play','Intercept'],['Target','+4K']]},
-    {n:'Gatineau',o:'videotron',v:'0.3M',play:'Intercept',inplay:0,d:'Ottawa spillover market. Cross-river households are a natural bundle target.',k:[['Subscribers','~0.3M'],['Owner','Videotron'],['Q4 play','Bundle'],['Target','+2K']]},
+    {n:'Rive-Sud / Longueuil',short:'Rive-Sud',o:'bell',v:'0.5M',play:'In-Market',inplay:1,d:'Genuinely contested between Bell and Videotron — the most winnable square in Quebec because neither owner is entrenched.',k:[['Subscribers','~0.5M'],['Owner','Bell'],['Q4 play','In-Market'],['Target','+4K']]},
+    {n:'Quebec City',o:'bell',v:'0.7M',play:'In-Market',inplay:1,d:'Bell-led, loyal, lower churn than Montreal. Needs a French-first offer and local retail presence, not a translated Ontario campaign.',k:[['Subscribers','~0.7M'],['Owner','Bell'],['Q4 play','In-Market'],['Target','+4K']]},
+    {n:'Gatineau',o:'videotron',v:'0.3M',play:'In-Market',inplay:0,d:'Ottawa spillover market. Cross-river households are a natural bundle target.',k:[['Subscribers','~0.3M'],['Owner','Videotron'],['Q4 play','Bundle'],['Target','+2K']]},
     {n:'Sherbrooke',o:'videotron',v:'0.2M',play:'Winback',inplay:0,d:'University town. Small, but student intake makes it punch above its size.',k:[['Subscribers','~0.2M'],['Owner','Videotron'],['Q4 play','Students'],['Target','+2K']]},
     {n:'Trois-Rivières',short:'Trois-Riv.',o:'bell',v:'0.2M',play:'Winback',inplay:0,d:'Regional Quebec. Price-lock messaging travels well in markets tired of promo churn.',k:[['Subscribers','~0.2M'],['Owner','Bell'],['Q4 play','Winback'],['Target','+1K']]},
     {n:'Saguenay / Regions',short:'Saguenay',o:'bell',v:'0.3M',play:'Coverage',inplay:0,d:'Rural Quebec, coverage-led, Bell-entrenched. A long game, not a Q4 target.',k:[['Subscribers','~0.3M'],['Owner','Bell'],['Q4 play','Hold'],['Target','+1K']]},
     {n:'QC Newcomers',o:'open',v:'0.4M',play:'Flank',inplay:1,d:'Fastest-growing prepaid cohort in the province. Arrives without credit history, buys on price and on who is visible at the point of arrival.',k:[['Segment','~400K'],['Owner','Contested'],['Q4 play','Public Mobile'],['Target','+5K']]},
     {n:'Lapsed TELUS',o:'open',v:'0.5M',play:'Winback',inplay:1,d:'Our own former subscribers across both provinces, 24 months back. The highest-converting pool on the board — they already know the network.',k:[['Pool','~500K'],['Owner','Lapsed'],['Q4 play','Winback'],['Target','+25K']]},
-    {n:'Small Business',o:'open',v:'0.7M',play:'Intercept',inplay:1,d:'Under-served by all three. Multi-line, low churn, high lifetime value. The 5-year price lock is an unusually strong pitch to an owner-operator.',k:[['Lines','~700K'],['Owner','Contested'],['Q4 play','Price lock'],['Target','+6K']]},
+    {n:'Small Business',o:'open',v:'0.7M',play:'In-Market',inplay:1,d:'Under-served by all three. Multi-line, low churn, high lifetime value. The 5-year price lock is an unusually strong pitch to an owner-operator.',k:[['Lines','~700K'],['Owner','Contested'],['Q4 play','Price lock'],['Target','+6K']]},
     {n:'Seniors 55+',o:'open',v:'0.9M',play:'Winback',inplay:0,d:'Loyal, low-churn, and increasingly bundling health monitoring. The one segment where a TELUS medical-alert pendant closes a wireless deal.',k:[['Segment','~900K'],['Owner','Contested'],['Q4 play','Health bundle'],['Target','+4K']]}
   ];
   const CORNERS=[
@@ -4108,7 +4555,7 @@
     {mo:'NOVEMBER',t:'Spend hard',g:'50K',gl:'gross adds',
      items:[['01','<b>Black Friday is the peak.</b> Device-balance buyout plus the 5-year price lock — the offer nobody can copy inside a quarter.'],
             ['02','<b>Winback campaign live</b>, sequenced by churn reason. Service-quality churners held until the local fix lands.'],
-            ['03','<b>Intercept the roll-off weeks.</b> Concentrate media where the regulator forces rivals to tell customers to shop.'],
+            ['03','<b>Go In-Market in the roll-off weeks.</b> Concentrate media where the regulator forces rivals to tell customers to shop.'],
             ['04','<b>Public Mobile 5G blitz</b> in the GTA, Peel and Montreal. Newcomer and student channels.']]},
     {mo:'DECEMBER',t:'Convert to depth',g:'75K',gl:'NET adds — banked',
      items:[['01','<b>Attach a second service</b> to the new cohort inside 60 days. Volume without depth is a revolving door.'],
@@ -4173,7 +4620,7 @@
   // ---- risk register ----
   const RISKS=[
     ['Winback file triggers a privacy/compliance objection','med','hi'],
-    ['Competitors respond with their own Q4 offers, compressing intercept economics','hi','med'],
+    ['Competitors respond with their own Q4 offers, compressing in-market economics','hi','med'],
     ['Flanker growth cannibalises flagship subs rather than true net-new','med','med'],
     ['New-cohort churn exceeds base-rate assumption, compressing LTV:CAC','med','hi'],
     ['BTL cap creates a backlash from long-tenure customers used to negotiating','lo','med']
@@ -4188,7 +4635,7 @@
   function animateModel(){
     const f=document.querySelector('.mltvfill'); if(f){ f.style.width='0'; setTimeout(()=>f.style.width='100%',100); }
   }
-  function initQ4View(){ sbInit(); renderQ4Board(); renderQ4Track(); renderPlanChart(); renderRisks(); setTimeout(animateModel,100); }
+  function initQ4View(){ sbInit(); renderQ4Board(); renderQ4Track(); renderPlanChart(); renderRisks(); setTimeout(animateModel,100); q4tStart(); }
 
   // ---- init ----
   calc();
