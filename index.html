@@ -883,6 +883,18 @@
   .ltg .lb{font-family:'IBM Plex Mono';font-size:9.5px;color:var(--dim);text-align:center;line-height:1.25}
   .lmeb.lmeb1 .lmtl{margin-top:22px}
   @media(max-width:900px){.bizmeter.lvmeter3{grid-template-columns:1fr}.lmprov{grid-template-columns:repeat(4,1fr)}}
+
+  /* theme toggle */
+  :root{color-scheme:dark}
+  :root[data-theme="light"]{color-scheme:light}
+  .themebtn{flex-shrink:0;display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono';font-size:11.5px;padding:6px 10px;background:var(--panel);border:1px solid var(--line);color:var(--mute);cursor:pointer;border-radius:2px;transition:color .15s,border-color .15s}
+  .themebtn:hover{color:var(--ink);border-color:var(--acid)}
+  .themebtn .thi{font-size:13px;line-height:1}
+  .themebtn{color:var(--ink);border-color:var(--acid)}
+  @media(min-width:1360px){.themebtn{position:absolute;right:20px;top:50%;transform:translateY(-50%)}}
+  @media(max-width:1280px){.themebtn .thl{display:none}}
+  @media(max-width:840px){.menubtn{margin-left:auto}}
+  @media(max-width:480px){.brand small{display:none}}
 </style>
 </head>
 <body>
@@ -904,6 +916,7 @@
       <button class="tab" data-view="q4" title="Q4 Wireless Challenge — ON/QC"><span class="no">9</span>Q4 Push</button>
       <button class="tab" data-view="ir" title="Investor Relations"><span class="no">10</span>IR</button>
     </div>
+    <button class="themebtn" id="themeBtn" title="Switch to light mode" aria-pressed="false"><span class="thi">☀</span><span class="thl">Light mode</span></button>
   </div>
 </header>
 
@@ -2551,8 +2564,8 @@
 
   <section id="ir-calendar">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--blue)">03</span><h2>Earnings cadence & IR contacts</h2><span class="sub">quarterly rhythm</span></div>
-      <div class="two">
+      <div class="shead"><span class="sno" style="color:var(--blue)">03</span><h2>Earnings cadence</h2><span class="sub">quarterly rhythm</span></div>
+      <div>
         <div class="card"><h3>Reporting calendar</h3>
           <ul class="clean" style="margin-top:8px">
             <li><span class="mk">Q1</span><span>Reported early May</span></li>
@@ -2561,15 +2574,6 @@
             <li><span class="mk">Q4</span><span>Full-year, reported mid-February</span></li>
           </ul>
           <p style="margin-top:12px;font-size:13px;color:var(--dim)">Dividends paid quarterly (Jan · Apr · Jul · Oct).</p>
-        </div>
-        <div class="card"><h3>Investor Relations desk</h3>
-          <ul class="clean" style="margin-top:8px">
-            <li><span class="mk">☎</span><span><b>1-800-667-4871</b></span></li>
-            <li><span class="mk">✉</span><span><b>ir@telus.com</b></span></li>
-            <li><span class="mk">◈</span><span>telus.com/investor-relations</span></li>
-            <li><span class="mk">◈</span><span>Filings: SEDAR+ & SEC EDGAR (CIK 868675)</span></li>
-          </ul>
-          <p style="margin-top:12px;font-size:13px;color:var(--dim)">Use the Contact tab to reach the office directly.</p>
         </div>
       </div>
       <div class="note" style="border-left-color:var(--blue)">◈ Prices, yields and guidance move every quarter — verify against the latest release before quoting to analysts or the board. Figures here are as of August 2026.</div>
@@ -2589,6 +2593,58 @@
 <script>
   const $=id=>document.getElementById(id);
 
+  // ---- THEME: dark (default) / light ----
+  // Every hard-coded dark-theme colour has a light twin. Sources and targets never overlap, so mapping is idempotent
+  // and reversible. Applied to the stylesheet, to inline style/fill/stroke attributes (incl. anything rendered later),
+  // and to every canvas fillStyle / strokeStyle / gradient stop.
+  const TH_PAIRS=[
+    ['0a0d0f','f3f5f6'],['0c1013','f7f9fa'],['11161a','fdfdfd'],['12181d','f8fafb'],['141b1f','e4eaed'],['161d22','eef2f4'],
+    ['1f2a30','d6dee2'],['181022','f1ecf7'],['e8f0f2','0f1a1f'],['dfe8ea','1d2a30'],['7d8f96','4b5b62'],['54646b','7a8a91'],
+    ['ffffff','16222a'],['2ec4b6','0e8c81'],['ffb703','b36b00'],['ff5964','d4323f'],['3a86ff','1a62d6'],['8ce99a','1f9a4a'],
+    ['b08ad8','7d52ad'],['ff7b54','cc4f22'],['ff9f1c','b86200'],['6aa5ff','2d6fd6'],['a06fc4','7d4aa8'],['7a4fa0','6a3d95']
+  ];
+  const thH2R=h=>[parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];
+  const TH_F=new Map(), TH_B=new Map();
+  TH_PAIRS.forEach(([a,b])=>{ const A=thH2R(a), B=thH2R(b); TH_F.set(A.join(','),B); TH_B.set(B.join(','),A); });
+  const TH_RE=/#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b|rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*([\d.]+%?)\s*)?\)/g;
+  const thHex=rgb=>'#'+rgb.map(x=>x.toString(16).padStart(2,'0')).join('');
+  function thMap(s,M){
+    return s.replace(TH_RE,(m0,hex,r,g,b,a)=>{
+      let rgb;
+      if(hex){ if(hex.length===3) hex=hex.split('').map(c=>c+c).join(''); rgb=thH2R(hex.toLowerCase()); } else rgb=[+r,+g,+b];
+      const t=M.get(rgb.join(',')); if(!t) return m0;
+      return hex?thHex(t):(a!==undefined?'rgba('+t.join(',')+','+a+')':'rgb('+t.join(',')+')');
+    });
+  }
+  let THEME='dark';
+  const thCache=new Map();
+  const thCanvas=v=>{ if(THEME!=='light'||typeof v!=='string') return v; let o=thCache.get(v); if(o===undefined){ if(thCache.size>4000) thCache.clear(); o=thMap(v,TH_F); thCache.set(v,o); } return o; };
+  if(window.CanvasRenderingContext2D){
+    const CP=CanvasRenderingContext2D.prototype;
+    ['fillStyle','strokeStyle','shadowColor'].forEach(p=>{ const d=Object.getOwnPropertyDescriptor(CP,p); if(!d||!d.set) return;
+      Object.defineProperty(CP,p,{configurable:true,enumerable:d.enumerable,get:d.get,set(v){ d.set.call(this,thCanvas(v)); }}); });
+    if(window.CanvasGradient){ const ac=CanvasGradient.prototype.addColorStop; CanvasGradient.prototype.addColorStop=function(o,c){ return ac.call(this,o,thCanvas(c)); }; }
+  }
+  const TH_ATTRS=['style','fill','stroke','stop-color','flood-color'];
+  const TH_SEL=TH_ATTRS.map(a=>'['+a+']').join(',');
+  function thEl(el,M){ for(const a of TH_ATTRS){ const v=el.getAttribute(a); if(!v) continue; const nv=thMap(v,M); if(nv!==v) el.setAttribute(a,nv); } }
+  function thTree(root,M){ if(root.nodeType!==1) return; if(root.matches(TH_SEL)) thEl(root,M); root.querySelectorAll(TH_SEL).forEach(el=>thEl(el,M)); }
+  const thObs=window.MutationObserver?new MutationObserver(recs=>{ if(THEME!=='light') return;
+    recs.forEach(r=>{ if(r.type==='attributes') thEl(r.target,TH_F); else r.addedNodes.forEach(n=>thTree(n,TH_F)); }); }):null;
+  const thStyle=document.querySelector('style'), TH_CSS=thStyle?thStyle.textContent:'';
+  function applyTheme(t,rerender){
+    THEME=t==='light'?'light':'dark';
+    document.documentElement.dataset.theme=THEME;
+    thCache.clear();
+    if(thStyle) thStyle.textContent=THEME==='light'?thMap(TH_CSS,TH_F):TH_CSS;
+    thTree(document.body,THEME==='light'?TH_F:TH_B);
+    if(thObs){ thObs.disconnect(); if(THEME==='light') thObs.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:TH_ATTRS}); }
+    const b=document.getElementById('themeBtn');
+    if(b){ b.innerHTML=THEME==='light'?'<span class="thi">☾</span><span class="thl">Dark mode</span>':'<span class="thi">☀</span><span class="thl">Light mode</span>'; b.title=THEME==='light'?'Switch to dark mode':'Switch to light mode'; b.setAttribute('aria-pressed',THEME==='light'); }
+    try{ localStorage.setItem('telcos-theme',THEME); }catch(e){}
+    if(rerender){ const v=document.querySelector('.view.on'); if(v&&typeof show==='function'){ const y=window.scrollY; show(v.id.slice(2)); setTimeout(()=>window.scrollTo(0,y),30); } }
+  }
+
   // ---- subnav definitions per view ----
   const SUB={
     brief:[['b-share','Market'],['b-rivals','Rivals'],['b-demo','Demographics'],['b-history','History'],['b-edge','Edge & Risk'],['b-brands','Flanker Brands'],['b-regions','Provincial Map'],['b-fibre','Fibre'],['b-pricelock','5yr Price Lock'],['b-services','All Services'],['b-interchange','Bundle Stickiness'],['b-cost','Cost of Cellular']],
@@ -2600,7 +2656,7 @@
     telecom:[['t-split','Wireless vs Wireline'],['t-fibre','PureFibre vs Bell'],['t-chain','Signal Chain'],['t-latency','Latency Budget'],['t-stack','Protocol Stack'],['t-topo','RAN Topology'],['t-spectrum','Wave Physics'],['t-holdings','Who Holds What'],['t-gens','1G→5G'],['t-money','The Money']],
     plan:[['pl-timeline','The Sequence'],['pl-decisions','Three Commitments'],['pl-restraint','What I Won\'t Do'],['pl-score','Day-100 Scorecard']],
     q4:[['q4-board','The Board'],['q4-plays','Three Plays'],['q4-history','Pricing 2020→26'],['q4-btl','In-Market vs BTL'],['q4-model','Financial Model'],['q4-gov','Governance & Risk'],['q4-quarter','Oct → Dec']],
-    ir:[['ir-listing','Listing'],['ir-guidance','Guidance'],['ir-calendar','Calendar & Contacts']]
+    ir:[['ir-listing','Listing'],['ir-guidance','Guidance'],['ir-calendar','Calendar']]
   };
   const LBL={brief:'Company Brief',biz:'The Business',debt:'Debt vs Rivals',play:'Growth & M&A',network:'Network & Loyalty',coverage:'Coverage & Plans',telecom:'Telecom 101',plan:'The 100-Day Plan',q4:'Q4 Wireless Challenge · ON+QC',ir:'Investor Relations'};
 
@@ -4642,6 +4698,9 @@
   renderStack();
   renderWorld();
   setTimeout(()=>{ animateBars($('v-brief')); animateStack(); animateWorld(); },200);
+  let thSaved='dark'; try{ thSaved=localStorage.getItem('telcos-theme')||'dark'; }catch(e){}
+  if(thSaved==='light') applyTheme('light',false);
+  $('themeBtn').addEventListener('click',()=>applyTheme(THEME==='light'?'dark':'light',true));
 </script>
 </body>
 </html>
