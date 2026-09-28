@@ -137,7 +137,7 @@
 
   /* scorecard */
   .board{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
-  .board div{background:var(--panel);padding:14px 16px;font-size:14px}
+  .board>div{background:var(--panel);padding:14px 16px;font-size:14px}
   .board .hd{background:var(--panel-2);font-family:'Space Grotesk';font-weight:600;font-size:13px}
   .board .metric{font-family:'IBM Plex Mono';font-size:12px;color:var(--mute)}
   .lead{color:var(--acid);font-weight:600}.lag{color:var(--red);font-weight:600}.mid{color:var(--amber);font-weight:600}
@@ -551,7 +551,7 @@
 
   /* Q4 Monopoly board */
   .boardwrap{background:radial-gradient(ellipse at 50% 50%,#12181d 0%,#0a0d0f 88%);border:1px solid var(--line);border-radius:8px;padding:14px;container-type:inline-size}
-  .board{display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);gap:6px;aspect-ratio:1/1;width:100%;max-width:640px;margin:0 auto}
+  #q4Board{display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);gap:6px;aspect-ratio:1/1;width:100%;max-width:640px;margin:0 auto}
   .board .sq{position:relative;border-radius:4px;background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--line);padding:5px 4px;cursor:pointer;transition:transform .16s,border-color .16s;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;min-width:0;min-height:0}
   .board .sq:hover{transform:scale(1.07);z-index:5;border-color:var(--acid)}
   .board .sq.on{box-shadow:0 0 0 2px var(--acid) inset;z-index:4}
