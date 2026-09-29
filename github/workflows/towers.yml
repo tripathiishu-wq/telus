@@ -1,0 +1,223 @@
+# TELCOS · tower data for the Coverage tab map
+# Downloads ISED's Terrestrial Spectrum Licence Site Data Extract (the register celltowers.ca maps),
+# compresses it to towers.json and commits it next to index.html. Runs on demand and monthly.
+# Data: Innovation, Science and Economic Development Canada, Open Government Licence - Canada.
+name: Tower data (ISED)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 9 6 * *'
+
+permissions:
+  contents: write
+
+jobs:
+  towers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download ISED site data extract
+        run: |
+          URL=https://www.ic.gc.ca/engineering/SMS_TAFL_Files/Site_Data_Extract_FX.zip
+          for i in 1 2 3 4 5 6 7 8; do
+            echo "attempt $i"
+            rm -f site.zip
+            curl -fL -R --connect-timeout 60 --max-time 1800 --retry 3 --retry-all-errors --retry-delay 15 \
+              -A "Mozilla/5.0 (X11; Linux x86_64) TELCOS-towers/1.0" -o site.zip "$URL" && unzip -tq site.zip && break
+            sleep 45
+          done
+          unzip -tq site.zip
+          ls -la site.zip && unzip -l site.zip
+          echo "ASOF=$(date -u -r site.zip +%Y-%m-%d)" >> "$GITHUB_ENV"
+
+      - name: Build towers.json
+        run: |
+          cat > build_towers.py <<'PY'
+          import sys, os, csv, io, zipfile, json, math, base64, collections, datetime
+          csv.field_size_limit(10**9)
+          SRC = sys.argv[1] if len(sys.argv) > 1 else 'site.zip'
+          OUT = sys.argv[2] if len(sys.argv) > 2 else 'towers.json'
+
+          # ---- projection: spherical Lambert conformal conic (km), must match the app ----
+          R = 6371.0
+          P1, P2, P0, L0 = map(math.radians, (49.0, 77.0, 63.390675, -91.866667))
+          N = math.log(math.cos(P1) / math.cos(P2)) / math.log(math.tan(math.pi/4 + P2/2) / math.tan(math.pi/4 + P1/2))
+          F = math.cos(P1) * math.tan(math.pi/4 + P1/2) ** N / N
+          RHO0 = R * F / math.tan(math.pi/4 + P0/2) ** N
+          def proj(lon, lat):
+              rho = R * F / math.tan(math.pi/4 + math.radians(lat)/2) ** N
+              th = N * (math.radians(lon) - L0)
+              return (rho * math.sin(th), RHO0 - rho * math.cos(th))
+
+          PROV = ['BC','AB','SK','MB','ON','QC','NB','NS','PE','NL','YT','NT','NU']
+          # positional layout from ISED's field description (A=0): used when a file has no header row
+          POS = {'lic': 8, 'loc': 12, 'tech': 14, 'prov': 17, 'lat': 18, 'lon': 19, 'ht': 21, 'mod': 23, 'tx': 25, 'az': 53}
+          KEYS = {'lic': ['licensee name', 'licensee'], 'tech': ['radio technology', 'technology'], 'prov': ['province'],
+                  'lat': ['latitude'], 'lon': ['longitude'], 'ht': ['structure height'], 'mod': ['last modification', 'modification'],
+                  'tx': ['tx frequency', 'transmit freq', 'tx_freq'], 'az': ['tx antenna azimuth', 'tx_ant_azim', 'azimuth']}
+
+          def carrier(name):
+              u = name.upper()
+              if 'TELUS' in u: return 0
+              if 'BELL MOBILIT' in u or 'BELL CANADA' in u or 'BELL MTS' in u: return 1
+              if 'ROGERS' in u: return 2
+              if 'FREEDOM MOBILE' in u: return 3
+              if 'VIDEOTRON' in u or 'VIDÉOTRON' in u or 'QUEBECOR' in u: return 4
+              if 'SASKATCHEWAN TELECOM' in u or 'SASKTEL' in u: return 5
+              if 'BRAGG' in u or 'EASTLINK' in u: return 6
+              return None
+
+          def band(f):
+              if 617 <= f <= 652: return 1
+              if 728 <= f <= 768: return 2
+              if 869 <= f <= 894: return 4
+              if 1930 <= f <= 2000: return 8
+              if 2110 <= f <= 2200: return 16
+              if 2300 <= f <= 2360 or 2496 <= f <= 2690: return 32
+              if 3450 <= f < 3650: return 64
+              if 3650 <= f <= 3980: return 128
+              return 0
+
+          def num(s):
+              try: return float(str(s).replace(',', '.').strip())
+              except ValueError: return None
+
+          def members(path):
+              if path.lower().endswith('.zip'):
+                  z = zipfile.ZipFile(path)
+                  for n in z.namelist():
+                      if n.lower().endswith(('.csv', '.txt', '.tsv')) and z.getinfo(n).file_size > 1000:
+                          yield n, z.open(n)
+              else:
+                  yield path, open(path, 'rb')
+
+          stats = collections.Counter(); lic = collections.Counter(); techv = collections.Counter(); prov_seen = collections.Counter()
+          sites = {}; headers = []; maxmod = ''
+          for name, raw in members(SRC):
+              head = raw.read(65536)
+              enc = 'utf-8-sig'
+              try: head.decode('utf-8')
+              except UnicodeDecodeError: enc = 'cp1252'
+              first = head.decode(enc, errors='replace').splitlines()[0]
+              delim = max([',', ';', '\t', '|'], key=first.count)
+              stream = io.TextIOWrapper(io.BufferedReader(io.BytesIO(head + raw.read())), encoding=enc, errors='replace', newline='')
+              rd = csv.reader(stream, delimiter=delim)
+              row0 = next(rd)
+              low = [h.strip().lower() for h in row0]
+              has_header = any('latitude' in h or 'licensee' in h for h in low)
+              idx = dict(POS)
+              if has_header:
+                  for k, keys in KEYS.items():
+                      for key in keys:
+                          hit = [i for i, h in enumerate(low) if key in h and not h.startswith('rx') and ' rx ' not in (' ' + h + ' ')]
+                          if hit: idx[k] = hit[0]; break
+              headers.append({'file': name, 'header': has_header, 'delim': delim, 'enc': enc, 'cols': len(row0), 'idx': idx, 'first': row0[:12]})
+              def it():
+                  if not has_header: yield row0
+                  yield from rd
+              need = max(idx['lic'], idx['lat'], idx['lon'], idx['tx'])
+              for r in it():
+                  stats['rows'] += 1
+                  if len(r) <= need: stats['short'] += 1; continue
+                  nm = r[idx['lic']].strip()
+                  f = num(r[idx['tx']]); lat = num(r[idx['lat']]); lon = num(r[idx['lon']])
+                  if f is None or lat is None or lon is None: stats['unparsed'] += 1; continue
+                  if f > 100000: f /= 1e6
+                  b = band(f)
+                  if not b: stats['non_mobile_band'] += 1; continue
+                  lic[nm] += 1
+                  c = carrier(nm)
+                  if c is None: stats['other_licensee'] += 1; continue
+                  if lon > 0: lon = -lon
+                  if not (41 < lat < 84 and -142 < lon < -52): stats['out_of_canada'] += 1; continue
+                  tv = r[idx['tech']].strip() if len(r) > idx['tech'] else ''
+                  techv[tv] += 1
+                  nr = 'NR' in tv.upper().replace('NRZ', '') or '5G' in tv.upper()
+                  md = r[idx['mod']].strip()[:10] if len(r) > idx['mod'] else ''
+                  if md > maxmod and md[:2] in ('19', '20'): maxmod = md
+                  k = (c, round(lat, 4), round(lon, 4))
+                  s = sites.get(k)
+                  if not s:
+                      pv = r[idx['prov']].strip().upper()[:2] if len(r) > idx['prov'] else ''
+                      prov_seen[pv] += 1
+                      s = sites[k] = {'c': c, 'lat': lat, 'lon': lon, 'b': 0, 'n': 0, 'p': PROV.index(pv) if pv in PROV else 255, 'h': 0, 'az': collections.Counter()}
+                  s['b'] |= b
+                  if nr: s['n'] |= b
+                  if len(r) > idx['ht']:
+                      h = num(r[idx['ht']])
+                      if h and h > s['h']: s['h'] = h
+                  if len(r) > idx['az']:
+                      a = num(r[idx['az']])
+                      if a is not None and 0 <= a <= 360: s['az'][int(round(a / 5) * 5) % 360] += 1
+                  stats['kept'] += 1
+
+          # ---- compact encode (Z-order sorted, zigzag varint deltas, base64 columns) ----
+          Q = 0.02
+          def zz(v): return (v << 1) ^ (v >> 63)
+          def varint(v, out):
+              v = zz(v)
+              while True:
+                  b = v & 0x7F; v >>= 7
+                  if v: out.append(b | 0x80)
+                  else: out.append(b); break
+          def spread(v):
+              v &= 0xFFFFFFFF
+              for s_, m in ((16, 0x0000FFFF0000FFFF), (8, 0x00FF00FF00FF00FF), (4, 0x0F0F0F0F0F0F0F0F), (2, 0x3333333333333333), (1, 0x5555555555555555)):
+                  v = (v | (v << s_)) & m
+              return v
+          rows = []
+          for s in sites.values():
+              x, y = proj(s['lon'], s['lat']); qx, qy = round(x / Q), round(y / Q)
+              rows.append((spread(qx + 200000) | (spread(qy + 200000) << 1), qx, qy, s))
+          rows.sort(key=lambda t: (t[0], t[3]['c']))
+          XY, C, B, NB, P, H, A = bytearray(), bytearray(), bytearray(), bytearray(), bytearray(), bytearray(), bytearray()
+          px = py = 0
+          for _, qx, qy, s in rows:
+              varint(qx - px, XY); varint(qy - py, XY); px, py = qx, qy
+              C.append(s['c']); B.append(s['b']); NB.append(s['n']); P.append(s['p']); H.append(max(0, min(255, int(round(s['h'])))))
+              az = sorted({int(round(a / 2)) % 180 for a, _ in s['az'].most_common(3)}); A.extend(az + [255] * (3 - len(az)))
+          e = lambda b: base64.b64encode(bytes(b)).decode()
+          asof = os.environ.get('ASOF') or maxmod or datetime.date.today().isoformat()
+          try: asofL = datetime.date.fromisoformat(asof).strftime('%b %-d %Y')
+          except ValueError: asofL = asof
+          per = collections.Counter(s['c'] for s in sites.values())
+          pack = {'v': 2, 'n': len(rows), 'q': Q, 'asof': asof, 'asofL': asofL, 'src': 'ISED Spectrum Management System · Site_Data_Extract_FX',
+                  'xy': e(XY), 'c': e(C), 'b': e(B), 'nb': e(NB), 'p': e(P), 'h': e(H), 'a': e(A)}
+          json.dump(pack, open(OUT, 'w'), separators=(',', ':'))
+          names = ['TELUS', 'Bell', 'Rogers', 'Freedom', 'Vidéotron', 'SaskTel', 'Eastlink']
+          report = {'asof': asof, 'max_last_mod': maxmod, 'stats': dict(stats), 'sites_per_carrier': {names[k]: v for k, v in sorted(per.items())},
+                    'nr_sites_per_carrier': {names[k]: sum(1 for s in sites.values() if s['c'] == k and s['n']) for k in sorted(per)},
+                    'top_licensees': lic.most_common(30), 'radio_technology': techv.most_common(25), 'provinces': prov_seen.most_common(20), 'files': headers,
+                    'bytes': os.path.getsize(OUT)}
+          json.dump(report, open('towers-report.json', 'w'), indent=1, ensure_ascii=False)
+          md = ['## Tower data', f"ISED extract as of **{asof}** · {len(rows):,} carrier-sites · {os.path.getsize(OUT):,} bytes", '',
+                '| Carrier | Sites | 5G NR sites |', '|---|---:|---:|']
+          md += [f"| {names[k]} | {v:,} | {report['nr_sites_per_carrier'][names[k]]:,} |" for k, v in sorted(per.items())]
+          md += ['', '**Row stats:** ' + ', '.join(f'{k} {v:,}' for k, v in stats.items()), '', '**Radio technology values:** ' + ', '.join(f'{k or "(blank)"} {v:,}' for k, v in techv.most_common(12))]
+          md += ['', '**Top licensees (mobile bands):**'] + [f'- {v:,} · {k}' for k, v in lic.most_common(15)]
+          summ = os.environ.get('GITHUB_STEP_SUMMARY')
+          if summ: open(summ, 'a').write('\n'.join(md) + '\n')
+          print('\n'.join(md))
+          if len(rows) < 1000: sys.exit('Too few sites parsed; check towers-report.json')
+          PY
+          python3 build_towers.py site.zip towers.json
+
+      - name: Commit towers.json
+        run: |
+          git config user.name "towers-bot"
+          git config user.email "towers-bot@users.noreply.github.com"
+          git add towers.json
+          if git diff --cached --quiet; then echo "No change"; exit 0; fi
+          git commit -m "Tower data: ISED site extract $ASOF"
+          git pull --rebase
+          git push
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: towers
+          path: |
+            towers.json
+            towers-report.json
