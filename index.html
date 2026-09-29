@@ -950,6 +950,31 @@
   .twprov .pg{font-family:'IBM Plex Mono';font-size:10px;color:var(--dim);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .twprov .pb{height:3px;background:var(--panel-2);margin-top:8px}
   .twprov .pb b{display:block;height:100%;background:var(--pc);transition:width .5s}
+  .twpr{display:grid;grid-template-columns:10px minmax(0,1fr) auto;gap:10px;align-items:start;padding:9px 0;border-top:1px solid var(--line)}
+  .twpr:first-of-type{border-top:0}
+  .twpr>i{width:9px;height:9px;border-radius:50%;background:var(--c);margin-top:4px}
+  .twpr b{display:block;font-size:13px;color:var(--ink);font-weight:600}
+  .twpr span{display:block;font-size:11.5px;color:var(--mute);margin-top:1px}
+  .twpr em{display:block;font-style:normal;font-size:11px;color:var(--dim);margin-top:1px;line-height:1.35}
+  .twpr .tb{height:4px;background:var(--panel-2);margin-top:6px;position:relative;overflow:hidden}
+  .twpr .tb b{position:absolute;left:0;top:0;bottom:0;background:var(--c);display:block}
+  .twpr strong{font-family:'IBM Plex Mono';font-size:12px;color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .twpr.dim{opacity:.6} .twpr.dim strong{color:var(--dim);font-size:10.5px}
+  .twprov .pb2{display:flex} .twprov .pb2 b{flex:none} .twprov .pb2 u{display:block;height:100%;background:var(--mute);opacity:.45;flex:none}
+  .twtip .rl{font-size:11.5px;color:var(--ink);background:var(--panel-2);border-left:2px solid var(--tc,var(--acid));padding:5px 8px;margin:0 0 8px}
+  .twwho{margin-top:14px;border:1px solid var(--line);background:var(--panel)}
+  .twwr{display:grid;grid-template-columns:170px minmax(0,1fr) minmax(0,1.6fr);gap:18px;padding:13px 18px;border-top:1px solid var(--line);font-size:13px;color:var(--mute);align-items:start}
+  .twwr.hd{border-top:0;font-family:'IBM Plex Mono';font-size:10.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;padding:11px 18px}
+  .twwr[data-c]{cursor:pointer;transition:background .15s}
+  .twwr[data-c]:hover{background:var(--panel-2)}
+  .twwr.on{background:var(--panel-2);box-shadow:inset 3px 0 0 var(--c)}
+  .twwr .a{display:flex;align-items:center;gap:9px;color:var(--ink);font-weight:600;font-size:14px}
+  .twwr .a i{width:10px;height:10px;border-radius:50%;background:var(--c);flex:none}
+  .twwr .c{display:flex;flex-direction:column;gap:6px}
+  .twwr .pp{display:block;padding-left:16px;position:relative;line-height:1.45}
+  .twwr .pp i{position:absolute;left:0;top:5px;width:8px;height:8px;border-radius:50%;background:var(--c)}
+  .twwr .pp b{color:var(--ink);font-weight:600}
+  @media(max-width:900px){.twwr{grid-template-columns:1fr;gap:6px}.twwr.hd{display:none}}
   @media(max-width:1100px){.twprov{grid-template-columns:repeat(7,minmax(0,1fr))}}
   @media(max-width:980px){.twgrid{grid-template-columns:1fr}.twmap{height:58vh;min-height:380px}.twside{display:grid;grid-template-columns:1fr 1fr;gap:18px}}
   @media(max-width:620px){.twprov{grid-template-columns:repeat(4,minmax(0,1fr))}.twside{grid-template-columns:1fr}.twk .kv{font-size:34px}.twhud b{font-size:21px}}
@@ -1008,6 +1033,7 @@
     .dlrow .dlc2{text-align:right} .dlrow .dlc2::before{text-align:right}
     .dlhero .hv{font-size:clamp(34px,10vw,56px)}
   }
+  @media(max-width:620px){.board{overflow-x:auto}.board>div{padding:10px 10px}}
   /* theme toggle */
   :root{color-scheme:dark}
   :root[data-theme="light"]{color-scheme:light}
@@ -1941,8 +1967,9 @@
   <section id="cov-towers">
     <div class="wrap">
       <div class="shead"><span class="sno" style="color:var(--acid)">01</span><h2>Every tower, on the map</h2><span class="sub" id="twSub">ISED licensed sites</span></div>
-      <p class="intro">Every mobile site licensed in Canada, from ISED's spectrum register (the same data celltowers.ca maps). TELUS and Bell run one shared radio network but split the building: ISED lists TELUS on the sites in the West and Québec, and Bell on those in Ontario and the East. Purple and blue together are the network a TELUS customer uses. Switch carriers to compare, filter to 5G, and zoom into a city to see which way each antenna faces.</p>
+      <p class="intro">Every mobile site licensed in Canada, from ISED's spectrum register (the same data celltowers.ca maps). TELUS and Bell run one shared radio network but split the building: ISED lists TELUS on the sites in the West and Québec, and Bell on those in Ontario and the East. Purple and blue together are the network a TELUS customer uses. Switch carriers to compare, filter to 5G, and zoom into a city to see which way each antenna faces. Switch to <b>Who carries customers</b> to see whose towers each carrier's customers use where it hasn't built its own.</p>
       <div class="twctl">
+        <div class="twgrp"><span class="lbl">View</span><div class="lvchips" id="twLens"></div></div>
         <div class="twgrp"><span class="lbl">Network</span><div class="lvchips" id="twCar"></div></div>
         <div class="twgrp"><span class="lbl">Band</span><div class="lvchips" id="twTech"></div></div>
         <div class="twgrp"><span class="lbl">Show</span><div class="lvchips" id="twMode"></div></div>
@@ -1961,6 +1988,7 @@
       </div>
       <div class="twjump"><span class="lbl">Jump to</span><div class="lvchips" id="twJump"></div></div>
       <div class="twprov" id="twProv"></div>
+      <div class="twwho" id="twWho"></div>
       <div class="note" id="twNote"></div>
     </div>
   </section>
@@ -3413,10 +3441,42 @@
   let twData=TW_DATA;
   const TW_CAR=[
     {k:'telus',n:'TELUS',c:'#b08ad8'},{k:'bell',n:'Bell',c:'#3a86ff'},{k:'rogers',n:'Rogers',c:'#ff5964'},
-    {k:'quebecor',n:'Freedom · Vidéotron',s:'Freedom',c:'#2ec4b6'},{k:'sasktel',n:'SaskTel',c:'#8ce99a'},{k:'eastlink',n:'Eastlink',c:'#ff7b54'}
+    {k:'quebecor',n:'Freedom · Vidéotron',s:'Freedom',c:'#2ec4b6'},{k:'sasktel',n:'SaskTel',c:'#8ce99a'},{k:'eastlink',n:'Eastlink',c:'#ff7b54'},
+    // regional partners: shown only in the "who carries customers" view (x:1), when the data includes them
+    {k:'tbaytel',n:'Tbaytel',c:'#6aa5ff',x:1},{k:'ice',n:'Ice Wireless',c:'#a06fc4',x:1},{k:'ssi',n:'SSi Mobile',c:'#ff9f1c',x:1},{k:'nwtel',n:'Northwestel',c:'#dfe8ea',x:1}
   ];
   // data carrier ids (by ISED licensee) -> map carriers; Freedom's network is licensed to Vidéotron, so Quebecor is one network
-  const TW_CMAP=[0,1,2,3,3,4,5];
+  const TW_CMAP=[0,1,2,3,3,4,5,6,7,8,9];
+  // Who carries each carrier's customers where it doesn't build its own sites.
+  // share = network sharing: every partner site carries them. roam = roaming / MVNO: partner sites more than 10 km from the carrier's own nearest site.
+  // note = listed, not counted on the map.
+  const TW_ROAM_KM=10;
+  const TW_PART={
+    0:{own:'BC, Alberta and eastern Québec, plus parts of Manitoba and Ontario',list:[
+      {p:1,kind:'share',how:'Network sharing',since:'since 2001',where:'Ontario, Québec, Atlantic Canada, Manitoba and the North'},
+      {p:4,kind:'share',how:'Network sharing',since:'since 2009',where:'Saskatchewan, where SaskTel owns the network'}]},
+    1:{own:'Ontario, Québec, Atlantic Canada, Manitoba and the North',list:[
+      {p:0,kind:'share',how:'Network sharing',since:'since 2001',where:'BC, Alberta and eastern Québec'},
+      {p:4,kind:'share',how:'Network sharing',since:'since 2009',where:'Saskatchewan, where SaskTel owns the network'},
+      {p:9,kind:'roam',how:'Roaming',since:'',where:'Northwestel, a Bell company, in the territories'}]},
+    2:{own:'Its own sites in every province',list:[
+      {p:6,kind:'share',how:'Wireless partnership',since:'since 2010, renewed 2019 for 20 years',where:'Northwestern Ontario'},
+      {p:8,kind:'roam',how:'Roaming',since:'since 2019',where:'All 25 Nunavut communities'},
+      {p:3,nm:'Vidéotron',kind:'note',how:'Shared LTE deal',since:'2013',where:'Québec and Ottawa. In dispute since 2018; Rogers built its own sites'}]},
+    3:{own:'Freedom in Ontario, BC and Alberta; Vidéotron in Québec; Manitoba as an MVNO since May 2024, own build from 2026',list:[
+      {p:2,kind:'roam',how:'MVNO + domestic roaming',since:'since 2023',where:'Off its own network, anywhere Rogers reaches'},
+      {p:1,kind:'roam',how:'Wholesale roaming',since:'widened by CRTC, Sep 2025',where:'The full Bell + TELUS shared network'},
+      {p:0,kind:'roam',how:'Wholesale roaming',since:'widened by CRTC, Sep 2025',where:'The full Bell + TELUS shared network'}]},
+    4:{own:'Saskatchewan',list:[
+      {p:1,kind:'share',how:'Network sharing',since:'since 2009',where:'Outside Saskatchewan'},
+      {p:0,kind:'share',how:'Network sharing',since:'since 2009',where:'Outside Saskatchewan'}]},
+    5:{own:'Nova Scotia and PEI, plus parts of NB, NL, Ontario and Alberta',list:[
+      {p:1,kind:'roam',how:'Extended coverage',since:'',where:'Across Canada'},
+      {p:2,kind:'roam',how:'Extended coverage',since:'',where:'Across Canada'},
+      {p:0,kind:'roam',how:'Extended coverage',since:'',where:'Across Canada'},
+      {p:3,kind:'roam',how:'Extended coverage',since:'',where:'Québec',nm:'Vidéotron',pv:[5]}]}
+  };
+  const TW_NORTH='Ice Wireless (Yukon, NWT, Nunavut and Nunavik; roaming deals with Bell, Rogers, TELUS and Vidéotron), SSi Mobile (Nunavut; Rogers partner) and Northwestel (a Bell company).';
   const twCn=i=>TW_CAR[i].s||TW_CAR[i].n;
   const TW_BAND=[['600',1],['700',2],['850',4],['1900',8],['AWS',16],['2.3/2.5 GHz',32],['3500',64],['3800',128]];
   // f = bit in the per-site filter mask; the band mask used for reach follows the filter
@@ -3449,7 +3509,7 @@
     if(!D||!D.n){ tw.d=null; return; }
     const n=D.n, X=new Float32Array(n), Y=new Float32Array(n), r=twVar(twU8(D.xy));
     let x=0,y=0; for(let i=0;i<n;i++){ x+=r.next(); y+=r.next(); X[i]=x*D.q; Y[i]=y*D.q; }
-    const C=twU8(D.c).map(c=>TW_CMAP[c]??c), B=twU8(D.b), NB=D.nb?twU8(D.nb):new Uint8Array(n), P=twU8(D.p), H=twU8(D.h), A=twU8(D.a), M=new Uint8Array(n), Fm=new Uint8Array(n);
+    const C=twU8(D.c).map(c=>TW_CMAP[c]??c), B=twU8(D.b), NB=D.nb?twU8(D.nb):new Uint8Array(n), P=twU8(D.p), H=twU8(D.h), A=twU8(D.a), M=new Uint16Array(n), Fm=new Uint8Array(n);
     let hasNR=false;
     for(let i=0;i<n;i++){ const b=B[i], nb=NB[i]; if(nb) hasNR=true; Fm[i]=(b?1:0)|(nb?2:0)|(b&192?4:0)|(b&3?8:0); }
     // carriers sharing each physical site (records within ~150 m)
@@ -3459,14 +3519,14 @@
     // 8 km grid for hover lookup
     const grid=new Map();
     for(let i=0;i<n;i++){ const k=Math.floor(X[i]/8)*100000+Math.floor(Y[i]/8); let a=grid.get(k); if(!a){ a=[]; grid.set(k,a); } a.push(i); }
-    tw.d={n,X,Y,C,B,NB,P,H,A,M,F:Fm,grid,hasNR};
+    tw.d={n,X,Y,C,B,NB,P,H,A,M,F:Fm,grid,hasNR}; tw.cu=null;
     twData=D;
   }
 
   function twInit(){
     const cv=$('twCanvas'); if(!cv||!TW_GEO) return;
     if(!tw){
-      tw={cv,ctx:cv.getContext('2d'),off:document.createElement('canvas'),car:new Set([0,1]),pri:0,tech:'all',mode:'foot',prov:null,selProv:null,
+      tw={cv,ctx:cv.getContext('2d'),off:document.createElement('canvas'),car:new Set([0,1]),pri:0,tech:'all',mode:'foot',lens:'own',cu:null,prov:null,selProv:null,
           cx:0,cy:0,s:1,W:0,H:0,dpr:1,active:false,hover:-1,raf:0,fly:0,d:null};
       tw.octx=tw.off.getContext('2d');
       twDecode(); twLoad(twData); twBuildUI(); twBind(); twRemote();
@@ -3476,27 +3536,60 @@
     twResize(true); twStats();
   }
 
+  function twCust(ci){
+    const d=tw.d; if(!d) return null;
+    if(tw.cu&&tw.cu.ci===ci) return tw.cu;
+    const T=TW_PART[ci]||{list:[]}, inc=new Uint8Array(d.n), R=TW_ROAM_KM, g=new Map(), role=new Map();
+    for(let i=0;i<d.n;i++) if(d.C[i]===ci){ inc[i]=1; const k=Math.floor(d.X[i]/R)*100000+Math.floor(d.Y[i]/R); let a=g.get(k); if(!a){ a=[]; g.set(k,a); } a.push(i); }
+    const near=i=>{ const x=d.X[i], y=d.Y[i], gx=Math.floor(x/R), gy=Math.floor(y/R);
+      for(let a=gx-1;a<=gx+1;a++) for(let b=gy-1;b<=gy+1;b++){ const L=g.get(a*100000+b); if(!L) continue; for(const j of L){ const dx=d.X[j]-x, dy=d.Y[j]-y; if(dx*dx+dy*dy<R*R) return true; } } return false; };
+    T.list.forEach(e=>{ if(e.kind!=='note') role.set(e.p,e); });
+    for(let i=0;i<d.n;i++){ const c=d.C[i]; if(c===ci) continue; const e=role.get(c); if(!e) continue;
+      if(e.pv&&e.pv.indexOf(d.P[i])<0) continue;
+      if(e.kind==='share') inc[i]=2; else if(!near(i)) inc[i]=3; }
+    return tw.cu={ci,inc};
+  }
+  function twVisFn(){ const tf=twTf(), d=tw.d;
+    if(tw.lens==='cust'){ const inc=twCust(tw.pri).inc; return i=>inc[i]&&(d.F[i]&tf); }
+    return i=>tw.car.has(d.C[i])&&(d.F[i]&tf); }
+  function twSel(){
+    if(tw.lens==='cust'){ const s=[tw.pri]; (TW_PART[tw.pri]||{list:[]}).list.forEach(e=>{ if(e.kind!=='note'&&s.indexOf(e.p)<0) s.push(e.p); }); return s.reverse(); }
+    return [...tw.car].sort((a,b)=>(a===tw.pri)-(b===tw.pri)); }
+  function twSetLens(l,ci){ tw.lens=l; if(ci!=null){ tw.pri=ci; if(l==='own'&&!tw.car.has(ci)) tw.car.add(ci); } if(l==='cust'&&!TW_PART[tw.pri]) tw.pri=0; twChips(); twStats(); twReq(); }
+  function twWho(){
+    const el=$('twWho'); if(!el) return; const d=tw.d;
+    const has=j=>!d||j<6||d.C.indexOf(j)>=0;
+    const pp=e=>'<span class="pp" style="--c:'+TW_CAR[e.p].c+'"><i></i><b>'+(e.nm||twCn(e.p))+'</b> · '+e.how+(e.since?' ('+e.since+')':'')+'. '+e.where+'</span>';
+    el.innerHTML='<div class="twwr hd"><span>Customers of</span><span>Build their own sites in</span><span>Where they don\'t, they ride on</span></div>'+
+      Object.keys(TW_PART).map(k=>{ const ci=+k, T=TW_PART[ci];
+        return '<div class="twwr'+(tw.lens==='cust'&&tw.pri===ci?' on':'')+'" data-c="'+ci+'" style="--c:'+TW_CAR[ci].c+'" title="Show on the map"><span class="a"><i></i>'+TW_CAR[ci].n+'</span><span class="b">'+T.own+'</span><span class="c">'+T.list.map(pp).join('')+'</span></div>'; }).join('')+
+      '<div class="twwr nx"><span class="a"><i style="background:var(--dim)"></i>The North</span><span class="b">Regional carriers of its own</span><span class="c">'+TW_NORTH+'</span></div>';
+    el.querySelectorAll('.twwr[data-c]').forEach(r=>r.onclick=()=>{ twSetLens('cust',+r.dataset.c); const m=$('twMap'); if(m&&m.scrollIntoView) m.scrollIntoView({behavior:'smooth',block:'center'}); });
+  }
   function twNoData(){ $('twMap').classList.toggle('nodata',!tw.d); if(!tw.d) $('twEmpty').textContent='Loading tower data…'; }
   // same-origin towers.json (refreshed monthly by the repo's GitHub workflow) replaces the built-in snapshot when newer
   function twRemote(){
     if(!window.fetch||location.protocol==='file:') return;
     fetch('towers.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(D=>{
-      if(!D||!D.n||(twData&&String(D.asof)<=String(twData.asof))){ if(!tw.d) $('twEmpty').textContent='Tower data unavailable'; return; }
-      twLoad(D); twNoData(); twTechChips(); twNote(); twStats(); twReq();
+      if(!D||!D.n||(twData&&(String(D.asof)<String(twData.asof)||(String(D.asof)===String(twData.asof)&&(D.v||0)<=(twData.v||0))))){ if(!tw.d) $('twEmpty').textContent='Tower data unavailable'; return; }
+      twLoad(D); twNoData(); twTechChips(); twNote(); twWho(); twStats(); twReq();
     }).catch(()=>{ if(!tw.d) $('twEmpty').textContent='Tower data unavailable'; });
   }
   function twTechChips(){ const nr=tw.d&&tw.d.hasNR; if(!nr&&tw.tech==='nr') tw.tech='all';
     $('twTech').querySelectorAll('.lvchip').forEach(b=>{ b.style.display=b.dataset.k==='nr'&&!nr?'none':''; }); twChips(); }
   function twNote(){
     const src=twData?('ISED Spectrum Management System, terrestrial spectrum licence site data, extract of '+twData.asofL+' (Open Government Licence – Canada). celltowers.ca maps the same register.'):'ISED Spectrum Management System site data.';
-    $('twNote').innerHTML='◈ <b>Source:</b> '+src+' A site is a unique licensed location per carrier. Under their network-sharing agreement TELUS and Bell carry each other\'s customers, and ISED lists each shared site under the partner that built it, so TELUS + Bell together is the TELUS network. Freedom\'s sites are licensed to Vidéotron (both Quebecor) and are shown as one network. Bands come from the licensed transmit frequencies; <b>5G</b> means ISED lists NR as the radio technology; 3500 and 3800 MHz are 5G mid-band and 600 and 700 MHz are low-band. <b>The footprint is an estimate, not a measured signal map:</b> each site is drawn with a reach of about 12 km if it carries a low band (600/700/850 MHz), 5 km for 1900 MHz, AWS or 2.3/2.5 GHz, and 1.5 km for 3500/3800 MHz. Real coverage depends on terrain, power and antenna height. Basemap: Natural Earth.';
+    $('twNote').innerHTML='◈ <b>Source:</b> '+src+' A site is a unique licensed location per carrier. Under their network-sharing agreement TELUS and Bell carry each other\'s customers, and ISED lists each shared site under the partner that built it, so TELUS + Bell together is the TELUS network. Freedom\'s sites are licensed to Vidéotron (both Quebecor) and are shown as one network. Bands come from the licensed transmit frequencies; <b>5G</b> means ISED lists NR as the radio technology; 3500 and 3800 MHz are 5G mid-band and 600 and 700 MHz are low-band. <b>The footprint is an estimate, not a measured signal map:</b> each site is drawn with a reach of about 12 km if it carries a low band (600/700/850 MHz), 5 km for 1900 MHz, AWS or 2.3/2.5 GHz, and 1.5 km for 3500/3800 MHz. Real coverage depends on terrain, power and antenna height. <b>Who carries customers:</b> network-sharing partners count every site they have; roaming and MVNO partners count only sites more than '+TW_ROAM_KM+' km from the carrier\'s own nearest site, where its customers would actually roam. Arrangements: Bell–TELUS network sharing (since 2001); SaskTel network-sharing agreements with Bell and TELUS (Oct 2009); Vidéotron–Rogers MVNO and domestic roaming agreement (2023); CRTC Telecom Decision 2025-245 (Sep 18 2025) requires Bell and TELUS wholesale roaming to cover their full shared network; Eastlink extended coverage on Bell, Rogers, TELUS and Vidéotron; Tbaytel–Rogers partnership (2010, renewed 2019); SSi–Rogers roaming (2019). Basemap: Natural Earth.';
   }
   function twBuildUI(){
-    $('twCar').innerHTML=TW_CAR.map((c,i)=>'<button class="lvchip" data-i="'+i+'" style="--c:'+c.c+'"><i></i>'+c.n+'</button>').join('');
+    $('twLens').innerHTML='<button class="lvchip" data-k="own" style="--c:var(--ink)"><i></i>Tower owners</button><button class="lvchip" data-k="cust" style="--c:var(--ink)"><i></i>Who carries customers</button>';
+    $('twLens').querySelectorAll('.lvchip').forEach(b=>b.onclick=()=>twSetLens(b.dataset.k));
+    $('twCar').innerHTML=TW_CAR.map((c,i)=>c.x?'':'<button class="lvchip" data-i="'+i+'" style="--c:'+c.c+'"><i></i>'+c.n+'</button>').join('');
     $('twTech').innerHTML=TW_TECH.map(t=>'<button class="lvchip" data-k="'+t.k+'" style="--c:var(--acid)"><i></i>'+t.n+'</button>').join('');
     $('twMode').innerHTML=TW_MODE.map(t=>'<button class="lvchip" data-k="'+t.k+'" style="--c:var(--blue)"><i></i>'+t.n+'</button>').join('');
     $('twJump').innerHTML=TW_JUMP.map(n=>'<button class="lvchip" data-n="'+n+'" style="--c:var(--mute)"><i></i>'+n+'</button>').join('');
     $('twCar').querySelectorAll('.lvchip').forEach(b=>b.onclick=()=>{ const i=+b.dataset.i;
+      if(tw.lens==='cust'){ tw.pri=i; twChips(); twStats(); twReq(); return; }
       if(tw.car.has(i)){ if(tw.car.size>1){ tw.car.delete(i); if(tw.pri===i) tw.pri=[...tw.car][0]; } }
       else { tw.car.add(i); tw.pri=i; }
       twChips(); twStats(); twReq(); });
@@ -3505,10 +3598,13 @@
     $('twJump').querySelectorAll('.lvchip').forEach(b=>b.onclick=()=>{ const n=b.dataset.n; tw.selProv=null;
       if(n==='Canada'){ twFit(true); } else { const c=tw.cities.find(x=>x.n===n); if(c) twFly(c.x,c.y,Math.min(tw.W,tw.H)/70); }
       twStats(); });
-    twNote(); twTechChips();
+    twNote(); twTechChips(); twWho();
   }
   function twChips(){
-    $('twCar').querySelectorAll('.lvchip').forEach(b=>b.classList.toggle('on',tw.car.has(+b.dataset.i)));
+    $('twCar').querySelectorAll('.lvchip').forEach(b=>b.classList.toggle('on',tw.lens==='cust'?+b.dataset.i===tw.pri:tw.car.has(+b.dataset.i)));
+    $('twLens').querySelectorAll('.lvchip').forEach(b=>b.classList.toggle('on',b.dataset.k===tw.lens));
+    $('twMap').classList.toggle('cust',tw.lens==='cust');
+    const w=$('twWho'); if(w) w.querySelectorAll('.twwr[data-c]').forEach(r=>r.classList.toggle('on',tw.lens==='cust'&&+r.dataset.c===tw.pri));
     $('twTech').querySelectorAll('.lvchip').forEach(b=>b.classList.toggle('on',b.dataset.k===tw.tech));
     $('twMode').querySelectorAll('.lvchip').forEach(b=>b.classList.toggle('on',b.dataset.k===tw.mode));
   }
@@ -3517,6 +3613,7 @@
     const d=tw.d, side=$('twSide'); if(!side) return;
     const tm=TW_TECH.find(t=>t.k===tw.tech), pc=TW_CAR[tw.pri];
     if(!d){ side.innerHTML='<div class="twk"><div class="kl">Tower data</div><div class="ks">Loading ISED site data…</div></div>'; $('twProv').innerHTML=''; return; }
+    if(tw.lens==='cust') return twStatsCust();
     const g5=d.hasNR?2:4, g5l=d.hasNR?'5G':'5G mid-band';
     const cnt=new Array(TW_CAR.length).fill(0), all=new Array(TW_CAR.length).fill(0), mid=new Array(TW_CAR.length).fill(0);
     const pv=TW_PROV.map(()=>[0,0,0]);
@@ -3528,11 +3625,34 @@
       '<div class="twk"><div class="kl">'+pc.n+' · '+tm.d+'</div><div class="kv" style="color:'+pc.c+'">'+twFmt(cnt[tw.pri])+'</div><div class="ks">licensed sites across Canada</div></div>'+
       '<div class="twk2"><div><b style="color:var(--acid)">'+twPct(mid[tw.pri],all[tw.pri])+'</b><span>of '+twCn(tw.pri)+' sites carry '+g5l+'</span></div>'+shared+'</div>'+
       '<div class="twcmp"><div class="kl">Sites by carrier · '+tm.n.toLowerCase()+'</div>'+
-        TW_CAR.map((c,i)=>'<div class="twcr'+(tw.car.has(i)?' on':'')+'" data-i="'+i+'" style="--c:'+c.c+'"><span>'+twCn(i)+'</span><div class="tb"><b style="width:'+(cnt[i]/mx*100).toFixed(1)+'%"></b></div><span class="tv">'+twFmt(cnt[i])+'</span></div>').join('')+'</div>';
+        TW_CAR.map((c,i)=>c.x?'':'<div class="twcr'+(tw.car.has(i)?' on':'')+'" data-i="'+i+'" style="--c:'+c.c+'"><span>'+twCn(i)+'</span><div class="tb"><b style="width:'+(cnt[i]/mx*100).toFixed(1)+'%"></b></div><span class="tv">'+twFmt(cnt[i])+'</span></div>').join('')+'</div>';
     side.querySelectorAll('.twcr').forEach(r=>r.onclick=()=>{ const i=+r.dataset.i; if(!tw.car.has(i)){ tw.car.add(i); } tw.pri=i; twChips(); twStats(); twReq(); });
     const pm=Math.max(...pv.map(p=>p[0]),1);
     $('twProv').style.setProperty('--pc',pc.c);
     $('twProv').innerHTML=TW_PROV.map((p,i)=>'<div data-p="'+p+'" class="'+(tw.selProv===p?'on':'')+'" title="'+TW_PN[p]+'"><div class="pa">'+p+'</div><div class="pv">'+twFmt(pv[i][0])+'</div><div class="pg">'+(!pv[i][0]?'–':tw.tech==='all'?twPct(pv[i][1],pv[i][0])+' '+(d.hasNR?'5G':'5G mid'):twPct(pv[i][0],pv[i][2])+' of sites')+'</div><div class="pb"><b style="width:'+(pv[i][0]/pm*100).toFixed(1)+'%"></b></div></div>').join('');
+    $('twProv').querySelectorAll('[data-p]').forEach(el=>el.onclick=()=>{ const p=tw.prov.find(x=>x.c===el.dataset.p); if(!p) return;
+      tw.selProv=p.c; const [x0,y0,x1,y1]=p.bb; twFly((x0+x1)/2,(y0+y1)/2,Math.min(tw.W/(x1-x0),tw.H/(y1-y0))*0.9); twStats(); });
+    $('twSub').textContent=twData?('ISED licensed sites · '+twData.asofL):'ISED licensed sites';
+  }
+
+  function twStatsCust(){
+    const d=tw.d, side=$('twSide'), ci=tw.pri, pc=TW_CAR[ci], T=TW_PART[ci], cu=twCust(ci), tf=twTf(), tm=TW_TECH.find(t=>t.k===tw.tech);
+    const by=new Map(); let own=0, tot=0; const pv=TW_PROV.map(()=>({own:0,tot:0,by:new Map()}));
+    for(let i=0;i<d.n;i++){ const r=cu.inc[i]; if(!r||!(d.F[i]&tf)) continue; tot++; const p=pv[d.P[i]];
+      if(r===1){ own++; if(p){ p.own++; p.tot++; } }
+      else { by.set(d.C[i],(by.get(d.C[i])||0)+1); if(p){ p.tot++; p.by.set(d.C[i],(p.by.get(d.C[i])||0)+1); } } }
+    const mx=Math.max(own,...by.values(),1);
+    const row=(c,t1,t2,n,dim,nm)=>'<div class="twpr'+(dim?' dim':'')+'" style="--c:'+TW_CAR[c].c+'"><i></i><div><b>'+(nm||twCn(c))+'</b><span>'+t1+'</span>'+(t2?'<em>'+t2+'</em>':'')+'<div class="tb"><b style="width:'+(n==null?0:n/mx*100).toFixed(1)+'%"></b></div></div><strong>'+(n==null?'not mapped':twFmt(n))+'</strong></div>';
+    const has=j=>d.C.indexOf(j)>=0;
+    side.innerHTML='<div class="twk"><div class="kl">'+pc.n+' customers · '+tm.d+'</div><div class="kv" style="color:'+pc.c+'">'+twFmt(tot)+'</div><div class="ks">sites carry them across Canada</div></div>'+
+      '<div class="twk2"><div><b>'+twPct(own,tot)+'</b><span>on its own sites</span></div><div><b>'+twFmt(tot-own)+'</b><span>partner sites fill the gaps</span></div></div>'+
+      '<div class="twcmp"><div class="kl">Who carries them</div>'+row(ci,'Own sites','',own)+
+        T.list.map(e=>row(e.p,e.how+(e.since?' · '+e.since:''),e.where,e.kind==='note'||!has(e.p)?null:(by.get(e.p)||0),e.kind==='note',e.nm)).join('')+'</div>';
+    const pm=Math.max(...pv.map(p=>p.tot),1);
+    $('twProv').style.setProperty('--pc',pc.c);
+    $('twProv').innerHTML=TW_PROV.map((p,i)=>{ const v=pv[i]; let host='', hn=0; v.by.forEach((n,c)=>{ if(n>hn){ hn=n; host=twCn(c); } });
+      const lab=!v.tot?'–':v.own>=hn?'own '+twPct(v.own,v.tot):host+' '+twPct(hn,v.tot);
+      return '<div data-p="'+p+'" class="'+(tw.selProv===p?'on':'')+'" title="'+TW_PN[p]+'"><div class="pa">'+p+'</div><div class="pv">'+twFmt(v.tot)+'</div><div class="pg">'+lab+'</div><div class="pb pb2"><b style="width:'+(v.own/pm*100).toFixed(1)+'%"></b><u style="width:'+((v.tot-v.own)/pm*100).toFixed(1)+'%"></u></div></div>'; }).join('');
     $('twProv').querySelectorAll('[data-p]').forEach(el=>el.onclick=()=>{ const p=tw.prov.find(x=>x.c===el.dataset.p); if(!p) return;
       tw.selProv=p.c; const [x0,y0,x1,y1]=p.bb; twFly((x0+x1)/2,(y0+y1)/2,Math.min(tw.W/(x1-x0),tw.H/(y1-y0))*0.9); twStats(); });
     $('twSub').textContent=twData?('ISED licensed sites · '+twData.asofL):'ISED licensed sites';
@@ -3577,14 +3697,14 @@
     const x0=cx-W/2/s, x1=cx+W/2/s, y0=cy-H/2/s, y1=cy+H/2/s;
     let inView=0;
     if(d){
-      const sel=[...tw.car].sort((a,b)=>(a===tw.pri)-(b===tw.pri));
+      const sel=twSel(), vis=twVisFn();
       // footprint: union of reach circles per carrier, flattened then laid on at low opacity
       if(tw.mode==='foot'){
         const o=tw.off, oc=tw.octx;
         sel.forEach(ci=>{
           oc.setTransform(1,0,0,1,0,0); oc.clearRect(0,0,o.width,o.height); wt(oc);
           oc.fillStyle=TW_CAR[ci].c; oc.beginPath(); let any=0;
-          for(let i=0;i<d.n;i++){ if(d.C[i]!==ci||!(d.F[i]&tf)) continue; const r=twRad(twBm(i)), x=d.X[i], y=d.Y[i];
+          for(let i=0;i<d.n;i++){ if(d.C[i]!==ci||!vis(i)) continue; const r=twRad(twBm(i)), x=d.X[i], y=d.Y[i];
             if(x+r<x0||x-r>x1||y+r<y0||y-r>y1) continue; oc.moveTo(x+r,y); oc.arc(x,y,r,0,6.2832); any=1; }
           if(!any) return; oc.fill();
           ctx.setTransform(1,0,0,1,0,0); const fa=s>3?.14:s>1?.22:.3; ctx.globalAlpha=ci===tw.pri?fa:fa*.7; ctx.drawImage(o,0,0); ctx.globalAlpha=1;
@@ -3595,7 +3715,7 @@
       const dr=s<.35?(light?1.6:1.2):s<1.2?1.7:s<5?2.3:s<20?3:3.8, sq=dr<2;
       ctx.globalCompositeOperation=light?'source-over':'lighter';
       sel.forEach(ci=>{ ctx.fillStyle=TW_CAR[ci].c; ctx.globalAlpha=s<.35?(light?.6:.55):.95; ctx.beginPath();
-        for(let i=0;i<d.n;i++){ if(d.C[i]!==ci||!(d.F[i]&tf)) continue; const sx=twSx(d.X[i]), sy=twSy(d.Y[i]);
+        for(let i=0;i<d.n;i++){ if(d.C[i]!==ci||!vis(i)) continue; const sx=twSx(d.X[i]), sy=twSy(d.Y[i]);
           if(sx<-6||sx>W+6||sy<-6||sy>H+6) continue; inView++;
           if(sq) ctx.rect(sx-dr/2,sy-dr/2,dr,dr); else { ctx.moveTo(sx+dr,sy); ctx.arc(sx,sy,dr,0,6.2832); } }
         ctx.fill(); });
@@ -3604,7 +3724,7 @@
       if(s>=22){
         const L=Math.min(22,6+s*.28);
         sel.forEach(ci=>{ ctx.fillStyle=TW_CAR[ci].c; ctx.strokeStyle=TW_CAR[ci].c; ctx.lineWidth=1;
-          for(let i=0;i<d.n;i++){ if(d.C[i]!==ci||!(d.F[i]&tf)) continue; const sx=twSx(d.X[i]), sy=twSy(d.Y[i]);
+          for(let i=0;i<d.n;i++){ if(d.C[i]!==ci||!vis(i)) continue; const sx=twSx(d.X[i]), sy=twSy(d.Y[i]);
             if(sx<-L||sx>W+L||sy<-L||sy>H+L) continue;
             const g=Math.atan2(d.X[i],tw.rho0-d.Y[i]);
             for(let k=0;k<3;k++){ const a=d.A[3*i+k]; if(a===255) continue; const th=a*2*Math.PI/180-g-Math.PI/2;
@@ -3631,24 +3751,28 @@
     }
     // HUD
     $('twView').textContent=twFmt(inView);
-    $('twViewL').textContent=(tw.car.size>3?'sites':[...tw.car].map(twCn).join(' + ')+' sites')+' in view';
+    $('twViewL').textContent=tw.lens==='cust'?'sites carrying '+TW_CAR[tw.pri].n+' customers in view':(tw.car.size>3?'sites':[...tw.car].map(twCn).join(' + ')+' sites')+' in view';
     const nice=[1,2,5,10,20,50,100,200,500,1000]; let km=nice[0]; for(const v of nice){ if(v*s<=130) km=v; }
     $('twScale').querySelector('i').style.width=(km*s).toFixed(0)+'px'; $('twScale').querySelector('span').textContent=km+' km';
   }
 
   // ---- interaction ----
   function twNearest(px,py){
-    const d=tw.d; if(!d) return -1; const tf=twTf();
+    const d=tw.d; if(!d) return -1; const vis=twVisFn();
     const wx=tw.cx+(px-tw.W/2)/tw.s, wy=tw.cy-(py-tw.H/2)/tw.s, R=Math.max(10,8)/tw.s;
     let best=-1, bd=R*R, g0=Math.floor((wx-R)/8), g1=Math.floor((wx+R)/8), h0=Math.floor((wy-R)/8), h1=Math.floor((wy+R)/8);
     if((g1-g0)*(h1-h0)>400) return -1;
     for(let g=g0;g<=g1;g++) for(let h=h0;h<=h1;h++){ const a=d.grid.get(g*100000+h); if(!a) continue;
-      for(const i of a){ if(!tw.car.has(d.C[i])||!(d.F[i]&tf)) continue; const dx=d.X[i]-wx, dy=d.Y[i]-wy, q=dx*dx+dy*dy;
+      for(const i of a){ if(!vis(i)) continue; const dx=d.X[i]-wx, dy=d.Y[i]-wy, q=dx*dx+dy*dy;
         if(q<bd||(q===bd&&d.C[i]===tw.pri)){ bd=q; best=i; } } }
     return best;
   }
   function twNear(x,y){ let b=null, bd=1e18; tw.cities.forEach(c=>{ const q=(c.x-x)**2+(c.y-y)**2; if(q<bd){ bd=q; b=c; } }); const km=Math.sqrt(bd);
     return !b?'':km<7?'in '+b.n:Math.round(km)+' km from '+b.n; }
+  function twRole(i){
+    if(tw.lens!=='cust'||!tw.cu) return ''; const r=tw.cu.inc[i], n=twCn(tw.pri), e=(TW_PART[tw.pri]||{list:[]}).list.find(x=>x.p===tw.d.C[i]);
+    const t=r===1?n+'\'s own site':r===2?'Carries '+n+' customers · '+(e?e.how:'Network sharing'):'Carries '+n+' customers where '+n+' has no site nearby · '+(e?e.how:'Roaming');
+    return '<div class="rl">'+t+'</div>'; }
   function twTip(i,px,py){
     const t=$('twTip'); if(i==null||i<0){ t.classList.remove('on'); if(tw.hover!==-1){ tw.hover=-1; twReq(); } return; }
     const d=tw.d, c=TW_CAR[d.C[i]], b=d.B[i], azs=[];
@@ -3656,7 +3780,7 @@
     const others=TW_CAR.map((x,j)=>j).filter(j=>j!==d.C[i]&&(d.M[i]&(1<<j))).map(twCn);
     t.style.setProperty('--tc',c.c);
     t.innerHTML='<div class="h"><i style="width:9px;height:9px;border-radius:50%;background:'+c.c+'"></i>'+c.n+'<span>'+(TW_PROV[d.P[i]]||'')+'</span></div>'+
-      '<div class="l">'+twNear(d.X[i],d.Y[i])+'</div>'+
+      '<div class="l">'+twNear(d.X[i],d.Y[i])+'</div>'+twRole(i)+
       '<div class="bd">'+TW_BAND.filter(x=>b&x[1]).map(x=>{ const g=d.hasNR?(d.NB[i]&x[1]):(x[1]&192); return '<em'+(g?' class="g"':'')+'>'+x[0]+(g?' · 5G':'')+'</em>'; }).join('')+'</div>'+
       '<div class="m">'+(d.H[i]?'Structure <b>'+d.H[i]+(d.H[i]>=250?'+':'')+' m</b> · ':'')+(azs.length?'antennas face <b>'+azs.join(', ')+'</b>':'omni / not listed')+
       (others.length?'<br>Also on this site: <b>'+others.join(', ')+'</b>':'')+'</div>';
