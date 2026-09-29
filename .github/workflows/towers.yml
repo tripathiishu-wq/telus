@@ -68,6 +68,11 @@ jobs:
               if 'VIDEOTRON' in u or 'VIDÉOTRON' in u or 'QUEBECOR' in u: return 4
               if 'SASKATCHEWAN TELECOM' in u or 'SASKTEL' in u: return 5
               if 'BRAGG' in u or 'EASTLINK' in u: return 6
+              # regional partners that carry national carriers' customers where those don't build
+              if 'TBAYTEL' in u or 'THUNDER BAY TEL' in u: return 7
+              if 'ICE WIRELESS' in u or 'IRISTEL' in u: return 8
+              if 'SSI MICRO' in u or 'SSI CANADA' in u or 'SSI MOBILE' in u or u.startswith('SSI '): return 9
+              if 'NORTHWESTEL' in u or 'LATITUDE WIRELESS' in u: return 10
               return None
 
           def band(f):
@@ -184,10 +189,10 @@ jobs:
           try: asofL = datetime.date.fromisoformat(asof).strftime('%b %-d %Y')
           except ValueError: asofL = asof
           per = collections.Counter(s['c'] for s in sites.values())
-          pack = {'v': 2, 'n': len(rows), 'q': Q, 'asof': asof, 'asofL': asofL, 'src': 'ISED Spectrum Management System · Site_Data_Extract_FX',
+          pack = {'v': 3, 'n': len(rows), 'q': Q, 'asof': asof, 'asofL': asofL, 'src': 'ISED Spectrum Management System · Site_Data_Extract_FX',
                   'xy': e(XY), 'c': e(C), 'b': e(B), 'nb': e(NB), 'p': e(P), 'h': e(H), 'a': e(A)}
           json.dump(pack, open(OUT, 'w'), separators=(',', ':'))
-          names = ['TELUS', 'Bell', 'Rogers', 'Freedom', 'Vidéotron', 'SaskTel', 'Eastlink']
+          names = ['TELUS', 'Bell', 'Rogers', 'Freedom', 'Vidéotron', 'SaskTel', 'Eastlink', 'Tbaytel', 'Ice Wireless', 'SSi', 'Northwestel']
           report = {'asof': asof, 'max_last_mod': maxmod, 'stats': dict(stats), 'sites_per_carrier': {names[k]: v for k, v in sorted(per.items())},
                     'nr_sites_per_carrier': {names[k]: sum(1 for s in sites.values() if s['c'] == k and s['n']) for k in sorted(per)},
                     'top_licensees': lic.most_common(30), 'radio_technology': techv.most_common(25), 'provinces': prov_seen.most_common(20), 'files': headers,
@@ -209,9 +214,9 @@ jobs:
         run: |
           git config user.name "towers-bot"
           git config user.email "towers-bot@users.noreply.github.com"
-          git add towers.json
+          git add towers.json towers-report.json
           if git diff --cached --quiet; then echo "No change"; exit 0; fi
-          git commit -m "Tower data: ISED site extract $ASOF"
+          git commit -m "Tower data: ISED site extract $ASOF (with regional partners)"
           git pull --rebase
           git push
 
