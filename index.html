@@ -1034,6 +1034,113 @@
     .dlhero .hv{font-size:clamp(34px,10vw,56px)}
   }
   @media(max-width:620px){.board{overflow-x:auto}.board>div{padding:10px 10px}}
+  /* ---- live: Brief today strip, 100 Days ---- */
+  .tdl{margin-top:22px}
+  .tdday{height:2px;background:var(--line)} .tdday b{display:block;height:100%;background:var(--acid);width:0}
+  .tdg{display:grid;grid-template-columns:1.35fr repeat(5,minmax(0,1fr));}
+  .tdg>div{padding:18px 20px 20px;border-left:1px solid var(--line);min-width:0}
+  .tdg>div:first-child{border-left:0}
+  .tdg .ml,.hdk .ml{font-size:12px;color:var(--mute)}
+  .tdg .mv{font-family:'Space Grotesk';font-weight:600;font-size:clamp(20px,1.9vw,27px);color:var(--ink);margin-top:8px;white-space:nowrap;letter-spacing:-.01em}
+  .tdg .tdw .mv{font-size:clamp(26px,2.6vw,36px)}
+  .tdg .ms,.hdk .ms{font-size:11.5px;color:var(--dim);margin-top:6px;line-height:1.45}
+  .hdk .ms b{color:var(--ink);font-weight:600}
+  @media(max-width:1100px){.tdg{grid-template-columns:repeat(3,minmax(0,1fr))}.tdg>div:nth-child(4){border-left:0}.tdg>div:nth-child(n+4){border-top:1px solid var(--line)}}
+  @media(max-width:620px){.tdg{grid-template-columns:1fr 1fr}.tdg>div{border-left:0;border-top:1px solid var(--line)}.tdg>div:nth-child(even){border-left:1px solid var(--line)}.tdg>div:nth-child(-n+2){border-top:0}}
+  .hdl{margin-top:28px}
+  .hdset{margin-left:auto;display:inline-flex;align-items:center;gap:8px;text-transform:none;letter-spacing:0;font-size:12px;color:var(--mute)}
+  .hdset input{background:var(--panel-2);border:1px solid var(--line);color:var(--ink);font:12px 'IBM Plex Mono',monospace;padding:4px 6px;color-scheme:inherit}
+  .hdclock{display:flex;align-items:flex-end;justify-content:space-between;gap:16px 30px;flex-wrap:wrap;padding:22px 22px 14px}
+  .hdday{font-family:'Space Grotesk';font-weight:600;font-size:clamp(34px,5vw,58px);line-height:1;color:var(--ink);letter-spacing:-.02em}
+  .hdsub{font-size:13.5px;color:var(--mute);margin-top:10px}
+  .hdcd{text-align:right} .hdcd b{display:block;font-family:'Space Grotesk';font-weight:600;font-size:clamp(24px,3vw,36px);color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .hdcd span{font-size:12px;color:var(--mute)}
+  .hdbar{position:relative;margin:4px 22px 22px;height:30px}
+  .hdtrack{position:absolute;inset:0}
+  .hdtrack span{position:absolute;top:0;bottom:0;border-left:1px solid var(--line);background:var(--panel-2)}
+  .hdtrack span:first-child{border-left:0}
+  .hdtrack i{position:absolute;left:8px;top:50%;transform:translateY(-50%);font-style:normal;font-size:11px;color:var(--mute);white-space:nowrap;overflow:hidden;max-width:calc(100% - 10px);z-index:2}
+  .hdfill{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--acid);opacity:.35;z-index:1}
+  .hdk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
+  .hdk>div{padding:18px 20px 20px;border-left:1px solid var(--line);min-width:0;display:flex;flex-direction:column}
+  .hdk>div:first-child{border-left:0}
+  .hdk .mv{font-family:'Space Grotesk';font-weight:600;font-size:clamp(24px,2.4vw,32px);color:var(--ink);margin-top:8px;white-space:nowrap;letter-spacing:-.01em}
+  .hdk .hf{margin-top:auto;padding-top:12px;font-family:'IBM Plex Mono';font-size:10.5px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em}
+  @media(max-width:1100px){.hdk{grid-template-columns:1fr 1fr}.hdk>div:nth-child(3){border-left:0}.hdk>div:nth-child(n+3){border-top:1px solid var(--line)}}
+  @media(max-width:620px){.hdcd{text-align:left}.hdk{grid-template-columns:1fr}.hdk>div{border-left:0;border-top:1px solid var(--line)}.hdk>div:first-child{border-top:0}.hdset{margin-left:0}}
+  .ptab.now{position:relative} .ptab.now::after{content:'NOW';position:absolute;top:8px;right:10px;font-family:'IBM Plex Mono';font-size:9.5px;letter-spacing:.1em;color:var(--acid)}
+  .sbtab{padding:4px 22px 14px}
+  .sbr{display:grid;grid-template-columns:170px 150px minmax(0,1fr) 300px;gap:18px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line);font-size:13px;color:var(--mute)}
+  .sbr.hd{padding:12px 0 10px;font-family:'IBM Plex Mono';font-size:10.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+  .sbr:last-child{border-bottom:0}
+  .sbr .sn{color:var(--ink);font-weight:600;font-size:14px}
+  .sbr .sv{font-family:'Space Grotesk';font-weight:600;font-size:17px;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .sbr .st{font-size:12.5px;line-height:1.45} .sbr .st b{color:var(--ink);font-weight:600}
+  .sbb{position:relative;height:14px}
+  .sbb .tr{position:absolute;inset:0;background:var(--acid);opacity:.16;border-radius:0 4px 4px 0}
+  .sbb .fl{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--acid);border-radius:0 4px 4px 0}
+  .sbb .yr{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink);opacity:.75}
+  @media(max-width:900px){.sbr{grid-template-columns:1fr auto;gap:8px 12px}.sbr.hd{display:none}.sbb{grid-column:1/-1}.sbr .st{grid-column:1/-1}}
+  .kdl{border:1px solid var(--line);background:var(--panel)}
+  .kdh{padding:12px 20px;font-family:'IBM Plex Mono';font-size:10.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid var(--line)}
+  .kdi{display:grid;grid-template-columns:minmax(0,1fr) 220px 150px;gap:14px;align-items:center;padding:12px 20px;border-bottom:1px solid var(--line);font-size:13.5px}
+  .kdi:last-child{border-bottom:0}
+  .kdi .kn{color:var(--ink)} .kdi .kw{color:var(--mute);font-size:12.5px}
+  .kdi b{font-family:'Space Grotesk';font-weight:600;color:var(--ink);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  @media(max-width:700px){.kdi{grid-template-columns:1fr auto}.kdi .kw{grid-column:1;grid-row:2;margin-top:-6px}.kdi b{grid-row:1/3;grid-column:2}}
+  @media(max-width:620px){.vs>*{min-width:0;overflow-wrap:break-word}}
+  /* ---- Q4 live ---- */
+  .q4l{margin-top:6px}
+  .q4bar{margin-bottom:34px}
+  .q4mk{position:absolute;left:0;right:0;top:0;bottom:0;pointer-events:none;z-index:3}
+  .q4mk span{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--amber)}
+  .q4mk em{position:absolute;top:calc(100% + 4px);left:50%;transform:translateX(-50%);font-style:normal;font-size:10.5px;color:var(--amber);white-space:nowrap;font-family:'IBM Plex Mono'}
+  .q4mk span.lo em{top:calc(100% + 17px)}
+  .q4ch{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+  .q4ch>div{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;padding:13px 20px;border-left:1px solid var(--line)}
+  .q4ch>div:first-child{border-left:0}
+  .q4ch .cn{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink);font-weight:600}
+  .q4ch .cn i{width:9px;height:9px;border-radius:50%;background:var(--c)}
+  .q4ch .cb{height:8px;background:var(--panel-2);position:relative;overflow:hidden;border-radius:0 4px 4px 0}
+  .q4ch .cb b{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--c);border-radius:0 4px 4px 0}
+  .q4ch .cv{font-family:'IBM Plex Mono';font-size:11.5px;color:var(--mute);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .q4r .sbb .tr{background:var(--telus-2)} .q4r .sbb .fl{background:#b08ad8}
+  @media(max-width:900px){.q4ch{grid-template-columns:1fr}.q4ch>div{border-left:0;border-top:1px solid var(--line)}.q4ch>div:first-child{border-top:0}}
+  @media(max-width:620px){.q4mk em{font-size:9px}.q4mk span:nth-child(3) em{display:none}}
+  /* ---- who's behind TELUS ---- */
+  .wbt{border:1px solid var(--line);background:var(--panel);margin-top:4px}
+  .wbr{display:grid;grid-template-columns:190px minmax(0,1fr) minmax(0,1fr) minmax(0,1.15fr);gap:18px;padding:15px 20px;border-top:1px solid var(--line);font-size:13px;color:var(--mute);line-height:1.5;align-items:start}
+  .wbr.hd{border-top:0;padding:11px 20px;font-family:'IBM Plex Mono';font-size:10.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+  .wbr b{color:var(--ink);font-weight:600}
+  .wbr .wn{display:flex;flex-wrap:wrap;align-items:center;gap:4px 9px}
+  .wbr .wn i{width:10px;height:10px;border-radius:50%;background:var(--c,var(--dim));flex:none}
+  .wbr .wn b{font-size:14px}
+  .wbr .wn em{flex-basis:100%;font-style:normal;font-size:11.5px;color:var(--dim);padding-left:19px}
+  .wbt.c3 .wbr{grid-template-columns:190px repeat(3,minmax(0,1fr))}
+  .wbt.c3 .wbr.hd span:nth-child(2){color:#b08ad8} .wbt.c3 .wbr.hd span:nth-child(3){color:#ff5964} .wbt.c3 .wbr.hd span:nth-child(4){color:#3a86ff}
+  @media(max-width:900px){.wbr,.wbt.c3 .wbr{grid-template-columns:1fr;gap:6px}.wbr.hd{display:none}.wbt.c3 .wbr>span:nth-child(2)::before{content:'TELUS · ';color:#b08ad8;font-weight:600}.wbt.c3 .wbr>span:nth-child(3)::before{content:'Rogers · ';color:#ff5964;font-weight:600}.wbt.c3 .wbr>span:nth-child(4)::before{content:'Bell · ';color:#3a86ff;font-weight:600}.wbt.who .wbr>span:nth-child(n+2)::before,.wbt.skm .wbr>span:nth-child(n+2)::before,.wbt.skp .wbr>span:nth-child(n+2)::before{display:block;font-family:'IBM Plex Mono';font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;margin:6px 0 2px}.wbt.who .wbr>span:nth-child(2)::before{content:'What they give TELUS'}.wbt.who .wbr>span:nth-child(3)::before{content:'What TELUS gives back'}.wbt.who .wbr>span:nth-child(4)::before{content:'Debt and EBITDA'}.wbt.skm .wbr>span:nth-child(2)::before{content:'Who already does it'}.wbt.skm .wbr>span:nth-child(3)::before{content:'What TELUS earns'}.wbt.skm .wbr>span:nth-child(4)::before{content:'Debt and EBITDA'}.wbt.skp .wbr>span:nth-child(2)::before{content:'What they sell'}.wbt.skp .wbr>span:nth-child(3)::before{content:'Since'}.wbt.skp .wbr>span:nth-child(4)::before{content:'Price'}}
+
+  /* ---- where the wires end: satellite share ---- */
+  .wbt.skp .wbr{grid-template-columns:190px minmax(0,1.6fr) 96px minmax(0,1fr)}
+  .skc{margin-top:4px}
+  .skc h3{font-size:18px}
+  .skc .sksub{font-size:13px;color:var(--mute);margin-bottom:6px}
+  .skc .val{color:var(--ink)}
+  .skc input[type=range]{accent-color:var(--acid)}
+  .skg{display:grid;grid-template-columns:1fr 1fr;gap:0 34px}
+  .skout{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:20px}
+  .skout>div{background:var(--panel-2);padding:16px 18px;min-width:0}
+  .skout .big{font-family:'Space Grotesk';font-weight:700;font-size:26px;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .skout .lab{font-family:'IBM Plex Mono';font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+  .skout .sm{font-size:11.5px;color:var(--mute);margin-top:6px;line-height:1.4}
+  .skvs{margin-top:18px;display:grid;gap:8px}
+  .skvs .r{display:grid;grid-template-columns:150px minmax(0,1fr) 120px;align-items:center;gap:12px;font-size:12.5px;color:var(--mute)}
+  .skvs .t{height:10px;background:var(--panel-2);position:relative}
+  .skvs .t b{position:absolute;left:0;top:0;bottom:0;background:var(--mute);transition:width .3s}
+  .skvs .r.s .t b{background:var(--acid)}
+  .skvs .v{text-align:right;font-family:'IBM Plex Mono';color:var(--ink);font-variant-numeric:tabular-nums}
+  @media(max-width:900px){.wbt.skp .wbr{grid-template-columns:1fr 1fr;column-gap:16px}.wbt.skp .wbr>span:nth-child(-n+2){grid-column:1/-1}.skg{grid-template-columns:1fr}.skout{grid-template-columns:1fr 1fr}.skvs .r{grid-template-columns:96px minmax(0,1fr) 92px;gap:8px}}
+  @media(max-width:480px){.skout{grid-template-columns:1fr}.skout .big{font-size:24px}}
   /* theme toggle */
   :root{color-scheme:dark}
   :root[data-theme="light"]{color-scheme:light}
@@ -1091,6 +1198,19 @@
       <div class="stat"><div class="n">$2.2B</div><div class="l">Free cash flow</div><div class="d">$4.9B operating cash</div></div>
       <div class="stat"><div class="n">~27%</div><div class="l">Wireless share</div><div class="d">10.1M+ mobile subs</div></div>
     </div>
+    <div class="dlv tdl" id="tdLive">
+      <div class="dlvhead"><span class="live"><i></i> LIVE</span><span>Today at TELUS · since midnight ET</span><span class="ck" id="tdClock"></span></div>
+      <div class="tdday"><b id="tdDayBar"></b></div>
+      <div class="tdg">
+        <div class="tdw"><div class="ml">Revenue today</div><div class="mv" id="tdRev">$0</div><div class="ms">$627 every second</div></div>
+        <div><div class="ml">Adj. EBITDA today</div><div class="mv" id="tdEb">$0</div><div class="ms">$226 every second</div></div>
+        <div><div class="ml">Phone customers won</div><div class="mv" id="tdWon">0</div><div class="ms">about 3,824 a day</div></div>
+        <div><div class="ml">Phone customers lost</div><div class="mv" id="tdLost">0</div><div class="ms">about 3,637 a day</div></div>
+        <div><div class="ml">Net phone customers</div><div class="mv" id="tdNet">+0</div><div class="ms">about +187 a day</div></div>
+        <div><div class="ml">New connections</div><div class="mv" id="tdCon">+0</div><div class="ms">phones, devices, internet</div></div>
+      </div>
+    </div>
+    <div class="bizfoot" style="margin:10px 0 0">Daily averages at TELUS's Q2 2026 pace (April to June, 91 days): revenue $4.93B, adj. EBITDA $1.78B, 348K mobile phone gross adds and 17K net adds (blended phone churn 1.08%), and 224K new telecom connections (17K phones, 187K connected devices, 20K internet). An estimate of a typical day, not a live feed; resets at midnight Eastern.</div>
   </div>
 
   <section id="b-share">
@@ -1304,7 +1424,7 @@
             <div class="kv"><span>Edge</span><span>Shaw footprint + 5G Home</span></div>
           </div>
         </div>
-        <div class="dcard t"><div class="co">TELUS — PureFibre</div><div class="tk">100% FTTH · BC / AB + select ON/QC</div><div class="big">~3.7M</div><div class="biglab">homes passed · $45B+ committed</div>
+        <div class="dcard t"><div class="co">TELUS — PureFibre</div><div class="tk">100% FTTH · BC / AB + select ON/QC</div><div class="big">~3.8M</div><div class="biglab">homes &amp; businesses on fibre (Q2 2026) · $45B+ committed</div>
           <div style="margin-top:16px">
             <div class="kv"><span>Technology</span><span class="best">100% true FTTH</span></div>
             <div class="kv"><span>Top speed</span><span>5 Gbps (symmetrical)</span></div>
@@ -1502,12 +1622,12 @@
       <h1>$20.5B in.<br><span class="fade">$2.2B free.</span><br>Here's the machine.</h1>
       <p class="lede">Everything else in this app zooms into wireless. This is the whole company: three segments, one cash engine, and the two numbers the board actually runs it on: free cash flow and leverage.</p>
       <div class="bizmeter bizytd" id="biz-live">
-        <div class="lead ytdrev" style="--mc:var(--acid)"><div class="ml"><span class="live"><i></i> LIVE</span> Revenue · <span id="bmYr">2026</span> year to date</div><div class="mv" id="bmRev" style="color:var(--acid)">$0</div><div class="ms">$650 every second · <b id="bmSince">+$0</b> since you opened this tab · <span id="bmClock">00:00</span></div></div>
-        <div style="--mc:var(--amber)"><div class="ml">Adj. EBITDA · year to date</div><div class="mv" id="bmEb" style="color:var(--amber)">$0</div><div class="ms">$233 every second · 35.9% margin</div></div>
-        <div style="--mc:#8ce99a"><div class="ml">Free cash flow · year to date</div><div class="mv" id="bmFcf" style="color:#8ce99a">$0</div><div class="ms">$70 every second · record year</div></div>
-        <div style="--mc:var(--blue)"><div class="ml">Connections on the network</div><div class="mv" id="bmCon" style="color:var(--blue)">21,160,000</div><div class="ms">+1 every 32 s · +985K a year</div><div class="nextbar"><b id="bmNext"></b></div></div>
+        <div class="lead ytdrev" style="--mc:var(--acid)"><div class="ml"><span class="live"><i></i> LIVE</span> Revenue · <span id="bmYr">2026</span> year to date</div><div class="mv" id="bmRev" style="color:var(--acid)">$0</div><div class="ms">$627 every second · <b id="bmSince">+$0</b> since you opened this tab · <span id="bmClock">00:00</span></div></div>
+        <div style="--mc:var(--amber)"><div class="ml">Adj. EBITDA · year to date</div><div class="mv" id="bmEb" style="color:var(--amber)">$0</div><div class="ms">$226 every second · 36.1% margin in Q2</div></div>
+        <div style="--mc:#8ce99a"><div class="ml">Free cash flow · year to date</div><div class="mv" id="bmFcf" style="color:#8ce99a">$0</div><div class="ms">$42 every second · on pace for ~$1.8B, the 2026 guidance</div></div>
+        <div style="--mc:var(--blue)"><div class="ml">Telecom connections · mobile + internet</div><div class="mv" id="bmCon" style="color:var(--blue)">17,946,000</div><div class="ms">+1 every 35 s · +224K in Q2</div><div class="nextbar"><b id="bmNext"></b></div></div>
       </div>
-      <div class="bizfoot">Year to date runs from Jan 1 (Eastern) at FY2025 reported run-rates: revenue $20.51B, adj. EBITDA $7.35B and free cash flow $2.2B a year. Connections start from the 21.16M reported at Dec 31 2025 and grow at 2025's pace (+985K a year), so they are an estimate until TELUS reports the quarter.</div>
+      <div class="bizfoot">Year to date is TELUS's reported first half of 2026 (revenue $9.94B, adj. EBITDA $3.61B, free cash flow $1.13B), then from July 1 Q2's daily pace for revenue and EBITDA, and for free cash flow the pace that lands on the ~$1.8B 2026 guidance. Connections use TELUS's 2026 reporting basis, which counts mobile phones, connected devices and internet and drops TV, security and home phone: 17.95M at June 30, growing at Q2's +224K a quarter. Estimates until TELUS reports Q3 in November.</div>
     </div>
     <div class="strip">
       <div class="stat"><div class="n">$20.51B</div><div class="l">Operating revenue 2025</div><div class="d"><span class="up">+0.6%</span> vs $20.39B</div></div>
@@ -1993,10 +2113,119 @@
     </div>
   </section>
 
+  <!-- WHO'S BEHIND TELUS · the money under the network -->
+  <section id="cov-money">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--acid)">02</span><h2>Who's behind TELUS</h2><span class="sub">the network, the money, and what it costs</span></div>
+      <p class="intro">The map shows whose towers carry TELUS customers. This is who pays for them. Bell and SaskTel build 44% of the network TELUS customers use. La Caisse owns half of TELUS's towers. Lenders hold $25.9B of net debt. Each one lowers what TELUS has to build or borrow, and each one takes something back.</p>
+      <div class="dlv" id="mnLive">
+        <div class="dlvhead"><span class="live"><i></i> LIVE</span><span>The cost of the money behind the network · 2026 so far</span><span class="ck" id="mnClock"></span></div>
+        <div class="hdk">
+          <div><div class="ml">Partner-built sites TELUS customers use</div><div class="mv" id="mnSites">11,864</div><div class="ms"><b>Bell 10,714</b> and <b>SaskTel 1,150</b>, out of 26,837 in all (44%).</div><div class="hf">Network sharing: no public price tag</div></div>
+          <div><div class="ml">Raised by selling half of TELUS's towers</div><div class="mv">$1,260,000,000</div><div class="ms">49.9% of Terrion (~3,000 towers) to La Caisse, Sep 2025. Leverage down <b>0.17×</b>.</div><div class="hf">TELUS keeps control and consolidates</div></div>
+          <div><div class="ml">Estimated paid to La Caisse in 2026</div><div class="mv" id="mnCaisse">$0</div><div class="ms">About <b>$72M a year</b>: its half of Terrion's cash, at the 5.7% cash yield Rogers pays Blackstone.</div><div class="hf">Estimate · terms not disclosed</div></div>
+          <div><div class="ml">Interest paid to lenders in 2026</div><div class="mv" id="mnInt">$0</div><div class="ms">On <b>$25.9B</b> of net debt. First half reported, then Q2's pace: <b>$53 every second</b>.</div><div class="hf">The biggest partner of all</div></div>
+        </div>
+      </div>
+      <div class="bizfoot" style="margin:10px 0 22px">La Caisse estimate: Rogers disclosed up to ~$400M a year of distributions on the $7B Blackstone-led investment (a 5.7% cash yield) and a 7% cost of capital. Applied to La Caisse's $1.26B, that is about $72M a year in cash, or $88M at 7%. Interest: TELUS financing costs of $335M (Q1) and $420M (Q2 2026), then Q2's daily pace.</div>
+
+      <div class="wbt who">
+        <div class="wbr hd"><span>Who</span><span>What they give TELUS</span><span>What TELUS gives back</span><span>Debt and EBITDA</span></div>
+        <div class="wbr" style="--c:#3a86ff"><span class="wn"><i></i><b>Bell</b><em>network partner since 2001</em></span><span>10,714 sites in Ontario, Québec, Atlantic Canada, Manitoba and the North. TELUS customers use them as their own.</span><span>14,973 TELUS-built sites for Bell's customers. TELUS builds <b>58%</b> of the TELUS–Bell sites; how the partners settle up isn't public.</span><span>Keeps roughly <b>11,900 sites</b> off TELUS's balance sheet. Valued the way La Caisse valued TELUS's towers, that's about <b>$10B</b>, or 1.4 turns of leverage.</span></div>
+        <div class="wbr" style="--c:#8ce99a"><span class="wn"><i></i><b>SaskTel</b><em>provincial Crown carrier</em></span><span>All 1,150 sites in Saskatchewan. TELUS has one of its own there.</span><span>TELUS and Bell's networks for SaskTel customers outside the province (2009 agreement).</span><span>A whole province of coverage with almost no TELUS capital.</span></div>
+        <div class="wbr" style="--c:#2ec4b6"><span class="wn"><i></i><b>La Caisse</b><em>Québec pension fund · Terrion partner</em></span><span><b>$1.26B</b> cash for 49.9% of Terrion, TELUS's ~3,000-tower company. Implied value ≈$2.5B, about $840K per tower.</span><span>Half of Terrion's cash flow, and TELUS is locked in as the anchor tenant: an 8-year lease with renewal options.</span><span>Net debt down $1.26B, leverage <b>−0.17×</b>. Reported EBITDA is unchanged because Terrion is still consolidated, but about $72M a year leaves as La Caisse's share. That's ≈$12M a year more than the ≈$60M of interest the cash saves at 4.8%, paid to keep the credit rating.</span></div>
+        <div class="wbr" style="--c:#ffb703"><span class="wn"><i></i><b>Lenders</b><em>bondholders and banks</em></span><span>$25.9B of net debt (Mar 31, 2026) that built the fibre and 5G networks and bought the spectrum.</span><span>About $1.6B of financing costs in 2026 at the current pace, and a promise to reach ~3.0× by 2028.</span><span>Leverage 3.5×. Every $1B repaid is about 0.14× off, and about $48M a year of interest saved.</span></div>
+        <div class="wbr" style="--c:#b08ad8"><span class="wn"><i></i><b>Shareholders</b><em>largest: Canadian banks' asset managers</em></span><span>The equity. Top holders include Royal Trust (6.9%), BMO (6.9% across two arms), CIBC (2.9%), TD (2.3%), Fidelity Canada (2.0%) and Mackenzie (1.9%).</span><span>A dividend cut 55% in July 2026, to $0.1875 a quarter, which frees ~$2.7B for debt through 2028.</span><span>They absorb the reset so the lenders don't have to: debt comes down from cash flow, not from new borrowing.</span></div>
+        <div class="wbr" style="--c:#ff5964"><span class="wn"><i></i><b>Rivals who roam</b><em>Freedom · Vidéotron · Eastlink</em></span><span>Wholesale roaming revenue. Since CRTC Decision 2025-245 they can roam on the whole Bell + TELUS network under one agreement.</span><span>Capacity on the shared network, at regulated wholesale rates.</span><span>Money in, and it also helps the rivals competing for TELUS's customers.</span></div>
+      </div>
+
+      <div class="shead" style="margin-top:34px"><h2>Same problem, three answers</h2><span class="sub">how each carrier is paying down its network debt</span></div>
+      <div class="wbt c3">
+        <div class="wbr hd"><span></span><span>TELUS</span><span>Rogers</span><span>Bell</span></div>
+        <div class="wbr"><span class="wn"><b>Infrastructure sold</b></span><span>49.9% of Terrion towers to La Caisse · <b>$1.26B</b> · Sep 2025</span><span>49.9% of its wireless backhaul network to Blackstone, CPP, La Caisse, PSP and BCI · <b>$7B</b> · Jun 2025</span><span>No tower sale. Sold its MLSE stake to Rogers for <b>$4.7B</b>, which largely funded the Ziply Fiber purchase</span></div>
+        <div class="wbr"><span class="wn"><b>What it costs each year</b></span><span>≈$72M to La Caisse (estimate) + an 8-year anchor lease</span><span>Up to <b>~$400M</b> a year to investors for the first five years (7% cost of capital)</span><span>None from towers. Interest on ~$40B of net debt</span></div>
+        <div class="wbr"><span class="wn"><b>Leverage effect</b></span><span>−0.17×</span><span>−0.7×, almost −1× with other equity raised</span><span>MLSE money went into growth (Ziply), not debt</span></div>
+        <div class="wbr"><span class="wn"><b>Who builds the network</b></span><span>Shares with Bell (and SaskTel): customers use 26,837 sites, 56% TELUS-built</span><span>Builds its own everywhere: 12,358 sites, plus Tbaytel and SSi at the edges</span><span>Shares with TELUS (and SaskTel)</span></div>
+        <div class="wbr"><span class="wn"><b>Leverage, Jun 30 2026</b></span><span><b>3.5×</b> · target ~3.0× by 2028</span><span><b>3.8×</b> · no dated target</span><span><b>~3.7×</b> · 3.5× by 2027</span></div>
+      </div>
+      <div class="note" style="border-left-color:var(--acid)">◈ <b>The CEO line:</b> "Half of the network our customers use, we didn't have to build, because we share it with Bell. That's the cheapest capital in Canadian telecom. Where we did need money, we sold half of our towers rather than borrowing more, and we kept control. Canadian carriers still own about 95% of their towers, while US carriers own under 10%. There is more of that to do, but only where selling costs us less than the interest it saves."</div>
+      <div class="note">◈ <b>How these numbers are built.</b> Site counts come from the tower map (ISED, Sep 2026). Terrion: $1.26B for 49.9% (≈$2.5B implied) and ~3,000 towers (TELUS, Globe and Mail); TELUS keeps control and consolidates Terrion (2025 annual report); −0.17× leverage (Q2 2026 call). The ≈$840K per tower and the ≈$10B for Bell's and SaskTel's 11,864 sites use that implied value; many of those sites are rooftops or small cells, so it overstates the build cost and is an order of magnitude, not a quote. Industry studies put network-sharing savings at 18–35% of network cost (Analysys Mason, 2023). The TELUS–Bell settlement terms and Terrion's lease payments are not disclosed. Cost of debt ≈4.8% = ~$1.3B of 2025 cash interest on ~$27B of average net debt. Rogers: $7B for 49.9% of its wireless backhaul, up to ~$400M a year of distributions for the first five years, 7% cost of capital, −0.7× leverage (Rogers, Apr 2025). Bell: $4.7B MLSE stake sold to Rogers. Shareholders: MarketScreener, 2026. The ~95% vs under 10% tower-ownership comparison is from Inside Towers.</div>
+    </div>
+  </section>
+
+  <section id="cov-sky">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--acid)">03</span><h2>Where the wires end</h2><span class="sub">satellite, and who gets paid where there's no fibre or copper</span></div>
+      <p class="intro">TELUS fibre now reaches 3.8M homes and businesses in BC, Alberta and Eastern Québec. Past the last fibre and copper line, about 400,000 Canadian households still can't buy 50/10 internet, including 1 in 8 rural homes. Starlink has become a major Canadian ISP in that gap, with 500,000+ subscribers (about one for every six TELUS internet customers), and none of what they pay goes to a Canadian carrier. TELUS can take a share without building anything. Next to $7.4B of EBITDA the share is small. The capex it avoids and the customers it keeps are what matter.</p>
+      <div class="dlv" id="skLive">
+        <div class="dlvhead"><span class="live"><i></i> LIVE</span><span>Satellite money in Canada · 2026 so far</span><span class="ck" id="skClock"></span></div>
+        <div class="hdk">
+          <div><div class="ml">Households that can't get 50/10</div><div class="mv">≈400,000</div><div class="ms"><b>2.6%</b> of homes nationally and <b>12.6%</b> of rural homes. About <b>90,000</b> are in BC and Alberta, TELUS's home provinces.</div><div class="hf">No fibre, copper or wireless that fast</div></div>
+          <div><div class="ml">Paid to Starlink by Canadians in 2026</div><div class="mv" id="skStar">$0</div><div class="ms">500,000+ subscribers at about <b>$95 a month</b>: roughly $570M a year, <b>$18 every second</b>.</div><div class="hf">Estimate · no Canadian carrier's cut</div></div>
+          <div><div class="ml">What a TELUS share would have earned</div><div class="mv" id="skShare">$0</div><div class="ms" id="skShareS">At the model below: about $22.7M a year to TELUS.</div><div class="hf">Scenario · move the sliders below</div></div>
+          <div><div class="ml">Fibre to the same <span id="skHomes">50,000</span> homes would cost</div><div class="mv" id="skBuild">$676,500,000</div><div class="ms" id="skBuildS">At $13,530 a home, the public money alone in Alberta's latest rural build. Borrowed: <b>+0.09×</b> leverage. The satellite share: <b>−0.009×</b>, no capex.</div><div class="hf">Build vs share</div></div>
+        </div>
+      </div>
+      <div class="bizfoot" style="margin:10px 0 22px">Starlink estimate: 500,000+ Canadian subscribers (Starlink, Jul 2025) × ~$95 a month, a blend of its 2026 Canadian prices ($75–$150 residential, $75–$200 Roam). Build cost: $24.8M of federal and Alberta money for 1,833 rural homes (Sep 15, 2026), before the provider's own share.</div>
+
+      <div class="wbt skm">
+        <div class="wbr hd"><span>Three ways to take a share</span><span>Who already does it</span><span>What TELUS earns</span><span>Debt and EBITDA</span></div>
+        <div class="wbr" style="--c:var(--acid)"><span class="wn"><i></i><b>Resell satellite at home</b><em>fixed internet · the Telstra model</em></span><span><b>Telstra</b>, since Mar 2024: Starlink under its own brand for homes outside NBN's fixed network, at A$125 a month plus A$599 kit, with its own modem and 4G backup. <b>KDDI</b> has resold Starlink Business in Japan since 2022.</span><span>A share of every monthly bill, plus the bundle around it: phone lines, home security, streaming. Resale terms aren't public; the model assumes 15%.</span><span>No network to build and no spectrum to buy. The share is close to pure EBITDA, and the household's phones stay with TELUS.</span></div>
+        <div class="wbr" style="--c:var(--amber)"><span class="wn"><i></i><b>Satellite to phone</b><em>direct-to-cell · already signed</em></span><span><b>Rogers Satellite</b> (Starlink), since Jul 2025: $15 a month, free on top plans; hundreds of thousands of Canadians have used it (SpaceX, 2026). <b>Bell</b> (AST): free on its top two plans, or about $10–15 a month. <b>T-Mobile</b>: US$10 a month.</span><span>TELUS signed with <b>AST SpaceMobile</b> in Mar 2026 and became a shareholder; launch is planned for later in 2026. Add-on revenue, shared with AST on terms not disclosed.</span><span>Coverage over the four-fifths of Canada no tower reaches, without building towers there. The bigger value is churn: nobody leaves for Rogers over a dead zone.</span></div>
+        <div class="wbr" style="--c:var(--mute)"><span class="wn"><i></i><b>Wholesale and enterprise</b><em>backhaul · aviation · remote sites</em></span><span><b>TELUS</b> already pays for Starlink Wi-Fi on WestJet (partnership since Jul 2024; whole fleet by end of 2026). SpaceX runs 10 gateways and 2 points of presence in Canada.</span><span>Fibre backhaul and site hosting for Starlink's ground stations. Starlink Business with TELUS support for mines, forestry, oil and gas and work camps in BC and Alberta.</span><span>Wholesale revenue on fibre and Terrion towers TELUS already owns. More use of existing assets, no new debt.</span></div>
+      </div>
+
+      <div class="shead" style="margin-top:34px"><h2>Who already shares Starlink's money</h2><span class="sub">carriers that sell Starlink under their own name</span></div>
+      <div class="wbt skp">
+        <div class="wbr hd"><span>Carrier</span><span>What they sell</span><span>Since</span><span>Price</span></div>
+        <div class="wbr" style="--c:#ff5964"><span class="wn"><i></i><b>Rogers</b><em>Canada</em></span><span>Starlink to phones, as "Rogers Satellite": texts first, then data for apps</span><span>Jul 2025</span><span>C$15 a month; free on top plans</span></div>
+        <div class="wbr" style="--c:var(--mute)"><span class="wn"><i></i><b>T-Mobile</b><em>United States</em></span><span>Starlink to phones, as "T-Satellite"</span><span>Jul 2025</span><span>US$10 a month; free on top plans</span></div>
+        <div class="wbr" style="--c:var(--mute)"><span class="wn"><i></i><b>One NZ</b><em>New Zealand</em></span><span>The first nationwide Starlink-to-phone service: texts over 40% of New Zealand with no towers</span><span>Dec 2024</span><span>Free on pay-monthly plans</span></div>
+        <div class="wbr" style="--c:var(--mute)"><span class="wn"><i></i><b>KDDI</b><em>Japan</em></span><span>"au Starlink Direct" to phones, also sold to other carriers' customers; Starlink Business reseller since 2022</span><span>Apr 2025</span><span>¥1,650 a month</span></div>
+        <div class="wbr" style="--c:var(--mute)"><span class="wn"><i></i><b>Telstra</b><em>Australia</em></span><span>Starlink home internet under the Telstra brand, with Telstra's modem, 4G backup and support</span><span>Mar 2024</span><span>A$125 a month + A$599 kit</span></div>
+        <div class="wbr" style="--c:#b08ad8"><span class="wn"><i></i><b>TELUS × WestJet</b><em>Canada</em></span><span>Starlink Wi-Fi on WestJet flights, presented and paid for by TELUS</span><span>Jul 2024</span><span>Free for WestJet Rewards members</span></div>
+      </div>
+
+      <div class="calc skc" style="margin-top:26px">
+        <h3>What the share is worth</h3>
+        <div class="sksub">Revenue, EBITDA and leverage for TELUS. The share rates are assumptions: neither Starlink's resale terms nor AST's are public.</div>
+        <div class="skg">
+          <div>
+            <div class="row"><label>Homes on TELUS-sold satellite</label><span class="val" id="skHv">50,000</span></div>
+            <input type="range" id="skH" min="10000" max="200000" value="50000" step="5000" aria-label="Homes on TELUS-sold satellite">
+            <div class="row"><label>Monthly price of the satellite plan</label><span class="val" id="skPv">$115</span></div>
+            <input type="range" id="skP" min="75" max="150" value="115" step="5" aria-label="Monthly price">
+          </div>
+          <div>
+            <div class="row"><label>TELUS's share of each home bill</label><span class="val" id="skSv">15%</span></div>
+            <input type="range" id="skS" min="5" max="30" value="15" step="1" aria-label="TELUS share of each bill">
+            <div class="row"><label>TELUS phones paying $10 a month for satellite (TELUS keeps half)</label><span class="val" id="skDv">2.0%</span></div>
+            <input type="range" id="skD" min="0" max="10" value="2" step="0.5" aria-label="Share of TELUS phones paying for satellite">
+          </div>
+        </div>
+        <div class="skout">
+          <div><div class="big" id="skoRev">—</div><div class="lab">Revenue to TELUS / year</div><div class="sm" id="skoRevS"></div></div>
+          <div><div class="big" id="skoEb">—</div><div class="lab">EBITDA / year</div><div class="sm">80% of the revenue; billing, installs and support take the rest</div></div>
+          <div><div class="big" id="skoLev">—</div><div class="lab">Leverage effect</div><div class="sm">From 3.5× on $25.9B of net debt</div></div>
+          <div><div class="big" id="skoMob">—</div><div class="lab">Phone revenue it keeps / year</div><div class="sm">One TELUS line per satellite home at Q2's $56.36 ARPU</div></div>
+        </div>
+        <div class="skvs" id="skVs">
+          <div class="r"><span>Build fibre</span><span class="t"><b id="skVb"></b></span><span class="v" id="skVbv"></span></div>
+          <div class="r s"><span>Share satellite</span><span class="t"><b id="skVs2"></b></span><span class="v" id="skVsv"></span></div>
+        </div>
+        <div class="bizfoot">Bars: up-front capital to reach the same homes, on a scale up to 200,000 homes. Fibre at $13,530 a home counts public money alone; the satellite share needs none.</div>
+      </div>
+
+      <div class="note" style="border-left-color:var(--red)">◈ <b>The catch.</b> Starlink is American, and Ottawa is moving away from it: "Starlink, we will diversify away from, no question," Prime Minister Carney said on Sep 24, 2026. Ontario cancelled its $100M Starlink contract for 15,000 rural homes in March 2025. The Canadian alternative, Telesat Lightspeed, now starts service at the end of Q1 2028, and Ottawa has secured up to $600M of its capacity. Canadian pension money is behind SpaceX too: Ontario Teachers' stake is worth about US$8.7B. Waiting also costs: in New Zealand, Starlink became the largest rural ISP (27% share against Spark's 23%), mostly from customers leaving copper. So sign short, sell it as TELUS Satellite, keep the customer and the bill, and be ready to move homes to Telesat in 2028.</div>
+      <div class="note" style="border-left-color:var(--acid)">◈ <b>The CEO line:</b> "Where our fibre ends, we won't spend $13,500 a home to reach a few thousand homes. We'll sell satellite under the TELUS name, keep the customer and the bundle, and keep the capital for fibre that pays back. Phones get AST, which we part-own. Homes get the best constellation on a short contract: Starlink today, Telesat when it's ready."</div>
+      <div class="note">◈ <b>How these numbers are built.</b> 50/10 access: 97.4% of households nationally, 87.4% rural (ISED, 2024 data, updated May 2026); ≈400,000 households is 2.6% of ~15.5M (Statistics Canada). BC 97% (ISED/BC) and Alberta 98.1% (Sep 2026) applied to 2021 Census households give ~90,000 in TELUS's home provinces. TELUS fibre: ~3.8M homes and businesses (Q2 2026 MD&A). Starlink in Canada: 500,000+ subscribers (Jul 2025); 2026 prices from Starlink's Canadian price list; ~$95 blended is our estimate. SpaceX gateways and D2C use: SpaceX submission to ISED, Aug 2026. Rogers Satellite $15 (Jul 2025); Bell free on top two plans or ~$10–15 (Oct 2025); TELUS–AST agreement and equity stake (Mar 2026). The model: EBITDA is 80% of TELUS's revenue; phones at $10 a month with TELUS keeping half; leverage uses $25.9B of net debt at 3.5× (≈$7.4B EBITDA); the phone line kept uses Q2 2026 ARPU of $56.36. Telesat service date: Telesat, Mar 2026. New Zealand shares: Commerce Commission, reported Jun 2026.</div>
+    </div>
+  </section>
+
   <!-- LIVE MIGRATION ENGINE -->
   <section id="cov-live">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--acid)">02</span><h2>Live subscriber migration</h2><span class="sub">real-time flow model · watch the base move</span></div>
+      <div class="shead"><span class="sno" style="color:var(--acid)">04</span><h2>Live subscriber migration</h2><span class="sub">real-time flow model · watch the base move</span></div>
       <p class="intro">Every dot is a block of subscribers in motion. Orbs are sized to each carrier's base and pulse as they gain and lose. Freedom keeps pulling from the incumbents; TELUS bleeds slowest. Tap an orb to isolate its flows.</p>
       <div class="livewrap">
         <canvas id="liveCanvas"></canvas>
@@ -2015,7 +2244,7 @@
   <!-- GEOGRAPHIC PROVINCE MAP -->
   <section id="cov-geo">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--acid)">03</span><h2>The coverage map — every telco, every province</h2><span class="sub">click a province</span></div>
+      <div class="shead"><span class="sno" style="color:var(--acid)">05</span><h2>The coverage map — every telco, every province</h2><span class="sub">click a province</span></div>
       <p class="intro">Canada at true proportion — you can see the landmass each carrier has to cover. Every province is filled by its leader's colour, and <b>brightness scales to subscriber mass</b>, so the population reality cuts against the geography: Nunavut is vast and nearly empty, Ontario is compact and holds 14.81M. <b>Click a province</b> for the full breakdown.</p>
       <div class="camapwrap">
         <svg id="caMap" viewBox="0 0 960 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Canada carrier coverage map"></svg>
@@ -2028,7 +2257,7 @@
 
   <section id="cov-map">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--acid)">04</span><h2>Air dominance — live signal × spectrum by province</h2><span class="sub">MHz-weighted signal · prepaid + postpaid</span></div>
+      <div class="shead"><span class="sno" style="color:var(--acid)">06</span><h2>Air dominance — live signal × spectrum by province</h2><span class="sub">MHz-weighted signal · prepaid + postpaid</span></div>
       <p class="intro">One greater view: each province emits a live signal wave whose <b>strength blends market dominance with the spectrum that carrier actually holds</b> — more MHz = a taller, denser, faster wave that carries more energy. Pick a carrier tab to watch its air light up province by province with its spectrum footprint, or Overall to see every carrier stacked. Flip prepaid/postpaid. The leader's wave pulses brightest, and its MHz shows on the right.</p>
       <div class="sigtabs">
         <div class="sigtabrow" id="sigCarrierTabs"></div>
@@ -2046,7 +2275,7 @@
   <!-- MERGED ALL-CARRIER CHART -->
   <section id="cov-merged">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--acid)">05</span><h2>The whole market — all four at once</h2><span class="sub">38.2M subscribers · postpaid + prepaid</span></div>
+      <div class="shead"><span class="sno" style="color:var(--acid)">07</span><h2>The whole market — all four at once</h2><span class="sub">38.2M subscribers · postpaid + prepaid</span></div>
       <p class="intro">Everything on one frame: every carrier's subscriber base stacked into postpaid (solid) and prepaid (hatched), sized to real scale. Rogers leads, then Bell, TELUS, Freedom — together ~86% of a 38.2M market. Bars animate up on the shared beat.</p>
       <div class="mergedwrap">
         <canvas id="mergedCanvas"></canvas>
@@ -2063,7 +2292,7 @@
   <!-- COVERAGE BARS -->
   <section id="cov-reach">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--acid)">06</span><h2>Geographic vs population coverage</h2><span class="sub">the two numbers carriers quote</span></div>
+      <div class="shead"><span class="sno" style="color:var(--acid)">08</span><h2>Geographic vs population coverage</h2><span class="sub">the two numbers carriers quote</span></div>
       <p class="intro">The gap between these two is the whole story of Canadian coverage: carriers cover a small slice of the <em>landmass</em> but nearly all the <em>people</em>, because Canadians cluster in cities.</p>
       <div class="two">
         <div class="card">
@@ -2084,7 +2313,7 @@
   <!-- PREPAID VS POSTPAID -->
   <section id="cov-plans">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--acid)">07</span><h2>Prepaid vs postpaid — all carriers</h2><span class="sub">the profit engine vs the value battleground</span></div>
+      <div class="shead"><span class="sno" style="color:var(--acid)">09</span><h2>Prepaid vs postpaid — all carriers</h2><span class="sub">the profit engine vs the value battleground</span></div>
       <p class="intro">Postpaid (monthly bill, credit check, contract) is ~90% of the base — low churn, high ARPU, the profit core. Prepaid (pay-ahead, no contract) is where budget brands and newcomers live. Each carrier plays both, but with different brands.</p>
 
       <div class="two" style="margin-bottom:20px">
@@ -2344,11 +2573,19 @@
       <div class="eyebrow" style="color:var(--acid)">The First 100 Days · Sequence, not analysis</div>
       <h1>Day one,<br><span class="fade">I already</span><br>know the plan.</h1>
       <p class="lede">Analysis is table stakes — every serious candidate will have the numbers. What separates the hire is knowing the <em>sequence</em>: what you do in week one, what you refuse to touch until day sixty, and which three commitments you'd put your name against publicly.</p>
-      <div class="pridebar">
-        <div class="pb"><div class="pbn">&lt;1.0%</div><div class="pbl">Churn — defend it first</div></div>
-        <div class="pb"><div class="pbn">3.0×</div><div class="pbl">Leverage by 2027 — non-negotiable</div></div>
-        <div class="pb"><div class="pbn">$2B</div><div class="pbl">Health revenue by 2028</div></div>
-        <div class="pb"><div class="pbn">0</div><div class="pbl">New leverage taken on</div></div>
+      <div class="dlv hdl" id="hdLive">
+        <div class="dlvhead"><span class="live"><i></i> LIVE</span><span>The first 100 days</span><label class="hdset">Day 1 <input type="date" id="hdStart" aria-label="Day 1 date"></label></div>
+        <div class="hdclock">
+          <div><div class="hdday" id="hdDay">Day –</div><div class="hdsub" id="hdSub"></div></div>
+          <div class="hdcd"><b id="hdCd">–</b><span id="hdCdL">to day 100</span></div>
+        </div>
+        <div class="hdbar"><div class="hdtrack" id="hdTrack"></div><b class="hdfill" id="hdFill"></b></div>
+        <div class="hdk">
+          <div><div class="ml">Phone customers who left TELUS today</div><div class="mv" id="hkChurn">0</div><div class="ms">1.08% blended phone churn in Q2 2026. At 1.0% that would be <b id="hkChurnSave">0</b> fewer today.</div><div class="hf">Promise: postpaid churn under 1.0% (0.97% in 2025)</div></div>
+          <div><div class="ml">Net debt still to retire for 3.0× by end-2027</div><div class="mv" id="hkDebt">$0</div><div class="ms"><b>$6.7M a day</b> on a straight line from $25.9B (Mar 31) to ≈$21.6B. Leverage today 3.5×.</div><div class="hf">TELUS's own target: ~3.0× by end-2028</div></div>
+          <div><div class="ml">AI revenue earned in 2026</div><div class="mv" id="hkAi">$0</div><div class="ms">At Q1's +22% growth, 2026 ends near <b>$0.98B</b>. Reaching ~$2B in 2028 needs <b>+36% a year</b>.</div><div class="hf">TELUS target: ~$2B AI revenue in 2028</div></div>
+          <div><div class="ml">Freed for debt by the dividend reset</div><div class="mv" id="hkDiv">$0</div><div class="ms" id="hkDivS">$2.7B through 2028, about $3.3M a day from Oct 1, 2026.</div><div class="hf">New leverage taken on: $0</div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -2363,10 +2600,21 @@
     </div>
   </section>
 
+  <!-- LIVE 2026 SCOREBOARD -->
+  <section id="pl-live">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--acid)">02</span><h2>The 2026 scoreboard you'd inherit</h2><span class="sub">live · tracking to guidance</span></div>
+      <p class="intro">The year you'd walk into, counting up in real time. Each bar fills toward its full-year mark; the thin line is how much of 2026 has gone. The right-hand column is what the second half has to deliver.</p>
+      <div class="dlv"><div class="dlvhead"><span class="live"><i></i> LIVE</span><span>TELUS · 2026 year to date</span><span class="ck" id="sbYr"></span></div><div class="sbtab" id="sbTab"></div></div>
+      <div class="bizfoot" style="margin:10px 0 22px">First half as reported (Q1 + Q2 2026). From July 1: Q2's daily pace for revenue, EBITDA and phone net adds; for free cash flow and capex, the pace that lands on TELUS's revised 2026 guidance (Jul 31, 2026). Estimates until Q3 is reported in November.</div>
+      <div class="kdl" id="kdList"></div>
+    </div>
+  </section>
+
   <!-- FIRST DECISIONS -->
   <section id="pl-decisions">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--acid)">02</span><h2>The three commitments</h2><span class="sub">what I'd say publicly on day one</span></div>
+      <div class="shead"><span class="sno" style="color:var(--acid)">03</span><h2>The three commitments</h2><span class="sub">what I'd say publicly on day one</span></div>
       <p class="intro">A new CEO gets one credibility budget. I'd spend it on three promises that are specific, measurable, and survivable.</p>
       <div class="grid3">
         <div class="card"><span class="tag win">Commit</span><h3>Churn stays under 1%</h3><p>The 0.91% is the franchise. It ticked to ~1.11% in Q3 under promo pressure — I own that number publicly and report it every quarter. Bundle depth, not discounting, is how we hold it.</p></div>
@@ -2379,7 +2627,7 @@
   <!-- WHAT I WON'T DO -->
   <section id="pl-restraint">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--acid)">03</span><h2>What I won't do in 100 days</h2><span class="sub">restraint is a strategy</span></div>
+      <div class="shead"><span class="sno" style="color:var(--acid)">04</span><h2>What I won't do in 100 days</h2><span class="sub">restraint is a strategy</span></div>
       <p class="intro">Half of a first-100-days plan is the discipline to <em>not</em> act. These are deliberate holds — each one a mistake a new CEO is tempted into.</p>
       <div class="two">
         <div class="card"><h3>Deliberate holds</h3>
@@ -2401,7 +2649,7 @@
   <!-- SCORECARD -->
   <section id="pl-score">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--acid)">04</span><h2>Day-100 scorecard</h2><span class="sub">how you'd judge me</span></div>
+      <div class="shead"><span class="sno" style="color:var(--acid)">05</span><h2>Day-100 scorecard</h2><span class="sub">how you'd judge me</span></div>
       <p class="intro">If I've done this right, here's what's true on day 100 — each item verifiable, no vanity metrics.</p>
       <div class="scorelist" id="scoreList"></div>
       <div class="note" style="border-left-color:var(--acid)">◈ <b>The closing line:</b> "In a hundred days I won't have transformed TELUS — nobody does, and anyone who promises it is selling. What I will have done is listened hard, committed publicly to three numbers I can be fired over, protected the churn franchise, and put the first visible win on the board. The transformation is years two and three. The first hundred days are about earning the right to run them."</div>
@@ -2422,33 +2670,28 @@
   <!-- LIVE SCOREBOARD -->
   <section id="q4-score">
     <div class="wrap">
-      <div class="scoreboard">
-        <div class="sbtop">
-          <div class="sblabel">Q4 LIVE TRACKER · OCT 1 – DEC 31</div>
-          <div class="sbday" id="sbDay"></div>
+      <div class="dlv q4l" id="q4Live">
+        <div class="dlvhead"><span class="live"><i></i> LIVE</span><span>Q4 2026 · Oct 1 – Dec 31 · ON + QC campaign</span><span class="ck" id="q4Clock"></span></div>
+        <div class="hdclock">
+          <div><div class="hdday" id="q4Day">Q4</div><div class="hdsub" id="q4Sub"></div></div>
+          <div class="hdcd"><b id="q4Cd">–</b><span id="q4CdL"></span></div>
         </div>
-        <div class="sbctx">23.15M subs on the board · TELUS holds 4.63M today (20%) · 231K subs = 1 share point</div>
-        <div class="sbmain">
-          <div class="sbnum">
-            <div class="sbn" id="sbGross">0</div>
-            <div class="sbl">gross adds <span style="color:var(--dim)">/ 90,000 target</span></div>
-            <div class="sbtrack"><div class="sbfill" id="sbGrossFill" style="background:var(--telus-2)"></div></div>
-          </div>
-          <div class="sbnum">
-            <div class="sbn" id="sbNet" style="color:var(--acid)">0</div>
-            <div class="sbl">net adds <span style="color:var(--dim)">/ 75,000 target</span></div>
-            <div class="sbtrack"><div class="sbfill" id="sbNetFill" style="background:var(--acid)"></div></div>
-          </div>
-          <div class="sbnum">
-            <div class="sbn" id="sbShare" style="color:var(--amber)">20.00%</div>
-            <div class="sbl">ON+QC share <span style="color:var(--dim)">/ 20.32% target</span></div>
-            <div class="sbtrack"><div class="sbfill" id="sbShareFill" style="background:var(--amber)"></div></div>
-          </div>
+        <div class="hdbar q4bar"><div class="hdtrack" id="q4Months"></div><b class="hdfill" id="q4Fill"></b><div class="q4mk" id="q4Marks"></div></div>
+        <div class="hdk">
+          <div><div class="ml">Gross adds on plan · ON + QC</div><div class="mv" id="q4G">0</div><div class="ms">of 90,000 · <b id="q4GT">+0</b> today at plan pace</div><div class="hf" id="q4GP">October target: 10,000</div></div>
+          <div><div class="ml">Net adds on plan · kept after churn</div><div class="mv" id="q4N">0</div><div class="ms">of 75,000 · 5 in 6 gross adds stay</div><div class="hf">The public commitment</div></div>
+          <div><div class="ml">ON + QC wireless share</div><div class="mv" id="q4S">20.00%</div><div class="ms">from 20.00% toward <b>20.32%</b> · 231K subscribers = 1 point</div><div class="hf">23.15M subscribers on the board</div></div>
+          <div><div class="ml">Acquisition spend on plan</div><div class="mv" id="q4C">$0</div><div class="ms">of <b>$24.8M</b> · $276 blended per gross add</div><div class="hf">Kill any channel under 3:1 LTV:CAC</div></div>
         </div>
-        <div class="sbchans" id="sbChans"></div>
-        <div class="sbspeed" id="sbSpeed"></div>
+        <div class="q4ch" id="q4Ch"></div>
       </div>
-      <div class="note">◈ Illustrative pacing simulation — a live scoreboard showing how the quarter's targets accumulate against the October→December plan (Section 07), not a connection to real activation systems. Reset and replay with the speed control.</div>
+      <div class="bizfoot" style="margin:10px 0 22px">Plan pace, counted in real time from Oct 1 (Eastern): October 10K gross adds, November 50K with Black Friday week at double pace, December 30K with Boxing week at 1.5×. Net adds are 5 in 6 of gross; spend is gross adds × the $276 blended CAC. These are the campaign's own targets, not activations.</div>
+
+      <div class="shead" style="margin-top:8px"><h2>Projected Q4 2026 · TELUS, all of Canada</h2><span class="sub">live · vs Q4 2025</span></div>
+      <p class="intro">What the whole company's Q4 looks like if the 2026 trend holds, counting up from Oct 1. Each bar is last year's Q4; the solid part is Q4 2026 so far and the marker is where the projection lands.</p>
+      <div class="dlv"><div class="dlvhead"><span class="live"><i></i> LIVE</span><span>TELUS · Q4 2026 so far</span><span class="ck" id="q4pYr"></span></div><div class="sbtab" id="q4pTab"></div></div>
+      <div class="bizfoot" style="margin:10px 0 22px">Projection = Q4 2025 reported × the 2026 trend. Revenue: $5.3B × −2.1% (first half 2026 vs 2025). Adj. EBITDA: $1.84B × −1.9% (Q2). Phone gross adds: 499K × 348K/376K (Q2 vs Q2). Phone net adds: 50K × 17K/55K. Free cash flow and capex: half of what the second half needs to land on 2026 guidance (~$1.8B and ~$2.6B). Spread evenly over Q4's 92 days. Estimates until TELUS reports Q4 in February 2027.</div>
+      <div class="kdl" id="q4Kd"></div>
     </div>
   </section>
 
@@ -2838,10 +3081,10 @@
     debt:[['d-live','Live Pressure'],['d-lev','Leverage'],['d-card','Balance Sheet'],['d-glide','Glide Path'],['d-take','The Take']],
     play:[['p-reality','Reality'],['p-score','Scorecard'],['p-acq','Acquire'],['p-cac','CAC Model'],['p-beat','Beat Them']],
     network:[['n-flow','Switching Flow'],['n-loyalty','Brand Loyalty'],['n-5g','5G & Spectrum']],
-    coverage:[['cov-towers','Tower Map'],['cov-live','Live Migration'],['cov-geo','Coverage Map'],['cov-map','Air Dominance'],['cov-merged','Merged Chart'],['cov-reach','Geo vs Population'],['cov-plans','Prepaid vs Postpaid']],
+    coverage:[['cov-towers','Tower Map'],['cov-money','Who\'s Behind TELUS'],['cov-sky','Satellite Share'],['cov-live','Live Migration'],['cov-geo','Coverage Map'],['cov-map','Air Dominance'],['cov-merged','Merged Chart'],['cov-reach','Geo vs Population'],['cov-plans','Prepaid vs Postpaid']],
     telecom:[['t-split','Wireless vs Wireline'],['t-fibre','PureFibre vs Bell'],['t-chain','Signal Chain'],['t-latency','Latency Budget'],['t-stack','Protocol Stack'],['t-topo','RAN Topology'],['t-spectrum','Wave Physics'],['t-holdings','Who Holds What'],['t-gens','1G→5G'],['t-money','The Money']],
-    plan:[['pl-timeline','The Sequence'],['pl-decisions','Three Commitments'],['pl-restraint','What I Won\'t Do'],['pl-score','Day-100 Scorecard']],
-    q4:[['q4-board','The Board'],['q4-plays','Three Plays'],['q4-history','Pricing 2020→26'],['q4-btl','In-Market vs BTL'],['q4-model','Financial Model'],['q4-gov','Governance & Risk'],['q4-quarter','Oct → Dec']],
+    plan:[['pl-timeline','The Sequence'],['pl-live','Live Scoreboard'],['pl-decisions','Three Commitments'],['pl-restraint','What I Won\'t Do'],['pl-score','Day-100 Scorecard']],
+    q4:[['q4-score','Live Q4'],['q4-board','The Board'],['q4-plays','Three Plays'],['q4-history','Pricing 2020→26'],['q4-btl','In-Market vs BTL'],['q4-model','Financial Model'],['q4-gov','Governance & Risk'],['q4-quarter','Oct → Dec']],
     ir:[['ir-listing','Listing'],['ir-guidance','Guidance'],['ir-calendar','Calendar']]
   };
   const LBL={brief:'Company Brief',biz:'The Business',debt:'Debt vs Rivals',play:'Growth & M&A',network:'Network & Loyalty',coverage:'Coverage & Plans',telecom:'Telecom 101',plan:'The 100-Day Plan',q4:'Q4 Wireless Challenge · ON+QC',ir:'Investor Relations'};
@@ -2996,17 +3239,19 @@
     if(view==='network'){ setTimeout(initNetworkView,60); }
     else if(flowRAF){ cancelAnimationFrame(flowRAF); flowRAF=null; }
     if(view==='coverage'){ setTimeout(initCoverageView,60); }
-    else { if(lRAF){ cancelAnimationFrame(lRAF); lRAF=null; } if(sigRAF){ cancelAnimationFrame(sigRAF); sigRAF=null; } if(mRAF){ cancelAnimationFrame(mRAF); mRAF=null; } }
+    else { if(mnRAF){ cancelAnimationFrame(mnRAF); mnRAF=null; } if(lRAF){ cancelAnimationFrame(lRAF); lRAF=null; } if(sigRAF){ cancelAnimationFrame(sigRAF); sigRAF=null; } if(mRAF){ cancelAnimationFrame(mRAF); mRAF=null; } }
     if(view==='telecom'){ setTimeout(initTelecomView,60); }
     else { if(cRAF){ cancelAnimationFrame(cRAF); cRAF=null; } if(tRAF){ cancelAnimationFrame(tRAF); tRAF=null; } if(wRAF){ cancelAnimationFrame(wRAF); wRAF=null; } }
     if(view==='plan'){ setTimeout(initPlanView,60); }
+    else if(hdRAF){ cancelAnimationFrame(hdRAF); hdRAF=null; }
     if(view==='q4'){ setTimeout(initQ4View,60); }
     else { if(sbRAF){ cancelAnimationFrame(sbRAF); sbRAF=null; } if(q4tRAF){ cancelAnimationFrame(q4tRAF); q4tRAF=null; } }
     if(view==='debt'){ setTimeout(initGauges,60); }
     else { if(gRAF){ cancelAnimationFrame(gRAF); gRAF=null; } if(dlRAF){ cancelAnimationFrame(dlRAF); dlRAF=null; } }
     if(view==='biz'){ setTimeout(initBizView,60); }
     else { if(bizRAF){ cancelAnimationFrame(bizRAF); bizRAF=null; } if(lvRAF){ cancelAnimationFrame(lvRAF); lvRAF=null; } }
-    if(view==='brief'){ renderStack(); renderWorld(); setTimeout(()=>{animateStack();animateWorld();},120); }
+    if(view==='brief'){ renderStack(); renderWorld(); setTimeout(()=>{animateStack();animateWorld();},120); tdStart(); }
+    else if(tdRAF){ cancelAnimationFrame(tdRAF); tdRAF=null; }
     $('tabs').classList.remove('open');
   }
   tabs.forEach(t=>t.addEventListener('click',()=>show(t.dataset.view)));
@@ -3821,9 +4066,42 @@
     else window.addEventListener('resize',()=>twResize(true));
   }
 
+  // ---- Coverage: who's behind TELUS (live cost of the money) ----
+  let mnRAF=null, mnLast=0;
+  function mnTick(ts){
+    if(ts-mnLast>45){ mnLast=ts; const now=Date.now(), e=$('mnInt');
+      if(e){ const yf=Math.max(0,Math.min(1,(now-T26.y0)/(T26.y1-T26.y0)));
+        e.textContent=bizFmt(t26('int',now)); $('mnCaisse').textContent=bizFmt(72e6*yf); $('mnClock').textContent=etClock(now);
+        const st=$('skStar'); if(st){ st.textContent=bizFmt(SK.star*yf); $('skShare').textContent=bizFmt(skRev*yf); $('skClock').textContent=etClock(now); } } }
+    mnRAF=requestAnimationFrame(mnTick);
+  }
+  function mnStart(){ if(mnRAF) cancelAnimationFrame(mnRAF); mnLast=0; mnRAF=requestAnimationFrame(mnTick); }
+  // ---- Coverage: where the wires end (satellite share model) ----
+  const SK={nd:25.889e9, lev:3.5, star:570e6, home:13530, arpu:56.36, phones:10.3e6, d2c:10, keep:0.5, mg:0.8};
+  SK.eb=SK.nd/SK.lev;
+  let skRev=0;
+  const skM=v=>v>=1e9?'$'+(v/1e9).toFixed(2)+'B':'$'+(v/1e6).toFixed(1)+'M';
+  const skL=v=>{ const a=Math.abs(v), t=a<0.01?a.toFixed(3):a.toFixed(2); return (v<0?'−':'+')+t+'×'; };
+  function skCalc(){
+    const g=id=>+$(id).value; if(!$('skH')) return;
+    const H=g('skH'), P=g('skP'), S=g('skS')/100, D=g('skD')/100;
+    $('skHv').textContent=H.toLocaleString('en-CA'); $('skPv').textContent='$'+P; $('skSv').textContent=Math.round(S*100)+'%'; $('skDv').textContent=(D*100).toFixed(1)+'%';
+    const fix=H*P*12*S, ph=SK.phones*D*SK.d2c*12*SK.keep; skRev=fix+ph;
+    const eb=skRev*SK.mg, dl=SK.nd/(SK.eb+eb)-SK.lev, capex=H*SK.home, bl=(SK.nd+capex)/SK.eb-SK.lev;
+    $('skoRev').textContent=skM(skRev); $('skoRevS').textContent=skM(fix)+' from homes + '+skM(ph)+' from phones';
+    $('skoEb').textContent=skM(eb); $('skoLev').textContent=skL(dl); $('skoMob').textContent=skM(H*SK.arpu*12);
+    $('skHomes').textContent=H.toLocaleString('en-CA'); $('skBuild').textContent=bizFmt(capex);
+    $('skBuildS').innerHTML='At $13,530 a home, the public money alone in Alberta\'s latest rural build. Borrowed: <b>'+skL(bl)+'</b> leverage. The satellite share: <b>'+skL(dl)+'</b>, no capex.';
+    $('skShareS').innerHTML='At the model below: about <b>'+skM(skRev)+' a year</b> to TELUS.';
+    const mx=200000*SK.home; $('skVb').style.width=(capex/mx*100).toFixed(1)+'%'; $('skVs2').style.width='0%';
+    $('skVbv').textContent=skM(capex); $('skVsv').textContent='$0';
+  }
+  function skInit(){ ['skH','skP','skS','skD'].forEach(id=>{ const e=$(id); if(e&&!e._sk){ e._sk=1; e.addEventListener('input',skCalc); } }); skCalc(); }
   function initCoverageView(){
     renderPride();
     twInit();
+    skInit();
+    mnStart();
     initGeoMap();
     initNetMap();
     renderCovBars('geoBars',GEO); renderCovBars('popBars',POP);
@@ -4597,7 +4875,7 @@
   function renderPhases(){
     const tabs=$('phaseTabs'); if(!tabs) return;
     tabs.innerHTML=PHASES.map((p,i)=>
-      '<button class="ptab'+(i===phaseIdx?' on':'')+'" data-i="'+i+'"><div class="pd">'+p.d+'</div><div class="pt">'+p.t+'</div><div class="pm">'+p.m+'</div></button>').join('');
+      '<button class="ptab'+(i===phaseIdx?' on':'')+(typeof hdDayNow==='function'&&hdPhaseIdx(hdDayNow())===i?' now':'')+'" data-i="'+i+'"><div class="pd">'+p.d+'</div><div class="pt">'+p.t+'</div><div class="pm">'+p.m+'</div></button>').join('');
     tabs.querySelectorAll('.ptab').forEach(b=>{
       b.onclick=()=>{ phaseIdx=+b.dataset.i;
         tabs.querySelectorAll('.ptab').forEach(x=>x.classList.toggle('on',x===b));
@@ -4650,13 +4928,93 @@
       '</ul><div class="gmetric"><b>'+g.metric+'</b> '+g.ml+'</div></div>').join('');
     el.dataset.done='1';
   }
-  function initPlanView(){ renderPhases(); renderScore(); renderGates(); }
+  function initPlanView(){ const d=hdDayNow(), pi=d?hdPhaseIdx(d):-1; if(pi>=0) phaseIdx=pi; renderPhases(); renderScore(); renderGates(); hdStartLive(); }
+  // ---- BRIEF · Today at TELUS (since midnight ET, Q2 2026 daily pace) ----
+  let tdRAF=null, tdLast=0;
+  function tdTick(ts){
+    if(ts-tdLast>45){ tdLast=ts; const now=Date.now(), m0=etToday(now), s=Math.max(0,(now-m0)/1000), f=Math.min(1,s/86400), q=T26.q2s;
+      if($('tdRev')){
+        $('tdRev').textContent=bizFmt(s*t26rate('rev')); $('tdEb').textContent=bizFmt(s*t26rate('eb'));
+        const won=s*T26.phg.q2/q, net=s*T26.phn.q2/q;
+        $('tdWon').textContent=Math.floor(won).toLocaleString('en-CA'); $('tdLost').textContent=Math.floor(won-net).toLocaleString('en-CA');
+        $('tdNet').textContent='+'+Math.floor(net).toLocaleString('en-CA'); $('tdCon').textContent='+'+Math.floor(s*T26.con.q2/q).toLocaleString('en-CA');
+        $('tdDayBar').style.width=(f*100).toFixed(2)+'%'; $('tdClock').textContent=etClock(now)+' · '+(f*100).toFixed(0)+'% of the day';
+      } }
+    tdRAF=requestAnimationFrame(tdTick);
+  }
+  function tdStart(){ if(tdRAF) cancelAnimationFrame(tdRAF); tdLast=0; tdRAF=requestAnimationFrame(tdTick); }
+
+  // ---- 100 DAYS · live ----
+  const HD_KEY='telcos-day1', HD_ND0=25.889e9, HD_NDT=Date.UTC(2026,3,1,4), HD_DEBTEND=Date.UTC(2028,0,1,5),
+    HD_DIV0=Date.UTC(2026,9,1,4), HD_DIVEND=Date.UTC(2029,0,1,5), HD_AI26=0.8e9*1.22;
+  let hdRAF=null, hdLast=0;
+  function hdDefault(){ const L=new Date(Date.now()+etOff(Date.now())), d=new Date(Date.UTC(L.getUTCFullYear(),L.getUTCMonth(),L.getUTCDate())); d.setUTCDate(d.getUTCDate()+(((8-d.getUTCDay())%7)||7)); return d.toISOString().slice(0,10); }
+  function hdStartDate(){ let v=null; try{ v=localStorage.getItem(HD_KEY); }catch(_){} return /^\d{4}-\d\d-\d\d$/.test(v||'')?v:hdDefault(); }
+  function hdStartMs(){ const [y,m,d]=hdStartDate().split('-').map(Number); return etMid(y,m,d); }
+  const hdRanges=()=>PHASES.map(p=>{ const m=String(p.d).match(/(\d+)\D+(\d+)/); return m?[+m[1],+m[2]]:[1,100]; });
+  function hdDayNow(){ const t0=hdStartMs(), now=Date.now(); return now<t0?0:Math.floor((now-t0)/864e5)+1; }
+  function hdPhaseIdx(day){ const r=hdRanges(); for(let i=0;i<r.length;i++) if(day>=r[i][0]&&day<=r[i][1]) return i; return -1; }
+  function hdBuild(){
+    const inp=$('hdStart'); if(inp){ inp.value=hdStartDate(); inp.onchange=()=>{ if(/^\d{4}-\d\d-\d\d$/.test(inp.value)){ try{ localStorage.setItem(HD_KEY,inp.value); }catch(_){} hdBuild(); renderPhases(); } }; }
+    const tr=$('hdTrack'); if(tr) tr.innerHTML=hdRanges().map((r,i)=>'<span style="left:'+((r[0]-1))+'%;width:'+(r[1]-r[0]+1)+'%"><i>'+PHASES[i].t+'</i></span>').join('');
+    const sb=$('sbTab'); if(sb){
+      const R=[['Operating revenue','rev',20506e6,'vs $20.51B in 2025'],['Adj. EBITDA','eb',7134e6,'guidance $7.06–7.21B (−2% to −4%)'],['Free cash flow','fcf',1.8e9,'guidance ~$1.8B'],['Capital expenditures','capex',2.6e9,'guidance ~$2.6B'],['Mobile phone net adds','phn',207000,'vs 207K in 2025']];
+      sb.innerHTML='<div class="sbr hd"><span>Metric</span><span>2026 so far</span><span>Toward the full year</span><span>What H2 has to deliver</span></div>'+
+        R.map(([n,k,full,ref])=>{ const g=T26[k], h1=g.h1, fy=t26(k,T26.y1), h2=fy-h1, money=k!=='phn', F=v=>money?'$'+(v/1e9).toFixed(2)+'B':Math.round(v/1000)+'K';
+          return '<div class="sbr" data-k="'+k+'" data-full="'+full+'"><span class="sn">'+n+'</span><span class="sv" id="sb_'+k+'">–</span><div class="sbb"><div class="tr"></div><b class="fl"></b><i class="yr"></i></div><span class="st">'+(g.q2!=null?'On pace for <b>'+F(fy)+'</b>, '+ref:'H2 needs <b>'+F(h2)+'</b> after '+F(h1)+' in H1; '+ref)+'</span></div>'; }).join('');
+    }
+    hdLast=0;
+  }
+  function hdTick(ts){
+    if(ts-hdLast>45){ hdLast=ts; const now=Date.now(), t0=hdStartMs(), tEnd=t0+100*864e5;
+      if($('hdDay')){
+        const day=now<t0?0:Math.floor((now-t0)/864e5)+1;
+        if(now<t0){ $('hdDay').textContent='Day 1 is coming'; $('hdSub').textContent='Set your Day 1 date at the top of this panel. Until then, this is the countdown.'; $('hdCd').textContent=cdFmt(t0-now); $('hdCdL').textContent='to day 1'; $('hdFill').style.width='0%'; }
+        else if(now<tEnd){ const pi=hdPhaseIdx(day), P=PHASES[pi]||{t:'',m:''}; $('hdDay').textContent='Day '+day+' of 100'; $('hdSub').textContent=(pi>=0?'Phase '+(pi+1)+' · '+P.t+' · '+P.m:''); $('hdCd').textContent=cdFmt(tEnd-now); $('hdCdL').textContent='to day 100'; $('hdFill').style.width=((now-t0)/(100*864e5)*100).toFixed(3)+'%'; }
+        else { $('hdDay').textContent='Day 100 reached'; $('hdSub').textContent='Time for the first quarterly report as CEO.'; $('hdCd').textContent=cdFmt(0); $('hdCdL').textContent='done'; $('hdFill').style.width='100%'; }
+        const s=Math.max(0,(now-etToday(now))/1000), lost=s*(T26.phg.q2-T26.phn.q2)/T26.q2s;
+        $('hkChurn').textContent=Math.floor(lost).toLocaleString('en-CA'); $('hkChurnSave').textContent=Math.floor(lost*(1-1.0/1.08)).toLocaleString('en-CA');
+        const R=HD_ND0-3.0*t26('eb',T26.y1); $('hkDebt').textContent=bizFmt(Math.max(0,R*(HD_DEBTEND-now)/(HD_DEBTEND-HD_NDT)));
+        $('hkAi').textContent=bizFmt(HD_AI26*Math.max(0,Math.min(1,(now-T26.y0)/(T26.y1-T26.y0))));
+        if(now<HD_DIV0){ $('hkDiv').textContent='$0'; $('hkDivS').textContent='Starts with the Oct 1, 2026 payment: '+cdFmt(HD_DIV0-now)+' to go. $2.7B through 2028, about $3.3M a day.'; }
+        else { $('hkDiv').textContent=bizFmt(2.7e9*Math.min(1,(now-HD_DIV0)/(HD_DIVEND-HD_DIV0))); $('hkDivS').textContent='$2.7B through 2028, about $3.3M a day, on a straight line from Oct 1, 2026.'; }
+      }
+      if($('sbTab')){ const yf=Math.max(0,Math.min(1,(now-T26.y0)/(T26.y1-T26.y0)));
+        $('sbYr').textContent=etClock(now)+' · '+(yf*100).toFixed(1)+'% of 2026 gone';
+        $('sbTab').querySelectorAll('.sbr[data-k]').forEach(r=>{ const k=r.dataset.k, full=+r.dataset.full, v=t26(k,now);
+          $('sb_'+k).textContent=k==='phn'?'+'+Math.floor(v).toLocaleString('en-CA'):bizFmt(v);
+          r.querySelector('.fl').style.width=Math.min(100,v/full*100).toFixed(3)+'%'; r.querySelector('.yr').style.left=(yf*100).toFixed(2)+'%'; }); }
+      const kd=$('kdList'); if(kd){
+        const nx=new Date(now), ref=Date.UTC(nx.getUTCFullYear(),nx.getUTCMonth(),6,9,23); const tower=now<ref?ref:Date.UTC(nx.getUTCFullYear(),nx.getUTCMonth()+1,6,9,23);
+        const K=[['Next dividend · $0.1875, the first after the reset',Date.UTC(2026,9,1,4),'Oct 1, 2026'],['Q3 2026 results',null,'November · date not announced'],['Tower map refresh from ISED',tower,'monthly, on the 6th'],['Day 100',t0+100*864e5,'from your Day 1'],['2026 guidance closes',T26.y1,'Dec 31, 2026'],['Your promise: 3.0× leverage',HD_DEBTEND,'Dec 31, 2027'],['TELUS targets: ~3.0× and ~$2B AI revenue',HD_DIVEND,'end of 2028']];
+        if(!kd.dataset.n){ kd.innerHTML='<div class="kdh">Countdowns</div>'+K.map((k,i)=>'<div class="kdi"><span class="kn">'+k[0]+'</span><span class="kw">'+k[2]+'</span><b id="kd'+i+'">–</b></div>').join(''); kd.dataset.n=K.length; }
+        K.forEach((k,i)=>{ const e=$('kd'+i); if(e) e.textContent=k[1]==null?'TBA':k[1]<=now?'done':cdFmt(k[1]-now); }); }
+    }
+    hdRAF=requestAnimationFrame(hdTick);
+  }
+  function hdStartLive(){ hdBuild(); if(hdRAF) cancelAnimationFrame(hdRAF); hdRAF=requestAnimationFrame(hdTick); }
+
 
 
   // ---- THE BUSINESS ----
   const BIZ_SEC=31536000;
-  const BIZ_RATE={rev:20506e6/BIZ_SEC, eb:7354e6/BIZ_SEC, fcf:2200e6/BIZ_SEC, con:985000/BIZ_SEC};
-  const BIZ_CON0=21160000, BIZ_CON_T0=Date.UTC(2026,0,1,5);
+  // ---- TELUS 2026 live model, shared by the Brief, Business, Debt and 100 Days tabs ----
+  // First half of 2026 as reported (Q1 + Q2), then from Jul 1 (ET): Q2's daily pace for revenue, EBITDA and customers,
+  // and the pace that lands on full-year guidance for free cash flow (~$1.8B) and capex (~$2.6B). Estimates until Q3 is reported.
+  const T26={y0:Date.UTC(2026,0,1,5), h1:Date.UTC(2026,6,1,4), y1:Date.UTC(2027,0,1,5), q2s:91*86400,
+    rev:{h1:9942e6,q2:4929e6}, eb:{h1:3614e6,q2:1777e6}, fcf:{h1:1128e6,fy:1.8e9}, capex:{h1:1329e6,fy:2.6e9},
+    phn:{h1:29000,q2:17000}, int:{h1:755e6,q2:420e6}, phg:{q2:348000}, con:{jun30:17946000,q2:224000}};
+  T26.h2s=(T26.y1-T26.h1)/1000;
+  const t26rate=m=>{ const g=T26[m]; return g.q2!=null?g.q2/T26.q2s:(g.fy-g.h1)/T26.h2s; };
+  function t26(m,t){ const g=T26[m]; t=Math.min(t,T26.y1);
+    if(t<=T26.h1) return g.h1*Math.max(0,(t-T26.y0)/(T26.h1-T26.y0));
+    return g.h1+(t-T26.h1)/1000*t26rate(m); }
+  // Eastern time helpers
+  function etOff(t){ try{ const o={}; new Intl.DateTimeFormat('en-US',{timeZone:'America/Toronto',hourCycle:'h23',year:'numeric',month:'numeric',day:'numeric',hour:'numeric',minute:'numeric',second:'numeric'}).formatToParts(new Date(t)).forEach(p=>o[p.type]=p.value); return Date.UTC(+o.year,+o.month-1,+o.day,+o.hour%24,+o.minute,+o.second)-Math.floor(t/1000)*1000; }catch(_){ return -4*3600e3; } }
+  const etMid=(y,m,d)=>{ const g=Date.UTC(y,m-1,d); return g-etOff(g+12*3600e3); };
+  function etToday(t){ const L=new Date(t+etOff(t)); return etMid(L.getUTCFullYear(),L.getUTCMonth()+1,L.getUTCDate()); }
+  function etClock(t){ const L=new Date(t+etOff(t)), p=x=>String(x).padStart(2,'0'); return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][L.getUTCMonth()]+' '+L.getUTCDate()+', '+p(L.getUTCHours())+':'+p(L.getUTCMinutes())+':'+p(L.getUTCSeconds())+' ET'; }
+  const cdFmt=ms=>{ if(ms<=0) return '0d 00:00:00'; const s=Math.floor(ms/1000), d=Math.floor(s/86400), p=x=>String(x).padStart(2,'0'); return d+'d '+p(Math.floor(s%86400/3600))+':'+p(Math.floor(s%3600/60))+':'+p(s%60); };
   function bizYearStart(){ const y=new Date(Date.now()-5*3600e3).getUTCFullYear(); return [y,Date.UTC(y,0,1,5)]; }
   let bizRAF=null, bizT0=0, bizLast=0;
   const bizFmt=v=>'$'+Math.floor(v).toLocaleString('en-CA');
@@ -4664,13 +5022,12 @@
     if(!bizT0) bizT0=ts;
     if(ts-bizLast>45){
       bizLast=ts;
-      const s=(ts-bizT0)/1000, now=Date.now(), [yr,y0]=bizYearStart(), ytd=Math.max(0,(now-y0)/1000);
-      $('bmRev').textContent=bizFmt(ytd*BIZ_RATE.rev);
-      $('bmEb').textContent=bizFmt(ytd*BIZ_RATE.eb);
-      $('bmFcf').textContent=bizFmt(ytd*BIZ_RATE.fcf);
-      $('bmSince').textContent='+'+bizFmt(s*BIZ_RATE.rev);
-      if($('bmYr').textContent!==String(yr)) $('bmYr').textContent=yr;
-      const cn=BIZ_CON0+Math.max(0,(now-BIZ_CON_T0)/1000)*BIZ_RATE.con;
+      const s=(ts-bizT0)/1000, now=Date.now();
+      $('bmRev').textContent=bizFmt(t26('rev',now));
+      $('bmEb').textContent=bizFmt(t26('eb',now));
+      $('bmFcf').textContent=bizFmt(t26('fcf',now));
+      $('bmSince').textContent='+'+bizFmt(s*t26rate('rev'));
+      const cn=T26.con.jun30+Math.max(0,(Math.min(now,T26.y1)-T26.h1)/1000)*T26.con.q2/T26.q2s;
       $('bmCon').textContent=Math.floor(cn).toLocaleString('en-CA');
       $('bmNext').style.width=((cn%1)*100).toFixed(1)+'%';
       const m=Math.floor(s/60), ss=Math.floor(s%60);
@@ -5088,60 +5445,59 @@
     if(n>=1&&n<=9){ const t=document.querySelectorAll('.tab')[n-1]; if(t) t.click(); }
   });
 
-  // ---- Q4 LIVE SCOREBOARD ----
-  const SB_CHANS=[
-    {n:'Winback',target:25000,col:'#2ec4b6'},
-    {n:'In-Market',target:40000,col:'#ffb703'},
-    {n:'Flank',target:25000,col:'#7a4fa0'}
-  ];
-  const SB_TOTAL_GROSS=90000, SB_TOTAL_NET=75000;
-  const SB_SHARE_START=20.00, SB_SHARE_END=20.32;
-  let sbT=0, sbSpeed=1, sbRAF=null;
-  function sbInit(){
-    const cw=$('sbChans'); if(cw){ cw.innerHTML=SB_CHANS.map(c=>
-      '<div class="sbc" style="border-left-color:'+c.col+'"><div class="sbcn">'+c.n+'</div>'+
-      '<div class="sbcv" style="color:'+c.col+'" id="sbc-'+c.n+'">0</div>'+
-      '<div class="sbctrack"><div class="sbcfill" id="sbf-'+c.n+'" style="background:'+c.col+'"></div></div></div>').join('');
+  // ---- Q4 LIVE (real time, Oct 1 – Dec 31 2026, Eastern) ----
+  const Q4_T0=Date.UTC(2026,9,1,4), Q4_T1=Date.UTC(2027,0,1,5), Q4_DAYS=92;
+  const Q4_CH=[{n:'Winback',t:25000,col:'#2ec4b6'},{n:'In-Market',t:40000,col:'#ffb703'},{n:'Flank',t:25000,col:'#7a4fa0'}];
+  // daily plan weights: Oct 10K, Nov 50K (Black Friday week Nov 23–30 at 2×), Dec 30K (Boxing week Dec 26–31 at 1.5×)
+  const Q4_W=(()=>{ const w=[]; const add=(n,tot,hot,hf)=>{ const u=n+hot.length*(hf-1), per=tot/u; for(let d=1;d<=n;d++) w.push(per*(hot.indexOf(d)>=0?hf:1)); };
+    add(31,10000,[],1); add(30,50000,[23,24,25,26,27,28,29,30],2); add(31,30000,[26,27,28,29,30,31],1.5); return w; })();
+  const Q4_CUM=Q4_W.reduce((a,v)=>{ a.push(a[a.length-1]+v); return a; },[0]);
+  let sbRAF=null, q4Last=0;
+  function q4DayStart(i){ const d=new Date(Date.UTC(2026,9,1+i)); return etMid(d.getUTCFullYear(),d.getUTCMonth()+1,d.getUTCDate()); }
+  function q4Gross(t){ if(t<=Q4_T0) return 0; if(t>=Q4_T1) return 90000;
+    let i=0; while(i<Q4_DAYS-1&&q4DayStart(i+1)<=t) i++; const s0=q4DayStart(i), s1=i<Q4_DAYS-1?q4DayStart(i+1):Q4_T1;
+    return Q4_CUM[i]+Q4_W[i]*Math.min(1,(t-s0)/(s1-s0)); }
+  // national projection for Q4 2026: Q4 2025 reported x the 2026 trend
+  const Q4P=[['Operating revenue',5300e6*(1-0.021),5300e6,'$5.30B in Q4 2025',1],['Adj. EBITDA',1839e6*(1777/1812),1839e6,'$1.84B in Q4 2025',1],['Mobile phone gross adds',499000*348/376,499000,'499K in Q4 2025',0],['Mobile phone net adds',50000*17/55,50000,'50K in Q4 2025',0],['Free cash flow',(1.8e9-1128e6)/2,574e6,'$574M in Q4 2025',1],['Capital expenditures',(2.6e9-1329e6)/2,649e6,'$649M in Q4 2025',1]];
+  const q4F=(v,m)=>m?(v>=1e9?'$'+(v/1e9).toFixed(2)+'B':'$'+Math.round(v/1e6)+'M'):(v>=1e4?Math.round(v/1000)+'K':Math.round(v).toLocaleString('en-CA'));
+  function q4Build(){
+    const mo=$('q4Months'); if(mo){ const segs=[['October',0,31],['November',31,30],['December',61,31]]; mo.innerHTML=segs.map(([n,a,l])=>'<span style="left:'+(a/92*100).toFixed(3)+'%;width:'+(l/92*100).toFixed(3)+'%"><i>'+n+'</i></span>').join(''); }
+    const mk=$('q4Marks'); if(mk){ const M=[['Thanksgiving',11],['Black Friday',57],['Cyber Monday',60],['Boxing Day',86]];
+      mk.innerHTML=M.map(([n,d],i)=>'<span class="'+(i===2?'lo':'')+'" style="left:'+((d+.5)/92*100).toFixed(2)+'%"><em>'+n+'</em></span>').join(''); }
+    const ch=$('q4Ch'); if(ch) ch.innerHTML=Q4_CH.map((c,i)=>'<div style="--c:'+c.col+'"><span class="cn"><i></i>'+c.n+'</span><div class="cb"><b id="q4c'+i+'"></b></div><span class="cv" id="q4cv'+i+'">0 / '+(c.t/1000)+'K</span></div>').join('');
+    const pt=$('q4pTab'); if(pt) pt.innerHTML='<div class="sbr hd"><span>Metric</span><span>Q4 so far</span><span>Against Q4 2025</span><span>Where Q4 2026 lands</span></div>'+
+      Q4P.map(([n,p,ly,lyl,m],i)=>{ const ch=(p/ly-1)*100; return '<div class="sbr q4r" data-i="'+i+'"><span class="sn">'+n+'</span><span class="sv" id="q4p'+i+'">–</span><div class="sbb"><div class="tr"></div><b class="fl"></b><i class="yr" style="left:'+Math.min(100,p/ly*100).toFixed(2)+'%"></i></div><span class="st">Projected <b>≈'+q4F(p,m)+'</b> vs '+lyl+' ('+(ch>=0?'+':'−')+Math.abs(ch).toFixed(ch>-10&&ch<10?1:0)+'%)</span></div>'; }).join('');
+    q4Last=0;
+  }
+  function q4Tick(ts){
+    if(ts-q4Last>45){ q4Last=ts; const now=Date.now(), el=$('q4Day');
+      if(el){
+        const f=Math.max(0,Math.min(1,(now-Q4_T0)/(Q4_T1-Q4_T0)));
+        $('q4Clock').textContent=etClock(now);
+        if(now<Q4_T0){ el.textContent='Q4 starts in '+cdFmt(Q4_T0-now).replace(/^0d /,''); $('q4Sub').textContent='October: load the machine. Lapsed-base file, promo-expiry calendar, dealer comp.'; $('q4Cd').textContent=cdFmt(Q4_T1-now); $('q4CdL').textContent='to Q4 close'; }
+        else if(now<Q4_T1){ let i=0; while(i<Q4_DAYS-1&&q4DayStart(i+1)<=now) i++; const d=i+1, M=d<=31?['October','Load the machine']:d<=61?['November','Spend hard'+(d>=54?' · Black Friday week':'')]:['December','Convert to depth'+(d>=87?' · Boxing week':'')];
+          el.textContent='Day '+d+' of 92'; $('q4Sub').textContent=M[0]+' · '+M[1]; $('q4Cd').textContent=cdFmt(Q4_T1-now); $('q4CdL').textContent='to Q4 close'; }
+        else { el.textContent='Q4 closed'; $('q4Sub').textContent='Report ON+QC net adds and services per household in the quarterly.'; $('q4Cd').textContent='done'; $('q4CdL').textContent=''; }
+        $('q4Fill').style.width=(f*100).toFixed(3)+'%';
+        const g=q4Gross(now), n=g*75/90;
+        $('q4G').textContent=Math.floor(g).toLocaleString('en-CA'); $('q4N').textContent=Math.floor(n).toLocaleString('en-CA');
+        $('q4S').textContent=(20+0.32*n/75000).toFixed(3)+'%'; $('q4C').textContent=bizFmt(g*276);
+        const m0=etToday(now); $('q4GT').textContent='+'+Math.floor(Math.max(0,g-q4Gross(Math.max(m0,Q4_T0)))).toLocaleString('en-CA');
+        $('q4GP').textContent=now<Date.UTC(2026,10,1,4)?'October target: 10,000':now<Date.UTC(2026,11,1,5)?'By Nov 30: 60,000':'By Dec 31: 90,000';
+        Q4_CH.forEach((c,i)=>{ const v=g*c.t/90000; $('q4c'+i).style.width=(v/c.t*100).toFixed(3)+'%'; $('q4cv'+i).textContent=Math.floor(v).toLocaleString('en-CA')+' / '+(c.t/1000)+'K'; });
+      }
+      if($('q4pTab')){ const qf=Math.max(0,Math.min(1,(now-Q4_T0)/(Q4_T1-Q4_T0)));
+        $('q4pYr').textContent=(qf*100).toFixed(1)+'% of Q4 gone';
+        Q4P.forEach(([n,p,ly,lyl,m],i)=>{ const v=p*qf, e=$('q4p'+i); if(!e) return; e.textContent=m?bizFmt(v):(i===3?'+':'')+Math.floor(v).toLocaleString('en-CA');
+          const r=e.parentNode; r.querySelector('.fl').style.width=Math.min(100,v/ly*100).toFixed(3)+'%'; }); }
+      const kd=$('q4Kd'); if(kd){
+        const K=[['Q4 opens','Oct 1, 2026',Q4_T0],['Thanksgiving weekend promos','Mon Oct 12',etMid(2026,10,12)],['October target: 10K gross adds','Oct 31',Date.UTC(2026,10,1,4)],['Q3 2026 results','November · date not announced',null],['Black Friday','Fri Nov 27',etMid(2026,11,27)],['Cyber Monday','Mon Nov 30',etMid(2026,11,30)],['November target: 60K gross adds','Nov 30',etMid(2026,12,1)],['Boxing Day','Sat Dec 26',etMid(2026,12,26)],['Q4 closes · 75K net adds','Dec 31',Q4_T1],['Q4 2026 results','February 2027 · date not announced',null]];
+        if(!kd.dataset.n){ kd.innerHTML='<div class="kdh">Q4 countdowns</div>'+K.map((k,i)=>'<div class="kdi"><span class="kn">'+k[0]+'</span><span class="kw">'+k[1]+'</span><b id="q4k'+i+'">–</b></div>').join(''); kd.dataset.n=K.length; }
+        K.forEach((k,i)=>{ const e=$('q4k'+i); if(e) e.textContent=k[2]==null?'TBA':k[2]<=now?'done':cdFmt(k[2]-now); }); }
     }
-    const sw=$('sbSpeed'); if(sw){ sw.innerHTML=['1×','8×','30×'].map((l,i)=>
-      '<button class="sbsbtn'+(i===0?' on':'')+'" data-sp="'+[1,8,30][i]+'">'+l+'</button>').join('');
-      sw.querySelectorAll('.sbsbtn').forEach(b=>b.onclick=()=>{ sbSpeed=+b.dataset.sp; sw.querySelectorAll('.sbsbtn').forEach(x=>x.classList.toggle('on',x===b)); });
-    }
-    sbT=0;
-    if(sbRAF) cancelAnimationFrame(sbRAF);
-    sbRAF=requestAnimationFrame(sbTick);
+    sbRAF=requestAnimationFrame(q4Tick);
   }
-  // ease-in pacing matching the plan: slow October, peak November, steady December
-  function sbPace(t){
-    if(t<0.33) return (t/0.33)*0.11;
-    if(t<0.78) return 0.11+((t-0.33)/0.45)*0.67;
-    return 0.78+((t-0.78)/0.22)*0.22;
-  }
-  function sbTick(){
-    sbT=Math.min(1, sbT + 0.0016*sbSpeed);
-    const p=sbPace(sbT);
-    const gross=Math.round(SB_TOTAL_GROSS*p);
-    const net=Math.round(SB_TOTAL_NET*p);
-    const share=SB_SHARE_START+(SB_SHARE_END-SB_SHARE_START)*p;
-    const dayNum=Math.round(sbT*92);
-    const g=$('sbGross'), n=$('sbNet'), s=$('sbShare'), d=$('sbDay');
-    if(g) g.textContent=gross.toLocaleString();
-    if(n) n.textContent=net.toLocaleString();
-    if(s) s.textContent=share.toFixed(2)+'%';
-    if(d) d.textContent='Day '+dayNum+' of 92'+(sbT>=1?' · QUARTER CLOSED':'');
-    const gf=$('sbGrossFill'), nf=$('sbNetFill'), sf=$('sbShareFill');
-    if(gf) gf.style.width=(gross/SB_TOTAL_GROSS*100)+'%';
-    if(nf) nf.style.width=(net/SB_TOTAL_NET*100)+'%';
-    if(sf) sf.style.width=((share-SB_SHARE_START)/(SB_SHARE_END-SB_SHARE_START)*100)+'%';
-    SB_CHANS.forEach(c=>{
-      const v=Math.round(c.target*p);
-      const el=document.getElementById('sbc-'+c.n), fl=document.getElementById('sbf-'+c.n);
-      if(el) el.textContent=v.toLocaleString();
-      if(fl) fl.style.width=(v/c.target*100)+'%';
-    });
-    if(sbT<1) sbRAF=requestAnimationFrame(sbTick);
-    else sbRAF=null;
-  }
+  function sbInit(){ q4Build(); if(sbRAF) cancelAnimationFrame(sbRAF); sbRAF=requestAnimationFrame(q4Tick); }
 
   // ---- Q4 MONOPOLY BOARD (ON + QC) ----
   const OWN={telus:'#7a4fa0',rogers:'#ff5964',bell:'#3a86ff',videotron:'#ffb703',open:'#54646b'};
@@ -5330,6 +5686,7 @@
   calc();
   renderStack();
   renderWorld();
+  tdStart();
   setTimeout(()=>{ animateBars($('v-brief')); animateStack(); animateWorld(); },200);
   let thSaved='dark'; try{ thSaved=localStorage.getItem('telcos-theme')||'dark'; }catch(e){}
   if(thSaved==='light') applyTheme('light',false);
