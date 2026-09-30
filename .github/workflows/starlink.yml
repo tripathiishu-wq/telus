@@ -1,0 +1,98 @@
+name: Starlink orbits (CelesTrak)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '41 5 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: starlink-orbits
+  cancel-in-progress: false
+
+jobs:
+  starlink:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download Starlink orbital elements
+        run: |
+          ok=
+          for URL in "https://celestrak.org/NORAD/elements/gp.php?GROUP=starlink&FORMAT=csv" \
+                     "https://celestrak.org/NORAD/elements/supplemental/sup-gp.php?FILE=starlink&FORMAT=csv"; do
+            for i in 1 2 3; do
+              echo "attempt $i: $URL"
+              if curl -fsSL --connect-timeout 30 --max-time 300 -A "TELCOS-starlink/1.0 (daily)" -o starlink.csv "$URL" \
+                 && head -1 starlink.csv | grep -q MEAN_MOTION; then ok=1; break 2; fi
+              sleep 30
+            done
+          done
+          test -n "$ok"
+          wc -l starlink.csv
+
+      - name: Build starlink.json
+        run: |
+          cat > build_starlink.py <<'PY'
+          import sys, csv, io, json, datetime, os, statistics
+          # CelesTrak GP data (CSV or JSON/OMM) for the Starlink group -> compact starlink.json for the TELCOS app.
+          SRC = sys.argv[1] if len(sys.argv) > 1 else 'starlink.csv'
+          OUT = sys.argv[2] if len(sys.argv) > 2 else 'starlink.json'
+          LABEL = os.environ.get('STL_SRC', 'CelesTrak GP · Starlink group')
+
+          raw = open(SRC, 'rb').read().decode('utf-8', 'replace').lstrip('﻿')
+          if raw.lstrip().startswith('['):
+              rows = json.loads(raw)
+          else:
+              rows = list(csv.DictReader(io.StringIO(raw)))
+
+          def epoch(s):
+              s = str(s).strip().replace('Z', '')
+              if '.' in s:
+                  a, b = s.split('.', 1); s = a + '.' + (b + '000000')[:6]
+              return datetime.datetime.fromisoformat(s).replace(tzinfo=datetime.timezone.utc).timestamp()
+
+          sats, dtc, bad = [], [], 0
+          for r in rows:
+              try:
+                  t = epoch(r['EPOCH']); n = float(r['MEAN_MOTION']); e = float(r['ECCENTRICITY'])
+                  i = float(r['INCLINATION']); O = float(r['RA_OF_ASC_NODE']); w = float(r['ARG_OF_PERICENTER'])
+                  M = float(r['MEAN_ANOMALY']); nd = float(r.get('MEAN_MOTION_DOT') or 0)
+              except (KeyError, ValueError, TypeError):
+                  bad += 1; continue
+              if not (11.0 < n < 16.4) or e > 0.05:   # drop decaying / odd objects
+                  bad += 1; continue
+              name = str(r.get('OBJECT_NAME') or '').upper()
+              if 'DTC' in name or 'DIRECT' in name: dtc.append(len(sats))
+              sats.append((t, n, e, i, O, w, M, nd))
+
+          if len(sats) < 1000:
+              sys.exit(f'Too few Starlink element sets parsed: {len(sats)}')
+          t0 = int(min(s[0] for s in sats))
+          d = []
+          for t, n, e, i, O, w, M, nd in sats:
+              d += [round(t - t0), round(n, 8), round(e, 7), round(i, 4), round(O, 4), round(w, 4), round(M, 4), float('%.4g' % nd)]
+          now = datetime.datetime.now(datetime.timezone.utc)
+          med = datetime.datetime.fromtimestamp(statistics.median(s[0] for s in sats), datetime.timezone.utc)
+          pack = {'v': 1, 'src': LABEL, 'asof': now.strftime('%Y-%m-%dT%H:%MZ'), 'ep': med.strftime('%Y-%m-%dT%H:%MZ'),
+                  'n': len(sats), 't0': t0, 'x': dtc, 'd': d}
+          json.dump(pack, open(OUT, 'w'), separators=(',', ':'))
+          msg = f"Starlink: {len(sats):,} element sets ({len(dtc):,} direct-to-cell) · median epoch {pack['ep']} · skipped {bad} · {os.path.getsize(OUT):,} bytes"
+          print(msg)
+          summ = os.environ.get('GITHUB_STEP_SUMMARY')
+          if summ: open(summ, 'a').write('## Starlink orbits\n' + msg + '\n')
+          PY
+          python3 build_starlink.py starlink.csv starlink.json
+
+      - name: Commit starlink.json
+        run: |
+          git config user.name "orbits-bot"
+          git config user.email "orbits-bot@users.noreply.github.com"
+          git add starlink.json
+          if git diff --cached --quiet; then echo "No change"; exit 0; fi
+          git commit -m "Starlink orbits: CelesTrak elements $(date -u +%Y-%m-%d)"
+          git pull --rebase
+          git push
