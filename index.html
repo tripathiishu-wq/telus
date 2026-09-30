@@ -1176,6 +1176,40 @@
   :root[data-theme="light"] .stlmap{background:#e3eaee}
   @media(max-width:980px){.stlp{grid-template-columns:1fr}.stlg{grid-template-columns:1fr}.stlmap{height:52vh;min-height:340px}.stlside{display:grid;grid-template-columns:1fr 1fr;gap:16px}.stlside>div:last-child{grid-column:1/-1}}
   @media(max-width:620px){.stlk b{font-size:22px}.stlk>div{padding:14px 14px}.stlid{padding:18px 16px}.stlside{grid-template-columns:1fr}.stlmap{height:46vh;min-height:300px}.stlname{font-size:28px}.stlfoot{padding:10px 16px}}
+
+  /* ---- TELUS vs Starlink ---- */
+  #cov-vs a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--dim);text-underline-offset:3px}
+  #cov-vs a:hover{color:var(--acid);text-decoration-color:var(--acid)}
+  .tvsw .dlvhead{justify-content:space-between}
+  .tvsmode{margin-left:auto}
+  .tvsmode .lvchip{padding:6px 10px;font-size:11px;text-transform:none;letter-spacing:0}
+  .tvsg{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:1px;background:var(--line)}
+  .tvsmap{position:relative;background:#0a0d0f;height:clamp(380px,58vh,600px);overflow:hidden}
+  .tvsmap canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y;cursor:ew-resize}
+  .tvsmap.battle canvas{cursor:default}
+  .tvsleg{position:absolute;left:12px;bottom:10px;max-width:calc(100% - 24px);display:flex;flex-wrap:wrap;gap:4px 14px;font-family:'IBM Plex Mono';font-size:10.5px;color:var(--mute);background:var(--panel);border:1px solid var(--line);padding:6px 10px}
+  .tvsleg i{display:inline-block;width:9px;height:9px;margin-right:6px;vertical-align:-1px}
+  .tvsleg i.t{background:#b08ad8} .tvsleg i.s{background:var(--mute);opacity:.5} .tvsleg i.d{background:var(--ink);width:4px;height:4px;vertical-align:1px} .tvsleg i.a{background:#ffb703;opacity:.7}
+  .tvsleg.bt,.tvsmap.battle .tvsleg.sw{display:none}
+  .tvsmap.battle .tvsleg.bt{display:flex}
+  .tvsside{background:var(--panel);padding:20px 18px;display:flex;flex-direction:column;gap:18px;min-width:0}
+  .twk .kv.tvskv{font-size:28px}
+  .tvsz{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .tvsz>div{background:var(--panel-2);padding:12px}
+  .tvsz b{display:block;font-family:'Space Grotesk';font-size:19px;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .tvsz span{font-size:11px;color:var(--mute);line-height:1.35;display:block;margin-top:3px}
+  .tvsrange{display:flex;align-items:center;gap:12px;padding:10px 22px 0;font-family:'IBM Plex Mono';font-size:10.5px;color:var(--mute);text-transform:uppercase;letter-spacing:.1em}
+  .tvsrange input{flex:1;margin:0;accent-color:var(--acid)}
+  .tvsfoot{padding:8px 22px 12px;margin:0}
+  :root[data-theme="light"] .tvsmap{background:#e3eaee}
+  :root[data-theme="light"] .tvsleg i.t{background:#7b4fb0}
+  :root[data-theme="light"] .tvsleg i.a{background:#c47a00}
+  .wbt.tvh .wbr{grid-template-columns:150px repeat(3,minmax(0,1fr))}
+  .tvco{grid-template-columns:repeat(3,minmax(0,1fr))}
+  @media(max-width:980px){.tvsg{grid-template-columns:1fr}.tvsmap{height:52vh;min-height:340px}.tvsside{display:grid;grid-template-columns:1fr 1fr;gap:16px}.tvsz{grid-column:1/-1}}
+  @media(max-width:900px){.wbt.tvh .wbr{grid-template-columns:1fr}.wbt.tvh .wbr>span:nth-child(n+2)::before{display:block;font-family:'IBM Plex Mono';font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;margin:6px 0 2px}.wbt.tvh .wbr>span:nth-child(2)::before{content:'TELUS today'}.wbt.tvh .wbr>span:nth-child(3)::before{content:'Starlink today'}.wbt.tvh .wbr>span:nth-child(4)::before{content:"TELUS's move"}.tvco{grid-template-columns:1fr 1fr}}
+  @media(max-width:620px){.tvsside{grid-template-columns:1fr}.tvsmap{height:46vh;min-height:300px}.tvsw .dlvhead{flex-direction:column;align-items:flex-start}.tvsmode{margin-left:0}.tvsrange{padding:10px 16px 0}.tvsfoot{padding:8px 16px 12px}}
+  @media(max-width:480px){.tvco{grid-template-columns:1fr}}
   /* theme toggle */
   :root{color-scheme:dark}
   :root[data-theme="light"]{color-scheme:light}
@@ -2296,10 +2330,86 @@
     </div>
   </section>
 
+  <section id="cov-vs">
+    <div class="wrap">
+      <div class="shead"><span class="sno" style="color:var(--acid)">04</span><h2>TELUS vs Starlink</h2><span class="sub">the business case: fight inside the towers, partner beyond them</span></div>
+      <p class="intro">Starlink reaches every corner of Canada from the sky. TELUS reaches 90% of Canadians with 5G but only part of the land. Where both reach, TELUS can win the home: 5G home internet, a hub for the truck, the farm's and the family's connected devices, and service a satellite company doesn't offer. Beyond TELUS's towers, Starlink is the only fast option, and TELUS should partner (section 03). Drag the map to compare.</p>
+      <div class="dlv tvsw">
+        <div class="dlvhead"><span>Coverage compared</span><span class="lvchips tvsmode" id="tvsMode"></span></div>
+        <div class="tvsg">
+          <div class="tvsmap" id="tvsMap"><canvas id="tvsCanvas" aria-label="Map comparing where the network TELUS customers use reaches with Starlink coverage"></canvas>
+            <div class="tvsleg sw"><span><i class="t"></i>TELUS customers' network</span><span><i class="s"></i>Starlink: all of Canada</span><span><i class="d"></i>Starlink satellites, live</span></div>
+            <div class="tvsleg bt"><span><i class="t"></i>Fight: both reach</span><span><i class="a"></i>Partner: only Starlink reaches</span></div>
+          </div>
+          <div class="tvsside">
+            <div class="twk"><div class="kl">Land the TELUS customers' network reaches</div><div class="kv" id="tvsPct">—</div><div class="ks">Our model from ISED sites. Carriers put the shared network at about a fifth of Canada's land.</div></div>
+            <div class="twk"><div class="kl">Canadians with TELUS 5G</div><div class="kv">90%</div><div class="ks">End of 2025. About 99% of Canadians have some cell service.</div></div>
+            <div class="twk"><div class="kl">Starlink</div><div class="kv tvskv">All of Canada</div><div class="ks">Anywhere with a clear view of the sky, where the area has capacity</div></div>
+            <div class="tvsz"><div><b id="tvsFight">—</b><span>of land to fight for</span></div><div><b id="tvsOnly">—</b><span>of land to partner for</span></div></div>
+          </div>
+        </div>
+        <div class="tvsrange"><label for="tvsRange">Divider</label><input type="range" id="tvsRange" min="2" max="98" value="50" aria-label="Move the comparison divider"></div>
+        <div class="bizfoot tvsfoot">TELUS side: every licensed site that carries TELUS customers (TELUS, Bell and SaskTel sites, plus regional partners where the data has them), each given 12 km of reach on low band, 5 km on mid band and 1.5 km otherwise. It models where service is likely; it is not TELUS's official coverage map.</div>
+      </div>
+
+      <div class="shead" style="margin-top:34px"><h2>Head to head</h2><span class="sub">what each sells today, and TELUS's move</span></div>
+      <div class="wbt tvh">
+        <div class="wbr hd"><span></span><span>TELUS today</span><span>Starlink today</span><span>TELUS's move</span></div>
+        <div class="wbr"><span class="wn"><b>Home internet</b></span><span><a href="https://www.telus.com/en/internet/wireless-home-internet/rural" target="_blank" rel="noopener">Rural wireless home internet</a>: 25–200 Mbps for $70–$95 a month; 200 Mbps is <b>$70</b> for the first 24 months. $0 hardware on a 2-year term.</span><span><a href="https://fastsat.ca/pricing/" target="_blank" rel="noopener">$75–$150 a month</a>; Residential 200 is <b>$115</b>. Dish $599, often free.</span><span>Lead with 200 Mbps at $70 against Starlink's $115, wherever the site has 5G.</span></div>
+        <div class="wbr"><span class="wn"><b>Rural speed</b></span><span>Up to 200 down / 20 up where 5G reaches; <b>5G covers 90%</b> of Canadians. Older LTE fixed wireless is slower.</span><span><b>57 / 13 Mbps</b> average in rural Canada, more than twice rural fixed wireless (<a href="https://insights.opensignal.com/2025/02/10/fixed-wireless-and-satellite-broadband-are-closing-the-digital-divide-in-canada" target="_blank" rel="noopener">Opensignal</a>). Down 16 Mbps in six months of 2024 as users piled on.</span><span>Sell home internet only on 5G mid-band sites. Where only LTE reaches, Starlink is faster: partner there instead.</span></div>
+        <div class="wbr"><span class="wn"><b>Dongles and hubs</b></span><span><a href="https://www.telus.com/en/mobility/mobile-internet" target="_blank" rel="noopener">5G hotspot</a> $240 ($10 a month); router $377. Plans $60 (5 GB) to $135 (50 GB).</span><span>Roam $75 (100 GB) to $200 (unlimited); Mini dish $399. <b>Cheaper per GB today.</b></span><span>A rural hub plan priced near Roam: fits in a pocket, works inside a moving truck, no dish, no power brick.</span></div>
+        <div class="wbr"><span class="wn"><b>Phones</b></span><span>Satellite-to-phone with <a href="https://mobilesyrup.com/2026/03/04/telus-ast-spacemobile-satellite-cellular-connectivity/" target="_blank" rel="noopener">AST SpaceMobile</a>, launching later in 2026. TELUS is a shareholder.</span><span>Only through <a href="https://about.rogers.com/news-ideas/rogers-first-to-launch-satellite-to-mobile-service-with-must-have-apps/" target="_blank" rel="noopener">Rogers</a>: $15 a month, free on top plans.</span><span>Include satellite texting on every rural plan; charge for satellite data.</span></div>
+        <div class="wbr"><span class="wn"><b>Connected devices</b></span><span><b>+187K</b> connected devices in Q2 2026 alone, on one network and one account.</span><span>One terminal per home: it sells a connection, not the devices on it.</span><span>Two or three devices per rural home: farm sensors, trackers, cameras, health alerts, on the same bill.</span></div>
+        <div class="wbr"><span class="wn"><b>Service (CRM)</b></span><span>Stores, installers and phone support. But complaints to the CCTS rose <b>78%</b> in 2024-25, to 4,904 (21% of all), led by billing (<a href="https://mobilesyrup.com/2026/01/14/rogers-led-record-number-canadian-telecom-complaints-2024-25/" target="_blank" rel="noopener">CCTS</a>).</span><span>App-first support; users report there's no phone line to call (<a href="https://newspaceeconomy.ca/2026/08/07/what-are-starlink-users-in-canada-saying-about-starlink-performance/" target="_blank" rel="noopener">users, Aug 2026</a>).</span><span>Fix billing first. Then a named local installer, outage texts before the customer notices, one bill, and AI-assisted care from TELUS Digital.</span></div>
+        <div class="wbr"><span class="wn"><b>Who owns it</b></span><span>Canadian company, Canadian network.</span><span>SpaceX, US-listed. Ottawa says it will "diversify away" (<a href="https://teslanorth.com/2026/09/24/carney-says-canada-will-ditch-starlink-as-ontario-cashes-in-on-spacex-stake/" target="_blank" rel="noopener">Carney, Sep 2026</a>).</span><span>Sell "Canadian-owned, Canadian support" to rural and Indigenous communities and to governments.</span></div>
+      </div>
+
+      <div class="calc skc tvc" style="margin-top:26px">
+        <h3>Win the rural home</h3>
+        <div class="sksub">Homes inside TELUS's network where Starlink is the rival. What TELUS earns by fighting for them, and what it would earn reselling Starlink to the same homes instead.</div>
+        <div class="skg">
+          <div>
+            <div class="row"><label>Rural homes TELUS goes after</label><span class="val" id="tvcHv">100,000</span></div>
+            <input type="range" id="tvcH" min="20000" max="300000" value="100000" step="10000" aria-label="Rural homes targeted">
+            <div class="row"><label>Share TELUS wins</label><span class="val" id="tvcWv">25%</span></div>
+            <input type="range" id="tvcW" min="5" max="50" value="25" step="1" aria-label="Share won">
+            <div class="row"><label>Home internet price a month</label><span class="val" id="tvcPv">$85</span></div>
+            <input type="range" id="tvcP" min="70" max="95" value="85" step="5" aria-label="Home internet price">
+          </div>
+          <div>
+            <div class="row"><label>Homes that add a mobile hub ($60 a month)</label><span class="val" id="tvcAv">20%</span></div>
+            <input type="range" id="tvcA" min="0" max="50" value="20" step="5" aria-label="Hub attach rate">
+            <div class="row"><label>Connected devices per home ($5 a month each)</label><span class="val" id="tvcDv">2</span></div>
+            <input type="range" id="tvcD" min="0" max="6" value="2" step="1" aria-label="Devices per home">
+            <div class="row"><label>Capex per home won (router, install, capacity)</label><span class="val" id="tvcCv">$700</span></div>
+            <input type="range" id="tvcC" min="400" max="1500" value="700" step="50" aria-label="Capex per home">
+          </div>
+        </div>
+        <div class="skout tvco">
+          <div><div class="big" id="tvcoWon">—</div><div class="lab">Homes won</div><div class="sm" id="tvcoWonS"></div></div>
+          <div><div class="big" id="tvcoRev">—</div><div class="lab">Revenue / year</div><div class="sm">Internet, hubs and devices</div></div>
+          <div><div class="big" id="tvcoEb">—</div><div class="lab">EBITDA / year</div><div class="sm">At a 40% margin; TELUS's Q2 2026 margin was 36.1%</div></div>
+          <div><div class="big" id="tvcoPay">—</div><div class="lab">Payback</div><div class="sm" id="tvcoPayS"></div></div>
+          <div><div class="big" id="tvcoLev">—</div><div class="lab">Leverage effect</div><div class="sm">Capex borrowed, EBITDA added, from 3.5×</div></div>
+          <div><div class="big" id="tvcoMob">—</div><div class="lab">Phone revenue it anchors / year</div><div class="sm">One TELUS line per home at Q2's $56.36 ARPU</div></div>
+        </div>
+        <div class="skvs">
+          <div class="r s"><span>Fight: TELUS network</span><span class="t"><b id="tvcBf"></b></span><span class="v" id="tvcBfv"></span></div>
+          <div class="r"><span>Partner: resell Starlink</span><span class="t"><b id="tvcBp"></b></span><span class="v" id="tvcBpv"></span></div>
+        </div>
+        <div class="bizfoot">EBITDA a year from the same homes. Fighting earns <b id="tvcX">—</b> as much as reselling Starlink (15% of a $115 bill at an 80% margin, as in section 03), but needs the capex above.</div>
+      </div>
+
+      <div class="note" style="border-left-color:var(--acid)">◈ <b>The CEO line:</b> "Inside our towers, we fight: 5G home internet at $70, a hub in the truck, the farm's sensors and the family's phones on one bill, installed by someone local. Beyond our towers, we partner. Fighting earns about three times what reselling does, and the router pays for itself in under two years. But we only win on service if we fix billing first: complaints about us rose 78% last year."</div>
+      <div class="note">◈ <b>How these numbers are built.</b> TELUS rural wireless home internet prices and hub prices: TELUS.com, Sep 2026. Starlink prices: its Canadian price list, 2026. Rural speeds: Opensignal, Feb 2025 (data from 2024). 5G reach: TELUS, end of 2025. Land share: our model from the ISED sites on the tower map; Bell puts its network at about 21% of Canada's land and says about 1% of Canadians have no cell service. Connected devices: TELUS Q2 2026 release. Complaints: CCTS 2024-25 annual report. The calculator assumes a 40% EBITDA margin, $60 hubs, $5 a month per connected device and your capex per home; leverage uses $25.9B of net debt at 3.5×. The reselling comparison uses section 03's assumptions. None of the win rates are forecasts.</div>
+      <div class="note stlsrc">◈ <b>Sources.</b> <a href="https://www.telus.com/en/internet/wireless-home-internet/rural" target="_blank" rel="noopener">TELUS rural home internet</a> · <a href="https://www.telus.com/en/mobility/mobile-internet" target="_blank" rel="noopener">TELUS mobile internet</a> · <a href="https://fastsat.ca/pricing/" target="_blank" rel="noopener">Starlink Canada prices</a> · <a href="https://insights.opensignal.com/2025/02/10/fixed-wireless-and-satellite-broadband-are-closing-the-digital-divide-in-canada" target="_blank" rel="noopener">Opensignal rural Canada</a> · <a href="https://www.rcrwireless.com/20260223/5g/telus-spectrum-5g-2" target="_blank" rel="noopener">TELUS 5G at 90%</a> · <a href="https://www.iphoneincanada.ca/2025/10/14/bell-reveals-pricing-for-direct-to-cell-satellite-coverage-heres-what-youll-pay/" target="_blank" rel="noopener">Bell: 21% of land, 1% unserved</a> · <a href="https://www.telus.com/en/about/news-and-events/media-releases/telus-reports-second-quarter-2026-financial-and-operational-results-and-resets-quarterly-dividend-to-support-deleveraging-and-fuel-long-term-growth" target="_blank" rel="noopener">TELUS Q2 2026 results</a> · <a href="https://www.fool.com/earnings/call-transcripts/2026/08/07/telus-tu-q2-2026-earnings-call-transcript/" target="_blank" rel="noopener">TELUS Q2 2026 call</a> · <a href="https://mobilesyrup.com/2026/01/14/rogers-led-record-number-canadian-telecom-complaints-2024-25/" target="_blank" rel="noopener">CCTS 2024-25</a> · <a href="https://newspaceeconomy.ca/2026/08/07/what-are-starlink-users-in-canada-saying-about-starlink-performance/" target="_blank" rel="noopener">Starlink users in Canada</a> · <a href="https://mobilesyrup.com/2026/03/04/telus-ast-spacemobile-satellite-cellular-connectivity/" target="_blank" rel="noopener">TELUS × AST</a> · <a href="https://about.rogers.com/news-ideas/rogers-first-to-launch-satellite-to-mobile-service-with-must-have-apps/" target="_blank" rel="noopener">Rogers Satellite</a> · <a href="https://teslanorth.com/2026/09/24/carney-says-canada-will-ditch-starlink-as-ontario-cashes-in-on-spacex-stake/" target="_blank" rel="noopener">Carney on Starlink</a></div>
+    </div>
+  </section>
+
   <!-- LIVE MIGRATION ENGINE -->
   <section id="cov-live">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--acid)">04</span><h2>Live subscriber migration</h2><span class="sub">real-time flow model · watch the base move</span></div>
+      <div class="shead"><span class="sno" style="color:var(--acid)">05</span><h2>Live subscriber migration</h2><span class="sub">real-time flow model · watch the base move</span></div>
       <p class="intro">Every dot is a block of subscribers in motion. Orbs are sized to each carrier's base and pulse as they gain and lose. Freedom keeps pulling from the incumbents; TELUS bleeds slowest. Tap an orb to isolate its flows.</p>
       <div class="livewrap">
         <canvas id="liveCanvas"></canvas>
@@ -2318,7 +2428,7 @@
   <!-- GEOGRAPHIC PROVINCE MAP -->
   <section id="cov-geo">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--acid)">05</span><h2>The coverage map — every telco, every province</h2><span class="sub">click a province</span></div>
+      <div class="shead"><span class="sno" style="color:var(--acid)">06</span><h2>The coverage map — every telco, every province</h2><span class="sub">click a province</span></div>
       <p class="intro">Canada at true proportion — you can see the landmass each carrier has to cover. Every province is filled by its leader's colour, and <b>brightness scales to subscriber mass</b>, so the population reality cuts against the geography: Nunavut is vast and nearly empty, Ontario is compact and holds 14.81M. <b>Click a province</b> for the full breakdown.</p>
       <div class="camapwrap">
         <svg id="caMap" viewBox="0 0 960 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Canada carrier coverage map"></svg>
@@ -2331,7 +2441,7 @@
 
   <section id="cov-map">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--acid)">06</span><h2>Air dominance — live signal × spectrum by province</h2><span class="sub">MHz-weighted signal · prepaid + postpaid</span></div>
+      <div class="shead"><span class="sno" style="color:var(--acid)">07</span><h2>Air dominance — live signal × spectrum by province</h2><span class="sub">MHz-weighted signal · prepaid + postpaid</span></div>
       <p class="intro">One greater view: each province emits a live signal wave whose <b>strength blends market dominance with the spectrum that carrier actually holds</b> — more MHz = a taller, denser, faster wave that carries more energy. Pick a carrier tab to watch its air light up province by province with its spectrum footprint, or Overall to see every carrier stacked. Flip prepaid/postpaid. The leader's wave pulses brightest, and its MHz shows on the right.</p>
       <div class="sigtabs">
         <div class="sigtabrow" id="sigCarrierTabs"></div>
@@ -2349,7 +2459,7 @@
   <!-- MERGED ALL-CARRIER CHART -->
   <section id="cov-merged">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--acid)">07</span><h2>The whole market — all four at once</h2><span class="sub">38.2M subscribers · postpaid + prepaid</span></div>
+      <div class="shead"><span class="sno" style="color:var(--acid)">08</span><h2>The whole market — all four at once</h2><span class="sub">38.2M subscribers · postpaid + prepaid</span></div>
       <p class="intro">Everything on one frame: every carrier's subscriber base stacked into postpaid (solid) and prepaid (hatched), sized to real scale. Rogers leads, then Bell, TELUS, Freedom — together ~86% of a 38.2M market. Bars animate up on the shared beat.</p>
       <div class="mergedwrap">
         <canvas id="mergedCanvas"></canvas>
@@ -2366,7 +2476,7 @@
   <!-- COVERAGE BARS -->
   <section id="cov-reach">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--acid)">08</span><h2>Geographic vs population coverage</h2><span class="sub">the two numbers carriers quote</span></div>
+      <div class="shead"><span class="sno" style="color:var(--acid)">09</span><h2>Geographic vs population coverage</h2><span class="sub">the two numbers carriers quote</span></div>
       <p class="intro">The gap between these two is the whole story of Canadian coverage: carriers cover a small slice of the <em>landmass</em> but nearly all the <em>people</em>, because Canadians cluster in cities.</p>
       <div class="two">
         <div class="card">
@@ -2387,7 +2497,7 @@
   <!-- PREPAID VS POSTPAID -->
   <section id="cov-plans">
     <div class="wrap">
-      <div class="shead"><span class="sno" style="color:var(--acid)">09</span><h2>Prepaid vs postpaid — all carriers</h2><span class="sub">the profit engine vs the value battleground</span></div>
+      <div class="shead"><span class="sno" style="color:var(--acid)">10</span><h2>Prepaid vs postpaid — all carriers</h2><span class="sub">the profit engine vs the value battleground</span></div>
       <p class="intro">Postpaid (monthly bill, credit check, contract) is ~90% of the base — low churn, high ARPU, the profit core. Prepaid (pay-ahead, no contract) is where budget brands and newcomers live. Each carrier plays both, but with different brands.</p>
 
       <div class="two" style="margin-bottom:20px">
@@ -3155,7 +3265,7 @@
     debt:[['d-live','Live Pressure'],['d-lev','Leverage'],['d-card','Balance Sheet'],['d-glide','Glide Path'],['d-take','The Take']],
     play:[['p-reality','Reality'],['p-score','Scorecard'],['p-acq','Acquire'],['p-cac','CAC Model'],['p-beat','Beat Them']],
     network:[['n-flow','Switching Flow'],['n-loyalty','Brand Loyalty'],['n-5g','5G & Spectrum']],
-    coverage:[['cov-towers','Tower Map'],['cov-money','Who\'s Behind TELUS'],['cov-sky','Satellite Share'],['stlLive','Starlink Live'],['cov-live','Live Migration'],['cov-geo','Coverage Map'],['cov-map','Air Dominance'],['cov-merged','Merged Chart'],['cov-reach','Geo vs Population'],['cov-plans','Prepaid vs Postpaid']],
+    coverage:[['cov-towers','Tower Map'],['cov-money','Who\'s Behind TELUS'],['cov-sky','Satellite Share'],['stlLive','Starlink Live'],['cov-vs','TELUS vs Starlink'],['cov-live','Live Migration'],['cov-geo','Coverage Map'],['cov-map','Air Dominance'],['cov-merged','Merged Chart'],['cov-reach','Geo vs Population'],['cov-plans','Prepaid vs Postpaid']],
     telecom:[['t-split','Wireless vs Wireline'],['t-fibre','PureFibre vs Bell'],['t-chain','Signal Chain'],['t-latency','Latency Budget'],['t-stack','Protocol Stack'],['t-topo','RAN Topology'],['t-spectrum','Wave Physics'],['t-holdings','Who Holds What'],['t-gens','1G→5G'],['t-money','The Money']],
     plan:[['pl-timeline','The Sequence'],['pl-live','Live Scoreboard'],['pl-decisions','Three Commitments'],['pl-restraint','What I Won\'t Do'],['pl-score','Day-100 Scorecard']],
     q4:[['q4-score','Live Q4'],['q4-board','The Board'],['q4-plays','Three Plays'],['q4-history','Pricing 2020→26'],['q4-btl','In-Market vs BTL'],['q4-model','Financial Model'],['q4-gov','Governance & Risk'],['q4-quarter','Oct → Dec']],
@@ -3313,7 +3423,7 @@
     if(view==='network'){ setTimeout(initNetworkView,60); }
     else if(flowRAF){ cancelAnimationFrame(flowRAF); flowRAF=null; }
     if(view==='coverage'){ setTimeout(initCoverageView,60); }
-    else { if(mnRAF){ cancelAnimationFrame(mnRAF); mnRAF=null; } if(stlRAF){ cancelAnimationFrame(stlRAF); stlRAF=null; } if(lRAF){ cancelAnimationFrame(lRAF); lRAF=null; } if(sigRAF){ cancelAnimationFrame(sigRAF); sigRAF=null; } if(mRAF){ cancelAnimationFrame(mRAF); mRAF=null; } }
+    else { if(mnRAF){ cancelAnimationFrame(mnRAF); mnRAF=null; } if(stlRAF){ cancelAnimationFrame(stlRAF); stlRAF=null; } if(tvsRAF){ cancelAnimationFrame(tvsRAF); tvsRAF=null; } if(lRAF){ cancelAnimationFrame(lRAF); lRAF=null; } if(sigRAF){ cancelAnimationFrame(sigRAF); sigRAF=null; } if(mRAF){ cancelAnimationFrame(mRAF); mRAF=null; } }
     if(view==='telecom'){ setTimeout(initTelecomView,60); }
     else { if(cRAF){ cancelAnimationFrame(cRAF); cRAF=null; } if(tRAF){ cancelAnimationFrame(tRAF); tRAF=null; } if(wRAF){ cancelAnimationFrame(wRAF); wRAF=null; } }
     if(view==='plan'){ setTimeout(initPlanView,60); }
@@ -4295,11 +4405,110 @@
     $('skVbv').textContent=skM(capex); $('skVsv').textContent='$0';
   }
   function skInit(){ ['skH','skP','skS','skD'].forEach(id=>{ const e=$(id); if(e&&!e._sk){ e._sk=1; e.addEventListener('input',skCalc); } }); skCalc(); }
+  // ================= TELUS vs STARLINK · comparison map + business case =================
+  // TELUS side: every site that carries TELUS customers (own, shared with Bell/SaskTel, regional partners) from the
+  // ISED tower data, each given a reach by its lowest band (12 / 5 / 1.5 km), rasterised on a 4 km grid.
+  // Starlink side: all of Canada's land, plus the live satellites when the orbit feed is loaded.
+  let tvsRAF=null;
+  const TVS={init:0,cv:null,ctx:null,W:0,H:0,dpr:1,f:0.5,mode:'swipe',g:null,d:null,img:{},last:0,drag:0,theme:''};
+  function tvsBuild(){
+    const d=(typeof tw!=='undefined'&&tw)?tw.d:null; if(!d||!TW_GEO) return false; if(TVS.d===d&&TVS.g) return true;
+    const cu=twCust(0); if(!cu) return false; const inc=cu.inc, b=TW_GEO.bbox, res=4, w=Math.ceil((b[2]-b[0])/res), h=Math.ceil((b[3]-b[1])/res), G=new Uint8Array(w*h);
+    for(let i=0;i<d.n;i++){ if(!inc[i]) continue; const r=twRad(d.B[i]), x=d.X[i], y=d.Y[i], rr=(r+res*.5)*(r+res*.5);
+      const gx0=Math.floor((x-r-b[0])/res), gx1=Math.floor((x+r-b[0])/res), gy0=Math.floor((b[3]-y-r)/res), gy1=Math.floor((b[3]-y+r)/res);
+      for(let gy=Math.max(0,gy0);gy<=Math.min(h-1,gy1);gy++){ const cy=b[3]-(gy+.5)*res;
+        for(let gx=Math.max(0,gx0);gx<=Math.min(w-1,gx1);gx++){ const cx=b[0]+(gx+.5)*res; if((cx-x)*(cx-x)+(cy-y)*(cy-y)<=rr) G[gy*w+gx]=1; } } }
+    let L=null;
+    try{ const c=document.createElement('canvas'); c.width=w; c.height=h; const x=c.getContext&&c.getContext('2d');
+      if(x&&typeof Path2D!=='undefined'){ x.setTransform(1/res,0,0,-1/res,-b[0]/res,b[3]/res); TW_GEO.prov.forEach(p=>x.fill(twPath(twRings(p.rings,TW_GEO.q)),'evenodd'));
+        const im=x.getImageData(0,0,w,h).data; L=new Uint8Array(w*h); for(let i=0;i<w*h;i++) L[i]=im[4*i+3]>100?1:0; } }catch(_){ L=null; }
+    let land=0, cov=0; if(L) for(let i=0;i<w*h;i++){ if(L[i]){ land++; if(G[i]) cov++; } }
+    TVS.d=d; TVS.g={w,h,res,x0:b[0],y1:b[3],G,L,land,cov}; TVS.img={};
+    const f=v=>Math.round(v).toLocaleString('en-CA');
+    if(L&&land){ $('tvsPct').textContent=Math.round(cov/land*100)+'%';
+      $('tvsFight').textContent=(cov*res*res/1e6).toFixed(2)+'M km²'; $('tvsOnly').textContent=((land-cov)*res*res/1e6).toFixed(2)+'M km²'; }
+    return true;
+  }
+  function tvsImg(kind,light){
+    const k=kind+(light?'L':'D'); if(TVS.img[k]) return TVS.img[k]; const g=TVS.g; if(!g||!g.L) return null;
+    const c=document.createElement('canvas'); c.width=g.w; c.height=g.h; const x=c.getContext('2d'); if(!x) return null;
+    const im=x.createImageData(g.w,g.h), P=im.data;
+    const T=light?[123,79,176,215]:[176,138,216,200], S=light?[29,42,48,70]:[223,232,234,60], A=light?[196,122,0,85]:[255,183,3,62];
+    for(let i=0;i<g.w*g.h;i++){ let col=null;
+      if(kind==='t'){ if(g.G[i]) col=T; } else if(kind==='s'){ if(g.L[i]) col=S; } else { if(g.L[i]) col=g.G[i]?T:A; else if(g.G[i]) col=T; }
+      if(col){ const o=4*i; P[o]=col[0]; P[o+1]=col[1]; P[o+2]=col[2]; P[o+3]=col[3]; } }
+    x.putImageData(im,0,0); return TVS.img[k]=c;
+  }
+  function tvsResize(){ const cv=TVS.cv; if(!cv) return; const r=cv.parentElement.getBoundingClientRect(); if(!r.width) return;
+    TVS.dpr=Math.min(2,window.devicePixelRatio||1); TVS.W=r.width; TVS.H=r.height; cv.width=Math.round(r.width*TVS.dpr); cv.height=Math.round(r.height*TVS.dpr); tvsDraw(); }
+  function tvsDraw(){
+    const c=TVS.ctx, W=TVS.W, H=TVS.H, dpr=TVS.dpr; if(!c||!W||!H) return;
+    const cs=getComputedStyle(document.documentElement), V=k=>cs.getPropertyValue(k).trim()||'#888', light=document.documentElement.dataset.theme==='light';
+    const K=light?{w:'#e3eaee',o:'#f1f4f6',l:'#fefefe',b:'#c9d3d8'}:{w:'#0a0d0f',o:'#0f1417',l:'#161d22',b:'#26333a'};
+    const b=TW_GEO?TW_GEO.bbox:[-2501,-2333.5,2807.6,2234.9], vx0=b[0]-80, vx1=b[2]+80, vy0=b[1]-120, vy1=b[3]+60;
+    const s=Math.min(W/(vx1-vx0),H/(vy1-vy0)), cx=(vx0+vx1)/2, cy=(vy0+vy1)/2, sx=x=>W/2+(x-cx)*s, sy=y=>H/2-(y-cy)*s;
+    const geo=STL.geo; c.setTransform(1,0,0,1,0,0); c.globalAlpha=1; c.fillStyle=K.w; c.fillRect(0,0,TVS.cv.width,TVS.cv.height);
+    const world=()=>c.setTransform(dpr*s,0,0,-dpr*s,dpr*(W/2-cx*s),dpr*(H/2+cy*s));
+    if(geo){ world(); if(geo.ctx){ c.fillStyle=K.o; c.fill(geo.ctx,'evenodd'); } c.fillStyle=K.l; geo.prov.forEach(P=>P&&c.fill(P,'evenodd')); }
+    const g=TVS.g, gx=sx(g?g.x0:0), gy=sy(g?g.y1:0), gw=g?g.w*g.res*s:0, gh=g?g.h*g.res*s:0;
+    const layer=(kind)=>{ const im=tvsImg(kind,light); if(!im) return; c.setTransform(dpr,0,0,dpr,0,0); c.imageSmoothingEnabled=true; c.drawImage(im,gx,gy,gw,gh); };
+    const sats=()=>{ if(!STL.K) return; c.setTransform(dpr,0,0,dpr,0,0); c.fillStyle=V('--ink'); c.globalAlpha=light?.55:.75; c.beginPath();
+      for(let i=0;i<STL.n;i++){ const x=STL.X[i]; if(x!==x) continue; const px=sx(x), py=sy(STL.Y[i]); if(px<-3||px>W+3||py<-3||py>H+3) continue; c.rect(px-.8,py-.8,1.6,1.6); } c.fill(); c.globalAlpha=1; };
+    if(TVS.mode==='swipe'){ const X=Math.round(W*TVS.f);
+      c.save(); c.setTransform(dpr,0,0,dpr,0,0); c.beginPath(); c.rect(0,0,X,H); c.clip(); layer('t'); c.restore();
+      c.save(); c.setTransform(dpr,0,0,dpr,0,0); c.beginPath(); c.rect(X,0,W-X,H); c.clip(); layer('s'); sats(); c.restore();
+    } else layer('b');
+    if(geo){ world(); c.lineWidth=1/s; c.strokeStyle=K.b; geo.prov.forEach(P=>P&&c.stroke(P)); }
+    c.setTransform(dpr,0,0,dpr,0,0); c.globalAlpha=1;
+    if(TVS.mode==='swipe'){ const X=Math.round(W*TVS.f); c.strokeStyle=V('--ink'); c.lineWidth=2; c.beginPath(); c.moveTo(X+.5,0); c.lineTo(X+.5,H); c.stroke();
+      c.fillStyle=V('--panel'); c.beginPath(); c.arc(X,H/2,15,0,6.2832); c.fill(); c.stroke();
+      c.fillStyle=V('--ink'); c.font="600 12px 'IBM Plex Mono', monospace"; c.textAlign='center'; c.textBaseline='middle'; c.fillText('‹ ›',X,H/2+1);
+      c.textBaseline='alphabetic'; c.font="600 11px 'IBM Plex Mono', monospace";
+      if(X>120){ c.textAlign='right'; c.fillText('◂ TELUS NETWORK',X-12,22); }
+      if(W-X>100){ c.textAlign='left'; c.fillText('STARLINK ▸',X+12,22); } }
+  }
+  function tvsSet(e){ const r=TVS.cv.getBoundingClientRect(); TVS.f=Math.min(.98,Math.max(.02,(e.clientX-r.left)/r.width)); const rg=$('tvsRange'); if(rg) rg.value=Math.round(TVS.f*100); tvsDraw(); }
+  function tvsModeUI(){ const box=$('tvsMode'); if(!box) return; box.innerHTML='';
+    [['swipe','Swipe: TELUS ⇆ Starlink'],['battle','Where to fight, where to partner']].forEach(([k,t])=>{ const bt=document.createElement('button'); bt.type='button'; bt.className='lvchip'+(TVS.mode===k?' on':''); bt.style.setProperty('--c','var(--acid)'); bt.textContent=t;
+      bt.onclick=()=>{ TVS.mode=k; tvsModeUI(); $('tvsMap').classList.toggle('battle',k==='battle'); const rw=document.querySelector('.tvsrange'); if(rw) rw.style.visibility=k==='battle'?'hidden':''; tvsDraw(); }; box.appendChild(bt); }); }
+  function tvsTick(ts){ tvsRAF=requestAnimationFrame(tvsTick); if(ts-TVS.last<1000) return; TVS.last=ts;
+    if(!TVS.g||TVS.d!==(tw&&tw.d)){ if(tvsBuild()) tvsDraw(); }
+    if(TVS.mode!=='swipe'||!STL.K||!TVS.cv) return; const r=TVS.cv.getBoundingClientRect(); if(r.bottom<-80||r.top>innerHeight+80) return;
+    const st=STL.cv&&STL.cv.getBoundingClientRect(); if(!st||st.bottom<0||st.top>innerHeight){ stlStep(Date.now()); }
+    tvsDraw(); }
+  function tvsInit(){
+    const cv=$('tvsCanvas'); if(!cv) return;
+    if(!TVS.init){ TVS.init=1; TVS.cv=cv; TVS.ctx=cv.getContext?cv.getContext('2d'):null; tvsModeUI();
+      cv.addEventListener('pointerdown',e=>{ if(TVS.mode!=='swipe') return; TVS.drag=1; try{ cv.setPointerCapture(e.pointerId); }catch(_){} tvsSet(e); });
+      cv.addEventListener('pointermove',e=>{ if(TVS.drag) tvsSet(e); });
+      ['pointerup','pointercancel','lostpointercapture'].forEach(t=>cv.addEventListener(t,()=>{ TVS.drag=0; }));
+      const rg=$('tvsRange'); if(rg) rg.addEventListener('input',()=>{ TVS.f=+rg.value/100; tvsDraw(); });
+      window.addEventListener('resize',()=>{ clearTimeout(TVS.rt); TVS.rt=setTimeout(tvsResize,120); }); }
+    tvsBuild(); tvsResize(); tvcCalc();
+    if(tvsRAF) cancelAnimationFrame(tvsRAF); TVS.last=0; tvsRAF=requestAnimationFrame(tvsTick);
+  }
+  // ---- business case: win the rural home inside TELUS's reach ----
+  function tvcCalc(){
+    const g=id=>+$(id).value; if(!$('tvcH')) return;
+    const H=g('tvcH'), W=g('tvcW')/100, P=g('tvcP'), A=g('tvcA')/100, D=g('tvcD'), C=g('tvcC'), M=0.40, f=v=>v.toLocaleString('en-CA');
+    $('tvcHv').textContent=f(H); $('tvcWv').textContent=Math.round(W*100)+'%'; $('tvcPv').textContent='$'+P; $('tvcAv').textContent=Math.round(A*100)+'%'; $('tvcDv').textContent=D; $('tvcCv').textContent='$'+f(C);
+    const won=Math.round(H*W), arpu=P+A*60+D*5, rev=won*arpu*12, eb=rev*M, capex=won*C, pay=eb>0?capex/(eb/12):0;
+    const dl=(SK.nd+capex)/(SK.eb+eb)-SK.lev, part=won*115*0.15*0.8*12, mob=won*56.36*12;
+    $('tvcoWon').textContent=f(won); $('tvcoWonS').textContent='homes at $'+arpu.toFixed(0)+' a month each: internet $'+P+', hubs $'+(A*60).toFixed(0)+', devices $'+(D*5);
+    $('tvcoRev').textContent=skM(rev); $('tvcoEb').textContent=skM(eb);
+    $('tvcoPay').textContent=pay?Math.round(pay)+' mo':'—'; $('tvcoPayS').textContent=skM(capex)+' of capex, paid back from EBITDA';
+    $('tvcoLev').textContent=skL(dl); $('tvcoMob').textContent=skM(mob);
+    const mx=Math.max(eb,part,1); $('tvcBf').style.width=(eb/mx*100).toFixed(1)+'%'; $('tvcBp').style.width=(part/mx*100).toFixed(1)+'%';
+    $('tvcBfv').textContent=skM(eb); $('tvcBpv').textContent=skM(part);
+    $('tvcX').textContent=part>0?(eb/part).toFixed(1)+'×':'—';
+  }
   function initCoverageView(){
     renderPride();
     twInit();
     skInit();
     stlInit();
+    tvsInit();
+    ['tvcH','tvcW','tvcP','tvcA','tvcD','tvcC'].forEach(id=>{ const e=$(id); if(e&&!e._tv){ e._tv=1; e.addEventListener('input',tvcCalc); } });
     mnStart();
     initGeoMap();
     initNetMap();
