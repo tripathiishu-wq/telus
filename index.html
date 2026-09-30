@@ -1141,6 +1141,41 @@
   .skvs .v{text-align:right;font-family:'IBM Plex Mono';color:var(--ink);font-variant-numeric:tabular-nums}
   @media(max-width:900px){.wbt.skp .wbr{grid-template-columns:1fr 1fr;column-gap:16px}.wbt.skp .wbr>span:nth-child(-n+2){grid-column:1/-1}.skg{grid-template-columns:1fr}.skout{grid-template-columns:1fr 1fr}.skvs .r{grid-template-columns:96px minmax(0,1fr) 92px;gap:8px}}
   @media(max-width:480px){.skout{grid-template-columns:1fr}.skout .big{font-size:24px}}
+
+  /* ---- Starlink profile + live orbits ---- */
+  #cov-sky a,#cov-money .stlsrc a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--dim);text-underline-offset:3px}
+  #cov-sky a:hover,#cov-money .stlsrc a:hover{color:var(--acid);text-decoration-color:var(--acid)}
+  .stlsrc{font-size:12px;line-height:1.8}
+  .stlp{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:0 0 14px}
+  .stlid{background:var(--panel);padding:22px 24px;min-width:0}
+  .stltag{font-family:'IBM Plex Mono';font-size:10.5px;color:var(--mute);text-transform:uppercase;letter-spacing:.14em}
+  .stlname{font-family:'Space Grotesk';font-weight:700;font-size:34px;color:var(--ink);margin:6px 0 10px;letter-spacing:-.01em;line-height:1.1}
+  .stlid p{font-size:13.5px;color:var(--mute);line-height:1.6;margin:0}
+  .stllinks{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  #cov-sky .stllinks a{font-family:'IBM Plex Mono';font-size:11.5px;text-decoration:none;padding:7px 11px;border:1px solid var(--line);background:var(--panel-2);color:var(--ink)}
+  #cov-sky .stllinks a:hover{border-color:var(--acid);color:var(--acid)}
+  .stlk{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);min-width:0}
+  .stlk>div{background:var(--panel);padding:18px 20px;min-width:0}
+  .stlk b{display:block;font-family:'Space Grotesk';font-weight:700;font-size:26px;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .stlk span{display:block;font-size:12px;color:var(--mute);line-height:1.45;margin-top:5px}
+  .stll{margin-bottom:14px;scroll-margin-top:120px}
+  .stlg{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:1px;background:var(--line)}
+  .stlmap{position:relative;background:#0a0d0f;height:clamp(380px,56vh,580px);overflow:hidden}
+  .stlmap canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .stlmsg{position:absolute;left:12px;top:12px;font-family:'IBM Plex Mono';font-size:11px;color:var(--mute);background:var(--panel);border:1px solid var(--line);padding:6px 9px}
+  .stlmsg:empty{display:none}
+  .stlleg{position:absolute;left:12px;bottom:10px;right:12px;width:max-content;max-width:calc(100% - 24px);display:flex;flex-wrap:wrap;gap:4px 14px;font-family:'IBM Plex Mono';font-size:10.5px;color:var(--mute);background:var(--panel);border:1px solid var(--line);padding:6px 10px}
+  .stlleg i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:0}
+  .stlleg i.a{background:var(--ink)} .stlleg i.b{background:var(--dim)} .stlleg i.c{background:var(--acid)}
+  .stlleg em{font-style:normal;color:var(--ink)}
+  .stlside{background:var(--panel);padding:20px 18px;display:flex;flex-direction:column;gap:18px;min-width:0}
+  .stlkl{font-family:'IBM Plex Mono';font-size:10.5px;color:var(--mute);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+  .stlcity{display:flex;flex-wrap:wrap;gap:5px}
+  .stlcity .lvchip{padding:6px 9px;font-size:11px}
+  .stlfoot{padding:10px 22px 12px;margin:0;border-top:1px solid var(--line)}
+  :root[data-theme="light"] .stlmap{background:#e3eaee}
+  @media(max-width:980px){.stlp{grid-template-columns:1fr}.stlg{grid-template-columns:1fr}.stlmap{height:52vh;min-height:340px}.stlside{display:grid;grid-template-columns:1fr 1fr;gap:16px}.stlside>div:last-child{grid-column:1/-1}}
+  @media(max-width:620px){.stlk b{font-size:22px}.stlk>div{padding:14px 14px}.stlid{padding:18px 16px}.stlside{grid-template-columns:1fr}.stlmap{height:46vh;min-height:300px}.stlname{font-size:28px}.stlfoot{padding:10px 16px}}
   /* theme toggle */
   :root{color-scheme:dark}
   :root[data-theme="light"]{color-scheme:light}
@@ -2150,6 +2185,7 @@
       </div>
       <div class="note" style="border-left-color:var(--acid)">◈ <b>The CEO line:</b> "Half of the network our customers use, we didn't have to build, because we share it with Bell. That's the cheapest capital in Canadian telecom. Where we did need money, we sold half of our towers rather than borrowing more, and we kept control. Canadian carriers still own about 95% of their towers, while US carriers own under 10%. There is more of that to do, but only where selling costs us less than the interest it saves."</div>
       <div class="note">◈ <b>How these numbers are built.</b> Site counts come from the tower map (ISED, Sep 2026). Terrion: $1.26B for 49.9% (≈$2.5B implied) and ~3,000 towers (TELUS, Globe and Mail); TELUS keeps control and consolidates Terrion (2025 annual report); −0.17× leverage (Q2 2026 call). The ≈$840K per tower and the ≈$10B for Bell's and SaskTel's 11,864 sites use that implied value; many of those sites are rooftops or small cells, so it overstates the build cost and is an order of magnitude, not a quote. Industry studies put network-sharing savings at 18–35% of network cost (Analysys Mason, 2023). The TELUS–Bell settlement terms and Terrion's lease payments are not disclosed. Cost of debt ≈4.8% = ~$1.3B of 2025 cash interest on ~$27B of average net debt. Rogers: $7B for 49.9% of its wireless backhaul, up to ~$400M a year of distributions for the first five years, 7% cost of capital, −0.7× leverage (Rogers, Apr 2025). Bell: $4.7B MLSE stake sold to Rogers. Shareholders: MarketScreener, 2026. The ~95% vs under 10% tower-ownership comparison is from Inside Towers.</div>
+      <div class="note stlsrc">◈ <b>Sources.</b> <a href="https://www.telus.com/en/about/news-and-events/media-releases/telus-announces-partnership-with-la-caisse-who-will-acquire-a-49-9-interest-in-newly-formed-canadian-wireless-tower-infrastructure-operator-terrion-for-1-26-billion" target="_blank" rel="noopener">TELUS–La Caisse (Terrion)</a> · <a href="https://www.theglobeandmail.com/business/article-telus-caisse-cell-phone-tower-network-deal/" target="_blank" rel="noopener">Globe and Mail</a> · <a href="https://insidetowers.com/telus-partners-with-la-caisse-in-newly-formed-canadian-towerco-terrion/" target="_blank" rel="noopener">Inside Towers</a> · <a href="https://www.iphoneincanada.ca/2025/09/11/telus-closes-1-26b-terrion-tower-deal-with-pension-giant/" target="_blank" rel="noopener">Terrion deal closes</a> · <a href="https://about.rogers.com/news-ideas/rogers-concludes-definitive-agreement-for-cdn7-billion-equity-investment/" target="_blank" rel="noopener">Rogers–Blackstone terms</a> · <a href="https://www.datacenterdynamics.com/en/news/rogers-sells-49bn-stake-in-wireless-network-to-blackstone/" target="_blank" rel="noopener">DCD on Rogers</a> · <a href="https://assets.ctfassets.net/fltupc9ltp8m/5yxbmeW51pNFRrRIdhrCqM/82617d5f9f05ee529bfa009d3c93493d/TELUS_Q2_2026_MD_A_and_Financial_Statements.pdf" target="_blank" rel="noopener">TELUS Q2 2026 MD&A</a></div>
     </div>
   </section>
 
@@ -2157,6 +2193,43 @@
     <div class="wrap">
       <div class="shead"><span class="sno" style="color:var(--acid)">03</span><h2>Where the wires end</h2><span class="sub">satellite, and who gets paid where there's no fibre or copper</span></div>
       <p class="intro">TELUS fibre now reaches 3.8M homes and businesses in BC, Alberta and Eastern Québec. Past the last fibre and copper line, about 400,000 Canadian households still can't buy 50/10 internet, including 1 in 8 rural homes. Starlink has become a major Canadian ISP in that gap, with 500,000+ subscribers (about one for every six TELUS internet customers), and none of what they pay goes to a Canadian carrier. TELUS can take a share without building anything. Next to $7.4B of EBITDA the share is small. The capex it avoids and the customers it keeps are what matter.</p>
+      <div class="stlp" id="stl-meet">
+        <div class="stlid">
+          <div class="stltag">SpaceX · Nasdaq: SPCX</div>
+          <div class="stlname">Starlink</div>
+          <p>Starlink is SpaceX's satellite internet service: more than 11,000 satellites in low orbit, a few hundred kilometres up, close enough for video calls and gaming. The first batch launched in May 2019. Canada was one of its first markets: service reached Canadians in January 2021, and Pikangikum First Nation in northern Ontario was the first Canadian community online. Today it sells home internet, Roam for cottages, RVs and boats, business and maritime plans, in-flight Wi-Fi (including WestJet's, paid for by TELUS), and texts and apps on ordinary phones through carriers such as Rogers. Its parent went public on June 12, 2026: SpaceX listed on Nasdaq at a US$1.77T valuation in the largest IPO ever, and Starlink brings in most of its revenue.</p>
+          <div class="stllinks">
+            <a href="https://www.starlink.com" target="_blank" rel="noopener">starlink.com ↗</a>
+            <a href="https://www.starlink.com/map" target="_blank" rel="noopener">Availability map ↗</a>
+            <a href="https://www.starlink.com/business/direct-to-cell" target="_blank" rel="noopener">Direct to Cell ↗</a>
+            <a href="https://en.wikipedia.org/wiki/Initial_public_offering_of_SpaceX" target="_blank" rel="noopener">SpaceX IPO ↗</a>
+            <a href="https://cdn.arstechnica.net/wp-content/uploads/2026/08/SMSE-008-26_SpaceX.pdf" target="_blank" rel="noopener">SpaceX's filing to ISED ↗</a>
+            <a href="https://keeptrack.space/starlink-satellite-count" target="_blank" rel="noopener">Satellite count ↗</a>
+          </div>
+        </div>
+        <div class="stlk">
+          <div><b>12M+</b><span>customers worldwide after Q2 2026, up from 8.9M at the end of 2025</span></div>
+          <div><b>US$11.4B</b><span>Starlink revenue in 2025, 61% of SpaceX's. Q2 2026: US$4.3B, with US$1.66B of profit</span></div>
+          <div><b id="stlKn">11,133</b><span id="stlKns">satellites in orbit (Sep 29, 2026); 12,962 launched since 2019</span></div>
+          <div><b>US$66</b><span>a month per customer in Q2 2026, down from US$85 a year earlier: cheaper plans, far more customers</span></div>
+          <div><b>500K+</b><span>Canadian customers (Jul 2025), about 8% of its base at the time</span></div>
+          <div><b>US$1.77T</b><span>SpaceX's value at its IPO, with US$86B raised</span></div>
+        </div>
+      </div>
+      <div class="dlv stll" id="stlLive">
+        <div class="dlvhead"><span class="live"><i></i> LIVE</span><span>Starlink over Canada, right now</span><span class="ck" id="stlClock"></span></div>
+        <div class="stlg">
+          <div class="stlmap"><canvas id="stlCanvas" aria-label="Live map of Starlink satellites over Canada"></canvas><div class="stlmsg" id="stlMsg">Loading live orbits…</div>
+            <div class="stlleg"><span><i class="a"></i>over Canada</span><span><i class="b"></i>elsewhere</span><span><i class="c"></i>in the sky over <em id="stlCityL">Iqaluit</em></span></div></div>
+          <div class="stlside">
+            <div class="twk"><div class="kl">Starlink satellites in orbit</div><div class="kv" id="stlN">11,133</div><div class="ks" id="stlNs">KeepTrack, Sep 29, 2026</div></div>
+            <div class="twk"><div class="kl">Over Canadian land right now</div><div class="kv" id="stlOver">—</div><div class="ks">directly above Canada's land, this second</div></div>
+            <div class="twk"><div class="kl">In the sky over <span id="stlCityN">Iqaluit</span></div><div class="kv" id="stlSky">—</div><div class="ks">more than 25° above the horizon</div></div>
+            <div><div class="stlkl">Pick a place</div><div class="stlcity" id="stlCity"></div></div>
+          </div>
+        </div>
+        <div class="bizfoot stlfoot" id="stlSrc">Orbits: CelesTrak orbital elements for the Starlink group, refreshed daily. Positions are computed in your browser and are approximate, typically within a few kilometres to tens of kilometres.</div>
+      </div>
       <div class="dlv" id="skLive">
         <div class="dlvhead"><span class="live"><i></i> LIVE</span><span>Satellite money in Canada · 2026 so far</span><span class="ck" id="skClock"></span></div>
         <div class="hdk">
@@ -2170,20 +2243,20 @@
 
       <div class="wbt skm">
         <div class="wbr hd"><span>Three ways to take a share</span><span>Who already does it</span><span>What TELUS earns</span><span>Debt and EBITDA</span></div>
-        <div class="wbr" style="--c:var(--acid)"><span class="wn"><i></i><b>Resell satellite at home</b><em>fixed internet · the Telstra model</em></span><span><b>Telstra</b>, since Mar 2024: Starlink under its own brand for homes outside NBN's fixed network, at A$125 a month plus A$599 kit, with its own modem and 4G backup. <b>KDDI</b> has resold Starlink Business in Japan since 2022.</span><span>A share of every monthly bill, plus the bundle around it: phone lines, home security, streaming. Resale terms aren't public; the model assumes 15%.</span><span>No network to build and no spectrum to buy. The share is close to pure EBITDA, and the household's phones stay with TELUS.</span></div>
-        <div class="wbr" style="--c:var(--amber)"><span class="wn"><i></i><b>Satellite to phone</b><em>direct-to-cell · already signed</em></span><span><b>Rogers Satellite</b> (Starlink), since Jul 2025: $15 a month, free on top plans; hundreds of thousands of Canadians have used it (SpaceX, 2026). <b>Bell</b> (AST): free on its top two plans, or about $10–15 a month. <b>T-Mobile</b>: US$10 a month.</span><span>TELUS signed with <b>AST SpaceMobile</b> in Mar 2026 and became a shareholder; launch is planned for later in 2026. Add-on revenue, shared with AST on terms not disclosed.</span><span>Coverage over the four-fifths of Canada no tower reaches, without building towers there. The bigger value is churn: nobody leaves for Rogers over a dead zone.</span></div>
-        <div class="wbr" style="--c:var(--mute)"><span class="wn"><i></i><b>Wholesale and enterprise</b><em>backhaul · aviation · remote sites</em></span><span><b>TELUS</b> already pays for Starlink Wi-Fi on WestJet (partnership since Jul 2024; whole fleet by end of 2026). SpaceX runs 10 gateways and 2 points of presence in Canada.</span><span>Fibre backhaul and site hosting for Starlink's ground stations. Starlink Business with TELUS support for mines, forestry, oil and gas and work camps in BC and Alberta.</span><span>Wholesale revenue on fibre and Terrion towers TELUS already owns. More use of existing assets, no new debt.</span></div>
+        <div class="wbr" style="--c:var(--acid)"><span class="wn"><i></i><b>Resell satellite at home</b><em>fixed internet · the Telstra model</em></span><span><b><a href="https://www.itnews.com.au/news/telstra-goes-live-with-starlink-for-homes-606423" target="_blank" rel="noopener">Telstra</a></b>, since Mar 2024: Starlink under its own brand for homes outside NBN's fixed network, at A$125 a month plus A$599 kit, with its own modem and 4G backup. <b><a href="https://www.fierce-network.com/wireless/kddi-resell-spacexs-starlink-service-enterprise-clients" target="_blank" rel="noopener">KDDI</a></b> has resold Starlink Business in Japan since 2022.</span><span>A share of every monthly bill, plus the bundle around it: phone lines, home security, streaming. Resale terms aren't public; the model assumes 15%.</span><span>No network to build and no spectrum to buy. The share is close to pure EBITDA, and the household's phones stay with TELUS.</span></div>
+        <div class="wbr" style="--c:var(--amber)"><span class="wn"><i></i><b>Satellite to phone</b><em>direct-to-cell · already signed</em></span><span><b><a href="https://about.rogers.com/news-ideas/rogers-first-to-launch-satellite-to-mobile-service-with-must-have-apps/" target="_blank" rel="noopener">Rogers Satellite</a></b> (Starlink), since Jul 2025: $15 a month, free on top plans; hundreds of thousands of Canadians have used it (SpaceX, 2026). <b><a href="https://www.iphoneincanada.ca/2025/10/14/bell-reveals-pricing-for-direct-to-cell-satellite-coverage-heres-what-youll-pay/" target="_blank" rel="noopener">Bell</a></b> (AST): free on its top two plans, or about $10–15 a month. <b><a href="https://www.t-mobile.com/business/starlink-satellite-phone-service" target="_blank" rel="noopener">T-Mobile</a></b>: US$10 a month.</span><span>TELUS <a href="https://mobilesyrup.com/2026/03/04/telus-ast-spacemobile-satellite-cellular-connectivity/" target="_blank" rel="noopener">signed</a> with <b><a href="https://ast-science.com/" target="_blank" rel="noopener">AST SpaceMobile</a></b> in Mar 2026 and became a shareholder; launch is planned for later in 2026. Add-on revenue, shared with AST on terms not disclosed.</span><span>Coverage over the four-fifths of Canada no tower reaches, without building towers there. The bigger value is churn: nobody leaves for Rogers over a dead zone.</span></div>
+        <div class="wbr" style="--c:var(--mute)"><span class="wn"><i></i><b>Wholesale and enterprise</b><em>backhaul · aviation · remote sites</em></span><span><b>TELUS</b> already pays for Starlink Wi-Fi on <a href="https://www.telus.com/en/about/news-and-events/media-releases/WestJet-and-TELUS-form-partnership-to-revolutionize-guest-experience" target="_blank" rel="noopener">WestJet</a> (partnership since Jul 2024; whole fleet by end of 2026). SpaceX runs 10 gateways and 2 points of presence in Canada (<a href="https://cdn.arstechnica.net/wp-content/uploads/2026/08/SMSE-008-26_SpaceX.pdf" target="_blank" rel="noopener">SpaceX to ISED, 2026</a>).</span><span>Fibre backhaul and site hosting for Starlink's ground stations. Starlink Business with TELUS support for mines, forestry, oil and gas and work camps in BC and Alberta.</span><span>Wholesale revenue on fibre and Terrion towers TELUS already owns. More use of existing assets, no new debt.</span></div>
       </div>
 
       <div class="shead" style="margin-top:34px"><h2>Who already shares Starlink's money</h2><span class="sub">carriers that sell Starlink under their own name</span></div>
       <div class="wbt skp">
         <div class="wbr hd"><span>Carrier</span><span>What they sell</span><span>Since</span><span>Price</span></div>
-        <div class="wbr" style="--c:#ff5964"><span class="wn"><i></i><b>Rogers</b><em>Canada</em></span><span>Starlink to phones, as "Rogers Satellite": texts first, then data for apps</span><span>Jul 2025</span><span>C$15 a month; free on top plans</span></div>
-        <div class="wbr" style="--c:var(--mute)"><span class="wn"><i></i><b>T-Mobile</b><em>United States</em></span><span>Starlink to phones, as "T-Satellite"</span><span>Jul 2025</span><span>US$10 a month; free on top plans</span></div>
-        <div class="wbr" style="--c:var(--mute)"><span class="wn"><i></i><b>One NZ</b><em>New Zealand</em></span><span>The first nationwide Starlink-to-phone service: texts over 40% of New Zealand with no towers</span><span>Dec 2024</span><span>Free on pay-monthly plans</span></div>
-        <div class="wbr" style="--c:var(--mute)"><span class="wn"><i></i><b>KDDI</b><em>Japan</em></span><span>"au Starlink Direct" to phones, also sold to other carriers' customers; Starlink Business reseller since 2022</span><span>Apr 2025</span><span>¥1,650 a month</span></div>
-        <div class="wbr" style="--c:var(--mute)"><span class="wn"><i></i><b>Telstra</b><em>Australia</em></span><span>Starlink home internet under the Telstra brand, with Telstra's modem, 4G backup and support</span><span>Mar 2024</span><span>A$125 a month + A$599 kit</span></div>
-        <div class="wbr" style="--c:#b08ad8"><span class="wn"><i></i><b>TELUS × WestJet</b><em>Canada</em></span><span>Starlink Wi-Fi on WestJet flights, presented and paid for by TELUS</span><span>Jul 2024</span><span>Free for WestJet Rewards members</span></div>
+        <div class="wbr" style="--c:#ff5964"><span class="wn"><i></i><b><a href="https://about.rogers.com/news-ideas/rogers-first-to-launch-satellite-to-mobile-service-with-must-have-apps/" target="_blank" rel="noopener">Rogers</a></b><em>Canada</em></span><span>Starlink to phones, as "Rogers Satellite": texts from Jul 2025, then WhatsApp, Google Maps and other apps from Dec 2025. Over 1M texts were sent in the beta</span><span>Jul 2025</span><span>C$15 a month; free on top plans</span></div>
+        <div class="wbr" style="--c:var(--mute)"><span class="wn"><i></i><b><a href="https://www.t-mobile.com/business/starlink-satellite-phone-service" target="_blank" rel="noopener">T-Mobile</a></b><em>United States</em></span><span>Starlink to phones, as "T-Satellite"</span><span>Jul 2025</span><span>US$10 a month; free on top plans</span></div>
+        <div class="wbr" style="--c:var(--mute)"><span class="wn"><i></i><b><a href="https://spacenews.com/new-zealand-first-to-offer-nationwide-direct-to-smartphone-starlink-service/" target="_blank" rel="noopener">One NZ</a></b><em>New Zealand</em></span><span>The first nationwide Starlink-to-phone service: texts over 40% of New Zealand with no towers</span><span>Dec 2024</span><span>Free on pay-monthly plans</span></div>
+        <div class="wbr" style="--c:var(--mute)"><span class="wn"><i></i><b><a href="https://newsroom.kddi.com/english/news/detail/kddi_nr-569_3855.html" target="_blank" rel="noopener">KDDI</a></b><em>Japan</em></span><span>"au Starlink Direct" to phones, also sold to other carriers' customers; Starlink Business reseller since 2022</span><span>Apr 2025</span><span>¥1,650 a month</span></div>
+        <div class="wbr" style="--c:var(--mute)"><span class="wn"><i></i><b><a href="https://www.telstra.com.au/internet/starlink" target="_blank" rel="noopener">Telstra</a></b><em>Australia</em></span><span>Starlink home internet under the Telstra brand, with Telstra's modem, 4G backup and support</span><span>Mar 2024</span><span>A$125 a month + A$599 kit</span></div>
+        <div class="wbr" style="--c:#b08ad8"><span class="wn"><i></i><b><a href="https://www.telus.com/en/about/news-and-events/media-releases/WestJet-and-TELUS-form-partnership-to-revolutionize-guest-experience" target="_blank" rel="noopener">TELUS × WestJet</a></b><em>Canada</em></span><span>Starlink Wi-Fi on WestJet flights, presented and paid for by TELUS</span><span>Jul 2024</span><span>Free for WestJet Rewards members</span></div>
       </div>
 
       <div class="calc skc" style="margin-top:26px">
@@ -2219,6 +2292,7 @@
       <div class="note" style="border-left-color:var(--red)">◈ <b>The catch.</b> Starlink is American, and Ottawa is moving away from it: "Starlink, we will diversify away from, no question," Prime Minister Carney said on Sep 24, 2026. Ontario cancelled its $100M Starlink contract for 15,000 rural homes in March 2025. The Canadian alternative, Telesat Lightspeed, now starts service at the end of Q1 2028, and Ottawa has secured up to $600M of its capacity. Canadian pension money is behind SpaceX too: Ontario Teachers' stake is worth about US$8.7B. Waiting also costs: in New Zealand, Starlink became the largest rural ISP (27% share against Spark's 23%), mostly from customers leaving copper. So sign short, sell it as TELUS Satellite, keep the customer and the bill, and be ready to move homes to Telesat in 2028.</div>
       <div class="note" style="border-left-color:var(--acid)">◈ <b>The CEO line:</b> "Where our fibre ends, we won't spend $13,500 a home to reach a few thousand homes. We'll sell satellite under the TELUS name, keep the customer and the bundle, and keep the capital for fibre that pays back. Phones get AST, which we part-own. Homes get the best constellation on a short contract: Starlink today, Telesat when it's ready."</div>
       <div class="note">◈ <b>How these numbers are built.</b> 50/10 access: 97.4% of households nationally, 87.4% rural (ISED, 2024 data, updated May 2026); ≈400,000 households is 2.6% of ~15.5M (Statistics Canada). BC 97% (ISED/BC) and Alberta 98.1% (Sep 2026) applied to 2021 Census households give ~90,000 in TELUS's home provinces. TELUS fibre: ~3.8M homes and businesses (Q2 2026 MD&A). Starlink in Canada: 500,000+ subscribers (Jul 2025); 2026 prices from Starlink's Canadian price list; ~$95 blended is our estimate. SpaceX gateways and D2C use: SpaceX submission to ISED, Aug 2026. Rogers Satellite $15 (Jul 2025); Bell free on top two plans or ~$10–15 (Oct 2025); TELUS–AST agreement and equity stake (Mar 2026). The model: EBITDA is 80% of TELUS's revenue; phones at $10 a month with TELUS keeping half; leverage uses $25.9B of net debt at 3.5× (≈$7.4B EBITDA); the phone line kept uses Q2 2026 ARPU of $56.36. Telesat service date: Telesat, Mar 2026. New Zealand shares: Commerce Commission, reported Jun 2026.</div>
+      <div class="note stlsrc">◈ <b>Sources.</b> <a href="https://ised-isde.canada.ca/site/high-speed-internet-canada/en/progress-toward-universal-access-high-speed-internet" target="_blank" rel="noopener">ISED: progress to universal access</a> · <a href="https://www2.gov.bc.ca/gov/content/governments/connectivity-in-bc/20358" target="_blank" rel="noopener">BC connectivity</a> · <a href="https://www.canada.ca/en/innovation-science-economic-development/news/2026/09/canada-and-alberta-are-expanding-high-speed-internet-access-in-the-province.html" target="_blank" rel="noopener">Canada–Alberta rural build, Sep 2026</a> · <a href="https://crtc.gc.ca/eng/publications/reports/PolicyMonitoring/2026/ctmr.htm" target="_blank" rel="noopener">CRTC market report 2026</a> · <a href="https://assets.ctfassets.net/fltupc9ltp8m/5yxbmeW51pNFRrRIdhrCqM/82617d5f9f05ee529bfa009d3c93493d/TELUS_Q2_2026_MD_A_and_Financial_Statements.pdf" target="_blank" rel="noopener">TELUS Q2 2026 MD&A</a> · <a href="https://broadbandbreakfast.com/starlink-on-the-rise-in-canada/" target="_blank" rel="noopener">Starlink in Canada: 500K+</a> · <a href="https://fastsat.ca/pricing/" target="_blank" rel="noopener">Starlink Canada prices</a> · <a href="https://www.satellitetoday.com/finance/2026/05/20/spacexs-ipo-filing-gives-first-look-into-companys-financials/" target="_blank" rel="noopener">SpaceX prospectus figures</a> · <a href="https://driveteslacanada.ca/news/starlink-12-million-subscribers-price-hikes/" target="_blank" rel="noopener">Starlink at 12M, Q2 2026</a> · <a href="https://en.wikipedia.org/wiki/Initial_public_offering_of_SpaceX" target="_blank" rel="noopener">SpaceX IPO</a> · <a href="https://keeptrack.space/starlink-satellite-count" target="_blank" rel="noopener">Satellites in orbit</a> · <a href="https://cdn.arstechnica.net/wp-content/uploads/2026/08/SMSE-008-26_SpaceX.pdf" target="_blank" rel="noopener">SpaceX submission to ISED</a> · <a href="https://www.cnbc.com/2021/01/20/spacex-expands-starlink-public-beta-test-to-canada-united-kingdom.html" target="_blank" rel="noopener">Starlink reaches Canada, 2021</a> · <a href="https://about.rogers.com/news-ideas/rogers-first-to-launch-satellite-to-mobile-service-with-must-have-apps/" target="_blank" rel="noopener">Rogers Satellite</a> · <a href="https://www.iphoneincanada.ca/2025/10/14/bell-reveals-pricing-for-direct-to-cell-satellite-coverage-heres-what-youll-pay/" target="_blank" rel="noopener">Bell satellite pricing</a> · <a href="https://mobilesyrup.com/2026/03/04/telus-ast-spacemobile-satellite-cellular-connectivity/" target="_blank" rel="noopener">TELUS × AST SpaceMobile</a> · <a href="https://www.itnews.com.au/news/telstra-goes-live-with-starlink-for-homes-606423" target="_blank" rel="noopener">Telstra × Starlink</a> · <a href="https://newsroom.kddi.com/english/news/detail/kddi_nr-569_3855.html" target="_blank" rel="noopener">KDDI au Starlink Direct</a> · <a href="https://spacenews.com/new-zealand-first-to-offer-nationwide-direct-to-smartphone-starlink-service/" target="_blank" rel="noopener">One NZ</a> · <a href="https://www.t-mobile.com/business/starlink-satellite-phone-service" target="_blank" rel="noopener">T-Mobile T-Satellite</a> · <a href="https://www.telus.com/en/about/news-and-events/media-releases/WestJet-and-TELUS-form-partnership-to-revolutionize-guest-experience" target="_blank" rel="noopener">TELUS × WestJet</a> · <a href="https://www.satellitetoday.com/finance/2026/03/17/telesats-lightspeed-service-launch-slips-to-2028/" target="_blank" rel="noopener">Telesat Lightspeed to 2028</a> · <a href="https://teslanorth.com/2026/09/24/carney-says-canada-will-ditch-starlink-as-ontario-cashes-in-on-spacex-stake/" target="_blank" rel="noopener">Carney on Starlink</a> · <a href="https://www.telecoms.com/satellite/starlink-is-new-zealand-s-biggest-rural-isp" target="_blank" rel="noopener">Starlink leads rural NZ</a> · <a href="https://celestrak.org/NORAD/elements/" target="_blank" rel="noopener">Orbital elements: CelesTrak</a></div>
     </div>
   </section>
 
@@ -3081,7 +3155,7 @@
     debt:[['d-live','Live Pressure'],['d-lev','Leverage'],['d-card','Balance Sheet'],['d-glide','Glide Path'],['d-take','The Take']],
     play:[['p-reality','Reality'],['p-score','Scorecard'],['p-acq','Acquire'],['p-cac','CAC Model'],['p-beat','Beat Them']],
     network:[['n-flow','Switching Flow'],['n-loyalty','Brand Loyalty'],['n-5g','5G & Spectrum']],
-    coverage:[['cov-towers','Tower Map'],['cov-money','Who\'s Behind TELUS'],['cov-sky','Satellite Share'],['cov-live','Live Migration'],['cov-geo','Coverage Map'],['cov-map','Air Dominance'],['cov-merged','Merged Chart'],['cov-reach','Geo vs Population'],['cov-plans','Prepaid vs Postpaid']],
+    coverage:[['cov-towers','Tower Map'],['cov-money','Who\'s Behind TELUS'],['cov-sky','Satellite Share'],['stlLive','Starlink Live'],['cov-live','Live Migration'],['cov-geo','Coverage Map'],['cov-map','Air Dominance'],['cov-merged','Merged Chart'],['cov-reach','Geo vs Population'],['cov-plans','Prepaid vs Postpaid']],
     telecom:[['t-split','Wireless vs Wireline'],['t-fibre','PureFibre vs Bell'],['t-chain','Signal Chain'],['t-latency','Latency Budget'],['t-stack','Protocol Stack'],['t-topo','RAN Topology'],['t-spectrum','Wave Physics'],['t-holdings','Who Holds What'],['t-gens','1G→5G'],['t-money','The Money']],
     plan:[['pl-timeline','The Sequence'],['pl-live','Live Scoreboard'],['pl-decisions','Three Commitments'],['pl-restraint','What I Won\'t Do'],['pl-score','Day-100 Scorecard']],
     q4:[['q4-score','Live Q4'],['q4-board','The Board'],['q4-plays','Three Plays'],['q4-history','Pricing 2020→26'],['q4-btl','In-Market vs BTL'],['q4-model','Financial Model'],['q4-gov','Governance & Risk'],['q4-quarter','Oct → Dec']],
@@ -3239,7 +3313,7 @@
     if(view==='network'){ setTimeout(initNetworkView,60); }
     else if(flowRAF){ cancelAnimationFrame(flowRAF); flowRAF=null; }
     if(view==='coverage'){ setTimeout(initCoverageView,60); }
-    else { if(mnRAF){ cancelAnimationFrame(mnRAF); mnRAF=null; } if(lRAF){ cancelAnimationFrame(lRAF); lRAF=null; } if(sigRAF){ cancelAnimationFrame(sigRAF); sigRAF=null; } if(mRAF){ cancelAnimationFrame(mRAF); mRAF=null; } }
+    else { if(mnRAF){ cancelAnimationFrame(mnRAF); mnRAF=null; } if(stlRAF){ cancelAnimationFrame(stlRAF); stlRAF=null; } if(lRAF){ cancelAnimationFrame(lRAF); lRAF=null; } if(sigRAF){ cancelAnimationFrame(sigRAF); sigRAF=null; } if(mRAF){ cancelAnimationFrame(mRAF); mRAF=null; } }
     if(view==='telecom'){ setTimeout(initTelecomView,60); }
     else { if(cRAF){ cancelAnimationFrame(cRAF); cRAF=null; } if(tRAF){ cancelAnimationFrame(tRAF); tRAF=null; } if(wRAF){ cancelAnimationFrame(wRAF); wRAF=null; } }
     if(view==='plan'){ setTimeout(initPlanView,60); }
@@ -4076,6 +4150,130 @@
     mnRAF=requestAnimationFrame(mnTick);
   }
   function mnStart(){ if(mnRAF) cancelAnimationFrame(mnRAF); mnLast=0; mnRAF=requestAnimationFrame(mnTick); }
+  // ================= STARLINK LIVE · orbits over Canada =================
+  // Orbital elements: CelesTrak GP data for the Starlink group. starlink.json is refreshed daily by a GitHub workflow;
+  // if it is missing or stale the page asks CelesTrak directly. Positions come from a J2 secular propagator run in the
+  // browser: approximate (km to tens of km), which is plenty for a map of the whole country.
+  let stlRAF=null;
+  const STL={J:null,K:null,n:0,X:null,Y:null,IN:null,sky:[],ov:0,city:'Iqaluit',last:0,W:0,H:0,dpr:1,cv:null,ctx:null,mask:null,geo:null,loading:0,init:0,stale:0};
+  const STL_CITY={Vancouver:[49.2827,-123.1207],Calgary:[51.0447,-114.0719],Whitehorse:[60.7212,-135.0568],Yellowknife:[62.454,-114.3718],Pikangikum:[51.805,-93.98],Toronto:[43.6532,-79.3832],'Montréal':[45.5019,-73.5674],Halifax:[44.6488,-63.5752],Iqaluit:[63.7467,-68.517]};
+  const STL_D=Math.PI/180, STL_MU=398600.4418, STL_RE=6378.137, STL_J2=1.08262668e-3;
+  const STL_P=(()=>{ const P=(TW_GEO&&TW_GEO.proj)||{R:6371,p1:49,p2:77,p0:63.390675,l0:-91.866667,n:0.90074506,rho0:3071.4589};
+    const F=Math.cos(P.p1*STL_D)*Math.pow(Math.tan(Math.PI/4+P.p1*STL_D/2),P.n)/P.n; return {RF:P.R*F,n:P.n,l0:P.l0*STL_D,rho0:P.rho0}; })();
+  const stlProj=(lon,lat)=>{ let dl=lon-STL_P.l0; dl-=2*Math.PI*Math.round(dl/(2*Math.PI));
+    const rho=STL_P.RF/Math.pow(Math.tan(Math.PI/4+lat/2),STL_P.n), th=STL_P.n*dl; return [rho*Math.sin(th),STL_P.rho0-rho*Math.cos(th)]; };
+  const stlGmst=t=>{ const d=t/864e5+2440587.5-2451545; return (((280.46061837+360.98564736629*d)%360)+360)%360*STL_D; };
+  const stlFmtD=s=>{ const d=new Date(s); return isNaN(d)?String(s):['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getUTCMonth()]+' '+d.getUTCDate()+', '+d.getUTCFullYear(); };
+  // CelesTrak CSV -> the same compact pack the workflow writes
+  function stlCsv(txt){
+    const L=txt.replace(/^﻿/,'').split(/\r?\n/).filter(Boolean); if(L.length<100) return null;
+    const h=L[0].split(','), ix=k=>h.indexOf(k), E=ix('EPOCH'), N=ix('MEAN_MOTION'), EC=ix('ECCENTRICITY'), I=ix('INCLINATION'), O=ix('RA_OF_ASC_NODE'), W=ix('ARG_OF_PERICENTER'), M=ix('MEAN_ANOMALY'), ND=ix('MEAN_MOTION_DOT'), NM=ix('OBJECT_NAME');
+    if(E<0||N<0||M<0) return null;
+    const rows=[], x=[]; let t0=Infinity, ep=[];
+    for(let j=1;j<L.length;j++){ const f=L[j].split(','); const t=Date.parse(String(f[E]).slice(0,23)+'Z')/1000, n=+f[N], e=+f[EC];
+      if(!isFinite(t)||!(n>11&&n<16.4)||!(e<0.05)) continue;
+      if(NM>=0&&/DTC|DIRECT/i.test(f[NM]||'')) x.push(rows.length);
+      rows.push([t,n,e,+f[I],+f[O],+f[W],+f[M],ND>=0?(+f[ND]||0):0]); if(t<t0) t0=t; ep.push(t); }
+    if(rows.length<1000) return null;
+    t0=Math.floor(t0); ep.sort((a,b)=>a-b); const d=[]; rows.forEach(r=>{ d.push(Math.round(r[0]-t0),r[1],r[2],r[3],r[4],r[5],r[6],r[7]); });
+    return {v:1,src:'CelesTrak GP · Starlink group',asof:new Date().toISOString().slice(0,16)+'Z',ep:new Date(ep[ep.length>>1]*1000).toISOString().slice(0,16)+'Z',n:rows.length,t0,x,d};
+  }
+  function stlPrep(J){
+    const n=J.n, d=J.d, K=new Float64Array(n*11);
+    for(let i=0;i<n;i++){ const o=8*i, k=11*i, nn=d[o+1]*2*Math.PI/86400, e=d[o+2], inc=d[o+3]*STL_D;
+      const a=Math.cbrt(STL_MU/(nn*nn)), p=a*(1-e*e), q=1.5*STL_J2*(STL_RE/p)*(STL_RE/p)*nn, ci=Math.cos(inc);
+      K[k]=(J.t0+d[o])*1000; K[k+1]=a; K[k+2]=e; K[k+3]=inc; K[k+4]=d[o+4]*STL_D; K[k+5]=d[o+5]*STL_D; K[k+6]=d[o+6]*STL_D;
+      K[k+7]=-q*ci; K[k+8]=0.5*q*(5*ci*ci-1); K[k+9]=nn+0.5*q*Math.sqrt(1-e*e)*(3*ci*ci-1); K[k+10]=d[o+7]*2*Math.PI/(86400*86400); }
+    STL.J=J; STL.K=K; STL.n=n; STL.X=new Float32Array(n); STL.Y=new Float32Array(n); STL.IN=new Uint8Array(n); STL.SK=new Uint8Array(n);
+  }
+  function stlInside(x,y){ const m=STL.mask; if(!m) return 0; const px=Math.floor((x-m.x0)/m.res), py=Math.floor((m.y1-y)/m.res);
+    return px<0||py<0||px>=m.w||py>=m.h?0:m.m[py*m.w+px]; }
+  function stlStep(t){
+    const K=STL.K, n=STL.n, g=stlGmst(t), cg=Math.cos(g), sg=Math.sin(g), X=STL.X, Y=STL.Y, IN=STL.IN, SK=STL.SK;
+    const c=STL_CITY[STL.city], la=c[0]*STL_D, lo=c[1]*STL_D, R0=6371, ux=Math.cos(la)*Math.cos(lo), uy=Math.cos(la)*Math.sin(lo), uz=Math.sin(la), ox=R0*ux, oy=R0*uy, oz=R0*uz, s25=Math.sin(25*STL_D);
+    let ov=0, sky=0;
+    for(let i=0;i<n;i++){ const k=11*i, dt=(t-K[k])/1000, a=K[k+1], e=K[k+2], inc=K[k+3];
+      const Mn=K[k+6]+K[k+9]*dt+K[k+10]*dt*dt, O=K[k+4]+K[k+7]*dt, w=K[k+5]+K[k+8]*dt;
+      let Ea=Mn+e*Math.sin(Mn); Ea=Mn+e*Math.sin(Ea);
+      const cE=Math.cos(Ea), sE=Math.sin(Ea), r=a*(1-e*cE), u=w+Math.atan2(Math.sqrt(1-e*e)*sE,cE-e);
+      const cu=Math.cos(u), su=Math.sin(u), cO=Math.cos(O), sO=Math.sin(O), ci=Math.cos(inc), si=Math.sin(inc);
+      const xi=r*(cO*cu-sO*su*ci), yi=r*(sO*cu+cO*su*ci), z=r*su*si, x=xi*cg+yi*sg, y=-xi*sg+yi*cg;
+      const dx=x-ox, dy=y-oy, dz=z-oz, up=(dx*ux+dy*uy+dz*uz)/Math.sqrt(dx*dx+dy*dy+dz*dz);
+      SK[i]=up>s25?1:0; if(SK[i]) sky++;
+      const lat=Math.asin(z/r); if(lat<0.26){ X[i]=NaN; IN[i]=0; continue; }
+      const p=stlProj(Math.atan2(y,x),lat); X[i]=p[0]; Y[i]=p[1]; IN[i]=stlInside(p[0],p[1]); if(IN[i]) ov++; }
+    STL.ov=ov; STL.sky=sky;
+  }
+  function stlGeo(){
+    if(STL.geo||!TW_GEO) return; const G=TW_GEO;
+    STL.geo={prov:G.prov.map(p=>twPath(twRings(p.rings,G.q))), ctx:twPath(twRings(G.ctx,G.q))};
+    try{ const b=G.bbox, res=8, w=Math.ceil((b[2]-b[0])/res), h=Math.ceil((b[3]-b[1])/res), c=document.createElement('canvas'); c.width=w; c.height=h;
+      const x=c.getContext&&c.getContext('2d'); if(!x||!STL.geo.prov[0]) return;
+      x.setTransform(1/res,0,0,-1/res,-b[0]/res,b[3]/res); STL.geo.prov.forEach(P=>P&&x.fill(P,'evenodd'));
+      const im=x.getImageData(0,0,w,h).data, m=new Uint8Array(w*h); for(let i=0;i<w*h;i++) m[i]=im[4*i+3]>100?1:0;
+      STL.mask={m,w,h,x0:b[0],y1:b[3],res};
+    }catch(_){ STL.mask=null; }
+  }
+  function stlResize(){ const cv=STL.cv; if(!cv) return; const r=cv.parentElement.getBoundingClientRect(); if(!r.width) return;
+    STL.dpr=Math.min(2,window.devicePixelRatio||1); STL.W=r.width; STL.H=r.height; cv.width=Math.round(r.width*STL.dpr); cv.height=Math.round(r.height*STL.dpr); stlDraw(); }
+  function stlDraw(){
+    const c=STL.ctx, W=STL.W, H=STL.H, dpr=STL.dpr; if(!c||!W||!H) return;
+    const cs=getComputedStyle(document.documentElement), V=k=>cs.getPropertyValue(k).trim()||'#888', light=document.documentElement.dataset.theme==='light';
+    const K=light?{w:'#e3eaee',o:'#f1f4f6',l:'#fefefe',b:'#c9d3d8'}:{w:'#0a0d0f',o:'#0f1417',l:'#161d22',b:'#26333a'};
+    const b=TW_GEO?TW_GEO.bbox:[-2501,-2333.5,2807.6,2234.9], vx0=b[0]-120, vx1=b[2]+120, vy0=b[1]-420, vy1=b[3]+60;
+    const s=Math.min(W/(vx1-vx0),H/(vy1-vy0)), cx=(vx0+vx1)/2, cy=(vy0+vy1)/2, sx=x=>W/2+(x-cx)*s, sy=y=>H/2-(y-cy)*s;
+    c.setTransform(1,0,0,1,0,0); c.globalAlpha=1; c.fillStyle=K.w; c.fillRect(0,0,STL.cv.width,STL.cv.height);
+    if(STL.geo){ c.setTransform(dpr*s,0,0,-dpr*s,dpr*(W/2-cx*s),dpr*(H/2+cy*s));
+      if(STL.geo.ctx){ c.fillStyle=K.o; c.fill(STL.geo.ctx,'evenodd'); }
+      c.fillStyle=K.l; STL.geo.prov.forEach(P=>P&&c.fill(P,'evenodd')); c.lineWidth=1/s; c.strokeStyle=K.b; STL.geo.prov.forEach(P=>P&&c.stroke(P)); }
+    c.setTransform(dpr,0,0,dpr,0,0);
+    const city=STL_CITY[STL.city], cp=stlProj(city[1]*STL_D,city[0]*STL_D), qx=sx(cp[0]), qy=sy(cp[1]);
+    if(STL.K){ const X=STL.X, Y=STL.Y, IN=STL.IN, SK=STL.SK, n=STL.n, acid=V('--acid');
+      const pass=(want,col,al,r)=>{ c.fillStyle=col; c.globalAlpha=al; c.beginPath();
+        for(let i=0;i<n;i++){ const x=X[i]; if(x!==x) continue; const g=SK[i]?2:IN[i]; if(g!==want) continue;
+          const px=sx(x), py=sy(Y[i]); if(px<-4||px>W+4||py<-4||py>H+4) continue; c.rect(px-r/2,py-r/2,r,r); }
+        c.fill(); };
+      pass(0,V('--dim'),light?.55:.7,1.6); pass(1,V('--ink'),.9,2);
+      c.strokeStyle=acid; c.lineWidth=1; c.globalAlpha=.3; c.beginPath();
+      for(let i=0;i<n;i++){ if(!SK[i]||X[i]!==X[i]) continue; c.moveTo(qx,qy); c.lineTo(sx(X[i]),sy(Y[i])); } c.stroke();
+      pass(2,acid,1,3); c.globalAlpha=1; }
+    c.globalAlpha=1; c.strokeStyle=V('--ink'); c.lineWidth=1.5; c.beginPath(); c.arc(qx,qy,5,0,6.2832); c.stroke();
+    c.fillStyle=V('--ink'); c.font="600 11px 'IBM Plex Mono', monospace"; c.textAlign=qx>W-110?'right':'left'; c.fillText(STL.city,qx+(qx>W-110?-9:9),qy-8);
+  }
+  function stlStats(){ if(!STL.K) return; const f=v=>v.toLocaleString('en-CA');
+    $('stlOver').textContent=STL.mask?f(STL.ov):'—'; $('stlSky').textContent=f(STL.sky); }
+  function stlCityUI(){ const box=$('stlCity'); if(!box) return; box.innerHTML='';
+    Object.keys(STL_CITY).forEach(k=>{ const b=document.createElement('button'); b.type='button'; b.className='lvchip'+(k===STL.city?' on':''); b.style.setProperty('--c','var(--acid)'); b.textContent=k;
+      b.onclick=()=>{ STL.city=k; stlCityUI(); $('stlCityN').textContent=k; $('stlCityL').textContent=k; if(STL.K){ stlStep(Date.now()); stlStats(); } stlDraw(); }; box.appendChild(b); }); }
+  function stlMsg(t){ const m=$('stlMsg'); if(m) m.textContent=t; }
+  function stlUse(J,how){
+    stlPrep(J); STL.loading=0; stlMsg(''); const n=J.n.toLocaleString('en-CA'), when=stlFmtD(J.ep||J.asof);
+    $('stlN').textContent=n; $('stlNs').textContent='CelesTrak element sets, epoch '+when+(how==='stale'?' (older data)':'');
+    $('stlKn').textContent=n; $('stlKns').textContent='satellites in orbit (CelesTrak, '+when+'); 12,962 launched since 2019';
+    $('stlSrc').textContent='Orbits: '+(J.src||'CelesTrak')+', '+J.n.toLocaleString('en-CA')+' satellites, epoch '+when+'. Positions are computed in your browser from those elements and are approximate, typically within a few kilometres to tens of kilometres.';
+    stlStep(Date.now()); stlStats(); stlDraw();
+  }
+  function stlLoad(){
+    if(STL.loading||STL.K) return; STL.loading=1; stlMsg('Loading live orbits…');
+    try{ const s=localStorage.getItem('telcos-stl'); if(s){ const o=JSON.parse(s); if(o&&o.J&&o.J.n&&Date.now()-o.at<6*3600e3){ stlUse(o.J,'cache'); return; } } }catch(_){}
+    let stale=null;
+    const fresh=J=>J&&J.n>1000&&J.d&&Date.now()-J.t0*1000<4*86400e3;
+    const local=()=>(location.protocol==='file:'||!window.fetch)?Promise.reject(0):fetch('starlink.json',{cache:'no-cache'}).then(r=>r.ok?r.json():Promise.reject(0)).then(J=>{ if(!fresh(J)){ if(J&&J.n>1000&&J.d) stale=J; throw 0; } stlUse(J,'local'); });
+    const direct=()=>fetch('https://celestrak.org/NORAD/elements/gp.php?GROUP=starlink&FORMAT=csv').then(r=>r.ok?r.text():Promise.reject(0)).then(t=>{ const J=stlCsv(t); if(!J) throw 0;
+      try{ localStorage.setItem('telcos-stl',JSON.stringify({at:Date.now(),J})); }catch(_){} stlUse(J,'direct'); });
+    local().catch(()=>direct()).catch(()=>{ if(stale){ stlUse(stale,'stale'); return; } STL.loading=0; stlMsg('Live orbits unavailable right now · counts as of Sep 29, 2026'); });
+  }
+  function stlTick(ts){ stlRAF=requestAnimationFrame(stlTick);
+    if(ts-STL.last<250) return; STL.last=ts; const ck=$('stlClock'); if(ck) ck.textContent=etClock(Date.now());
+    if(!STL.K||!STL.cv) return; const r=STL.cv.getBoundingClientRect(); if(r.bottom<-80||r.top>innerHeight+80) return;
+    stlStep(Date.now()); stlStats(); stlDraw(); }
+  function stlInit(){
+    const cv=$('stlCanvas'); if(!cv) return;
+    if(!STL.init){ STL.init=1; STL.cv=cv; STL.ctx=cv.getContext?cv.getContext('2d'):null; stlGeo(); stlCityUI();
+      window.addEventListener('resize',()=>{ clearTimeout(STL.rt); STL.rt=setTimeout(stlResize,120); }); }
+    stlResize(); stlLoad();
+    if(stlRAF) cancelAnimationFrame(stlRAF); STL.last=0; stlRAF=requestAnimationFrame(stlTick);
+  }
   // ---- Coverage: where the wires end (satellite share model) ----
   const SK={nd:25.889e9, lev:3.5, star:570e6, home:13530, arpu:56.36, phones:10.3e6, d2c:10, keep:0.5, mg:0.8};
   SK.eb=SK.nd/SK.lev;
@@ -4101,6 +4299,7 @@
     renderPride();
     twInit();
     skInit();
+    stlInit();
     mnStart();
     initGeoMap();
     initNetMap();
