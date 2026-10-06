@@ -1,0 +1,271 @@
+{
+ "asof": "2026-10-06",
+ "max_last_mod": "2026-10-05",
+ "stats": {
+  "rows": 2038479,
+  "kept": 1871895,
+  "other_licensee": 71632,
+  "non_mobile_band": 94720,
+  "unparsed": 232
+ },
+ "sites_per_carrier": {
+  "TELUS": 15006,
+  "Bell": 10717,
+  "Rogers": 12245,
+  "Freedom": 811,
+  "Vidéotron": 4108,
+  "SaskTel": 1149,
+  "Eastlink": 1189,
+  "Tbaytel": 524,
+  "SSi": 98
+ },
+ "nr_sites_per_carrier": {
+  "TELUS": 7838,
+  "Bell": 4625,
+  "Rogers": 7947,
+  "Freedom": 0,
+  "Vidéotron": 1707,
+  "SaskTel": 974,
+  "Eastlink": 64,
+  "Tbaytel": 102,
+  "SSi": 0
+ },
+ "top_licensees": [
+  [
+   "Bell Mobility Inc.",
+   900560
+  ],
+  [
+   "Rogers Communications Canada Inc.",
+   422760
+  ],
+  [
+   "TELUS Communications Inc.",
+   306528
+  ],
+  [
+   "Vidéotron ltée",
+   69307
+  ],
+  [
+   "Telus – Regulatory Affairs",
+   53296
+  ],
+  [
+   "Xplore Inc.",
+   42833
+  ],
+  [
+   "Sasktel (AWS/PCS)",
+   23739
+  ],
+  [
+   "Saskatchewan Telecommunications",
+   22462
+  ],
+  [
+   "FIDO SOLUTIONS INC.",
+   20300
+  ],
+  [
+   "Bell Canada",
+   16144
+  ],
+  [
+   "Bragg Communications Inc.",
+   15993
+  ],
+  [
+   "Vidéotron Itée",
+   11970
+  ],
+  [
+   "Sasktel Mobility (Cell/PCS)",
+   10322
+  ],
+  [
+   "Xplore Spectrum 1 Network Limited Partnership",
+   6173
+  ],
+  [
+   "Sasktel (BRS) Eng. Manager - Wireless Networks",
+   3824
+  ],
+  [
+   "TELUS Communications Company",
+   3793
+  ],
+  [
+   "TBayTel - Mobility",
+   2877
+  ],
+  [
+   "Bell MTS, a division of Bell Canada",
+   2766
+  ],
+  [
+   "Sasktel (PCS) Eng. Manager - Wireless Network",
+   2644
+  ],
+  [
+   "Videotron Ltd. dba Freedom Mobile",
+   2513
+  ],
+  [
+   "LEMALU HOLDINGS LTD MCSNet",
+   883
+  ],
+  [
+   "Cogeco Connexion Inc.",
+   398
+  ],
+  [
+   "SSI Micro Ltd.",
+   397
+  ],
+  [
+   "Sogetel Mobilité inc.",
+   342
+  ],
+  [
+   "Orion Wireless Partnership (WCS)",
+   238
+  ],
+  [
+   "Ecotel inc.",
+   168
+  ],
+  [
+   "1085459 Ontario Ltd.",
+   64
+  ],
+  [
+   "Kativik Regional Government",
+   45
+  ],
+  [
+   "Dow Chemical Canada ULC",
+   42
+  ],
+  [
+   "Keewaytinook Okimakanak",
+   36
+  ]
+ ],
+ "radio_technology": [
+  [
+   "LTE",
+   1151354
+  ],
+  [
+   "5GNR",
+   481122
+  ],
+  [
+   "5GDSS",
+   162419
+  ],
+  [
+   "HSPA",
+   56947
+  ],
+  [
+   "GSM",
+   19970
+  ],
+  [
+   "Other",
+   83
+  ]
+ ],
+ "provinces": [
+  [
+   "ON",
+   13537
+  ],
+  [
+   "QC",
+   10581
+  ],
+  [
+   "BC",
+   10167
+  ],
+  [
+   "AB",
+   4834
+  ],
+  [
+   "NS",
+   1885
+  ],
+  [
+   "MB",
+   1274
+  ],
+  [
+   "SK",
+   1263
+  ],
+  [
+   "NB",
+   1135
+  ],
+  [
+   "NL",
+   689
+  ],
+  [
+   "PE",
+   237
+  ],
+  [
+   "NU",
+   98
+  ],
+  [
+   "NT",
+   85
+  ],
+  [
+   "YT",
+   62
+  ]
+ ],
+ "files": [
+  {
+   "file": "Site_Data_Extract_FX.csv",
+   "header": true,
+   "delim": ",",
+   "enc": "utf-8-sig",
+   "cols": 61,
+   "idx": {
+    "lic": 8,
+    "loc": 12,
+    "tech": 14,
+    "prov": 17,
+    "lat": 18,
+    "lon": 19,
+    "ht": 21,
+    "mod": 23,
+    "tx": 25,
+    "az": 53
+   },
+   "first": [
+    "upload_date*",
+    "licence_number",
+    "reference_number",
+    "subservice_id*",
+    "licence_category*",
+    "area_id*",
+    "area_name*",
+    "account_number*",
+    "licensee_name*",
+    "contact_name",
+    "business_telephone",
+    "email_address"
+   ]
+  }
+ ],
+ "bytes": 640182
+}
