@@ -1,31 +1,31 @@
 {
- "asof": "2026-10-06",
- "max_last_mod": "2026-10-05",
+ "asof": "2026-11-03",
+ "max_last_mod": "2026-10-29",
  "stats": {
-  "rows": 2038479,
-  "kept": 1871895,
-  "other_licensee": 71632,
-  "non_mobile_band": 94720,
-  "unparsed": 232
+  "rows": 2110289,
+  "kept": 1943759,
+  "non_mobile_band": 95323,
+  "unparsed": 238,
+  "other_licensee": 70969
  },
  "sites_per_carrier": {
-  "TELUS": 15006,
-  "Bell": 10717,
-  "Rogers": 12245,
-  "Freedom": 811,
-  "Vidéotron": 4108,
-  "SaskTel": 1149,
+  "TELUS": 15063,
+  "Bell": 10813,
+  "Rogers": 12092,
+  "Freedom": 812,
+  "Vidéotron": 4122,
+  "SaskTel": 1151,
   "Eastlink": 1189,
   "Tbaytel": 524,
-  "SSi": 98
+  "SSi": 99
  },
  "nr_sites_per_carrier": {
-  "TELUS": 7838,
-  "Bell": 4625,
-  "Rogers": 7947,
+  "TELUS": 8007,
+  "Bell": 4739,
+  "Rogers": 7983,
   "Freedom": 0,
-  "Vidéotron": 1707,
-  "SaskTel": 974,
+  "Vidéotron": 1683,
+  "SaskTel": 984,
   "Eastlink": 64,
   "Tbaytel": 102,
   "SSi": 0
@@ -33,99 +33,99 @@
  "top_licensees": [
   [
    "Bell Mobility Inc.",
-   900560
+   959566
   ],
   [
    "Rogers Communications Canada Inc.",
-   422760
+   439725
   ],
   [
    "TELUS Communications Inc.",
-   306528
+   308139
   ],
   [
    "Vidéotron ltée",
-   69307
+   63135
   ],
   [
    "Telus – Regulatory Affairs",
-   53296
+   53465
   ],
   [
    "Xplore Inc.",
-   42833
+   42417
   ],
   [
    "Sasktel (AWS/PCS)",
-   23739
+   23997
   ],
   [
    "Saskatchewan Telecommunications",
-   22462
+   22975
   ],
   [
    "FIDO SOLUTIONS INC.",
-   20300
-  ],
-  [
-   "Bell Canada",
-   16144
+   19908
   ],
   [
    "Bragg Communications Inc.",
    15993
   ],
   [
+   "Bell Canada",
+   15909
+  ],
+  [
    "Vidéotron Itée",
-   11970
+   12496
   ],
   [
    "Sasktel Mobility (Cell/PCS)",
-   10322
+   10398
   ],
   [
    "Xplore Spectrum 1 Network Limited Partnership",
-   6173
+   6263
+  ],
+  [
+   "TELUS Communications Company",
+   3858
   ],
   [
    "Sasktel (BRS) Eng. Manager - Wireless Networks",
    3824
   ],
   [
-   "TELUS Communications Company",
-   3793
-  ],
-  [
    "TBayTel - Mobility",
    2877
   ],
   [
-   "Bell MTS, a division of Bell Canada",
-   2766
-  ],
-  [
    "Sasktel (PCS) Eng. Manager - Wireless Network",
-   2644
+   2680
   ],
   [
    "Videotron Ltd. dba Freedom Mobile",
-   2513
+   2520
+  ],
+  [
+   "Bell MTS, a division of Bell Canada",
+   1736
   ],
   [
    "LEMALU HOLDINGS LTD MCSNet",
-   883
+   788
+  ],
+  [
+   "SSI Micro Ltd.",
+   466
+  ],
+  [
+   "Sogetel Mobilité inc.",
+   406
   ],
   [
    "Cogeco Connexion Inc.",
    398
-  ],
-  [
-   "SSI Micro Ltd.",
-   397
-  ],
-  [
-   "Sogetel Mobilité inc.",
-   342
   ],
   [
    "Orion Wireless Partnership (WCS)",
@@ -133,7 +133,11 @@
   ],
   [
    "Ecotel inc.",
-   168
+   177
+  ],
+  [
+   "NEXICOM INC.",
+   82
   ],
   [
    "1085459 Ontario Ltd.",
@@ -146,86 +150,86 @@
   [
    "Dow Chemical Canada ULC",
    42
-  ],
-  [
-   "Keewaytinook Okimakanak",
-   36
   ]
  ],
  "radio_technology": [
   [
    "LTE",
-   1151354
+   1252993
   ],
   [
    "5GNR",
-   481122
+   466472
   ],
   [
    "5GDSS",
-   162419
+   153797
   ],
   [
    "HSPA",
-   56947
+   50401
   ],
   [
    "GSM",
-   19970
+   19963
   ],
   [
    "Other",
-   83
+   124
+  ],
+  [
+   "Wi-Fi",
+   9
   ]
  ],
  "provinces": [
   [
    "ON",
-   13537
+   13612
   ],
   [
    "QC",
-   10581
+   10603
   ],
   [
    "BC",
-   10167
+   10199
   ],
   [
    "AB",
-   4834
+   4861
   ],
   [
    "NS",
-   1885
-  ],
-  [
-   "MB",
-   1274
+   1894
   ],
   [
    "SK",
-   1263
+   1265
+  ],
+  [
+   "MB",
+   1150
   ],
   [
    "NB",
-   1135
+   1141
   ],
   [
    "NL",
-   689
+   691
   ],
   [
    "PE",
-   237
-  ],
-  [
-   "NU",
-   98
+   239
   ],
   [
    "NT",
-   85
+   79
+  ],
+  [
+   "NU",
+   69
   ],
   [
    "YT",
@@ -267,5 +271,5 @@
    ]
   }
  ],
- "bytes": 640182
+ "bytes": 640618
 }
